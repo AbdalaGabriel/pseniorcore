@@ -1,6 +1,7 @@
 @extends('admin.index')
 
-@section('pageTitle', 'Administrar blog')
+@section('pageTitle', 'Editar páginas')
+@section('title', 'Administrar páginas de su sitio web')
 
 @section('menu')
 <li>
@@ -9,14 +10,14 @@
 		<p>Dashboard</p>
 	</a>
 </li>
-<li  class="active">
+<li>
 	<a href="user.html">
 		<i class="material-icons">person</i>
 		<p>Blog</p>
 	</a>
 </li>
 
-<li >
+<li class="active">
 	<a href="user.html">
 		<i class="material-icons">person</i>
 		<p>Páginas</p>

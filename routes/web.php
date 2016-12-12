@@ -21,3 +21,6 @@ Route::get('/admin', function () {
 Route::get('/admin/blog', function () {
     return view('admin.pages.blog-admin');
 });
+
+
+Route::resource('/admin/paginas', 'PagesController');

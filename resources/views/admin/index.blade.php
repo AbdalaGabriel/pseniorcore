@@ -20,6 +20,9 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
 	 {!!Html::style('bootstrap-template-assets/css/demo.css')!!}
     
+
+	 {!!Html::style('css/customization.css')!!}
+
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
@@ -28,8 +31,9 @@
 <body>
 
 	<div class="wrapper">
+		
 
-	    <div class="sidebar" data-color="purple" data-image="../resources/assets/bootstrap-template-assets/img/sidebar-1.jpg">
+	    <div class="sidebar" data-color="purple" data-image="http://localhost/coresenior/public/bootstrap-template-assets/img/sidebar-1.jpg">
 			<!--
 		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -44,19 +48,7 @@
 
 	    	<div class="sidebar-wrapper">
 	            <ul class="nav">
-	                <li class="active">
-	                    <a href="dashboard.html">
-	                        <i class="material-icons">dashboard</i>
-	                        <p>Dashboard</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="user.html">
-	                        <i class="material-icons">person</i>
-	                        <p>User Profile</p>
-	                    </a>
-	                </li>
-	              
+	              @yield('menu')              
 					
 	            </ul>
 	    	</div>
@@ -66,17 +58,19 @@
 			<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
 				<!-- HEADER-->
+					<h2 class="adminTitle">@yield('title')</h2>
 				</div>
 			</nav>
 
 			<div class="content">
 				<div class="container-fluid">
 				<!-- MAIN-->
+				@yield('main')
 				</div>
 			</div>
 
 			<footer class="footer">
-				<div class="container-fluid">
+				<!--<div class="container-fluid">
 					<nav class="pull-left">
 						<ul>
 							<li>
@@ -104,7 +98,7 @@
 					<p class="copyright pull-right">
 						&copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
 					</p>
-				</div>
+				</div>-->
 			</footer>
 		</div>
 	</div>
@@ -131,7 +125,7 @@
 	<!-- <script src="../resources/assets/bootstrap-template-assets/js/material-dashboard.js"></script>-->
 
 	
-
+	@yield('aditional-scripts')
 	
 
 </html>
