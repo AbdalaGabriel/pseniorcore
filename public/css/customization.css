@@ -16,3 +16,9 @@
     font-weight: bold;
         background: #f3f3f3;
 }
+
+
+.modal-backdrop.in {
+
+    z-index: 0 !important;
+}
