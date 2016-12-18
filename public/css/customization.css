@@ -1,0 +1,18 @@
+ .adminBlock
+ {    
+ 	background: rgba(255, 255, 255, 0.6);
+ 	padding: 1em;
+ 	border-radius: .5em;
+ }
+
+ .adminTitle
+ { 
+    padding-left: 1em;
+ 	text-align: left;
+ }
+
+ .table > thead > tr > th {
+    padding-bottom: .5em;
+    font-weight: bold;
+        background: #f3f3f3;
+}
