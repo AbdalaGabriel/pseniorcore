@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 
 Route::resource('/admin/paginas', 'PageController');
+Route::resource('/admin/blog', 'BlogController');
