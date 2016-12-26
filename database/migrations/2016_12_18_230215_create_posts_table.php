@@ -31,6 +31,14 @@ class CreatePostsTable extends Migration
             $table->string('en_urlfriendly');
         });
 
+        Schema::table('posts', function ($table) {
+            $table->string('urlfriendly')->nullable()->change();
+            $table->string('en_title')->nullable()->change();
+            $table->string('en_urlfriendly')->nullable()->change();
+            $table->string('content')->nullable()->change();
+            $table->string('en_content')->nullable()->change();
+        });
+
 
 
     }

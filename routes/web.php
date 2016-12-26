@@ -18,3 +18,4 @@ Route::get('/', function () {
 
 Route::resource('/admin/paginas', 'PageController');
 Route::resource('/admin/blog', 'BlogController');
+Route::post('/admin/blog/editcats', 'BlogController@quickeditcategories');
