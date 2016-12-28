@@ -31,9 +31,21 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $category = Category::create([
+                 'title' => $request['cat']
+
+            ]);
+            
+            return response()->json([
+                "mensaje"=>"creado"
+            ]);
+        } else
+        {
+            return("h");
+        }
     }
 
     /**
@@ -44,7 +56,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $category = Category::create([
+                 'title' => $request['cat']
+
+            ]);
+            
+            return response()->json([
+                "mensaje"=>"creado"
+            ]);
+        } else
+        {
+            return("h");
+        }
     }
 
     /**

@@ -2,7 +2,6 @@ var counter = 0;
 
 $( document ).ready(function() 
 {
-	alert("ho");
 	console.log( "- Document ready" );
 	carga();
 });
@@ -94,173 +93,32 @@ function defineListerner()
 		//////////////////////////////////////////////////////////////////////////////////////
 		// Edición rápida
 
-		$(".quickEdit").click(function()
-		{
-			console.log( "- Inicio click listener: QUICK EDIT" );
-			idQuickEditButton = $(this).attr("data-id");
-			routeEdit = "http://localhost:8000/admin/blog/"+idQuickEditButton+"/edit";
-			token = $("#token").val();
-
-
-			$.get(routeEdit, function(res)
-			{
-				$("#titleQuickEdit").val(res.title);
-				categoyData = res.categoryData;
-				console.log(res);
-				var checksContainer = $(".checkboxes");
-				var postid = res.id;
-				
-				var largeCats = categoyData.length;
-				for (var i = 0; i < largeCats; i++) 
-				{
-					if(categoyData[i].belongstopost == true)
-					{
-						checksContainer.append('<input  data-postid="'+postid+'" class="categoryCheckbox" checked type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].catid)
-
-					}else
-					{
-						checksContainer.append('<input  data-postid="'+postid+'" class="categoryCheckbox" type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].catid)
-
-					}
-				}
-
-				initcatlisteners(categoyData)
-				var backupcategorydata = categoyData
-
-				$('.close').click(function(){
-					closeModal(backupcategorydata);
-
-				});								
-				
-			});	
-
-
-			function initcatlisteners(categoyData)
-			{
-				$(".categoryCheckbox").change(function() 
-				{
-					console.log( "- Inicio click listener: CHECKBOX");
-					routeCatEdit = "http://localhost:8000/admin/blog/editcats";
-					token = $("#token").val();
-					thiscatid = $(this).val();
-					thispostid = $(this).attr("data-postid");
-
-
-					function searchInCategories(nameKey, myArray){
-						//console.log("Se va a buscar " + nameKey + " en ");
-						//console.log(myArray);
-					    for (var i=0; i < myArray.length; i++) {
-
-					        if (myArray[i].catid == nameKey) {
-					            return myArray[i];
-					        }
-					    }
-					}
-
-					if(this.checked) 
-					{
-					    console.log('- se chequeo');
-					    var result = searchInCategories(thiscatid, categoyData);
-					    console.log(result);
-					    result.belongstopost = true;
-					    
-					    /*$.ajax(
-						{
-							url: routeCatEdit,
-							headers: {'X-CSRF-TOKEN': token},
-							type: 'POST',
-							dataType: 'json',
-							data: {catid: thiscatid, instruct:'attach', postid:thispostid},
-
-							success: function(){
-								console.log("se atacho placidamente");
-							}
-						});*/
-						console.log("se mdifico el objeto");
-						console.log(result);
-						console.log(categoyData);
-						//console.log(idsForAttach);
-
-					}
-					else
-					{
-						console.log("- se deschequeo");
-						var result = searchInCategories(thiscatid, categoyData);
-					    console.log(result);
-					    result.belongstopost = false;
-						 
-						/*$.ajax(
-						{
-							url: routeCatEdit,
-							headers: {'X-CSRF-TOKEN': token},
-							type: 'POST',
-							dataType: 'json',
-							data: {catid: thiscatid, instruct:'dettach', postid:thispostid},
-
-							success: function(){
-								console.log("se desatacho placidamente");
-							}
-						});*/
-						console.log("se mdifico el objeto");
-						console.log(result);
-						console.log(categoyData);
-					}
-
-				});
-			}
-			
-
-			$("#confirmation-quickEdit").click(function()
-			{
-				console.log(categoyData);
-				console.log( "- Inicio confirmation listener" );
-				routeUpdate =  "http://localhost:8000/admin/blog/"+idQuickEditButton;
-				var newTitle = $("#titleQuickEdit").val();
-
-				$.ajax(
-				{
-					url: routeUpdate,
-					headers: {'X-CSRF-TOKEN': token},
-					type: 'PUT',
-					dataType: 'json',
-					data: {title: newTitle, categoyData: categoyData},
-
-					success: function(){
-						carga();
-					}
-				});
-			});
-		});
-
 		
-
-		//////////////////////////////////////////////////////////////////////////////////////
-		// Borrar esta página
-
-		$(".delete").on("click", function()
-		{
-			console.log( "- Inicio click listener: DELETE" );
-			idDeleteButton = $(this).attr("data-id");
-			route = "http://localhost:8000/admin/blog/"+idDeleteButton;
-			token = $("#token").val();
-
-			$("#confirmation").click(function()
+			$("#createCategory").click(function()
 			{
-				console.log( "- Inicio confirmation listener" );
-				console.log(idDeleteButton);
+				console.log( "- Inicio click listener: CREATE" );
+				route = "http://localhost:8000/admin/categorias";
+				token = $("#token").val();
 
-				$.ajax(
+				$("#confirm-create").click(function()
 				{
-					url: route,
-					headers: {'X-CSRF-TOKEN': token},
-					type: 'DELETE',
-					dataType: 'json',
-					
-					success: function(){
-						carga();
-						
-					}
+					namecat = $("#categoryname").val();;
+					console.log( "- Inicio confirmation listener: CREATE: "+namecat );
+
+					$.ajax(
+					{
+						url: route,
+						headers: {'X-CSRF-TOKEN': token},
+						type: 'POST',
+						dataType: 'json',
+						data: {cat: namecat},
+
+						success: function(){
+							carga();
+						}
+					});
 				});
 			});
-		});
+	
+
 	}

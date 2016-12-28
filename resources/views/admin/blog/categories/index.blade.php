@@ -28,9 +28,10 @@
 
 @section('main')
 
+	@include('admin.blog.categories.messages.create')
 	<div class=".col-md-4 center adminBlock">
 
-		
+		<a id="createCategory" data-toggle="modal" data-target="#create" href="#">Crear categoría nueva</a>
 		<table class="table">
 			<thead>
 				<th>Titulo</th>
