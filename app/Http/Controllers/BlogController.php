@@ -7,6 +7,7 @@ use App\Post;
 use App\Category;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
+use Redirect;
 
 class BlogController extends Controller
 {
@@ -115,7 +116,7 @@ class BlogController extends Controller
         // Funcion que sincroniza todos los ids de un array y los va asignando al id del posteo en cuestion en la tabla pivot.
         $post->categories()->sync($CategoriesIds);
 
-        return view("admin.blog.index");
+        return Redirect::to('/admin/blog');
     }    
 
     /**

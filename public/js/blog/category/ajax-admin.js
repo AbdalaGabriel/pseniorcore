@@ -1,0 +1,266 @@
+var counter = 0;
+
+$( document ).ready(function() 
+{
+	alert("ho");
+	console.log( "- Document ready" );
+	carga();
+});
+
+// Funcion principal: llenado dinamico de elementos html.
+function carga()
+{
+	counter++;
+	console.log( "- Carga "+counter );
+	var route = "http://localhost:8000/admin/categorias";
+	tablaDatos = $("#datos");
+
+	clean();
+	console.log( "- Limpieza" );
+
+	//otra forma de hacer una peticion ajax,
+	var consulta =  $.get(route, function(res)
+	{
+		console.log(res);
+		$(res).each(function(key, value)
+		{
+			tablaDatos.append('<tr><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-post" data-id="'+value.id+'">Quick Edit</a></td><td><a href="http://localhost:8000/admin/blog/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-post" data-id="'+value.id+'">Eliminar</button></td></tr>');
+
+		});
+	})
+
+	.done(function() 
+	{
+		console.log( "- Exito Ajax Carga" );
+		defineListerner();
+	})
+
+	.fail(function()
+	{ 
+		console.log( "Error en carga Ajax" );
+	})
+};
+
+
+// Borrado de Listeners
+function clean()
+{
+	$(".delete").off();
+	$("#confirmation").off();
+	$(".quickEdit").off();
+	$("#confirmation-quickEdit").off();
+	var checksContainer = $(".checkboxes");
+	
+	checksContainer.empty();
+	tablaDatos.empty();
+}
+
+
+////////
+// Close modal
+function closeModal(storedcats)
+{
+	var checksContainer = $(".checkboxes");
+	checksContainer.empty();
+	console.log("- Close modal quick edit")
+	console.log(storedcats);
+
+	routeCatEdit = "http://localhost:8000/admin/blog/editcats";
+	token = $("#token").val();
+
+	$.ajax(
+	{
+		url: routeCatEdit,
+		headers: {'X-CSRF-TOKEN': token},
+		type: 'POST',
+		dataType: 'json',
+		data: {catid: thiscatid, instruct:'restore', postid:thispostid},
+
+		success: function()
+		{
+			console.log("se atacho placidamente");
+		}
+	});
+	
+	carga();
+}
+
+
+// Inicio de Listeners
+function defineListerner()
+{
+	console.log( "- Inicio listeners" );
+
+		//////////////////////////////////////////////////////////////////////////////////////
+		// Edición rápida
+
+		$(".quickEdit").click(function()
+		{
+			console.log( "- Inicio click listener: QUICK EDIT" );
+			idQuickEditButton = $(this).attr("data-id");
+			routeEdit = "http://localhost:8000/admin/blog/"+idQuickEditButton+"/edit";
+			token = $("#token").val();
+
+
+			$.get(routeEdit, function(res)
+			{
+				$("#titleQuickEdit").val(res.title);
+				categoyData = res.categoryData;
+				console.log(res);
+				var checksContainer = $(".checkboxes");
+				var postid = res.id;
+				
+				var largeCats = categoyData.length;
+				for (var i = 0; i < largeCats; i++) 
+				{
+					if(categoyData[i].belongstopost == true)
+					{
+						checksContainer.append('<input  data-postid="'+postid+'" class="categoryCheckbox" checked type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].catid)
+
+					}else
+					{
+						checksContainer.append('<input  data-postid="'+postid+'" class="categoryCheckbox" type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].catid)
+
+					}
+				}
+
+				initcatlisteners(categoyData)
+				var backupcategorydata = categoyData
+
+				$('.close').click(function(){
+					closeModal(backupcategorydata);
+
+				});								
+				
+			});	
+
+
+			function initcatlisteners(categoyData)
+			{
+				$(".categoryCheckbox").change(function() 
+				{
+					console.log( "- Inicio click listener: CHECKBOX");
+					routeCatEdit = "http://localhost:8000/admin/blog/editcats";
+					token = $("#token").val();
+					thiscatid = $(this).val();
+					thispostid = $(this).attr("data-postid");
+
+
+					function searchInCategories(nameKey, myArray){
+						//console.log("Se va a buscar " + nameKey + " en ");
+						//console.log(myArray);
+					    for (var i=0; i < myArray.length; i++) {
+
+					        if (myArray[i].catid == nameKey) {
+					            return myArray[i];
+					        }
+					    }
+					}
+
+					if(this.checked) 
+					{
+					    console.log('- se chequeo');
+					    var result = searchInCategories(thiscatid, categoyData);
+					    console.log(result);
+					    result.belongstopost = true;
+					    
+					    /*$.ajax(
+						{
+							url: routeCatEdit,
+							headers: {'X-CSRF-TOKEN': token},
+							type: 'POST',
+							dataType: 'json',
+							data: {catid: thiscatid, instruct:'attach', postid:thispostid},
+
+							success: function(){
+								console.log("se atacho placidamente");
+							}
+						});*/
+						console.log("se mdifico el objeto");
+						console.log(result);
+						console.log(categoyData);
+						//console.log(idsForAttach);
+
+					}
+					else
+					{
+						console.log("- se deschequeo");
+						var result = searchInCategories(thiscatid, categoyData);
+					    console.log(result);
+					    result.belongstopost = false;
+						 
+						/*$.ajax(
+						{
+							url: routeCatEdit,
+							headers: {'X-CSRF-TOKEN': token},
+							type: 'POST',
+							dataType: 'json',
+							data: {catid: thiscatid, instruct:'dettach', postid:thispostid},
+
+							success: function(){
+								console.log("se desatacho placidamente");
+							}
+						});*/
+						console.log("se mdifico el objeto");
+						console.log(result);
+						console.log(categoyData);
+					}
+
+				});
+			}
+			
+
+			$("#confirmation-quickEdit").click(function()
+			{
+				console.log(categoyData);
+				console.log( "- Inicio confirmation listener" );
+				routeUpdate =  "http://localhost:8000/admin/blog/"+idQuickEditButton;
+				var newTitle = $("#titleQuickEdit").val();
+
+				$.ajax(
+				{
+					url: routeUpdate,
+					headers: {'X-CSRF-TOKEN': token},
+					type: 'PUT',
+					dataType: 'json',
+					data: {title: newTitle, categoyData: categoyData},
+
+					success: function(){
+						carga();
+					}
+				});
+			});
+		});
+
+		
+
+		//////////////////////////////////////////////////////////////////////////////////////
+		// Borrar esta página
+
+		$(".delete").on("click", function()
+		{
+			console.log( "- Inicio click listener: DELETE" );
+			idDeleteButton = $(this).attr("data-id");
+			route = "http://localhost:8000/admin/blog/"+idDeleteButton;
+			token = $("#token").val();
+
+			$("#confirmation").click(function()
+			{
+				console.log( "- Inicio confirmation listener" );
+				console.log(idDeleteButton);
+
+				$.ajax(
+				{
+					url: route,
+					headers: {'X-CSRF-TOKEN': token},
+					type: 'DELETE',
+					dataType: 'json',
+					
+					success: function(){
+						carga();
+						
+					}
+				});
+			});
+		});
+	}

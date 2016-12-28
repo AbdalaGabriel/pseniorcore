@@ -16,6 +16,10 @@ Route::get('/', function () {
 });
 
 
+// Paginas
 Route::resource('/admin/paginas', 'PageController');
+
+//Blog
 Route::resource('/admin/blog', 'BlogController');
 Route::post('/admin/blog/editcats', 'BlogController@quickeditcategories');
+Route::resource('/admin/categorias', 'CategoryController');
