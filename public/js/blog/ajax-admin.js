@@ -162,62 +162,36 @@ function defineListerner()
 					thiscatid = $(this).val();
 					thispostid = $(this).attr("data-postid");
 
-
-					function searchInCategories(nameKey, myArray){
-						//console.log("Se va a buscar " + nameKey + " en ");
-						//console.log(myArray);
-					    for (var i=0; i < myArray.length; i++) {
-
-					        if (myArray[i].catid == nameKey) {
-					            return myArray[i];
-					        }
-					    }
+					function searchInCategories(nameKey, myArray)
+					{
+						for (var i=0; i < myArray.length; i++)
+						{
+							if (myArray[i].catid == nameKey)
+							{
+								return myArray[i];
+							}
+						}
 					}
 
 					if(this.checked) 
 					{
-					    console.log('- se chequeo');
-					    var result = searchInCategories(thiscatid, categoyData);
-					    console.log(result);
-					    result.belongstopost = true;
-					    
-					    /*$.ajax(
-						{
-							url: routeCatEdit,
-							headers: {'X-CSRF-TOKEN': token},
-							type: 'POST',
-							dataType: 'json',
-							data: {catid: thiscatid, instruct:'attach', postid:thispostid},
-
-							success: function(){
-								console.log("se atacho placidamente");
-							}
-						});*/
+						console.log('- se chequeo');
+						var result = searchInCategories(thiscatid, categoyData);
+						console.log(result);
+						result.belongstopost = true;
+						
 						console.log("se mdifico el objeto");
 						console.log(result);
 						console.log(categoyData);
-						//console.log(idsForAttach);
 
 					}
 					else
 					{
 						console.log("- se deschequeo");
 						var result = searchInCategories(thiscatid, categoyData);
-					    console.log(result);
-					    result.belongstopost = false;
-						 
-						/*$.ajax(
-						{
-							url: routeCatEdit,
-							headers: {'X-CSRF-TOKEN': token},
-							type: 'POST',
-							dataType: 'json',
-							data: {catid: thiscatid, instruct:'dettach', postid:thispostid},
-
-							success: function(){
-								console.log("se desatacho placidamente");
-							}
-						});*/
+						console.log(result);
+						result.belongstopost = false;
+						
 						console.log("se mdifico el objeto");
 						console.log(result);
 						console.log(categoyData);

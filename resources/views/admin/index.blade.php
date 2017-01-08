@@ -8,6 +8,8 @@
 
 	<title>@yield('pageTitle')</title>
 
+	@yield('links')
+
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
@@ -47,10 +49,57 @@
 			</div>
 
 	    	<div class="sidebar-wrapper">
-	            <ul class="nav">
-	              @yield('menu')              
+	           
+	              <ul class="nav">
+					<li>
+						<a href="dashboard.html">
+							<i class="material-icons">dashboard</i>
+							<p>Dashboard</p>
+						</a>
+					</li>
+					<li>
 					
-	            </ul>
+						<ul>
+							<li>
+								    {!! link_to_action('BlogController@index', 'Blog') !!}
+								</a>
+							</li>
+							<li>
+								    {!! link_to_action('CategoryController@index','Categorias') !!}
+								</a>
+							</li>
+						</ul>
+						
+
+					</li>
+
+					<li class="">
+						{!! link_to_action('PageController@index','PAginas') !!}
+						
+					</li>
+
+					<li class="">
+						<ul>
+							<li>
+								    {!! link_to_action('ProjectController@index','Portfolio') !!}
+								</a>
+							</li>
+							<li>
+								    <{!! link_to_action('ProjectCategoryController@index','Categorias') !!}
+								</a>
+							</li>
+						</ul>
+						
+						
+					</li>
+
+					<li class="">
+						{!! link_to_action('MediaController@index','Media') !!}
+						
+					</li>
+
+				  </ul>    
+					
 	    	</div>
 	    </div>
 

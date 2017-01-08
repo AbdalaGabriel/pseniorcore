@@ -28,33 +28,22 @@
 
 @section('main')
 
-	@include('admin.pages.messages.confirmation')
-	@include('admin.pages.messages.create')
-	@include('admin.pages.messages.quick-edit')
-
-	<div class=".col-md-4 center adminBlock">
-
-		<h4>Titulo de la página: </h4>
-		<input class="form-control" type="text" value="{!! $page->title!!}">
-
-		<h4>URL Friendly: </h4>
-		<!-- @todo: hacerdinamico esto-->
-		<span>http:://gabdala.com.ar/</span><input class="form-control" type="text" value="{!! $page->urlFriendly!!}">
-
-		<h4>Contenido: </h4>
-		<textareax class="form-control" type="text"> </textareax>
-		
-		
-	</div>
 
 
-	<tbody id="datos"></tbody>
+	{!!Form::model($page,['route'=>['paginas.update',$page],'method'=>'PUT'])!!}
 
-	</div>
+	{!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
+	{!!Form::text('title', $page->title, ['id'=>'new-page-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
 
-	@section('aditional-scripts')
-	{!! Html::script('js/pages/ajax-admin.js') !!}
-	@endsection
+
+	
+
+	{!! Form::submit('Update post', ['class'=>'btn btn-primary btn-round']); !!}
+
+	{!! Form::close() !!}
+
+	
+
 
 @endsection
 

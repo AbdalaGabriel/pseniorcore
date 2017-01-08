@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Page;
+use Redirect;
 class PageController extends Controller
 {
     /**
@@ -110,6 +111,7 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $page = Page::find($id);
 
         // actualiza nombre con lo que le llega via AJAX.
@@ -118,9 +120,18 @@ class PageController extends Controller
          
         $page->save();
 
-        return response()->json([
+        if ($request->ajax())
+        {
+           return response()->json([
             "mensaje" =>"listo"
-         ]);
+           ]);
+        }
+        else
+        {
+            return Redirect::to('/admin/paginas');
+        }
+
+        
     }
 
     /**

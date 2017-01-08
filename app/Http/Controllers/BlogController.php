@@ -33,11 +33,11 @@ class BlogController extends Controller
 
                 $thisPost = Post::find($postId); 
                 
-            
+
                 $finalObj[$index]['categories']= $thisPost->categories;
-                    
+
                 $index++;
-                    
+
                 /*foreach ($postCategories as $category) 
                 {
                     //$indiceCat = $category->id;
@@ -82,7 +82,7 @@ class BlogController extends Controller
         $CategoriesIds = Input::get('ch');
 
         $categoriesNames = array();
- 
+
         //Guardo con los ids de categorias que estan en el checkbox, los nombres de las mismas ne un array.
 
         foreach ($CategoriesIds as $CategoryId) 
@@ -95,8 +95,8 @@ class BlogController extends Controller
         // Creo el posteo con la info que me llego.
         Post::create([
             'title' => $title,
-            'email' => $content,
-        ]);
+            'content' => $content,
+            ]);
 
         // Busco su id mediante una querie que me traiga el ultimo posteo en base a su nombre.
 
@@ -110,7 +110,7 @@ class BlogController extends Controller
 
     public function appendCategoriesForPost($idLastPost, $CategoriesIds)
     {
-        
+
         $post = Post::find($idLastPost);
 
         // Funcion que sincroniza todos los ids de un array y los va asignando al id del posteo en cuestion en la tabla pivot.
@@ -190,7 +190,7 @@ class BlogController extends Controller
             return response()->json($finalObj);
         }else
         {
-                   
+
             return view('admin.blog.edit', ['finalObj'=>$finalObj]);
         };
     }
@@ -228,7 +228,27 @@ class BlogController extends Controller
 
             return response()->json([
                 "mensaje" =>$belongstopost
-             ]);
+                ]);
+        }
+        else
+        {
+            $post = Post::find($id);
+            $post->title = $request['title'];
+            $CategoriesIds = Input::get('ch');
+            $arrayLength = count($CategoriesIds);
+            $allCategoriesIds = array();
+
+            if($CategoriesIds != null)
+            {
+                $post->categories()->sync($CategoriesIds);
+            }else
+            {
+                $post->categories()->detach();
+            }
+            
+            $post->save();
+
+            return Redirect::to('/admin/blog');
         }
     }
 
@@ -244,11 +264,11 @@ class BlogController extends Controller
             // Agregar categoria al post
             if($instruction == "attach")
             {
-                
+
                 $post->categories()->attach($catId);
                 return response()->json([
                     "mensaje" =>"se attacheo"
-                ]);
+                    ]);
             }
             // Borrar categoría del post
             elseif($instruction == "detach")
@@ -256,7 +276,7 @@ class BlogController extends Controller
                 $post->categories()->detach($catId);
                 return response()->json([
                     "mensaje" =>"se desattacheo"
-                ]);
+                    ]);
 
             }
             // Restaruar categorias anteriores (Usuario hace click en cerrar)-
@@ -265,15 +285,15 @@ class BlogController extends Controller
                 $post->categories()->detach($catId);
                 return response()->json([
                     "mensaje" =>"se restauro correctamente"
-                ]);
+                    ]);
 
             }
-             elseif($instruction == "sync")
+            elseif($instruction == "sync")
             {
                 $post->categories()->detach($catId);
                 return response()->json([
                     "mensaje" =>"se restauro correctamente"
-                ]);
+                    ]);
 
             }
         }
@@ -294,6 +314,6 @@ class BlogController extends Controller
 
         return response()->json([
             "mensaje" =>"borrado"
-         ]);
+            ]);
     }
 }
