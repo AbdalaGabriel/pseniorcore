@@ -55,6 +55,7 @@
 @section('aditional-scripts')
 {!! Html::script('dropzone/dist/dropzone.js') !!}
 {!! Html::script('js/projects/dz-control.js') !!}
+{!! Html::script('js/redirect.js') !!}
 {!! Html::script('js/projects/formController.js') !!}
 @endsection
 

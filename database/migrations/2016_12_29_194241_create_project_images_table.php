@@ -25,6 +25,9 @@ class CreateProjectImagesTable extends Migration
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });
 
+        Schema::table('project_images', function ($table) {
+            $table->string('name');
+        });
     }
 
     /**

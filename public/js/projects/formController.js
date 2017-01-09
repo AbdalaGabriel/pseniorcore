@@ -53,10 +53,12 @@ function init()
 				categories:categories ,
 			},
 
-			success: function(){
+			success: function(projectId){
 				console.log("- Proyecto creado exitosamente");
 				console.log("- Iniciamos Carga de imagen en proyecto");
 				dropzone.processQueue();
+				console.log(projectId);
+				$.redirect('http://localhost:8000/admin/project/uploadimages', {projectid: projectId},'GET');
 			}
 		});
 	});

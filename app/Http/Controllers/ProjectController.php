@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use App\Project;
 use App\ProjectCategory;
 use Illuminate\Support\Facades\Input;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Redirect;
+use File;
 
 
 class ProjectController extends Controller
@@ -67,7 +68,6 @@ class ProjectController extends Controller
    return("Se creo la imagen de portada y se almaceno");
   }
 
-
   public function store(Request $request)
   {
     // Recibo la informacion que me llega
@@ -106,7 +106,7 @@ class ProjectController extends Controller
     $project = Project::find($idUltimoProject);
     // Funcion que sincroniza todos los ids de un array y los va asignando al id del projecteo en cuestion en la tabla pivot.
     $project->projectsCategories()->sync($CategoriesIds);
-    return Redirect::to('/admin/portfolio');
+    return ($project->id);
   }   
 
 
@@ -229,54 +229,33 @@ class ProjectController extends Controller
       $catId = $request->catid;
       $projectid = $request->projectid;
       $project = Project::find($projectid);
-
-      // Agregar categoria al project
-      if($instruction == "attach")
-      {
-
-        $project->projectsCategories()->attach($catId);
-        return response()->json([
-           "mensaje" =>"se attacheo"
-        ]);
-      }
-      
-      // Borrar categoría del project
-      elseif($instruction == "detach")
-      {
-        $project->projectsCategories()->detach($catId);
-        return response()->json([
-          "mensaje" =>"se desattacheo"
-        ]);
-
-      }
-      
-      // Restaruar categorias anteriores (Usuario hace click en cerrar)-
-      elseif($instruction == "restore")
-      {
-        $project->projectsCategories()->detach($catId);
-        return response()->json([
-          "mensaje" =>"se restauro correctamente"
-        ]);
-      }
-      
-      elseif($instruction == "sync")
-      {
-        $project->projectsCategories()->detach($catId);
-        return response()->json([
-          "mensaje" =>"se restauro correctamente"
-        ]);
-      }
+    }
+    elseif($instruction == "sync")
+    {
+      $project->projectsCategories()->detach($catId);
+      return response()->json([
+         "mensaje" =>"se restauro correctamente"
+      ]);
     }
   }
 
   public function destroy($id)
   {
     $project = Project::find($id);
+    $coverImageName = $project->cover_image;
+    $coverImagePath = public_path()."/uploads/projects/".$coverImageName;
+    
+    // Borrar categorías del proyecto
     $project->projectsCategories()->detach();
+
+    // Eliminar imágenes que tenia relacionadas en la base de datos, que se guardaban en la carpeta projects-
+    File::delete($coverImagePath);
+    
+    // Eliminar proyecto.
     $project->delete();
 
     return response()->json([
-      "mensaje" =>"borrado"
+      "mensaje" =>"borrado todo el proyecto y sus imágenes".$coverImagePath,
     ]);
   }
 }
