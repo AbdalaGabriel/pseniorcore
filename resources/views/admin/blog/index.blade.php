@@ -10,6 +10,7 @@
 	@include('admin.blog.messages.delete')
 	@include('admin.blog.messages.quick-edit')
 	
+	
 
 	<div class=".col-md-4 center adminBlock">
 

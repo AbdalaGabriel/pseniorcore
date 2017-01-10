@@ -10,6 +10,9 @@ function init()
 	console.log("- Function init");
 	var submit = $("#sendForm");
 
+	detectEvents();
+
+
 	submit.click(function(e)
 	{
 		// Evitamos que haga submit via formulario, para manejarlo por JS.
@@ -28,7 +31,9 @@ function init()
 		var description = $("#new-post-content").val();
 		var coverImage = fileSelected;
 		var routeNew = 'http://localhost:8000/admin/portfolio';
+		var urlfContent = $("#new-post-urlf").val();
 
+		
 		// Sending test
 
 		/*console.log(title);
@@ -51,6 +56,7 @@ function init()
 				title: title, 
 				description: description,
 				categories:categories ,
+				urlf: urlfContent,
 			},
 
 			success: function(projectId){
@@ -62,4 +68,30 @@ function init()
 			}
 		});
 	});
+}
+
+function detectEvents(){
+	$("#new-post-title").focusout(function() {
+		console.log("- Se ingresó un titulo para el posteo");
+		var title = $("#new-post-title").val();
+		var urlf = $("#new-post-urlf");
+		var token = $("#token").val();
+
+		$.ajax(
+		{
+			url: "http://localhost:8000/admin/geturl",
+			headers: {'X-CSRF-TOKEN': token},
+			type: 'GET',
+			dataType: 'json',
+			data: {url: title},
+
+			success: function(data)
+			{
+				console.log("- Se generó la url para le proyecto");
+				console.log(data);
+				urlf.val(data);
+			}
+		});
+	})
+
 }

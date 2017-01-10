@@ -32,8 +32,9 @@
 
 <body>
 
+
 	<div class="wrapper">
-		
+				
 
 	    <div class="sidebar" data-color="purple" data-image="http://localhost/coresenior/public/bootstrap-template-assets/img/sidebar-1.jpg">
 			<!--

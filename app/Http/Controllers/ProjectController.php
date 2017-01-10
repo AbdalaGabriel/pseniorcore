@@ -14,6 +14,11 @@ use File;
 
 class ProjectController extends Controller
 {
+  public function __construct(){
+    $this->middleware('auth');
+    $this->middleware('admin');
+  }
+
   public function index(Request $request)
   {
     if ($request->ajax()) 
@@ -38,6 +43,13 @@ class ProjectController extends Controller
     return view('admin.projects.index'); 
   }
 
+  public function front($id)
+  {
+    $project = Project::find($id);
+     return view("front.project", ['project'=>$project]);
+
+
+  }
 
   public function create()
   {
@@ -74,6 +86,7 @@ class ProjectController extends Controller
     $title = $request['title'];
     $content = $request['content'];
     $coverImage = $request['path'];
+    $urlfriendly = $request['urlf'];
     //$CategoriesIds = Input::get('ch');
     $CategoriesIds = $request['categories'];
     $categoriesNames = array();
@@ -90,6 +103,7 @@ class ProjectController extends Controller
     Project::create([
       'title' => $title,
       'description' => $content,
+      'urlfriendly' => $urlfriendly,
       ]);
 
     // Busco su id mediante una querie que me traiga el ultimo projecteo en base a su nombre.

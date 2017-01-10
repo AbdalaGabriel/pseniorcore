@@ -5,7 +5,8 @@
 @section('main')
 	@include('admin.projects.messages.delete')
 	@include('admin.projects.messages.quick-edit')
-
+	
+	
 	<div class=".col-md-4 center adminBlock">
 
 		{!!  link_to_action('ProjectController@create', 'Crear nuevo Proyecto', $title = null, $parameters = [], $attributes = []); !!}

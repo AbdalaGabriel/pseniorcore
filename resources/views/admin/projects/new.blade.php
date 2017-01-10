@@ -6,6 +6,7 @@
 
 @section('links')
 <link rel="stylesheet" type="text/css" href="../../dropzone/dist/dropzone.css">
+
 @endsection
 @section('main')
 
@@ -23,14 +24,20 @@
 	{!!Form::text('title', null, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
 
 
+	{!!Form::label('urlf', 'URL Friendly', ['class' => 'form-control']);!!}
+	<p>Se generará automaticamente a partir de su titulo, si desea modificar su url amigable para este proyecto, puede editarla a continuación,</p>
+
+	{!!Form::text('urlf', null, ['id'=>'new-post-urlf', 'class'=>'form-control','placeholder'=>'URL amigable']) !!}
+
 	<div class="form-group">
 
-		<h3>Seleccione o suba una foto de portada</h3>
-
+	   
+		<label>Seleccione o suba una foto de portada</label>
 		<div class="dropzone coverImage" id="myDropZone" data-token="{{ csrf_token() }}"></div>
 	</div>
 
 
+	{!!Form::label('content', 'Descripciòn de su proyecto', ['class' => 'form-control']);!!}
 
 	{!!Form::textarea('content', null, ['id'=>'new-post-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo proyecto']) !!}
 

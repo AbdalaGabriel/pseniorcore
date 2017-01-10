@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FrontController@index');
+Route::get('/admin', 'FrontController@admin');
 
+
+// Generador de Cadenas
+Route::get('/admin/geturl', 'UrlEncoder@encode');
 
 // Paginas
 Route::resource('/admin/paginas', 'PageController');
@@ -40,4 +42,10 @@ Route::resource('/admin/portfolio', 'ProjectController');
 // Imagenes
 Route::resource('/admin/media', 'MediaController');
 
-Route::post('/admin/upload', 'MediaController@uploadimages');
+
+// FONTEND
+
+Route::get('/proyecto/{id?}/{urflf}', 'ProjectController@front' );
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
