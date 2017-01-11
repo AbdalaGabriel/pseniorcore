@@ -43,11 +43,41 @@ class ProjectController extends Controller
     return view('admin.projects.index'); 
   }
 
-  public function front($id)
+  public function front($id, $title)
   {
     $project = Project::find($id);
-     return view("front.project", ['project'=>$project]);
 
+    $realtitle = $project->urlfriendly;
+
+    // Efectuo redireción en caso que el usuario me escriba otro titulo, debido a que solo toma el ID para la busqueda
+      if($title == $realtitle)
+      {
+        return view("front.project", ['project'=>$project]);
+      }
+      else
+      {
+        return Redirect::to('/');
+      }
+    
+
+  }
+
+  public function englishversion($id, $title)
+  {
+    $project = Project::find($id);
+
+    $realtitle = $project->en_urlfriendly;
+
+    // Efectuo redireción en caso que el usuario me escriba otro titulo, debido a que solo toma el ID para la busqueda
+      if($title == $realtitle)
+      {
+        return view("front.en.project", ['project'=>$project]);
+      }
+      else
+      {
+        return Redirect::to('/');
+      }
+    
 
   }
 
@@ -130,6 +160,12 @@ class ProjectController extends Controller
   }
 
 
+  public function englishedit($id, Request $request)
+  {
+    $project = Project::find($id);
+    return view('admin.projects.en.edit', ['project'=>$project]);
+  }
+
   public function edit($id, Request $request)
   {
     $project = Project::find($id);
@@ -184,6 +220,16 @@ class ProjectController extends Controller
     {
       return view('admin.projects.edit', ['finalObj'=>$finalObj]);
     };
+  }
+
+  public function englishupdate(Request $request, $id)
+  {
+      $project = Project::find($id);
+      $project->en_title = $request['en_title'];
+      $project->en_description = $request['en_description'];
+      $project->en_urlfriendly = $request['en_urlf'];
+      $project->save();
+      return Redirect::to('/admin/portfolio');
   }
 
 

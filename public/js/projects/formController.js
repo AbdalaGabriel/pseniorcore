@@ -76,6 +76,7 @@ function detectEvents(){
 		var title = $("#new-post-title").val();
 		var urlf = $("#new-post-urlf");
 		var token = $("#token").val();
+		var version = $("#new-post-urlf").attr("data-version");
 
 		$.ajax(
 		{

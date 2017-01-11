@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'FrontController@index');
+Route::get('/en', 'FrontController@enIndex');
 Route::get('/admin', 'FrontController@admin');
 
 
@@ -44,6 +45,11 @@ Route::resource('/admin/portfolio', 'ProjectController');
 	// Imágenes del proyecto.
 	Route::resource('/admin/project/uploadimages', 'ProjectImageController');
 	Route::post('/admin/project/uploadimages', 'ProjectImageController@uploadimages');
+
+	// VERSION EN INGLES
+	Route::get('admin/portfolio/en/{id?}/edit', 'ProjectController@englishedit' );
+	Route::put('admin/portfolio/en/{id?}/update/', 'ProjectController@englishupdate' );
+	Route::get('en/project/{id?}/{urflf}', 'ProjectController@englishversion' );
 
 
 // Imagenes

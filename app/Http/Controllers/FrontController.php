@@ -30,6 +30,16 @@ class FrontController extends Controller
         
     }
 
+    public function enIndex(Request $request)
+    {
+
+        $projects = DB::table('projects')->take(4)->get();
+        $posts = DB::table('posts')->take(4)->get();    
+        $slides = Slide::all();
+        return view('front.en.index', ['projects'=>$projects, 'posts'=>$posts, 'slides'=>$slides]); 
+        
+    }
+
 
     public function admin(Request $request)
     {

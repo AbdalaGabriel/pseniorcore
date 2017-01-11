@@ -17,7 +17,6 @@ class UrlEncoder extends Controller
 			$url = $request['url'];
 			$urlFinal =urlencode($url);
 
-
 			$more = array("+");
 			$dash   = array("-");
 

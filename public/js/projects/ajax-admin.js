@@ -22,7 +22,7 @@ function carga()
 		console.log(res);
 		$(res).each(function(key, value)
 		{
-			tablaDatos.append('<tr><td><img width:"30" height="30" src="/uploads/projects/'+value.cover_image+'"></td><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-project" data-id="'+value.id+'">Quick Edit</a></td> <td>'+value.urlfriendly+'</td><td class="post-categories" data-id="'+value.id+'">-</td><td><a href="http://localhost:8000/admin/portfolio/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-project" data-id="'+value.id+'">Eliminar</button></td></tr>');
+			tablaDatos.append('<tr><td><img width:"30" height="30" src="/uploads/projects/'+value.cover_image+'"></td><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-project" data-id="'+value.id+'">Quick Edit</a></td> <td>'+value.urlfriendly+'</td><td class="post-categories" data-id="'+value.id+'">-</td><td><a href="http://localhost:8000/admin/portfolio/en/'+value.id+'/edit" data-id="'+value.id+'">Versión en inglés</a></td><td><a href="http://localhost:8000/admin/portfolio/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-project" data-id="'+value.id+'">Eliminar</button></td></tr>');
 			celdaCategorias = $(".post-categories[data-id='"+value.id+"']");
 
 			var categories = value.categories;

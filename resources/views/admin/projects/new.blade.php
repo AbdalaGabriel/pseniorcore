@@ -27,7 +27,7 @@
 	{!!Form::label('urlf', 'URL Friendly', ['class' => 'form-control']);!!}
 	<p>Se generará automaticamente a partir de su titulo, si desea modificar su url amigable para este proyecto, puede editarla a continuación,</p>
 
-	{!!Form::text('urlf', null, ['id'=>'new-post-urlf', 'class'=>'form-control','placeholder'=>'URL amigable']) !!}
+	{!!Form::text('urlf', null, ['id'=>'new-post-urlf', 'class'=>'form-control','placeholder'=>'URL amigable', 'data-version' => 'es']) !!}
 
 	<div class="form-group">
 
