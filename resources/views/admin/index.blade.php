@@ -76,6 +76,13 @@
 
 					<li class="">
 						{!! link_to_action('PageController@index','PAginas') !!}
+						<ul>
+							<li>
+								    {!! link_to_action('ProjectController@index','Home') !!}
+								
+							</li>
+							
+						</ul>
 						
 					</li>
 
@@ -83,11 +90,11 @@
 						<ul>
 							<li>
 								    {!! link_to_action('ProjectController@index','Portfolio') !!}
-								</a>
+								
 							</li>
 							<li>
 								    <{!! link_to_action('ProjectCategoryController@index','Categorias') !!}
-								</a>
+								
 							</li>
 						</ul>
 						

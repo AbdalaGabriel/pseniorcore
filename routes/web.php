@@ -20,6 +20,13 @@ Route::get('/admin/geturl', 'UrlEncoder@encode');
 
 // Paginas
 Route::resource('/admin/paginas', 'PageController');
+	// HOME
+	Route::resource('/admin/paginas/home/slider', 'SliderController');
+	// Home Slider
+	Route::post('/admin/paginas/home/slider/uploadimages', 'SliderController@uploadimages');
+	Route::post('/admin/paginas/home/slider/updateorder', 'SliderController@updateorder');
+
+
 
 //Blog
 Route::resource('/admin/blog', 'BlogController');

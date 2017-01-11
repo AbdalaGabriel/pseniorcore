@@ -106,7 +106,7 @@ function defineListerner()
 
 			$("#confirm-create").click(function()
 			{
-				namepage = $("#namepage").val();;
+				namepage = $("#namepage").val();
 				console.log( "- Inicio confirmation listener: CREATE" );
 
 				$.ajax(

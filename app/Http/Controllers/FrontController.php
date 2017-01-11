@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Project;
 use App\ProjectCategory;
 use App\Post;
+use App\Slide;
 use App\PostCategory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -24,8 +25,8 @@ class FrontController extends Controller
 
         $projects = DB::table('projects')->take(4)->get();
         $posts = DB::table('posts')->take(4)->get();	
-
-        return view('front.index', ['projects'=>$projects, 'posts'=>$posts]); 
+        $slides = Slide::all();
+        return view('front.index', ['projects'=>$projects, 'posts'=>$posts, 'slides'=>$slides]); 
         
     }
 
