@@ -114,9 +114,10 @@ class ProjectController extends Controller
   {
     // Recibo la informacion que me llega
     $title = $request['title'];
-    $content = $request['content'];
+    $description = $request['description'];
     $coverImage = $request['path'];
     $urlfriendly = $request['urlf'];
+    $metadescription = $request['metadescription'];
     //$CategoriesIds = Input::get('ch');
     $CategoriesIds = $request['categories'];
     $categoriesNames = array();
@@ -132,8 +133,9 @@ class ProjectController extends Controller
     // Creo el projecteo con la info que me llego.
     Project::create([
       'title' => $title,
-      'description' => $content,
+      'description' => $description,
       'urlfriendly' => $urlfriendly,
+      'meta_description' => $metadescription,
       ]);
 
     // Busco su id mediante una querie que me traiga el ultimo projecteo en base a su nombre.

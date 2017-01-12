@@ -29,6 +29,7 @@ function init()
 		var token = $("#token").val();
 		var title = $("#new-post-title").val();
 		var description = $("#new-post-content").val();
+		var meta_description = $("#new-meta-content").val();
 		var coverImage = fileSelected;
 		var routeNew = 'http://localhost:8000/admin/portfolio';
 		var urlfContent = $("#new-post-urlf").val();
@@ -36,11 +37,12 @@ function init()
 		
 		// Sending test
 
-		/*console.log(title);
+		console.log(title);
 		console.log(description);
 		console.log(categories);
 		console.log(coverImage);
-		*/
+		console.log(meta_description);
+		console.log(urlfContent);
 		//
 
 		console.log("- Se subio la foto de portada a destino temporal");
@@ -57,6 +59,7 @@ function init()
 				description: description,
 				categories:categories ,
 				urlf: urlfContent,
+				metadescription: meta_description,
 			},
 
 			success: function(projectId){

@@ -56,6 +56,40 @@ class BlogController extends Controller
         
     }
 
+
+    public function englishedit($id, Request $request)
+    {
+        $post = Post::find($id);
+        return view('admin.blog.en.edit', ['post'=>$post]);
+    }
+
+    public function englishupdate(Request $request, $id)
+    {
+      $post = Post::find($id);
+      $post->en_title = $request['en_title'];
+      $post->en_content = $request['en_content'];
+      $post->en_urlfriendly = $request['en_urlf'];
+      $post->save();
+      return Redirect::to('/admin/blog');
+  }
+
+
+  public function front($id, $title)
+  {
+    $post = Post::find($id);
+    $realtitle = $post->urlfriendly;
+
+        // Efectuo redireción en caso que el usuario me escriba otro titulo, debido a que solo toma el ID para la busqueda
+    if($title == $realtitle)
+    {
+        return view("front.post", ['post'=>$post]);
+    }
+    else
+    {
+        return Redirect::to('/');
+    }
+}
+
     /**
      * Show the form for creating a new resource.
      *
@@ -76,11 +110,9 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         // Recibo la informacion que me llega
-
         $title = $request['title'];
         $content = $request['content'];
         $CategoriesIds = Input::get('ch');
-
         $categoriesNames = array();
 
         //Guardo con los ids de categorias que estan en el checkbox, los nombres de las mismas ne un array.
@@ -234,6 +266,7 @@ class BlogController extends Controller
         {
             $post = Post::find($id);
             $post->title = $request['title'];
+            $post->urlfriendly = $request['urlf'] ;
             $CategoriesIds = Input::get('ch');
             $arrayLength = count($CategoriesIds);
             $allCategoriesIds = array();

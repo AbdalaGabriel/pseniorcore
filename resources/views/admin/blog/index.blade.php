@@ -22,6 +22,7 @@
 				<th>Titulo</th>
 				<th>URL</th>
 				<th>Categorias</th>
+				<th>Idioma</th>
 				<th>Ediciòn</th>
 				<th>Borrado</th>
 			</thead>

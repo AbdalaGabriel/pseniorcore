@@ -17,6 +17,10 @@
 	{!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
 	{!!Form::text('title', $finalObj->title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
 
+	{!!Form::label('urlf', 'URL Friendly', ['class' => 'form-control']);!!}
+	<p>Se generará automaticamente a partir de su titulo, si desea modificar su url amigable para este proyecto, puede editarla a continuación,</p>
+
+	{!!Form::text('urlf', null, ['id'=>'new-post-urlf', 'class'=>'form-control','placeholder'=>'URL amigable', 'data-version' => 'es']) !!}
 
 	{!!Form::textarea('content', $finalObj->content, ['id'=>'new-post-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
 
@@ -36,7 +40,7 @@
 	<input type="hidden" name="_categorydata" value="" id="categorydata">
 	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 
-	{!! Form::submit('Update post', ['class'=>'btn btn-primary btn-round']); !!}
+	{!! Form::submit('Update post', ['class'=>'btn btn-primary btn-round', 'id' => 'sendForm']); !!}
 
 	{!! Form::close() !!}
 
@@ -49,6 +53,8 @@
 
 @section('aditional-scripts')
 {!! Html::script('js/blog/create.js') !!}
+
+{!! Html::script('js/blog/formController.js') !!}
 @endsection
 
 @endsection

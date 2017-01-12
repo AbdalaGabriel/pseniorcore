@@ -147,7 +147,9 @@
 					<h2>Trabajos</h2>
 
 					@foreach ($projects as $project)		    
-					<div class="porftolioItem col-md-3"><a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a></div>
+					<div class="porftolioItem col-md-3">
+					<a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a>
+					</div>
 					
 					@endforeach
 
@@ -158,7 +160,9 @@
 					<h2>Novedades</h2>
 
 					@foreach ($posts as $post)		    
-					<div class="postItem col-md-3">{!!$post->title!!}</div>
+					<div class="postItem col-md-3">
+						<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">{!!$post->title!!}</a>
+					</div>
 					
 					@endforeach
 

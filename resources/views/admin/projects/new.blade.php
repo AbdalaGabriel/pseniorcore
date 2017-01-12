@@ -41,6 +41,12 @@
 
 	{!!Form::textarea('content', null, ['id'=>'new-post-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo proyecto']) !!}
 
+
+	{!!Form::label('metadescr', 'Descripciòn de su proyecto para búesquedas', ['class' => 'form-control']);!!}
+
+	{!!Form::textarea('metadescription', null, ['id'=>'new-meta-content', 'class'=>'form-control','placeholder'=>'Ej: Trabajo de diseño de identidad corporativa realizado para la marca LOREMIPSUM']) !!}
+
+
 	@foreach ($categories as $category)
 
 	{!! Form::checkbox('ch[]', $category->id, false ) !!} {!! $category->title !!} </br>
