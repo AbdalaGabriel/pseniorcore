@@ -17,10 +17,12 @@ Auth::routes();
 
 
 $portfolio = Page::find(12);
-$urlfPortfolio = $portfolio->urlfriendly;
+//$urlfPortfolio = $portfolio->urlfriendly;
+$urlfPortfolio = "portfolio";
 
 $blog = Page::find(13);
-$urlfBlog = $blog->urlfriendly;
+//$urlfBlog = $blog->urlfriendly;
+$urlfBlog = "2blog";
 
 Route::get('/basicemail', 'MailController@basic_email');
 Route::get('/htmlemail', 'MailController@html_email');
@@ -29,6 +31,7 @@ Route::get('/attachemail', 'MailController@attachment_email');
 
 // FRONTEND
 // --------------------------------------------------------------------------------------- //
+
 
 // HOME
 Route::get('/', 'FrontController@index');
@@ -48,6 +51,11 @@ Route::get('/home', 'HomeController@index');
 		// Noticias y novedades
 		Route::get('/blog/{id?}/{urflf}', 'BlogController@front' );
 		Route::get('en/blog/{id?}/{urflf}', 'BlogController@englishversion' );
+
+	// Contacto
+	Route::get('/contactame', 'FrontController@contact');
+	//Validacion de formularios
+	Route::post('/form/validate', 'FrontController@validateform');
 
 /* --------------------------------------------------------------------------------------- */
 /////////////////////////////////////////////////////////////////////////////////////////////
