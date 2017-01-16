@@ -229,6 +229,7 @@ class ProjectController extends Controller
       $project = Project::find($id);
       $project->en_title = $request['en_title'];
       $project->en_description = $request['en_description'];
+      $project->en_meta_description = $request['en_meta_description'];
       $project->en_urlfriendly = $request['en_urlf'];
       $project->save();
       return Redirect::to('/admin/portfolio');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Project;
 use App\ProjectCategory;
 use App\Post;
+use App\Page;
 use App\Slide;
 use App\PostCategory;
 use Illuminate\Database\Eloquent\Model;
@@ -39,6 +40,24 @@ class FrontController extends Controller
         return view('front.en.index', ['projects'=>$projects, 'posts'=>$posts, 'slides'=>$slides]); 
         
     }
+
+
+    public function portfolio(Request $request)
+    {
+        $page = Page::find(12);
+        $projects = Project::all();
+        return view('front.portfolio', ['projects'=>$projects, 'page'=>$page]); 
+        
+    }
+
+    public function blog(Request $request)
+    {
+        $page = Page::find(13);
+        $posts = Post::all();
+        return view('front.blog', ['posts'=>$posts, 'page'=>$page]); 
+        
+    }
+
 
 
     public function admin(Request $request)

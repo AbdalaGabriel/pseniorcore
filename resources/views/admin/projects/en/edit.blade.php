@@ -25,6 +25,11 @@
 	{!!Form::label('contenidoingles', 'Contenido para la versión en inglés', ['class' => 'form-control']);!!}
 	{!!Form::textarea('en_description', $project->en_description, ['id'=>'new-post-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
 
+	{!!Form::label('en_metadescr', 'Descripciòn de su proyecto para búesquedas', ['class' => 'form-control']);!!}
+
+	{!!Form::textarea('en_meta_description', null, ['id'=>'new-meta-content', 'class'=>'form-control','placeholder'=>'Ej: Trabajo de diseño de identidad corporativa realizado para la marca LOREMIPSUM']) !!}
+
+
 
 	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 

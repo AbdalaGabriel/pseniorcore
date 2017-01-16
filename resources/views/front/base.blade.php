@@ -5,8 +5,8 @@
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-	<title>Material Kit by Creative Tim</title>
+	@yield('meta')
+	<title>@yield('mainTitle')</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -53,20 +53,14 @@
 	    <div class="collapse navbar-collapse" id="navigation-index">
 	    	<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="components-documentation.html" target="_blank">
-						Home
-					</a>
-				</li>
-				<li>
-					<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-						Portfolio
-					</a>
-				</li>
-				<li>
-					<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-						Noticias y novedades
-					</a>
-				</li>
+						 {!! link_to_action('FrontController@index','Home') !!}
+					</li>
+					<li>
+						 {!! link_to_action('FrontController@portfolio','Portfolio') !!}
+					</li>
+					<li>
+						 {!! link_to_action('FrontController@blog','Noticias y novedades') !!}
+					</li>
 				<li>
 					<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
 						Acceso clientes

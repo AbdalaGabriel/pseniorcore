@@ -1,5 +1,5 @@
 <?php
-
+use App\Page;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +15,18 @@
 Auth::routes();
 
 
+
+$portfolio = Page::find(12);
+$urlfPortfolio = $portfolio->urlfriendly;
+
+$blog = Page::find(13);
+$urlfBlog = $blog->urlfriendly;
+
+Route::get('/basicemail', 'MailController@basic_email');
+Route::get('/htmlemail', 'MailController@html_email');
+Route::get('/attachemail', 'MailController@attachment_email');
+
+
 // FRONTEND
 // --------------------------------------------------------------------------------------- //
 
@@ -23,13 +35,19 @@ Route::get('/', 'FrontController@index');
 Route::get('/en', 'FrontController@enIndex');
 Route::get('/home', 'HomeController@index');
 
-	// Proyectos
-	Route::get('/proyecto/{id?}/{urflf}', 'ProjectController@front' );
-	Route::get('en/project/{id?}/{urflf}', 'ProjectController@englishversion' );
+	// Portfolio
+	Route::get('/'.$urlfPortfolio, 'FrontController@portfolio');
 
-	// Noticias y novedades
-	Route::get('/blog/{id?}/{urflf}', 'BlogController@front' );
-	Route::get('en/blog/{id?}/{urflf}', 'BlogController@englishversion' );
+		// Proyectos
+		Route::get('/proyecto/{id?}/{urflf}', 'ProjectController@front' );
+		Route::get('en/project/{id?}/{urflf}', 'ProjectController@englishversion' );
+
+	// Blog
+	Route::get('/'.$urlfBlog, 'FrontController@blog');
+
+		// Noticias y novedades
+		Route::get('/blog/{id?}/{urflf}', 'BlogController@front' );
+		Route::get('en/blog/{id?}/{urflf}', 'BlogController@englishversion' );
 
 /* --------------------------------------------------------------------------------------- */
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,7 +65,7 @@ Route::get('/admin', 'FrontController@admin');
 
 	// PAGINAS
 	Route::resource('/admin/paginas', 'PageController');
-		// HOME
+		
 		Route::resource('/admin/paginas/home/slider', 'SliderController');
 		// Home Slider
 		Route::post('/admin/paginas/home/slider/uploadimages', 'SliderController@uploadimages');

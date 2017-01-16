@@ -103,6 +103,19 @@ label{
     margin-top: 2em;
 
 }
+.configContainer{
+        width: 48%;
+    float: left;
+    padding: 1em;
+    background: white;
+    margin: 1%;
+    border-top: 1px solid #9f2fb3;
+}
+
+.configContainer .form-control {
+    margin-bottom: 7px;
+    margin-top: 0;
+}
 
 .postItem{
     height: 10em;
@@ -114,8 +127,14 @@ label{
     font-size: 2em;
 }
 
-
-
+.configOptionsContainer{
+  overflow: hidden;
+}
+.configOptions{
+    float: left;
+    text-align: center;
+    width: 2em;
+}
 
 /*HOME SLIDER*/
 

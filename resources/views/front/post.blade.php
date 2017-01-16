@@ -3,7 +3,7 @@
 
 @section('main')
 
-@if($project->en_urlfriendly != "")
+@if($post->en_urlfriendly != "")
 <a href="/en/project/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">Cambiar idioma</a>
 @endif
 

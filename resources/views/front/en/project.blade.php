@@ -1,5 +1,11 @@
 @extends('front.en.base')
 
+@section('meta')
+<meta name="description" content="{!!$project->en_meta_description!!}">
+
+@endsection
+
+@section('mainTitle'){!!$project->en_title!!}@endsection
 
 @section('main')
 

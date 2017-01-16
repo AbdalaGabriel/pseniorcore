@@ -53,19 +53,13 @@
 			<div class="collapse navbar-collapse" id="navigation-index">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="components-documentation.html" target="_blank">
-							Home
-						</a>
+						 {!! link_to_action('FrontController@index','Home') !!}
 					</li>
 					<li>
-						<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-							Portfolio
-						</a>
+						 {!! link_to_action('FrontController@portfolio','Portfolio') !!}
 					</li>
 					<li>
-						<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-							Noticias y novedades
-						</a>
+						 {!! link_to_action('FrontController@blog','Noticias y novedades') !!}
 					</li>
 					<li>
 						<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
@@ -147,7 +141,8 @@
 					<h2>Trabajos</h2>
 
 					@foreach ($projects as $project)		    
-					<div class="porftolioItem col-md-3">
+					<div style="background-image: url('/uploads/projects/{!!$project->cover_image!!}')" class="porftolioItem col-md-3">
+					<!--<img src="/uploads/projects/{!!$project->cover_image!!}" alt="{!!$project->title!!}">-->
 					<a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a>
 					</div>
 					

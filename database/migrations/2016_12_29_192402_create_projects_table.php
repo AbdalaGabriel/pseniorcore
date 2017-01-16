@@ -26,6 +26,8 @@ class CreateProjectsTable extends Migration
 
         Schema::table('projects', function ($table) {
             $table->string('cover_image');
+             $table->string('meta_description');
+            $table->string('en_meta_description');
         });
 
         Schema::table('projects', function ($table) {
