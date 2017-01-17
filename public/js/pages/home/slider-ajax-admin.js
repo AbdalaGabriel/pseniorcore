@@ -11,7 +11,7 @@ $( document ).ready(function()
 function carga()
 {
 	console.log( "- Carga" );
-	var route = "http://localhost:8000/admin/paginas/home/slider";
+	var route = baseurl+"admin/paginas/home/slider";
 	sliderContainer = $("#sliderContainer");
 
 	clean();
@@ -89,7 +89,7 @@ function defineListerner()
 		{
 			nameslide = $("#nameslide").val();
 			subtitleslide = $("#namepage").val();
-			route = "http://localhost:8000/admin/paginas/home/slider";
+			route = baseurl+"admin/paginas/home/slider";
 			console.log( "- Inicio confirmation listener: CREATE" );
 
 			$.ajax(
@@ -118,7 +118,7 @@ function defineListerner()
 		{
 			console.log( "- Inicio click listener: QUICK EDIT" );
 			idQuickEditButton = $(this).attr("data-slide-id");
-			routeEdit = "http://localhost:8000/admin/paginas/home/slider/"+idQuickEditButton+"/edit";;
+			routeEdit = baseurl+"admin/paginas/home/slider/"+idQuickEditButton+"/edit";;
 			token = $("#token").val();
 
 			$.get(routeEdit, function(res)
@@ -132,7 +132,7 @@ function defineListerner()
 			$("#confirmation-edit").click(function()
 			{
 				console.log( "- Inicio confirmation listener" );
-				routeUpdate =  "http://localhost:8000/admin/paginas/home/slider/"+idQuickEditButton;
+				routeUpdate =  baseurl+"admin/paginas/home/slider/"+idQuickEditButton;
 				var newTitle = $("#nameslideEdit").val();
 				var newSubtitle = $("#subtitleslideEdit").val();
 
@@ -177,7 +177,7 @@ function defineListerner()
 			token = $(".saveOrder").attr("data-token");
 			$.ajax(
 				{
-					url: "http://localhost:8000/admin/paginas/home/slider/updateorder",
+					url: baseurl+"admin/paginas/home/slider/updateorder",
 					headers: {'X-CSRF-TOKEN': token},
 					type: 'POST',
 					dataType: 'json',
@@ -200,7 +200,7 @@ function defineListerner()
 		{
 			console.log( "- Inicio click listener: DELETE" );
 			idDeleteButton = $(this).attr("data-slide-id");
-			route = "http://localhost:8000/admin/paginas/home/slider/"+idDeleteButton;
+			route = baseurl+"admin/paginas/home/slider/"+idDeleteButton;
 			token = $("#token").val();
 
 			$("#confirmation").click(function()

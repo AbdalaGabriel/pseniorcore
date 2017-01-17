@@ -12,7 +12,7 @@
 
 	{!!  link_to_action('ProjectController@index', '< Atras', $title = null, $parameters = [], $attributes = []); !!}
 
-	{!! Form::open(['url' => 'http://localhost:8000/admin/portfolio/en/'.$project->id.'/update/', 'method'=>'PUT']) !!}
+	{!! Form::open(['url' => '/admin/portfolio/en/'.$project->id.'/update/', 'method'=>'PUT']) !!}
 
 	{!!Form::label('title', 'Titulo en inglés', ['class' => 'form-control']);!!}
 	{!!Form::text('en_title', $project->en_title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
@@ -38,6 +38,7 @@
 
 </div>
 @section('aditional-scripts')
+{!!Html::script('js/baseurl.js')!!}
 {!! Html::script('js/projects/formController.js') !!}
 @endsection
 

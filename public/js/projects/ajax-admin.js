@@ -9,7 +9,7 @@ $( document ).ready(function()
 function carga()
 {
 	console.log( "- Carga" );
-	var route = "http://localhost:8000/admin/portfolio";
+	var route = baseurl+"admin/portfolio";
 	tablaDatos = $("#datos");
 	var basepath = ""
 
@@ -22,7 +22,7 @@ function carga()
 		console.log(res);
 		$(res).each(function(key, value)
 		{
-			tablaDatos.append('<tr><td><img width:"30" height="30" src="/uploads/projects/'+value.cover_image+'"></td><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-project" data-id="'+value.id+'">Quick Edit</a></td> <td>'+value.urlfriendly+'</td><td class="post-categories" data-id="'+value.id+'">-</td><td><a href="http://localhost:8000/admin/portfolio/en/'+value.id+'/edit" data-id="'+value.id+'">Versión en inglés</a></td><td><a href="http://localhost:8000/admin/portfolio/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-project" data-id="'+value.id+'">Eliminar</button></td></tr>');
+			tablaDatos.append('<tr><td><img width:"30" height="30" src="/uploads/projects/'+value.cover_image+'"></td><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-project" data-id="'+value.id+'">Quick Edit</a></td> <td>'+value.urlfriendly+'</td><td class="post-categories" data-id="'+value.id+'">-</td><td><a href=baseurl+"admin/portfolio/en/'+value.id+'/edit" data-id="'+value.id+'">Versión en inglés</a></td><td><a href=baseurl+"admin/portfolio/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-project" data-id="'+value.id+'">Eliminar</button></td></tr>');
 			celdaCategorias = $(".post-categories[data-id='"+value.id+"']");
 
 			var categories = value.categories;
@@ -77,7 +77,7 @@ function closeModal(storedcats)
 	console.log("- Close modal quick edit")
 	console.log(storedcats);
 
-	routeCatEdit = "http://localhost:8000/admin/blog/editcats";
+	routeCatEdit = baseurl+"admin/blog/editcats";
 	token = $("#token").val();
 
 	$.ajax(
@@ -110,7 +110,7 @@ function defineListerner()
 		{
 			console.log( "- Inicio click listener: QUICK EDIT" );
 			idQuickEditButton = $(this).attr("data-id");
-			routeEdit = "http://localhost:8000/admin/portfolio/"+idQuickEditButton+"/edit";
+			routeEdit = baseurl+"admin/portfolio/"+idQuickEditButton+"/edit";
 			token = $("#token").val();
 
 
@@ -152,7 +152,7 @@ function defineListerner()
 				$(".categoryCheckbox").change(function() 
 				{
 					console.log( "- Inicio click listener: CHECKBOX");
-					routeCatEdit = "http://localhost:8000/admin/portfolio/editcats";
+					routeCatEdit = baseurl+"admin/portfolio/editcats";
 					token = $("#token").val();
 					thiscatid = $(this).val();
 					thispostid = $(this).attr("data-postid");
@@ -200,7 +200,7 @@ function defineListerner()
 			{
 				console.log(categoyData);
 				console.log( "- Inicio confirmation listener" );
-				routeUpdate =  "http://localhost:8000/admin/portfolio/"+idQuickEditButton;
+				routeUpdate =  baseurl+"admin/portfolio/"+idQuickEditButton;
 				var newTitle = $("#titleQuickEdit").val();
 
 				$.ajax(
@@ -227,7 +227,7 @@ function defineListerner()
 		{
 			console.log( "- Inicio click listener: DELETE" );
 			idDeleteButton = $(this).attr("data-id");
-			route = "http://localhost:8000/admin/portfolio/"+idDeleteButton;
+			route = baseurl+"admin/portfolio/"+idDeleteButton;
 			token = $("#token").val();
 
 			$("#confirmation").click(function()

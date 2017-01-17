@@ -5,7 +5,7 @@ var fileSelected;
 console.log(token);
 
 $("div#myDropZone").dropzone({
-   url : "http://localhost:8000/admin/paginas/home/slider/uploadimages",
+   url : baseurl+"admin/paginas/home/slider/uploadimages",
    method: "POST",
    autoProcessQueue: false,
    uploadMultiple: false,
@@ -48,7 +48,7 @@ $("div#myDropZone").dropzone({
 tokenEdit = $("div#myDropZoneEdit").attr("data-token");
 added = false;
 $("div#myDropZoneEdit").dropzone({
-   url : "http://localhost:8000/admin/paginas/home/slider/uploadimages",
+   url : baseurl+"admin/paginas/home/slider/uploadimages",
    method: "POST",
    autoProcessQueue: false,
    uploadMultiple: false,

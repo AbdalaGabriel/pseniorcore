@@ -7,7 +7,7 @@
 				<h3 class="modal-title" id="myModalLabel">Edición rápida</h3>
 			</div>
 			<div class="modal-body">
-				{!! Form::open(['url' => 'http://localhost:8000/admin/media', 'method'=>'POST','files' => true]) !!}
+				{!! Form::open(['url' => '/admin/media', 'method'=>'POST','files' => true]) !!}
 					{!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
 
 					<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">

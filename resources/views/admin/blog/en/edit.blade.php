@@ -12,7 +12,7 @@
 
 	{!!  link_to_action('BlogController@index', '< Atras', $title = null, $parameters = [], $attributes = []); !!}
 
-	{!! Form::open(['url' => 'http://localhost:8000/admin/blog/en/'.$post->id.'/update/', 'method'=>'PUT']) !!}
+	{!! Form::open(['url' => '/admin/blog/en/'.$post->id.'/update/', 'method'=>'PUT']) !!}
 
 	{!!Form::label('title', 'Titulo en inglés', ['class' => 'form-control']);!!}
 	{!!Form::text('en_title', $post->en_title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}

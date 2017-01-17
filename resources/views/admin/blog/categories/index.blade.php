@@ -52,6 +52,7 @@
 	</div>
 
 	@section('aditional-scripts')
+		{!!Html::script('js/baseurl.js')!!}
 		{!! Html::script('js/blog/category/ajax-admin.js') !!}
 	@endsection
 

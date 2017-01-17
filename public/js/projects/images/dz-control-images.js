@@ -24,7 +24,7 @@ token = $("div#myDropZoneImages").attr("data-token");
 var fileSelected;
 
 $("div#myDropZoneImages").dropzone({
-  url : "http://localhost:8000/admin/project/uploadimages",
+  url : baseurl+"admin/project/uploadimages",
   method: "POST",
   autoProcessQueue: false,
   uploadMultiple: true,

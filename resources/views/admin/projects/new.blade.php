@@ -18,7 +18,7 @@
 <div class=".col-md-4 center adminBlock">
 	
 
-	{!! Form::open(['url' => 'http://localhost:8000/admin/portfolio', 'method'=>'POST','files' => true]) !!}
+	{!! Form::open(['url' => '/admin/portfolio', 'method'=>'POST','files' => true]) !!}
 
 	{!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
 	{!!Form::text('title', null, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
@@ -66,6 +66,7 @@
 
 
 @section('aditional-scripts')
+{!!Html::script('js/baseurl.js')!!}
 {!! Html::script('dropzone/dist/dropzone.js') !!}
 {!! Html::script('js/projects/dz-control.js') !!}
 {!! Html::script('js/redirect.js') !!}

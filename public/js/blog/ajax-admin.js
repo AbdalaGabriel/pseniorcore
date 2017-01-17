@@ -3,6 +3,7 @@ var counter = 0;
 $( document ).ready(function() 
 {
 	console.log( "- Document ready" );
+	console.log("- Base url: " + baseurl);
 	carga();
 });
 
@@ -11,7 +12,8 @@ function carga()
 {
 	counter++;
 	console.log( "- Carga "+counter );
-	var route = "http://localhost:8000/admin/blog";
+	var route = baseurl+"admin/blog";
+	console.log("- Ruta de trabajo: " + route);
 	tablaDatos = $("#datos");
 
 	clean();
@@ -82,7 +84,7 @@ function closeModal(storedcats)
 	console.log("- Close modal quick edit")
 	console.log(storedcats);
 
-	routeCatEdit = "http://localhost:8000/admin/blog/editcats";
+	routeCatEdit = baseurl+"admin/blog/editcats";
 	token = $("#token").val();
 
 	$.ajax(
@@ -115,7 +117,7 @@ function defineListerner()
 		{
 			console.log( "- Inicio click listener: QUICK EDIT" );
 			idQuickEditButton = $(this).attr("data-id");
-			routeEdit = "http://localhost:8000/admin/blog/"+idQuickEditButton+"/edit";
+			routeEdit = baseurl+"admin/blog/"+idQuickEditButton+"/edit";
 			token = $("#token").val();
 
 
@@ -157,7 +159,7 @@ function defineListerner()
 				$(".categoryCheckbox").change(function() 
 				{
 					console.log( "- Inicio click listener: CHECKBOX");
-					routeCatEdit = "http://localhost:8000/admin/blog/editcats";
+					routeCatEdit = baseurl+"admin/blog/editcats";
 					token = $("#token").val();
 					thiscatid = $(this).val();
 					thispostid = $(this).attr("data-postid");
@@ -205,7 +207,7 @@ function defineListerner()
 			{
 				console.log(categoyData);
 				console.log( "- Inicio confirmation listener" );
-				routeUpdate =  "http://localhost:8000/admin/blog/"+idQuickEditButton;
+				routeUpdate =  baseurl+"admin/blog/"+idQuickEditButton;
 				var newTitle = $("#titleQuickEdit").val();
 
 				$.ajax(
@@ -232,7 +234,7 @@ function defineListerner()
 		{
 			console.log( "- Inicio click listener: DELETE" );
 			idDeleteButton = $(this).attr("data-id");
-			route = "http://localhost:8000/admin/blog/"+idDeleteButton;
+			route = baseurl+"admin/blog/"+idDeleteButton;
 			token = $("#token").val();
 
 			$("#confirmation").click(function()

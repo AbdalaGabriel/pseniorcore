@@ -31,7 +31,7 @@ function init()
 		var description = $("#new-post-content").val();
 		var meta_description = $("#new-meta-content").val();
 		var coverImage = fileSelected;
-		var routeNew = 'http://localhost:8000/admin/portfolio';
+		var routeNew = baseurl+'admin/portfolio';
 		var urlfContent = $("#new-post-urlf").val();
 
 		
@@ -67,7 +67,7 @@ function init()
 				console.log("- Iniciamos Carga de imagen en proyecto");
 				dropzone.processQueue();
 				console.log(projectId);
-				$.redirect('http://localhost:8000/admin/project/uploadimages', {projectid: projectId},'GET');
+				$.redirect(baseurl+'admin/project/uploadimages', {projectid: projectId},'GET');
 			}
 		});
 	});
@@ -83,7 +83,7 @@ function detectEvents(){
 
 		$.ajax(
 		{
-			url: "http://localhost:8000/admin/geturl",
+			url: baseurl+"admin/geturl",
 			headers: {'X-CSRF-TOKEN': token},
 			type: 'GET',
 			dataType: 'json',

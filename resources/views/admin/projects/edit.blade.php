@@ -12,7 +12,7 @@
 
 	{!!  link_to_action('ProjectController@index', '< Atras', $title = null, $parameters = [], $attributes = []); !!}
 
-	{!! Form::open(['url' => 'http://localhost:8000/admin/portfolio/'.$finalObj->id, 'method'=>'PUT']) !!}
+	{!! Form::open(['url' => '/admin/portfolio/'.$finalObj->id, 'method'=>'PUT']) !!}
 
 	{!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
 	{!!Form::text('title', $finalObj->title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
@@ -48,6 +48,7 @@
 </div>
 
 @section('aditional-scripts')
+{!!Html::script('js/baseurl.js')!!}
 {!! Html::script('js/blog/create.js') !!}
 @endsection
 

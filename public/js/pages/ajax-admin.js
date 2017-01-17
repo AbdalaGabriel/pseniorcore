@@ -10,7 +10,7 @@ $( document ).ready(function()
 function carga()
 {
 	console.log( "- Carga" );
-	var route = "http://localhost:8000/admin/paginas";
+	var route = baseurl+"admin/paginas";
 	tablaDatos = $("#datos");
 
 	clean();
@@ -21,7 +21,7 @@ function carga()
 	{
 		$(res).each(function(key, value)
 		{
-			tablaDatos.append('<tr><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-modal" data-id="'+value.id+'">Quick Edit</a></td> <td>'+value.urlfriendly+'</td><td><a href="http://localhost:8000/admin/paginas/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#myModal" data-id="'+value.id+'">Eliminar</button></td></tr>');
+			tablaDatos.append('<tr><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-modal" data-id="'+value.id+'">Quick Edit</a></td> <td>'+value.urlfriendly+'</td><td><a href=baseurl+"admin/paginas/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#myModal" data-id="'+value.id+'">Eliminar</button></td></tr>');
 		});
 	})
 
@@ -64,7 +64,7 @@ function defineListerner()
 		{
 			console.log( "- Inicio click listener: QUICK EDIT" );
 			idQuickEditButton = $(this).attr("data-id");
-			routeEdit = "http://localhost:8000/admin/paginas/"+idQuickEditButton+"/edit";;
+			routeEdit = baseurl+"admin/paginas/"+idQuickEditButton+"/edit";;
 			token = $("#token").val();
 
 			$.get(routeEdit, function(res)
@@ -76,7 +76,7 @@ function defineListerner()
 			$("#confirmation-quickEdit").click(function()
 			{
 				console.log( "- Inicio confirmation listener" );
-				routeUpdate =  "http://localhost:8000/admin/paginas/"+idQuickEditButton;
+				routeUpdate =  baseurl+"admin/paginas/"+idQuickEditButton;
 				var newTitle = $("#titleQuickEdit").val();
 
 				$.ajax(
@@ -101,7 +101,7 @@ function defineListerner()
 		$("#createPage").click(function()
 		{
 			console.log( "- Inicio click listener: CREATE" );
-			route = "http://localhost:8000/admin/paginas";
+			route = baseurl+"admin/paginas";
 			token = $("#token").val();
 
 			$("#confirm-create").click(function()
@@ -132,7 +132,7 @@ function defineListerner()
 		{
 			console.log( "- Inicio click listener: DELETE" );
 			idDeleteButton = $(this).attr("data-id");
-			route = "http://localhost:8000/admin/paginas/"+idDeleteButton;
+			route = baseurl+"admin/paginas/"+idDeleteButton;
 			token = $("#token").val();
 
 			$("#confirmation").click(function()

@@ -39,6 +39,7 @@
 	</div>
 
 	@section('aditional-scripts')
+   {!!Html::script('js/baseurl.js')!!}
 	{!! Html::script('dropzone/dist/dropzone.js') !!}
 	{!! Html::script('js/media/dz-control.js') !!}
    {!! Html::script('js/media/ajax-admin.js') !!}

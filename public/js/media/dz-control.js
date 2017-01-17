@@ -4,7 +4,7 @@
     console.log(token);
     
     $("form#myDropZone").dropzone({
-        url : "http://localhost:8000/admin/upload",
+        url : baseurl+"admin/upload",
         method: "POST",
         autoProcessQueue: false,
         uploadMultiple: true,

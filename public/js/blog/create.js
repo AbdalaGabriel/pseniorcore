@@ -3,6 +3,8 @@ $( document ).ready(function()
 	console.log( "- Document ready" );
 	var url = document.URL;
 
+	console.log("Base url - "+baseurl);
+	console.log("Creatin url - "+url);
 
 	$.get(url, function(res)
 	{
@@ -26,7 +28,7 @@ function initcatlisteners(categoyData)
 	$(".categoryCheckbox").change(function() 
 	{
 		console.log( "- Inicio click listener: CHECKBOX");
-		routeCatEdit = "http://localhost:8000/admin/blog/editcats";
+		routeCatEdit = baseurl+"admin/blog/editcats";
 		token = $("#token").val();
 		thiscatid = $(this).val();
 		thispostid = $(this).attr("data-postid");

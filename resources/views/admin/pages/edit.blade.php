@@ -59,6 +59,7 @@
 	{!! Form::close() !!}
 		
 	@section('aditional-scripts')
+	{!!Html::script('js/baseurl.js')!!}
 	{!! Html::script('js/pages/form-controller.js') !!}
 	@endsection
 

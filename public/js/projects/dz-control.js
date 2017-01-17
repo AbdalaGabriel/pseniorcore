@@ -6,7 +6,7 @@ var fileSelected;
 console.log(token);
 
 $("div#myDropZone").dropzone({
-   url : "http://localhost:8000/admin/project/uploadimage",
+   url : baseurl+"admin/project/uploadimage",
    method: "POST",
    autoProcessQueue: false,
    uploadMultiple: false,

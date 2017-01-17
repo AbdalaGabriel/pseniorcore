@@ -44,6 +44,7 @@
 	</div>
 
 	@section('aditional-scripts')
+	{!!Html::script('js/baseurl.js')!!}
 	{!! Html::script('js/projects/formController.js') !!}
 	@endsection
 

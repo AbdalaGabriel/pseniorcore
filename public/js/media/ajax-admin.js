@@ -3,6 +3,7 @@ var counter = 0;
 $( document ).ready(function() 
 {
 	console.log( "- Document ready" );
+	console.log("- Base url: " + baseurl);
 	carga();
 });
 
@@ -11,7 +12,7 @@ function carga()
 {
 	counter++;
 	console.log( "- Carga "+counter );
-	var route = "http://localhost:8000/admin/media";
+	var route = baseurl+"admin/media";
 	grillaImagenes = $("#mediaGrid");
 
 	clean();

@@ -223,9 +223,7 @@
 
 					    console.log($mcj);
 
-					    jQuery("#mc-embedded-subscribe").click(function(){
-					    	console.log("se hizo click en submite");
-					    });
+					   
 
 						</script>
 					<!--End mc_embed_signup-->
@@ -255,6 +253,7 @@
 {!!Html::script('bootstrap-template-assets/materialKit/assets/js/material-kit.js')!!}
 {!!Html::script('js/jquery.fadeImg.js')!!}
 {!!Html::script('js/form-controller.js')!!}
+{!!Html::script('js/baseurl.js')!!}
 
 <script>
 	$(document).ready(function($) {

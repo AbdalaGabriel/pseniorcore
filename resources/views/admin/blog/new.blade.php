@@ -16,7 +16,7 @@
 		
 		{!!  link_to_action('BlogController@index', '< Atras', $title = null, $parameters = [], $attributes = []); !!}
 
-		{!! Form::open(['url' => 'http://localhost:8000/admin/blog', 'method'=>'POST']) !!}
+		{!! Form::open(['url' => '/admin/blog', 'method'=>'POST']) !!}
 
 			{!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
 		    {!!Form::text('title', null, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
@@ -47,6 +47,7 @@
 	</div>
 
 	@section('aditional-scripts')
+	{!!Html::script('js/baseurl.js')!!}
 	{!! Html::script('js/blog/ajax-admin.js') !!}
 	@endsection
 

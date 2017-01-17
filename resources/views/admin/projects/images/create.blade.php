@@ -34,6 +34,7 @@
 
 
 @section('aditional-scripts')
+{!!Html::script('js/baseurl.js')!!}
 {!! Html::script('dropzone/dist/dropzone.js') !!}
 {!! Html::script('js/projects/images/dz-control-images.js') !!}
 @endsection

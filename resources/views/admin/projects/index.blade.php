@@ -31,6 +31,7 @@
 	</div>
 
 	@section('aditional-scripts')
+	{!!Html::script('js/baseurl.js')!!}
 	{!! Html::script('js/projects/ajax-admin.js') !!}
 	@endsection
 @endsection

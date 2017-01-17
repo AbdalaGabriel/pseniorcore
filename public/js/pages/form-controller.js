@@ -23,7 +23,7 @@ function detectEvents(){
 
 		$.ajax(
 		{
-			url: "http://localhost:8000/admin/geturl",
+			url: baseurl+"admin/geturl",
 			headers: {'X-CSRF-TOKEN': token},
 			type: 'GET',
 			dataType: 'json',

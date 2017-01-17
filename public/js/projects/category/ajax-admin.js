@@ -11,7 +11,7 @@ function carga()
 {
 	counter++;
 	console.log( "- Carga "+counter );
-	var route = "http://localhost:8000/admin/categorias-portfolio";
+	var route = baseurl+"admin/categorias-portfolio";
 	tablaDatos = $("#datos");
 
 	clean();
@@ -68,7 +68,7 @@ function defineListerner()
     $("#createCategory").click(function()
     {
         console.log( "- Inicio click listener: CREATE" );
-        route = "http://localhost:8000/admin/categorias-portfolio";
+        route = baseurl+"admin/categorias-portfolio";
         token = $("#token").val();
 
         $("#confirm-create").click(function() 
@@ -99,7 +99,7 @@ function defineListerner()
     {
     	console.log( "- Inicio click listener: QUICK EDIT" );
     	idQuickEditButton = $(this).attr("data-id");
-    	routeEdit = "http://localhost:8000/admin/categorias-portfolio/"+idQuickEditButton+"/edit";;
+    	routeEdit = baseurl+"admin/categorias-portfolio/"+idQuickEditButton+"/edit";;
     	token = $("#token").val();
 
     	$.get(routeEdit, function(res)
@@ -111,7 +111,7 @@ function defineListerner()
     	$("#confirmation-quickEdit").click(function()
     	{
     		console.log( "- Inicio confirmation listener" );
-    		routeUpdate =  "http://localhost:8000/admin/categorias-portfolio/"+idQuickEditButton;
+    		routeUpdate =  baseurl+"admin/categorias-portfolio/"+idQuickEditButton;
     		var newTitle = $("#titleQuickEdit").val();
 
     		$.ajax(
@@ -138,7 +138,7 @@ function defineListerner()
     {
         console.log( "- Inicio click listener: DELETE" );
         idDeleteButton = $(this).attr("data-id");
-        route = "http://localhost:8000/admin/categorias-portfolio/"+idDeleteButton;
+        route = baseurl+"admin/categorias-portfolio/"+idDeleteButton;
         token = $("#token").val();
 
         $("#confirmation").click(function()
