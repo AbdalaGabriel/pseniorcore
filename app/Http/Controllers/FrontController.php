@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Project;
 use App\ProjectCategory;
 use App\Post;
+use App\Contact;
 use App\Page;
 use App\Slide;
 use App\PostCategory;
@@ -63,13 +64,24 @@ class FrontController extends Controller
 
         $this->validate($request, [
         'name' => 'required',
-        'number' => 'required|numeric',
+        'mail' => 'required|email',
+        'number' => 'numeric',
         'consulta' => 'required',
         ]);
 
          // Si pasó la validación del formulario enviamos un mail.
 
         return $this->sendmail($request);
+
+        // E ingresamos estos datos en la base de datos.
+        
+        $contact = Contact::create([
+             'name' => $request['name'],
+             'mail' => $request['email'],
+             'number' => $request['number'],
+             'message' => $request['consulta'],
+
+        ]);
        
     }
 
@@ -79,10 +91,11 @@ class FrontController extends Controller
         $data=['name'=>'Gabriel Abdala'];
         Mail::send(['text'=>'mail'], $data, function($message){
             $message->to('g.abdala.04@gmail.com','Gabriel')->subject('Hemos recibido tu consulta, a la brevedad te responderé =)');
-            $message->from('g.abdala.04@gmail.com','Gabi');
+            $message->from('designer@gabrielabdala.com','Gabi');
         });
        
         echo 'Basics Email was sent!';
+
     }
 
 
