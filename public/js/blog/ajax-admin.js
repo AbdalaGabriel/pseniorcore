@@ -11,6 +11,7 @@ $( document ).ready(function()
 function carga()
 {
 	counter++;
+	$('#new-post-content').froalaEditor()
 	console.log( "- Carga "+counter );
 	var route = baseurl+"admin/blog";
 	console.log("- Ruta de trabajo: " + route);

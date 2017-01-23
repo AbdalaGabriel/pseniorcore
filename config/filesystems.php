@@ -45,7 +45,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => public_path('images-portfolio'),
+            'root' => public_path('app/public'),
         ],
 
         'public' => [

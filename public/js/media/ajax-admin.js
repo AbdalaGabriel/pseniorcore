@@ -25,7 +25,7 @@ function carga()
 		$(res).each(function(key, value)
 		{
 			// TODO: actualizar rutas en produccion, no puede quedar como file
-			grillaImagenes.append('<div class="col-md-3"><a href="#" data-img-id="'+value.id+'" class="deleteImage">X</><img style="max-width: 100%;" src="'+value.path+'"/></div>');
+			grillaImagenes.append('<div class="col-md-3"><a href="#" data-toggle="modal" data-target="#delete-this-image"  data-img-id="'+value.id+'" class="deleteImage">X</><img style="max-width: 100%;" src="/uploads/media/'+value.path+'"/></div>');
 
 		});
 	})
@@ -33,7 +33,7 @@ function carga()
 	.done(function() 
 	{
 		console.log( "- Exito Ajax Carga" );
-		//defineListerner();
+		defineListerner();
 	})
 
 	.fail(function()
@@ -55,4 +55,34 @@ function clean()
 	
 	checksContainer.empty();
 	//grillaImagenes.empty();
+}
+
+function defineListerner()
+{
+	$(".deleteImage").on("click", function()
+	{
+		console.log( "- Inicio click listener: DELETE" );
+		idDeleteButton = $(this).attr("data-img-id");
+		route = baseurl+"admin/media/"+idDeleteButton;
+		token = $("#token").val();
+
+		$("#confirmation").click(function()
+		{
+			console.log( "- Inicio confirmation listener" );
+			console.log(idDeleteButton);
+
+			$.ajax(
+			{
+				url: route,
+				headers: {'X-CSRF-TOKEN': token},
+				type: 'DELETE',
+				dataType: 'json',
+
+				success: function(){
+					carga();
+
+				}
+			});
+		});
+	});
 }

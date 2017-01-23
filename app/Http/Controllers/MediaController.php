@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use App\Media;
+use Illuminate\Support\Facades\DB;
+use File;
+
 class MediaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
     {
         if ($request->ajax()) 
@@ -25,22 +24,12 @@ class MediaController extends Controller
         return view('admin.media.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //return view("admin.media.new");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $image = $request->file('file');
@@ -52,67 +41,77 @@ class MediaController extends Controller
 
     public function uploadimages(Request $request)
     {
-         
 
-         $image = $request->file('file');
-         $path = public_path().'/uploads/media/';
 
-         foreach ($image as $im)
-         {
-            $imageName = time().$im->getClientOriginalName();
-                 Media::create([
-                'path' => $path.$imageName,
-            ]);
+    $image = $request->file('file');
+    $path = public_path().'/uploads/media/';
 
-            $im->move($path, $imageName);
-         }
-         
-          return ($path);
-          return view('admin.media.index');
-        
+    foreach ($image as $im)
+     {
+        $imageName = time().$im->getClientOriginalName();
+        Media::create([
+            'path' => $imageName,
+                       ]);
+
+        $im->move($path, $imageName);
+     
+     }
+     $status = 1;
+    return response()->json($status);
+     return view('admin.media.index');
+
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    public function appendinfo(Request $request){
+        $cantImages = $request->cant;
+        $dataImages = $request->datatoappend;
+
+        $medias = DB::table('media')->select('id')->orderBy('created_at', 'desc')->take($cantImages)->get();
+        $g = 0;
+        foreach ($medias as $media) {
+            $thismedia = Media::find($media->id); 
+           $thismedia->title = $dataImages[$g]["titleimage"];
+           $thismedia->description = $dataImages[$g]["altimage"];
+           $thismedia->save(); 
+           $g++;
+        }
+
+        return("agarre ".count($medias));
+    }
+
+
     public function show($id)
     {
-        //
+            //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+            //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+            //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        $image = Media::find($id);
+        $imagename = $image->path;
+        $imagePath = public_path()."/uploads/media/".$imagename;
+
+            // Eliminar imágenes que tenia relacionadas en la base de datos, que se guardaban en la carpeta projects-
+        File::delete($imagePath);
+
+            // Eliminar campo de base de dtos.
+        $image->delete();
+
+        return response()->json([
+          "mensaje" =>"borrado todo el proyecto y sus imágenes".$imagePath,
+          ]);
     }
 }

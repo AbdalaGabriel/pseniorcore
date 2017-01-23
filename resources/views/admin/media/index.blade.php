@@ -11,7 +11,7 @@
 @section('main')
 
 	@include('admin.media.new')
-
+   @include('admin.media.messages.delete')
 	<div class="content-wrap">
    <div class="row">
       <div class="col-sm-12">

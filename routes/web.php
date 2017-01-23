@@ -111,6 +111,9 @@ Route::get('/admin', 'FrontController@admin');
 
 	// MULTIMEDIA
 	Route::resource('/admin/media', 'MediaController');
+		Route::post('admin/upload', 'MediaController@uploadimages' );
+		Route::post('admin/appendinfo', 'MediaController@appendinfo' );
+
 
 /* --------------------------------------------------------------------------------------- */
 /////////////////////////////////////////////////////////////////////////////////////////////

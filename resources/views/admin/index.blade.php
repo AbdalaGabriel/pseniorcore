@@ -21,7 +21,11 @@
  
     <!--  CSS for Demo Purpose, don't include it in your project     -->
 	 {!!Html::style('bootstrap-template-assets/css/demo.css')!!}
-    
+    	
+    <!-- Include Editor style. -->
+<link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/froala_style.min.css' rel='stylesheet' type='text/css' />
+	
 
 	 {!!Html::style('css/customization.css')!!}
 
@@ -180,7 +184,7 @@
 
 	<!-- Material Dashboard javascript methods -->
 	<!-- <script src="../resources/assets/bootstrap-template-assets/js/material-dashboard.js"></script>-->
-
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/js/froala_editor.min.js'></script>
 	
 	@yield('aditional-scripts')
 	
