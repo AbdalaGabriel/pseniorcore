@@ -8,7 +8,10 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    Gracias por registrarte! 
+                    Empecemos a organizarnos juntos!
+
+                    <a href="/organizer/2">Ir al organizador</a>
                 </div>
             </div>
         </div>

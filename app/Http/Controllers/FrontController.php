@@ -8,6 +8,7 @@ use App\ProjectCategory;
 use App\Post;
 use App\Contact;
 use App\Page;
+use App\User;
 use App\Slide;
 use App\PostCategory;
 use Mail;
@@ -115,5 +116,14 @@ class FrontController extends Controller
         return view('admin.index');
         
     }
+
+    public function organizer(Request $request, $id)
+    {
+        $user = User::find($id);
+        $name = $user->name;
+        return view('organizer.index', ['name'=>$name]); 
+        
+    }
+
 
 }
