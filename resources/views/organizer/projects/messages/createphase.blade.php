@@ -1,12 +1,12 @@
-<div class="modal fade" id="createProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="createPhase" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Crear nuevo proyecto</h4>
+          <h4 class="modal-title" id="myModalLabel">Crear nueva proyecto</h4>
       </div>
       <div class="modal-body">
-         {!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
+        {!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
         {!!Form::text('title', null, ['id'=>'title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
 
 
@@ -25,7 +25,7 @@
         
       </div>
       <div class="modal-footer">
-        {!!link_to('#', $title='Crear nueva proyecto', $attributes = ['id'=>'confirm-create-clientproject', 'class'=>'btn btn-primary', 'data-dismiss'=>'modal'], $secure = null)!!}
+        {!!link_to('#', $title='Crear nueva fase de proyecto', $attributes = ['id'=>'confirm-create-phase', 'class'=>'btn btn-primary', 'data-dismiss'=>'modal'], $secure = null)!!}
       </div>
     </div>
   </div>

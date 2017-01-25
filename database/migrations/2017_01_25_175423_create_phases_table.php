@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientProjectsTable extends Migration
+class CreatePhasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,16 @@ class CreateClientProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('client_projects', function (Blueprint $table) {
+        Schema::create('phases', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('description');
-            $table->string('furl');
             $table->timestamps();
         });
-        Schema::table('client_projects', function ($table) {
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        Schema::table('phases', function ($table) {
+            $table->integer('client_project_id')->unsigned();
+            $table->foreign('client_project_id')->references('id')->on('client_projects')->onDelete('cascade');
         });
-
-    
     }
 
     /**
@@ -35,6 +32,6 @@ class CreateClientProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_projects');
+        Schema::dropIfExists('phases');
     }
 }

@@ -224,3 +224,17 @@ label{
   background: #FAFAFA;
   opacity: 1;
 }
+
+.task-title{
+      width: 30%;
+    margin-right: 3%;
+    float: left;
+    text-align: center;
+}
+.task-column{
+      width: 30%;
+    margin-right: 3%;
+    float: left;
+    height: 500px;
+    border: 1px solid #a97cb0;
+}

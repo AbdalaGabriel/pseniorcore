@@ -23,6 +23,16 @@ class CreateCardProjectsTable extends Migration
             $table->integer('project_id')->unsigned();
             $table->foreign('project_id')->references('id')->on('client_projects')->onDelete('cascade');
         });
+
+        Schema::table('status', function ($table) {
+            $table->integer('status')->unsigned();
+        });
+
+        Schema::table('card_projects', function ($table) {
+            $table->integer('phase_id')->unsigned();
+            $table->foreign('phase_id')->references('id')->on('phases')->onDelete('cascade');
+        });
+
     }
 
     /**

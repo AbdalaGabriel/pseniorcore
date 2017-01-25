@@ -9,15 +9,13 @@ $( document ).ready(function()
 function carga()
 {
 	console.log( "- Carga" );
-	 idUser = $("#userId").val();
-	var route = baseurl+"organizer/"+idUser;
-    grillaProyectos = $(".projectsContainer");
-	var basepath = ""
+	projectId = $("#projectId").val();
+	var route = baseurl+"mis-proyectos/"+projectId+"/phases";
+    grouptasks = $(".grouptasks");
 
 	clean();
 	console.log( "- Limpieza" );
 
-	//otra forma de hacer una peticion ajax,
 	var consulta =  $.get(route, function(res)
 	{
 		console.log(res);
@@ -25,11 +23,11 @@ function carga()
 		{	console.log("traho"+res),
 			$(res).each(function(key, value)
 			{
-			    grillaProyectos.append('<a href="'+baseurl+"mis-proyectos/"+value.id+'" >'+value.title+'</a>');
+			    grouptasks.append('<a href="'+baseurl+"mis-proyectos/phase/"+value.id+'">'+value.title+'</a>');
 			
 			});
 		} else{
-			grillaProyectos.append("<p>Aún no tiene proyectos</p>")
+			grouptasks.append("<p>Comience creando un nuevo grupo de tareas</p>")
 		} 
 	})
 
@@ -48,13 +46,13 @@ function carga()
 function clean()
 {
 	$(".delete").off();
-	$(".create-new").off();
+	$(".new-group-task").off();
 	$("#confirmation").off();
 	$(".quickEdit").off();
-	$("#confirm-create-clientproject").off();
+	$("#confirm-create-phase").off();
 	$("#confirmation-quickEdit").off();
 
-    grillaProyectos.empty();
+    grouptasks.empty();
 }
 
 
@@ -64,24 +62,22 @@ function defineListerner()
 {
 	console.log( "- Inicio listeners" );
 
-	$(".create-new").click(function()
+	$(".new-group-task").click(function()
 		{
 			console.log( "- Inicio click listener: CREATE" );
-			route = baseurl+"mis-proyectos/";
+			route = baseurl+"mis-proyectos/"+projectId+"/phases";
 			token = $("#token").val();
 
-			$("#confirm-create-clientproject").click(function()
+			$("#confirm-create-phase").click(function()
 			{
 				title = $("#title").val();
-				urlf = $("#urlf").val();
 				description = $("#content").val();
 				console.log( "- Inicio confirmation listener: CREATE" );
 				console.log(route);
 				console.log(title);
-				console.log(urlf);
 				console.log(description);
 				console.log(token);
-				console.log(idUser);
+				console.log(projectId);
 
 				$.ajax(
 				{
@@ -89,16 +85,16 @@ function defineListerner()
 					headers: {'X-CSRF-TOKEN': token},
 					type: 'POST',
 					dataType: 'json',
-					data: {title: title, content: description, urlf: urlf, userid: idUser},
+					data: {title: title, content: description,  projectId: projectId},
 
 					success: function(){
 						carga();
-						console.log( "Exito en carga Ajax" );
+						console.log( "- Exito en carga Aja, se creo la nueva fase de proyecto" );
 					},
 
 					fail: function()
 					{ 
-						console.log( "Error en carga Ajax" );
+						console.log( "- Error en carga Ajax" );
 					}
 				});
 			});

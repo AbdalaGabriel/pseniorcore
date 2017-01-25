@@ -1,14 +1,13 @@
 
 @extends('organizer.base')
 
-@section('pageTitle', 'Organizador de proyectos - Gabriel & ')
+@section('pageTitle', 'Organizador de proyectos - Gabriel  ')
 @section('title', 'Organizador de proyetos')
 
 
 
 @section('main')
 
-	@include('admin.pages.messages.confirmation')
 	@include('organizer.messages.createProject')
 	@include('admin.pages.messages.quick-edit')
 

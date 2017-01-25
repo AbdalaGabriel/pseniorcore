@@ -10,7 +10,11 @@ class CardProject extends Model
         'title', 'description'
     ];
 
-    public function posts(){
+    public function projects(){
     	return $this->belongsTo('App\ClientProject');
+    }
+
+    public function phases(){
+    	return $this->belongsTo('App\Phases');
     }
 }

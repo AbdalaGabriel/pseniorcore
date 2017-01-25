@@ -1,30 +1,40 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\ClientProject;
-use App\User;
+
 use Illuminate\Http\Request;
 
-class ClientProjectController extends Controller
+use App\ClientProject;
+use App\Phase;
+
+class PhaseController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, $id)
     {
-        return("hola");
+        if ($request->ajax()) 
+        {
+            $project = ClientProject::find($id);
+            $phases = $project->phases;
+            return response()->json($phases);
+        }
+        else
+        {
+            $project = ClientProject::find($id);
+            $phases = $project->phases;
+            return view('organizer.index', ['phases'=>$phases]); 
+        }
     }
 
-    public function givemeproject(Request $request, $id)
-    {
-        $cp = ClientProject::find($id);
-        return view("organizer.projects.index", ['project'=>$cp]);
-    }
-
-
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         //
@@ -38,21 +48,19 @@ class ClientProjectController extends Controller
      */
     public function store(Request $request)
     {
-     if ($request->ajax()) {
-        $clientProject = ClientProject::create([
+        if ($request->ajax()) {
+        $phase = Phase::create([
            'title' => $request['title'],
-           'furl' => $request['urlf'],
            'description' => $request['content'],
-           'user_id' =>  $request['userid'],
+           'client_project_id' =>  $request['projectId'],
            ]);
 
 
         return response()->json([
             "mensaje"=>"creado"
             ]);
+        }
     }
-}
-
 
     /**
      * Display the specified resource.
