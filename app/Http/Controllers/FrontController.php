@@ -119,10 +119,19 @@ class FrontController extends Controller
 
     public function organizer(Request $request, $id)
     {
-        $user = User::find($id);
-        $name = $user->name;
-        return view('organizer.index', ['name'=>$name]); 
-        
+        if ($request->ajax()) 
+        {
+            $user = User::find($id);
+            $projects = $user->projects;
+            return response()->json($projects);
+        }
+        else
+        {
+            $user = User::find($id);
+            $projects = $user->projects;
+            $name = $user->name;
+            return view('organizer.index', ['user'=>$user, 'projects'=>$projects]); 
+        }
     }
 
 

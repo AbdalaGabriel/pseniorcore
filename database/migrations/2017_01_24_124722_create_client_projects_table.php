@@ -15,7 +15,14 @@ class CreateClientProjectsTable extends Migration
     {
         Schema::create('client_projects', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->string('description');
+            $table->string('furl');
             $table->timestamps();
+        });
+        Schema::table('client_projects', function ($table) {
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\ClientProject;
+use App\User;
 use Illuminate\Http\Request;
 
 class ClientProjectController extends Controller
@@ -34,8 +35,20 @@ class ClientProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+     if ($request->ajax()) {
+        $pages = ClientProject::create([
+           'title' => $request['title'],
+           'furl' => $request['urlf'],
+           'description' => $request['content'],
+           'user_id' =>  $request['userid'],
+           ]);
+
+
+        return response()->json([
+            "mensaje"=>"creado"
+            ]);
     }
+}
 
     /**
      * Display the specified resource.

@@ -46,15 +46,7 @@ public function store(Request $request)
 
      ]);
 
-    $para      = 'g.abdala.04@gmail.com';
-    $titulo    = 'El título';
-    $mensaje   = 'Hola, se creo la pagina';
-    $cabeceras = 'From: g.abdala.04@gmail.com' . "\r\n" .
-        'Reply-To: g.abdala.04@gmail.com' . "\r\n" .
-        'X-Mailer: PHP/' . phpversion();
-
-    mail($para, $titulo, $mensaje, $cabeceras);
-
+    
     return response()->json([
         "mensaje"=>"creado"
         ]);

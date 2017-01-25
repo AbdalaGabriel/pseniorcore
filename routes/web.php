@@ -65,6 +65,7 @@ Route::get('/home', 'HomeController@index');
 // ORGANIZER
 // --------------------------------------------------------------------------------------- //
 	Route::get('/organizer/{id?}', 'FrontController@organizer')->middleware('auth');
+	Route::resource('/organizer/proyectos/', 'ClientProjectController');
 
 
 // ADMIN USUARIO
