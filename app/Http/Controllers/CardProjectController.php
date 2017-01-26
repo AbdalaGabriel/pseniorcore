@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\CardProject;
+
 class CardProjectController extends Controller
 {
     /**
@@ -34,7 +36,21 @@ class CardProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->ajax()) {
+        $task = CardProject::create([
+           'title' => $request['title'],
+           'description' => $request['description'],
+           'client_project_id' =>  $request['projectid'],
+           'phase_id' =>  $request['phaseid'],
+           'status' =>  $request['status'],
+           'order'  =>  $request['order'],
+           ]);
+
+
+        return response()->json([
+            "mensaje"=>"creado"
+            ]);
+        }
     }
 
     /**

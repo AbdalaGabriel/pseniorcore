@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\ClientProject;
+use App\Phase;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ClientProjectController extends Controller
@@ -20,7 +22,10 @@ class ClientProjectController extends Controller
     public function givemeproject(Request $request, $id)
     {
         $cp = ClientProject::find($id);
-        return view("organizer.projects.index", ['project'=>$cp]);
+
+        $primeraFase = DB::table('phases')->where('client_project_id', $cp->id)->oldest()->first();
+
+        return view("organizer.projects.index", ['project'=>$cp, 'primeraFase'=> $primeraFase ]);
     }
 
 
@@ -39,11 +44,22 @@ class ClientProjectController extends Controller
     public function store(Request $request)
     {
      if ($request->ajax()) {
+
+
         $clientProject = ClientProject::create([
            'title' => $request['title'],
            'furl' => $request['urlf'],
            'description' => $request['content'],
            'user_id' =>  $request['userid'],
+           ]);
+
+        $ultimoProject = DB::table('client_projects')->latest()->first();
+
+        $firstGroupTask = Phase::create([
+           'title' => 'Tareas',
+           'furl' => 'tareas',
+           'description' => 'Tareas asignadas a este proyecto',
+           'client_project_id' =>  $ultimoProject->id,
            ]);
 
 

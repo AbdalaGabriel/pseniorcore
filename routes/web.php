@@ -64,7 +64,8 @@ Route::get('/home', 'HomeController@index');
 
 // ORGANIZER
 // --------------------------------------------------------------------------------------- //
-	Route::get('/organizer/{id?}', 'FrontController@organizer')->middleware('auth');
+	Route::get('/organizer/{id?}', 'FrontController@organizer');
+	//->middleware('auth');
 
 		//PROYECTOS
 		Route::resource('/mis-proyectos/', 'ClientProjectController');
@@ -72,6 +73,9 @@ Route::get('/home', 'HomeController@index');
 
 		//FASES - GRUPO DE TAREAS
 		Route::resource('/mis-proyectos/{id?}/phases', 'PhaseController');
+
+		//TAREAS
+		Route::resource('/mis-proyectos/{id?}/phases/{phaseid?}/tareas', 'CardProjectController');
 
 
 // ADMIN USUARIO

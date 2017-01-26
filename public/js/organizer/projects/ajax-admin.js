@@ -11,7 +11,7 @@ function carga()
 	console.log( "- Carga" );
 	projectId = $("#projectId").val();
 	var route = baseurl+"mis-proyectos/"+projectId+"/phases";
-    grouptasks = $(".grouptasks");
+	grouptasks = $(".grouptasks");
 
 	clean();
 	console.log( "- Limpieza" );
@@ -20,16 +20,16 @@ function carga()
 	{
 		console.log(res);
 		if(res.length != 0)
-		{	console.log("traho"+res),
-			$(res).each(function(key, value)
-			{
-			    grouptasks.append('<a href="'+baseurl+"mis-proyectos/phase/"+value.id+'">'+value.title+'</a>');
+			{	console.log("traho"+res),
+		$(res).each(function(key, value)
+		{
+			grouptasks.append('<a href="'+baseurl+"mis-proyectos/phase/"+value.id+'">'+value.title+'</a>');
 			
-			});
-		} else{
-			grouptasks.append("<p>Comience creando un nuevo grupo de tareas</p>")
-		} 
-	})
+		});
+	} else{
+		grouptasks.append("<p>Comience creando un nuevo grupo de tareas</p>")
+	} 
+})
 
 	.done(function() 
 	{
@@ -52,7 +52,7 @@ function clean()
 	$("#confirm-create-phase").off();
 	$("#confirmation-quickEdit").off();
 
-    grouptasks.empty();
+	grouptasks.empty();
 }
 
 
@@ -62,43 +62,86 @@ function defineListerner()
 {
 	console.log( "- Inicio listeners" );
 
+	// CREAR NUEVOS GRUPOS DE TAREAS
+
 	$(".new-group-task").click(function()
+	{
+		console.log( "- Inicio click listener: CREATE" );
+		route = baseurl+"mis-proyectos/"+projectId+"/phases";
+		token = $("#token").val();
+
+		$("#confirm-create-phase").click(function()
 		{
-			console.log( "- Inicio click listener: CREATE" );
-			route = baseurl+"mis-proyectos/"+projectId+"/phases";
-			token = $("#token").val();
+			title = $("#title").val();
+			description = $("#content").val();
+			console.log( "- Inicio confirmation listener: CREATE" );
+			console.log(route);
+			console.log(title);
+			console.log(description);
+			console.log(token);
+			console.log(projectId);
 
-			$("#confirm-create-phase").click(function()
+			$.ajax(
 			{
-				title = $("#title").val();
-				description = $("#content").val();
-				console.log( "- Inicio confirmation listener: CREATE" );
-				console.log(route);
-				console.log(title);
-				console.log(description);
-				console.log(token);
-				console.log(projectId);
+				url: route,
+				headers: {'X-CSRF-TOKEN': token},
+				type: 'POST',
+				dataType: 'json',
+				data: {title: title, content: description,  projectId: projectId},
 
-				$.ajax(
-				{
-					url: route,
-					headers: {'X-CSRF-TOKEN': token},
-					type: 'POST',
-					dataType: 'json',
-					data: {title: title, content: description,  projectId: projectId},
+				success: function(){
+					carga();
+					console.log( "- Exito en carga Aja, se creo la nueva fase de proyecto" );
+				},
 
-					success: function(){
-						carga();
-						console.log( "- Exito en carga Aja, se creo la nueva fase de proyecto" );
-					},
-
-					fail: function()
-					{ 
-						console.log( "- Error en carga Ajax" );
-					}
-				});
+				fail: function()
+				{ 
+					console.log( "- Error en carga Ajax" );
+				}
 			});
 		});
+	});
 
-		
+	// CREAR NUEVAS tareas
+
+	$("#new-task").click(function()
+	{
+		console.log( "- Inicio click listener: CREATE NEW TASK" );
+		phaseId = $("#phaseId").val();
+		route = baseurl+"mis-proyectos/"+projectId+"/phases/"+phaseId+"/tareas";
+		token = $("#token").val();
+
+		$("#confirm-create-task").click(function()
+		{
+			title = $("#title").val();
+			description = $("#content").val();
+			console.log( "- Inicio confirmation listener: CREATE" );
+			console.log(route);
+			console.log(title);
+			console.log(description);
+			console.log(token);
+			console.log(projectId);
+
+			$.ajax(
+			{
+				url: route,
+				headers: {'X-CSRF-TOKEN': token},
+				type: 'POST',
+				dataType: 'json',
+				data: {title: title, content: description,  projectId: projectId},
+
+				success: function(){
+					carga();
+					console.log( "- Exito en carga Aja, se creo la nueva fase de proyecto" );
+				},
+
+				fail: function()
+				{ 
+					console.log( "- Error en carga Ajax" );
+				}
+			});
+		});
+	});
+
+
 }
