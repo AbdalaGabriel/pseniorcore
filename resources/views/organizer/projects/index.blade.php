@@ -1,7 +1,4 @@
 
-
-
-\Debugbar::enable();
 @extends('organizer.base')
 
 @section('pageTitle', 'Organizador de proyectos - Gabriel  ')
@@ -27,16 +24,19 @@
 	<input id="projectId" type="hidden" name="" value="{!! $project->id !!}">
 	<a  class="new-group-task"   data-toggle="modal" data-target="#createPhase" href="#">Crear nuevo grouptask.</a>
 	<div class="grouptasks"></div> 
-	<input id="phaseId" type="text" value="{!! $primeraFase->id !!}" name="">
+	<input id="phaseId" type="hidden" value="{!! $primeraFase->id !!}" name="">
 
 	<h6>Vista de tareas para</h6>
-
 	<div class="task-title">TODO</div>
-	<div class="task-title">IN PROGRESS</div>
+	<div  class="task-title">IN PROGRESS</div>
 	<div class="task-title">DONE</div>
-	<div class="task-column"><a href="#new-task" data-toggle="modal" data-target="#create-task" class="addcard todo">Añadir una tarjeta</a></div>
-	<div class="task-column"></div>
-	<div class="task-column"></div>
+	<div class="columns-container">
+		<a id="new-task" data-toggle="modal" data-target="#create-task" href="#" class="addcard todo">Añadir una tarjeta</a>
+		<div id="todo-column" class="task-column"></div>
+		<div id="inprogress-column" class="task-column"></div>
+		<div id="done-column" class="task-column"></div>	
+	</div>
+	
 
 
 @section('aditional-scripts')

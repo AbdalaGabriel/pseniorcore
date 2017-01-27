@@ -10,7 +10,11 @@ class Phase extends Model
         'title', 'description', 'client_project_id'
     ];
 
-    public function posts(){
+    public function project(){
     	return $this->belongsTo('App\ClientProject');
+    }
+
+    public function tasks(){
+        return $this->hasMany('App\CardProject');
     }
 }

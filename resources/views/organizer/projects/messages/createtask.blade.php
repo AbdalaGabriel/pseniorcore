@@ -7,10 +7,10 @@
       </div>
       <div class="modal-body">
         {!!Form::label('task-title', 'Titulo', ['class' => 'form-control']);!!}
-        {!!Form::text('title', null, ['id'=>'title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
+        {!!Form::text('task-title', null, ['id'=>'task-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
     
-        {!!Form::label('content', 'Descripción de su tarea', ['class' => 'form-control']);!!}
-        {!!Form::textarea('content', null, ['id'=>'content', 'class'=>'form-control','placeholder'=>'Ej: realizar diseño de portada']) !!}
+        {!!Form::label('task-content', 'Descripción de su tarea', ['class' => 'form-control']);!!}
+        {!!Form::textarea('task-content', null, ['id'=>'task-content', 'class'=>'form-control','placeholder'=>'Ej: realizar diseño de portada']) !!}
 
 
          <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">

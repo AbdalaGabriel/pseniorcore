@@ -20,8 +20,8 @@ class CreateCardProjectsTable extends Migration
             $table->timestamps();
         });
         Schema::table('card_projects', function ($table) {
-            $table->integer('project_id')->unsigned();
-            $table->foreign('project_id')->references('id')->on('client_projects')->onDelete('cascade');
+            $table->integer('client_project_id')->unsigned();
+            $table->foreign('client_project_id')->references('id')->on('client_projects')->onDelete('cascade');
         });
 
         Schema::table('status', function ($table) {

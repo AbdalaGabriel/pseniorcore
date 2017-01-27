@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CardProject extends Model
 {
     protected $fillable = [
-        'title', 'description'
+        'title', 'description', 'client_project_id', 'phase_id', 'status', 'task_order'
     ];
 
     public function projects(){
@@ -15,6 +15,6 @@ class CardProject extends Model
     }
 
     public function phases(){
-    	return $this->belongsTo('App\Phases');
+    	return $this->belongsTo('App\Phase');
     }
 }

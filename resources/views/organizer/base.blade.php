@@ -26,6 +26,7 @@
     <!-- Include Editor style. -->
 <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/froala_style.min.css' rel='stylesheet' type='text/css' />
+
 	
 
 	 {!!Html::style('css/customization.css')!!}
@@ -139,6 +140,7 @@
 	<!-- Material Dashboard javascript methods -->
 	<!-- <script src="../resources/assets/bootstrap-template-assets/js/material-dashboard.js"></script>-->
 	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/js/froala_editor.min.js'></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
 	@yield('aditional-scripts')
 	
