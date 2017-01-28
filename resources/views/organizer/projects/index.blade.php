@@ -3,7 +3,7 @@
 
 @section('pageTitle', 'Organizador de proyectos - Gabriel  ')
 @section('title')
-{!!$project->title!!}
+<input data-type="title" data-url="clientproject/quickmodify" data-id="{!!$project->id!!}" title="Editar titulo del proyecto" class="inputOff" type="text" id="projectName" value="{!!$project->title!!}">
 @endsection
 
 
@@ -11,20 +11,26 @@
 @section('main')
 
 
-
 @include('organizer.projects.messages.createphase')
 @include('organizer.projects.messages.createtask')
+@include('organizer.projects.messages.deletephase')
+@include('organizer.projects.card.card-detail')
 
-<span>{!!$project->description!!}</span>
+<input data-type="description" data-url="clientproject/quickmodify" data-id="{!!$project->id!!}" title="Editar descripción del proyecto" class="inputOff" type="text" id="projectName" value="{!!$project->description!!}">
 
-
-
-	<h3>Pss!</h3>
-	<p>Desde aqui puedes crear instancias de tu proyecto que funcionarán como grupo de tareas y/o fases del mismo.</p>
 	<input id="projectId" type="hidden" name="" value="{!! $project->id !!}">
-	<a  class="new-group-task"   data-toggle="modal" data-target="#createPhase" href="#">Crear nuevo grouptask.</a>
-	<div class="grouptasks"></div> 
-	<input id="phaseId" type="hidden" value="{!! $primeraFase->id !!}" name="">
+	
+	<div id="grouptasks"></div> 
+	<a  class="new-group-task"   data-toggle="modal" data-target="#createPhase" href="#">Crear nueva fase.</a>
+	
+	<h2>Fase: 
+	<input data-type="title" data-url="clientproject/grouptask/quickmodify" data-id="{!!$actualphase->id!!}" title="Editar titulo del proyecto" class="inputOff" type="text" id="phaseName" value="{!!$actualphase->title!!}">
+	</h2>
+
+	<input data-type="description" data-url="clientproject/grouptask/quickmodify" data-id="{!!$actualphase->id!!}" title="Editar descripción del proyecto" class="inputOff" type="text" id="projectName" value="{!!$actualphase->description!!}">
+
+	<input id="phaseId" type="hidden" value="{!! $actualphase->id !!}" name="">
+	<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 
 	<h6>Vista de tareas para</h6>
 	<div class="task-title">TODO</div>
@@ -32,9 +38,9 @@
 	<div class="task-title">DONE</div>
 	<div class="columns-container">
 		<a id="new-task" data-toggle="modal" data-target="#create-task" href="#" class="addcard todo">Añadir una tarjeta</a>
-		<div id="todo-column" class="task-column"></div>
-		<div id="inprogress-column" class="task-column"></div>
-		<div id="done-column" class="task-column"></div>	
+		<div data-tasks-status="1" id="todo-column" class="task-column"></div>
+		<div data-tasks-status="2" id="inprogress-column" class="task-column"></div>
+		<div data-tasks-status="3" id="done-column" class="task-column"></div>	
 	</div>
 	
 

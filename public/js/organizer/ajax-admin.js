@@ -9,9 +9,9 @@ $( document ).ready(function()
 function carga()
 {
 	console.log( "- Carga" );
-	 idUser = $("#userId").val();
+	idUser = $("#userId").val();
 	var route = baseurl+"organizer/"+idUser;
-    grillaProyectos = $(".projectsContainer");
+	grillaProyectos = $(".projectsContainer");
 	var basepath = ""
 
 	clean();
@@ -22,16 +22,16 @@ function carga()
 	{
 		console.log(res);
 		if(res.length != 0)
-		{	console.log("traho"+res),
-			$(res).each(function(key, value)
-			{
-			    grillaProyectos.append('<a href="'+baseurl+"mis-proyectos/"+value.id+'" >'+value.title+'</a>');
-			
-			});
-		} else{
-			grillaProyectos.append("<p>Aún no tiene proyectos</p>")
-		} 
-	})
+			{	console.log("traho"+res),
+		$(res).each(function(key, value)
+		{
+			grillaProyectos.append('<a href="'+baseurl+"mis-proyectos/"+value.id+'" >'+value.title+'</a> - <a class="deleteProject" data-toggle="modal" data-target="#delete-this-project" data-id="'+value.id+'" href="#">Borrar</a></br>');
+
+		});
+	} else{
+		grillaProyectos.append("<p>Aún no tiene proyectos</p>")
+	} 
+})
 
 	.done(function() 
 	{
@@ -53,8 +53,10 @@ function clean()
 	$(".quickEdit").off();
 	$("#confirm-create-clientproject").off();
 	$("#confirmation-quickEdit").off();
+	$(".deleteProject").off();
+	$("#confirmate-delete").off();
 
-    grillaProyectos.empty();
+	grillaProyectos.empty();
 }
 
 
@@ -63,46 +65,71 @@ function clean()
 function defineListerner()
 {
 	console.log( "- Inicio listeners" );
+	$(".deleteProject").click(function()
+	{
+		console.log( "- Inicio click listener: DELETE" );
+		idDeleteButton = $(this).attr("data-id");
+		deleteroute = baseurl+"mis-proyectos/delete/";
+		token = $("#token").val();
+		
+		$("#confirmate-delete").click(function()
+		{
+			
+			console.log( "- Inicio confirmation listener" );
+			console.log(idDeleteButton);
+
+			$.ajax(
+			{
+				url: deleteroute,
+				headers: {'X-CSRF-TOKEN': token},
+				type: 'POST',
+				dataType: 'json',
+				data:{id:idDeleteButton},
+
+				success: function(){
+					carga();
+				}
+			});
+		})
+	});
 
 	$(".create-new").click(function()
+	{
+		console.log( "- Inicio click listener: CREATE" );
+		route = baseurl+"mis-proyectos/";
+		token = $("#token").val();
+
+		$("#confirm-create-clientproject").click(function()
 		{
-			console.log( "- Inicio click listener: CREATE" );
-			route = baseurl+"mis-proyectos/";
-			token = $("#token").val();
+			title = $("#title").val();
+			urlf = $("#urlf").val();
+			description = $("#content").val();
+			console.log( "- Inicio confirmation listener: CREATE" );
+			console.log(route);
+			console.log(title);
+			console.log(urlf);
+			console.log(description);
+			console.log(token);
+			console.log(idUser);
 
-			$("#confirm-create-clientproject").click(function()
+			$.ajax(
 			{
-				title = $("#title").val();
-				urlf = $("#urlf").val();
-				description = $("#content").val();
-				console.log( "- Inicio confirmation listener: CREATE" );
-				console.log(route);
-				console.log(title);
-				console.log(urlf);
-				console.log(description);
-				console.log(token);
-				console.log(idUser);
+				url: route,
+				headers: {'X-CSRF-TOKEN': token},
+				type: 'POST',
+				dataType: 'json',
+				data: {title: title, content: description, urlf: urlf, userid: idUser},
 
-				$.ajax(
-				{
-					url: route,
-					headers: {'X-CSRF-TOKEN': token},
-					type: 'POST',
-					dataType: 'json',
-					data: {title: title, content: description, urlf: urlf, userid: idUser},
+				success: function(){
+					carga();
+					console.log( "Exito en carga Ajax" );
+				},
 
-					success: function(){
-						carga();
-						console.log( "Exito en carga Ajax" );
-					},
-
-					fail: function()
-					{ 
-						console.log( "Error en carga Ajax" );
-					}
-				});
+				fail: function()
+				{ 
+					console.log( "Error en carga Ajax" );
+				}
 			});
 		});
-
-		
+	});
 }

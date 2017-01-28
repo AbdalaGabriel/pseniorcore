@@ -238,3 +238,18 @@ label{
     height: 500px;
     border: 1px solid #a97cb0;
 }
+
+#done-column .task-container{
+      text-decoration: line-through !important;
+}
+
+.inputOff{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.inputOn{
+    background: white;
+    font-style: italic;
+}

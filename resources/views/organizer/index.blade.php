@@ -9,7 +9,7 @@
 @section('main')
 
 	@include('organizer.messages.createProject')
-	@include('admin.pages.messages.quick-edit')
+	@include('organizer.messages.delete')
 
 	Bienvenido, {!!$user->name!!}!
 	Empezemos a organizarnos.
@@ -18,6 +18,7 @@
 
 	Vamos a <a class="create-new" data-toggle="modal" data-target="#createProject" href="#">Crear un proyecto de trabajo</a> juntos
 	
+
 	<div class="projectsContainer"></div>
 
 	@section('aditional-scripts')

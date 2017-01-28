@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Phase;
 use App\CardProject;
+use Illuminate\Support\Facades\DB;
 
 class CardProjectController extends Controller
 {
@@ -43,6 +44,51 @@ class CardProjectController extends Controller
             "mensaje"=>"creado"
             ]);
         }
+    }
+
+    public function givemeyourtasks(Request $request, $phaseid, $status)
+    {
+        // Vamos a otorgar tareas de la fase correspondiente, a la columna correspondiente, para eso levantamos phaseid y status y entregamos un objeto json ordenado, comenzemos :)
+
+        $tasks = DB::table('card_projects')->where([
+            ['phase_id', '=', $phaseid],
+            ['status', '=', $status],
+        ])->orderBy('task_order')->get();
+
+        return response()->json($tasks);
+        
+    }
+
+    public function changestatus(Request $request, $id, $status){
+        $task = CardProject::find($id);
+        $task->status = $status;
+        $task->save();
+        return response()->json([
+            "mensaje"=>"Actualizado el estado."
+            ]);
+        
+    }
+
+    public function changeorder(Request $request){
+       if ($request->ajax()) 
+       {
+        
+        $newPositions = $request['neworder'];
+        $arrayLength = count($newPositions);
+   
+        for ($i=0; $i < $arrayLength ; $i++) { 
+       
+            $thisId = $newPositions[$i]['id'];
+            $thisPosition = $newPositions[$i]['position'];
+
+            $thisSlide = CardProject::find($thisId);
+            $thisSlide->task_order = $thisPosition;
+            $thisSlide->save();
+
+        }
+        return response()->json($newPositions);
+
+        } 
     }
 
     public function show($id)

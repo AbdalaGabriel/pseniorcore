@@ -14,27 +14,45 @@ class PhaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $id)
+    public function index(Request $request, $projectid, $phaseid)
     {
         if ($request->ajax()) 
         {
-            $project = ClientProject::find($id);
+            $project = ClientProject::find($projectid);
             $phases = $project->phases;
             return response()->json($phases);
         }
         else
         {
-            $project = ClientProject::find($id);
+            $project = ClientProject::find($projectid);
             $phases = $project->phases;
-            return view('organizer.index', ['phases'=>$phases]); 
+
+            $actualphase = Phase::find($phaseid);
+            return view("organizer.projects.index", ['project'=>$project, 'actualphase'=> $actualphase]);
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+     public function givemetasks(Request $request, $id)
+    {
+        $phase = Phase::find($id);
+   
+        return view("organizer.projects.index", ['project'=>$cp, 'actualphase'=> $phase ]);
+    }
+
+
+    public function quickmodify(Request $request)
+    {
+
+        $phase = Phase::find($request["id"]);
+        $type = $request["type"];
+        $phase->$type = $request["data"];
+        $phase->save();
+
+        return response()->json([
+            "mensaje"=>"creado"
+        ]);
+    }
+
     public function create()
     {
         //
@@ -102,8 +120,14 @@ class PhaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+       $phase = Phase::find($request["id"]);
+            
+        // Eliminar proyecto.
+        $phase->delete();
+         return response()->json([
+        "mensaje" =>"borrado"
+        ]);
     }
 }

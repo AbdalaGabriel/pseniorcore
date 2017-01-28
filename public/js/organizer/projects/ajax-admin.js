@@ -3,31 +3,168 @@ $( document ).ready(function()
 {
 	console.log( "- Document ready" );
 	carga();
-
 	todos = $("#todo-column");
 	inprogress = $("#inprogress-column");
 	done = $("#done-column");
+	interaction();
 
-	// Declaracion de contenedores de elementos draggeables.
+});
 
+function interaction()
+{
+	console.log("inicio de interacci{on");
+	$(".inputOff").click(function()
+	{
+		element = $(this);
+		console.log("Click en input");
+		element.addClass("inputOn");
+		urltomodify = element.attr("data-url");
+		actualValue = element.val();
+
+	})
+	.focusout(function() 
+	{
+		$(this).removeClass("inputOn");
+		var newValue = element.val();
+		if(actualValue == newValue)
+		{
+			console.log("no hago nada, los valores son iguales");
+		}
+		else
+		{
+			var elementId = element.attr("data-id");
+			var elementType = element.attr("data-type");
+			token = $("#token").val();
+			$.ajax(
+			{
+				url: baseurl+urltomodify,
+				headers: {'X-CSRF-TOKEN': token},
+				type: 'POST',
+				dataType: 'json',
+				data: {data: newValue, id:elementId, type: elementType},
+
+				success: function(){
+					console.log("Se grabó el nuevo valor");
+					element.change(newValue);
+				}
+			});
+		}
+	});
+}
+
+
+function mannageDragAndDrop()
+{
+	// Permito drag and drop en los contenedores.
 	todos.sortable({
 		connectWith: "div"
 	});
 	inprogress.sortable({
-		connectWith: "div";
-		stop: function(event, ui) {
-			$(this).find('.slideImage').each(function(i, el)
-			{
-				$(this).attr('data-position', i);
-			});
-			console.log("New position: " + ui.item.index());
-			console.log(ui);
-		}
+		connectWith: "div",
 	});
 	done.sortable({
 		connectWith: "div"
 	});
-});
+
+	// Evento se cambia el orden dentro de una misma columna
+	$( ".task-column" ).on( "sortstop", function( event, ui ) 
+	{
+		thiscolumn = $(this);
+		thiscolumnStatus = thiscolumn.attr("data-tasks-status");
+
+		var draggedObject = ui.item;
+		var taskID = draggedObject.attr("data-task-id");
+		
+		console.log("se ha terminado de ordenar")
+		//Cambio de orden de las tarjetas que tiene la tarea.
+		// y los voy acumulando en un array para enviar.
+		cardsPosition = new Array();
+		thiscolumn.find('.task-container').each(function(i, el)
+		{
+			thisCard = $(this);
+			thisCard.attr('data-task-order', i);
+			console.log(i);
+			var thisId = $(this).attr('data-task-id');
+			var thisPos = $(this).attr('data-task-order');
+			cardsPosition[i]={position: thisPos, id: thisId};
+			i++;
+		});
+
+		console.log(cardsPosition);
+		token = $("#token").val();
+		// Ejecuto Ajax enviando nuevo orden a la bd
+		$.ajax(
+		{
+			url: baseurl+"tasks/"+taskID+"/changeorder/",
+			headers: {'X-CSRF-TOKEN': token},
+			type: 'POST',
+			dataType: 'json',
+			data: {neworder: cardsPosition},
+
+			success: function(){
+				console.log("Se grabo el nuevo orden en la base de datos");
+			}
+		});
+
+	});
+
+
+	// Evento: se droppea una tarjeta en otra columina.
+	$(".task-column").on( "sortreceive", function( event, ui ) 
+	{
+		//Leo parámetros de ésta columna.
+		thiscolumn = $(this);
+		thiscolumnStatus = thiscolumn.attr("data-tasks-status");
+		
+		// Cambio de status a la tarea
+		var draggedObject = ui.item;
+		draggedObject.attr("data-task-status",thiscolumnStatus);
+		var draggedObjecNewtStatus = draggedObject.attr("data-task-status");
+		console.log(draggedObjecNewtStatus);
+
+		// Ejecuto Ajax enviando el nuevo stado a la bd.
+		var taskID = draggedObject.attr("data-task-id");
+		var changeStatusRoute = baseurl+"tasks/"+taskID+"/changestatus/"+draggedObjecNewtStatus;
+		
+		var changeStatus =  $.get(changeStatusRoute, function(res)
+		{
+			console.log("cambiado a In Progress");
+		});
+
+		//Cambio de orden de las tarjetas que tiene la tarea.
+		// y los voy acumulando en un array para enviar.
+		cardsPosition = new Array();
+		thiscolumn.find('.task-container').each(function(i, el)
+		{
+			thisCard = $(this);
+			thisCard.attr('data-task-order', i);
+			console.log(i);
+			var thisId = $(this).attr('data-task-id');
+			var thisPos = $(this).attr('data-task-order');
+			cardsPosition[i]={position: thisPos, id: thisId};
+			i++;
+		});
+
+		console.log(cardsPosition);
+		token = $("#token").val();
+		// Ejecuto Ajax enviando nuevo orden a la bd
+		$.ajax(
+		{
+			url: baseurl+"tasks/"+taskID+"/changeorder/",
+			headers: {'X-CSRF-TOKEN': token},
+			type: 'POST',
+			dataType: 'json',
+			data: {neworder: cardsPosition},
+
+			success: function(){
+				console.log("oks");
+			}
+		});
+
+	});
+
+
+}
 
 // Funcion principal: llenado dinamico de elementos html.
 function carga()
@@ -36,8 +173,9 @@ function carga()
 
 	//Definición de variables
 	projectId = $("#projectId").val();
-	var route = baseurl+"mis-proyectos/"+projectId+"/phases";
-	grouptasks = $(".grouptasks");
+	phaseId = $("#phaseId").val();
+	var route = baseurl+"mis-proyectos/"+projectId+"/phase/"+phaseId;
+	grouptasks = $("#grouptasks");
 
 	// Limpieza y desactivación de eventos.
 	clean();
@@ -47,13 +185,13 @@ function carga()
 	var consulta =  $.get(route, function(res)
 	{
 		console.log(res);
-		if(res.length != 0)
+		if(res.length > 0)
 		{	
 			console.log("traho"+res),
 			$(res).each(function(key, value)
 			{
-				grouptasks.append('<a href="'+baseurl+"mis-proyectos/phase/"+value.id+'">'+value.title+'</a>');
-				
+				console.log("Agregada tarea "+value.title)
+				grouptasks.append('<a  href="'+baseurl+"mis-proyectos/"+projectId+"/phase/"+value.id+'">'+value.title+'</a> - <a class="deletePhase" data-toggle="modal" data-target="#delete-this-phase" data-id="'+value.id+'" href="#">Borrar</a></br>');
 			});
 		} 
 		else
@@ -85,8 +223,18 @@ function clean()
 	$("#confirmation-quickEdit").off();
 	$("#confirm-create-task").off();
 	$("#new-task").off();
+	$(".deletePhase").off();
+	$("#confirmate-delete-phase").off();
 
 	grouptasks.empty();
+}
+
+
+function cleancolumns()
+{
+	$("#confirm-create-task").off();
+	$("#new-task").off();
+	todos.empty();
 }
 
 function updatecards()
@@ -94,33 +242,53 @@ function updatecards()
 	console.log( "- Iniciar la carga de tareas" );
 
 	// Limpieza de listeners y contenedores de elementos.
-	clean();
+	cleancolumns();
 	console.log( "- Limpieza" );
-	todos.empty();
+	
 
 	// Generación dinámica de ruta en base a la vista de grupo de tareas activa.
 	phaseId = $("#phaseId").val();
 	taskroute = baseurl+"mis-proyectos/"+projectId+"/phases/"+phaseId+"/tareas";
 
-	// Append de elementos que me otorga el modelo.
-	var consultatasks =  $.get(taskroute, function(res)
+	// Por cada columna de tareas ejecuto un llamado ajax queme traiga ordenadas mis tarjetas
+	$(".task-column").each(function(key, value)
 	{
-		console.log(res);
-		if(res.length != 0)
-		{	
-			console.log("-vCantidad de tareas obtenidas: "+res),
-			$(res).each(function(key, value)
-			{
-				todos.append('<div class="task-container"><a href="#">'+value.title+'</a>'+value.description+'<p></p></div>');		
-			});
-		}
-		else
+		phaseId = $("#phaseId").val();
+		thisColumn = $(this);
+		thisColumnStatus = thisColumn.attr("data-tasks-status");
+		token = $("#token").val();
+
+		console.log("el status de esta columna es "+ thisColumnStatus);
+
+		$.ajax(
 		{
-			todos.append("<p>Comience creando un nuevo grupo de tareas</p>");
-		} 
-	})
+			url: baseurl+"phase/"+phaseId+"/tasks/"+thisColumnStatus,
+			headers: {'X-CSRF-TOKEN': token},
+			type: 'GET',
+			dataType: 'json',
+			
+			success: function(data){
+				console.log("Orden!: ");
+				console.log(data);
+				largoTarjetas = data.length;
+				if(largoTarjetas > 0)
+				{
+					columnForAppend = $('.task-column[data-tasks-status="'+data[0].status+'"]')
+					console.log("data no es distinto de null y la columna es ");
+					console.log(columnForAppend);
+					for(i=0;i<largoTarjetas;i++)
+					{
+						columnForAppend.append('<div class="task-container" data-task-order="'+data[i].task_order+'" data-task-status="'+data[i].status+'" data-task-id="'+data[i].id+'"><a href="#">'+data[i].title+'</a>'+data[i].description+'<p></p></div>');		
+					}
+				}
+			}
+		});
+
+	});
 
 	defineListerner();
+	// Declaracion de contenedores de elementos draggeables.
+	mannageDragAndDrop();
 }
 
 // Inicio de Listeners
@@ -128,12 +296,40 @@ function defineListerner()
 {
 	console.log( "- Inicio listeners" );
 
-	// CREAR NUEVOS GRUPOS DE TAREAS
+	// Borrar grupos de tareas
+	$(".deletePhase").click(function()
+	{
+		console.log( "- Inicio click listener: DELETE" );
+		idDeleteButton = $(this).attr("data-id");
+		deleteroute = baseurl+"/mis-proyectos/deletethisphase";
+		token = $("#token").val();
+		
+		$("#confirmate-delete-phase").click(function()
+		{
+			
+			console.log( "- Inicio confirmation listener" );
+			console.log(idDeleteButton);
 
+			$.ajax(
+			{
+				url: deleteroute,
+				headers: {'X-CSRF-TOKEN': token},
+				type: 'POST',
+				dataType: 'json',
+				data:{id:idDeleteButton},
+
+				success: function(){
+					carga();
+				}
+			});
+		})
+	});
+
+	// CREAR NUEVOS GRUPOS DE TAREAS
 	$(".new-group-task").click(function()
 	{
 		console.log( "- Inicio click listener: CREATE" );
-		route = baseurl+"mis-proyectos/"+projectId+"/phases";
+		route = baseurl+"mis-proyectos/"+projectId+"/phase";
 		token = $("#token").val();
 
 		$("#confirm-create-phase").click(function()
@@ -199,7 +395,7 @@ function defineListerner()
 
 				success: function(){
 					updatecards();
-					console.log( "- Exito en carga Aja, se creo la nueva fase de proyecto" );
+					console.log( "- Exito en carga AjaX, se creo la nueva fase de proyecto" );
 				},
 
 				fail: function()

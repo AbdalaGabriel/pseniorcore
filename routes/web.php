@@ -69,13 +69,24 @@ Route::get('/home', 'HomeController@index');
 
 		//PROYECTOS
 		Route::resource('/mis-proyectos/', 'ClientProjectController');
+		Route::post('clientproject/quickmodify', 'ClientProjectController@quickmodify');
 		Route::get('/mis-proyectos/{id?}', 'ClientProjectController@givemeproject');
+		Route::post('/mis-proyectos/delete', 'ClientProjectController@destroy');
 
 		//FASES - GRUPO DE TAREAS
-		Route::resource('/mis-proyectos/{id?}/phases', 'PhaseController');
+		Route::resource('/mis-proyectos/{projectid?}/phase/{phaseid?}/', 'PhaseController');
+		Route::get('/mis-proyectos/fase/{id?}', 'PhaseController@givemetasks');
+		Route::post('clientproject/grouptask/quickmodify', 'PhaseController@quickmodify');
+
+		Route::post('/mis-proyectos/deletethisphase', 'PhaseController@destroy');
 
 		//TAREAS
 		Route::resource('/mis-proyectos/{id?}/phases/{phaseid?}/tareas', 'CardProjectController');
+		Route::get('/tasks/{id?}/changestatus/{status?}', 'CardProjectController@changestatus');
+
+		Route::post('/tasks/{id?}/changeorder', 'CardProjectController@changeorder');
+
+		Route::get('/phase/{phaseid?}/tasks/{status?}', 'CardProjectController@givemeyourtasks');
 
 
 // ADMIN USUARIO

@@ -14,18 +14,25 @@ class ClientProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, $id)
     {
-        return("hola");
+        $cp = ClientProject::find($id);
+
+        $primeraFase = DB::table('phases')->where('client_project_id', $cp->id)->oldest()->first();
+        $phases = $cp->phases;
+
+        return view("organizer.projects.index", ['project'=>$cp, 'actualphase'=> $primeraFase]);
     }
+
 
     public function givemeproject(Request $request, $id)
     {
         $cp = ClientProject::find($id);
 
         $primeraFase = DB::table('phases')->where('client_project_id', $cp->id)->oldest()->first();
+        $phases = $cp->phases;
 
-        return view("organizer.projects.index", ['project'=>$cp, 'primeraFase'=> $primeraFase ]);
+        return view("organizer.projects.index", ['project'=>$cp, 'actualphase'=> $primeraFase]);
     }
 
 
@@ -101,17 +108,41 @@ class ClientProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $project = ClientProject::find($request["id"]);
+        $project->title = $request["data"];
+        $project->save();
+
+        return response()->json([
+            "mensaje"=>"creado"
+        ]);
     }
 
+    public function quickmodify(Request $request)
+    {
+
+        $project = ClientProject::find($request["id"]);
+        $type = $request["type"];
+        $project->$type = $request["data"];
+        $project->save();
+
+        return response()->json([
+            "mensaje"=>"creado"
+        ]);
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $project = ClientProject::find($request["id"]);
+            
+        // Eliminar proyecto.
+        $project->delete();
+         return response()->json([
+        "mensaje" =>"borrado"
+        ]);
     }
 }
