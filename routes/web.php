@@ -87,9 +87,6 @@ Route::get('/home', 'HomeController@index');
 		Route::post('/tasks/{id?}/changeorder', 'CardProjectController@changeorder');
 
 		Route::get('/phase/{phaseid?}/tasks/{status?}', 'CardProjectController@givemeyourtasks');
-		Route::post('/task/givemeinfo', 'CardProjectController@givemetask');
-
-		Route::post('task/quickmodify', 'CardProjectController@quickmodify');
 
 
 // ADMIN USUARIO

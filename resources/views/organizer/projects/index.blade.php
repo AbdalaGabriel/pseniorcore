@@ -23,8 +23,6 @@
 	<div id="grouptasks"></div> 
 	<a  class="new-group-task"   data-toggle="modal" data-target="#createPhase" href="#">Crear nueva fase.</a>
 	
-	<h6>Vista de tareas para</h6>
-
 	<h2>Fase: 
 	<input data-type="title" data-url="clientproject/grouptask/quickmodify" data-id="{!!$actualphase->id!!}" title="Editar titulo del proyecto" class="inputOff" type="text" id="phaseName" value="{!!$actualphase->title!!}">
 	</h2>
@@ -34,14 +32,12 @@
 	<input id="phaseId" type="hidden" value="{!! $actualphase->id !!}" name="">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 
-	
-	<a id="new-task" data-toggle="modal" data-target="#create-task" href="#" class="addcard todo">Añadir una tarjeta</a>
-
+	<h6>Vista de tareas para</h6>
+	<div class="task-title">TODO</div>
+	<div  class="task-title">IN PROGRESS</div>
+	<div class="task-title">DONE</div>
 	<div class="columns-container">
-
-		<div class="task-title">TODO</div>
-		<div  class="task-title">IN PROGRESS</div>
-		<div class="task-title">DONE</div>
+		<a id="new-task" data-toggle="modal" data-target="#create-task" href="#" class="addcard todo">Añadir una tarjeta</a>
 		<div data-tasks-status="1" id="todo-column" class="task-column"></div>
 		<div data-tasks-status="2" id="inprogress-column" class="task-column"></div>
 		<div data-tasks-status="3" id="done-column" class="task-column"></div>	
