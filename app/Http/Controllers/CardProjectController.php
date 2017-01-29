@@ -59,6 +59,25 @@ class CardProjectController extends Controller
         
     }
 
+
+     public function quickmodify(Request $request)
+    {
+
+        $card = CardProject::find($request["id"]);
+        $type = $request["type"];
+        $card->$type = $request["data"];
+        $card->save();
+
+        return response()->json([
+            "mensaje"=>"creado"
+        ]);
+    }
+
+    public function givemetask(Request $request){
+        $task = CardProject::find($request["id"]);
+        return response()->json($task);
+    }
+
     public function changestatus(Request $request, $id, $status){
         $task = CardProject::find($id);
         $task->status = $status;
