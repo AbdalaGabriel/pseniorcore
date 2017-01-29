@@ -243,6 +243,29 @@ label{
       text-decoration: line-through !important;
 }
 
+.task-container{
+  cursor: pointer;
+  background: #e0dede;
+    padding: .5em;
+    margin: 1em;
+    border-radius: .6em;
+
+}
+.task-container:hover{
+  opacity: .5;
+
+}
+
+#new-task{
+    display: block;
+    height: 2em;
+    margin: 1em;
+}
+
+.task-container a{
+  display: block;
+}
+
 .inputOff{
     border: none;
     background: none;

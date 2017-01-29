@@ -3,12 +3,12 @@
     <div class="modal-content">
       <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h5 class="modal-title" id="myModalLabel"></h5>
+         
+         <input id="card-title" data-type="title" data-url="task/quickmodify" data-id="" title="Editar titulo de la tarea" class="inputOff" type="text" id="projectName" value="-">
+
       </div>
       <div class="modal-body">
-         <h3>¿Está realmente seguro que desea borrar esta fase?</h3>
-         <h4>Se borraran todas las tareas de la misma.</h4>
-         <h4>Si no desea ver más esta fase, puede ocultarla</h4>
+          <h6 id="card-description"></h6>
          <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
          <input type="hidden" id="id">
         
