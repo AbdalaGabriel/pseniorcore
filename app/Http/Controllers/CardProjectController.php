@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Phase;
 use App\CardProject;
+use App\ClientProject;
 use Illuminate\Support\Facades\DB;
 
 class CardProjectController extends Controller
@@ -59,6 +60,20 @@ class CardProjectController extends Controller
         
     }
 
+    // se podría utilizar la funcion anterior pero se utiliza esta para que no quede 4 en la url, en referencia al id de las tarjetas ocultas
+    public function givemehiddentasks(Request $request,$projectid, $phaseid)
+    {
+       $hiddentasks = DB::table('card_projects')->where([
+            ['phase_id', '=', $phaseid],
+            ['status', '=', '4'],
+        ])->orderBy('task_order')->get();   
+
+       $project = ClientProject::find($projectid);
+       $actualphase = Phase::find($phaseid);
+
+       return view("organizer.projects.hiddentasks",["hiddentasks"=>$hiddentasks, "project"=>$project, "actualphase"=>$actualphase]);
+
+    }
 
      public function quickmodify(Request $request)
     {

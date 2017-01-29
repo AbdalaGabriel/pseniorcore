@@ -34,6 +34,7 @@ function interaction()
 		{
 			var elementId = element.attr("data-id");
 			var elementType = element.attr("data-type");
+			var elementDOMType = element.attr("data-element-type");
 			token = $("#token").val();
 			$.ajax(
 			{
@@ -45,7 +46,14 @@ function interaction()
 
 				success: function(){
 					//console.log("Se grabó el nuevo valor");
-					element.change(newValue);
+					if(elementDOMType == "card"){
+						console.log("se salio de editar una tarjeta");
+						// Revisar para que busque a la columna q pertenece y no por todos lso tod{s}
+						cardToUpdate = $('.task-container[data-task-id="'+elementId+'"]')
+						console.log(elementId);
+						console.log(newValue);
+						cardToUpdate.find("a").text(newValue);
+					}	
 				}
 			});
 		}
@@ -247,7 +255,7 @@ function updatecards()
 	// Limpieza de listeners y contenedores de elementos.
 	cleancolumns();
 	//console.log( "- Limpieza" );
-	
+
 
 	// Generación dinámica de ruta en base a la vista de grupo de tareas activa.
 	phaseId = $("#phaseId").val();
@@ -277,13 +285,17 @@ function updatecards()
 				largoTarjetas = data.length;
 				if(largoTarjetas > 0)
 				{
-					columnForAppend = $('.task-column[data-tasks-status="'+data[0].status+'"]')
+					colstatus = data[0].status;
+					columnForAppend = $('.task-column[data-tasks-status="'+colstatus+'"]')
+					
 					//console.log("data no es distinto de null y la columna es ");
 					//console.log(columnForAppend);
 					for(i=0;i<largoTarjetas;i++)
 					{
-						columnForAppend.append('<div  data-toggle="modal" data-target="#card-detail" class="task-container" data-task-order="'+data[i].task_order+'" data-task-status="'+data[i].status+'" data-task-id="'+data[i].id+'"><a href="#">'+data[i].title+'</a>'+data[i].description+'<p></p></div>');		
+						columnForAppend.append('<div  data-toggle="modal" data-target="#card-detail" class="task-container" data-task-order="'+data[i].task_order+'" data-task-status="'+data[i].status+'" data-task-id="'+data[i].id+'"><span data-status="4" data-id="'+data[i].id+'" class="hidecard">O</span><a href="#">'+data[i].title+'</a>'+data[i].description+'<p></p></div>');		
 					}
+
+
 				}	
 
 				count = count+1;
@@ -297,6 +309,29 @@ function updatecards()
 		});
 
 	});
+
+	// consultar si hay tarjetas de tipo 4 para esta fase;
+	projectId = $("#projectId").val();
+	$.ajax(
+	{
+		url: baseurl+"phase/"+phaseId+"/tasks/4",
+		headers: {'X-CSRF-TOKEN': token},
+		type: 'GET',
+		dataType: 'json',
+
+		success: function(data){
+				console.log("Ocultas: ");
+				largoOcultas = data.length;
+
+				if(largoOcultas > 0){
+					$("#hiddenCards").text("Ver tarjetas ocultas de esta fase");
+
+					$("#hiddenCards").attr("href", baseurl+"/mis-proyectos/"+projectId+"/phase/"+phaseId+"/tareas-ocultas");
+				}
+			}
+		});
+
+
 	// Llamado a listeners
 	defineListerner();
 	// Declaracion de contenedores de elementos draggeables.
@@ -425,6 +460,20 @@ function defineListerner()
 
 function eventsForCards(){
 	//console.log("Inicializando eventos para tarjetas");
+	$('.hidecard').on('click', function (ev) {
+		ev.stopPropagation();
+		console.log("Se evito propagar");
+		var newStatus = $(this).attr("data-status");
+		var cardTaskID = $(this).attr("data-id");
+		var changeStatusRoute = baseurl+"tasks/"+cardTaskID+"/changestatus/"+newStatus;
+		
+		var changeStatus =  $.get(changeStatusRoute, function(res)
+		{
+			console.log("cambiado a Oculto");
+		});
+	});
+
+
 	$(".task-container").click(function(){
 		//console.log("Click en tarjeta");
 		var estaTarjeta = $(this);
@@ -445,10 +494,7 @@ function eventsForCards(){
 				$("#card-title").attr("data-id", data.id);
 				$("#card-description").text(data.description);
 
-				// Revisar
-				//cardToUpdate = $('.task-container[data-tasks-id="'+idTarjeta+'"]')
-				//cardToUpdate.find("a").text(data.title);
 			}
 		});
-	});
+	}); 
 }

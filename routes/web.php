@@ -90,6 +90,7 @@ Route::get('/home', 'HomeController@index');
 		Route::post('/task/givemeinfo', 'CardProjectController@givemetask');
 
 		Route::post('task/quickmodify', 'CardProjectController@quickmodify');
+		Route::get('/mis-proyectos/{projectid?}/phase/{phaseid?}/tareas-ocultas', 'CardProjectController@givemehiddentasks');
 
 
 // ADMIN USUARIO

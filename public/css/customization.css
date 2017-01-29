@@ -237,10 +237,15 @@ label{
     float: left;
     height: 500px;
     border: 1px solid #a97cb0;
+        position: relative;
 }
 
 #done-column .task-container{
       text-decoration: line-through !important;
+}
+
+#done-column .hidecard {
+display: block;
 }
 
 .task-container{
@@ -249,6 +254,7 @@ label{
     padding: .5em;
     margin: 1em;
     border-radius: .6em;
+    position: relative;
 
 }
 .task-container:hover{
@@ -275,4 +281,16 @@ label{
 .inputOn{
     background: white;
     font-style: italic;
+}
+
+.hidecard {
+    position: absolute;
+    right: 0;
+    background: white;
+    padding: .2em .6em;
+    display: block;
+    cursor: pointer;
+    border-radius: 1em;
+    z-index: 100;
+    display: none;
 }

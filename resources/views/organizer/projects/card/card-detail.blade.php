@@ -4,7 +4,7 @@
       <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
          
-         <input id="card-title" data-type="title" data-url="task/quickmodify" data-id="" title="Editar titulo de la tarea" class="inputOff" type="text" id="projectName" value="-">
+         <input id="card-title" data-type="title" data-url="task/quickmodify" data-id="" title="Editar titulo de la tarea" class="inputOff" type="text" id="projectName" value="-" data-element-type="card">
 
       </div>
       <div class="modal-body">
