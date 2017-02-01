@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\ClientProject;
 use App\Phase;
 use App\User;
+use App\CardProject;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -117,6 +118,8 @@ class ClientProjectController extends Controller
         ]);
     }
 
+
+
     public function quickmodify(Request $request)
     {
 
@@ -144,5 +147,21 @@ class ClientProjectController extends Controller
          return response()->json([
         "mensaje" =>"borrado"
         ]);
+    }
+
+    public function projectsforapp($userid)
+    {
+     
+            $projects = DB::table('client_projects')->where([
+            ['user_id', '=', $userid],
+            ])->get();
+            //->join('phases', 'client_projects.id', '=', 'phases.client_project_id')->get();
+            
+
+            
+
+            return response()->json($projects);
+
+        
     }
 }

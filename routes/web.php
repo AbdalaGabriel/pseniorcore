@@ -62,6 +62,17 @@ Route::get('/home', 'HomeController@index');
 
 
 
+// MOBILE APP
+// --------------------------------------------------------------------------------------- //
+Route::resource('/admin/users', 'UserController');
+
+// User login
+
+    Route::get('app/userlogin/{mail?}', 'UserController@loginApp');
+    Route::get('app/projects/{userid?}', 'ClientProjectController@projectsforapp');
+
+	
+
 // ORGANIZER
 // --------------------------------------------------------------------------------------- //
 	Route::get('/organizer/{id?}', 'FrontController@organizer');
