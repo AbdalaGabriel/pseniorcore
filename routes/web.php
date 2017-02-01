@@ -138,6 +138,10 @@ Route::get('/admin', 'FrontController@admin');
 		// VERSION EN INGLES
 		Route::get('admin/portfolio/en/{id?}/edit', 'ProjectController@englishedit' );
 		Route::put('admin/portfolio/en/{id?}/update/', 'ProjectController@englishupdate' );
+
+		// APP
+		Route::get('app/projects', 'ProjectController@informationForApp' );
+
 		
 
 	// MULTIMEDIA

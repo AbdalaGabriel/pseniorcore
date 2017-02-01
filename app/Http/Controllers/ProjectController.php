@@ -19,6 +19,11 @@ class ProjectController extends Controller
    // $this->middleware('admin');
   }
 
+  public function informationForApp(){
+     $projects = Project::all();
+     return response()->json($projects);
+  }
+
   public function index(Request $request)
   {
     if ($request->ajax()) 
@@ -39,8 +44,11 @@ class ProjectController extends Controller
       };
 
       return response()->json($finalObj);
-    } 
+    }
+    else
+    {
     return view('admin.projects.index'); 
+    }
   }
 
   public function front($id, $title)
