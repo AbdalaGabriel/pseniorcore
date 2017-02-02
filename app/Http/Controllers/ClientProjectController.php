@@ -51,24 +51,24 @@ class ClientProjectController extends Controller
      */
     public function store(Request $request)
     {
-     if ($request->ajax()) {
+       if ($request->ajax()) {
 
 
         $clientProject = ClientProject::create([
-           'title' => $request['title'],
-           'furl' => $request['urlf'],
-           'description' => $request['content'],
-           'user_id' =>  $request['userid'],
-           ]);
+         'title' => $request['title'],
+         'furl' => $request['urlf'],
+         'description' => $request['content'],
+         'user_id' =>  $request['userid'],
+         ]);
 
         $ultimoProject = DB::table('client_projects')->latest()->first();
 
         $firstGroupTask = Phase::create([
-           'title' => 'Tareas',
-           'furl' => 'tareas',
-           'description' => 'Tareas asignadas a este proyecto',
-           'client_project_id' =>  $ultimoProject->id,
-           ]);
+         'title' => 'Tareas',
+         'furl' => 'tareas',
+         'description' => 'Tareas asignadas a este proyecto',
+         'client_project_id' =>  $ultimoProject->id,
+         ]);
 
 
         return response()->json([
@@ -115,7 +115,7 @@ class ClientProjectController extends Controller
 
         return response()->json([
             "mensaje"=>"creado"
-        ]);
+            ]);
     }
 
 
@@ -130,7 +130,7 @@ class ClientProjectController extends Controller
 
         return response()->json([
             "mensaje"=>"creado"
-        ]);
+            ]);
     }
     /**
      * Remove the specified resource from storage.
@@ -141,27 +141,90 @@ class ClientProjectController extends Controller
     public function destroy(Request $request)
     {
         $project = ClientProject::find($request["id"]);
-            
+
         // Eliminar proyecto.
         $project->delete();
-         return response()->json([
-        "mensaje" =>"borrado"
-        ]);
+        return response()->json([
+            "mensaje" =>"borrado"
+            ]);
     }
 
     public function projectsforapp($userid)
     {
-     
-            $projects = DB::table('client_projects')->where([
+
+        $projects = DB::table('client_projects')->where([
             ['user_id', '=', $userid],
-            ])->get();
+            ])->get()
+        ->map(function ($item, $key) {
+            return (array) $item;
+        })
+        ->all();
             //->join('phases', 'client_projects.id', '=', 'phases.client_project_id')->get();
-            
+            //$projects->toArray();
+
+            // IMPORTANTE : cuando realizo una consulta con db: devuelve un objeto que no puede convertirse a array porque no tiene los metodos via laravel, con lo cual si yo ejecuto el metodo toArra() lo que hace es un array de objetos, es decir que no puedo acceder a cada uno, para solucionar esto se agrega la magia map, despues del get d ela consulta,
+
+            /* Más info:
+            http://stackoverflow.com/questions/41447275/laravel-toarray-still-returning-an-object-in-dbraw
+
+            "When you call toArray() on a Collection, if the underlying items implement the Illuminate\Contracts\Support\Arrayable interface, the collection will attempt to call toArray() on each item. However, when you use the query builder, the result will be a Collection of stdClass objects, and stdClass objects are plain objects that do not implement that interface and do not have a toArray() method. Therefore, when you call toArray() on a Collection of stdClass objects, you will just get a plain array of the stdClass objects back."
+            */
+
+            // Todo esto lo hago para hacer arrays multidinamicos que me tengan toda la info de fase por proyecto, es decir poder acceder a sus posiciones y nombres de propiedades mediante [], luego finalmente lo empaqueto en json y se lo envio a la app.
+
+            $projectsArrayLenght = count($projects);
+
+            // METODOLOGIA OFFLINE FIRST
+            // Entiendo que el usuario generalmente tiene problemas para tener buena conexiòn y le envio en un solo json toda la info, para que no haga una consulta ajax por cada click, por ejemplo al ver 1 proyecto, 1 fase de ese proyecto, etc ,erc.-.
+
+            // Primer ciclo for para obtener phases de cada proyecto.
+
+            for ($i=0; $i < $projectsArrayLenght; $i++) 
+            { 
+                // Id proyecto
+                $thisProjectid = $projects[$i]["id"];
+
+                // Fases correspondientes
+                $phases = DB::table('phases')->where([
+                    ['client_project_id', '=', $thisProjectid],
+                    ])->get()
+                ->map(function ($item, $key) {
+                    return (array) $item;
+                })
+                ->all();
+                $projects[$i]["phases"] = $phases;
+
+                // Segundo ciclo for, obtengo tareas o tarjetas por cada fase del proyecto.
+
+                $phasesArrayLenght = count($phases);
+
+                for ($j=0; $j < $phasesArrayLenght ; $j++) 
+                { 
+                    // Id de la fase.
+                    $thisPhaseId = $projects[$i]["phases"][$j]["id"];
+
+                    // Tareas correspondientes
+                    $cards = DB::table('card_projects')->where([
+                        ['phase_id', '=', $thisPhaseId],
+                        ])->get()
+                    ->map(function ($item, $key) {
+                        return (array) $item;
+                    })
+                    ->all();
+                    $projects[$i]["phases"][$j]["cards"] = $cards;
+
+                }
+
+            }
+
+
+
+            //return response(print_r($projects[2]));
 
             
 
             return response()->json($projects);
 
-        
+
+        }
     }
-}
