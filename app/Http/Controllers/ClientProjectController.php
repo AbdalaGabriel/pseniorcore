@@ -204,14 +204,62 @@ class ClientProjectController extends Controller
                     $thisPhaseId = $projects[$i]["phases"][$j]["id"];
 
                     // Tareas correspondientes
-                    $cards = DB::table('card_projects')->where([
+                    // Vamos a hacer 4 consultas: 1 para cada status.
+                    //Esto nos devolvera un json ordenado como necesitamos recprrerlo luego en la vista de la app con js.
+
+                    // Dame todas las tarjetas.
+                    /*$cards = DB::table('card_projects')->where([
                         ['phase_id', '=', $thisPhaseId],
                         ])->get()
                     ->map(function ($item, $key) {
                         return (array) $item;
                     })
+                    ->all();*/
+
+                    // Tareas/tarjetas de esta fase con status: 1 - "Todo"
+                    $todos = DB::table('card_projects')->where([
+                        ['phase_id', '=', $thisPhaseId],
+                        ['status', '=', '1'],
+                    ])->orderBy('task_order')->get()
+                    ->map(function ($item, $key) {
+                        return (array) $item;
+                    })
                     ->all();
-                    $projects[$i]["phases"][$j]["cards"] = $cards;
+
+                     // Tareas/tarjetas de esta fase con status: 2 - "Inprogress"
+                    $inprogress = DB::table('card_projects')->where([
+                        ['phase_id', '=', $thisPhaseId],
+                        ['status', '=', '2'],
+                    ])->orderBy('task_order')->get()
+                    ->map(function ($item, $key) {
+                        return (array) $item;
+                    })
+                    ->all();
+
+                     // Tareas/tarjetas de esta fase con status: 3 - "Done"
+                    $done = DB::table('card_projects')->where([
+                        ['phase_id', '=', $thisPhaseId],
+                        ['status', '=', '3'],
+                    ])->orderBy('task_order')->get()
+                    ->map(function ($item, $key) {
+                        return (array) $item;
+                    })
+                    ->all();
+
+                     // Tareas/tarjetas de esta fase con status: 4 - "hidden"
+                    $hidden = DB::table('card_projects')->where([
+                        ['phase_id', '=', $thisPhaseId],
+                        ['status', '=', '4'],
+                    ])->orderBy('task_order')->get()
+                    ->map(function ($item, $key) {
+                        return (array) $item;
+                    })
+                    ->all();
+
+                    $projects[$i]["phases"][$j]["cards"]["todos"] = $todos;
+                    $projects[$i]["phases"][$j]["cards"]["inprogress"] = $inprogress;
+                    $projects[$i]["phases"][$j]["cards"]["done"] = $done;
+                    $projects[$i]["phases"][$j]["cards"]["hidden"] = $hidden;
 
                 }
 
