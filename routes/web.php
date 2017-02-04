@@ -70,7 +70,9 @@ Route::resource('/admin/users', 'UserController');
 
     Route::get('app/userlogin/{mail?}', 'UserController@loginApp');
     Route::get('app/projects/{userid?}', 'ClientProjectController@projectsforapp');
-
+    Route::get('app/{userid?}/task/{taskid?}/{comment?}', 'CardCommentController@appMakeComment');
+    Route::get('app/task/{taskid?}/comments', 'CardCommentController@appReturnCommentsForTask');
+    
 	
 
 // ORGANIZER
