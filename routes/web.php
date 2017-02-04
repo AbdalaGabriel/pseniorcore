@@ -97,6 +97,8 @@ Route::resource('/admin/users', 'UserController');
 
 		Route::post('/tasks/{id?}/changeorder', 'CardProjectController@changeorder')->middleware('corsg');
 
+		Route::get('app/tasks/{id?}/changeorder/{neworder?}', 'CardProjectController@appchangeorder');
+
 		Route::get('/phase/{phaseid?}/tasks/{status?}', 'CardProjectController@givemeyourtasks');
 		Route::post('/task/givemeinfo', 'CardProjectController@givemetask');
 

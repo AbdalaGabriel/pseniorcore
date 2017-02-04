@@ -15,7 +15,7 @@ class CardProjectController extends Controller
     {
         if ($request->ajax()) 
         {
-           
+
             $phase = Phase::find($phaseid);
             $tasks = $phase->tasks;
             return response()->json($tasks);
@@ -31,19 +31,19 @@ class CardProjectController extends Controller
     public function store(Request $request)
     {
         if ($request->ajax()) {
-        $task = CardProject::create([
-           'title' => $request['tasktitle'],
-           'description' => $request['taskdescription'],
-           'client_project_id' =>  $request['projectId'],
-           'phase_id' =>  $request['phaseid'],
-           'status' =>  $request['status'],
-           'task_order'  =>  $request['order'],
-        ]);
+            $task = CardProject::create([
+             'title' => $request['tasktitle'],
+             'description' => $request['taskdescription'],
+             'client_project_id' =>  $request['projectId'],
+             'phase_id' =>  $request['phaseid'],
+             'status' =>  $request['status'],
+             'task_order'  =>  $request['order'],
+             ]);
 
 
-        return response()->json([
-            "mensaje"=>"creado"
-            ]);
+            return response()->json([
+                "mensaje"=>"creado"
+                ]);
         }
     }
 
@@ -54,7 +54,7 @@ class CardProjectController extends Controller
         $tasks = DB::table('card_projects')->where([
             ['phase_id', '=', $phaseid],
             ['status', '=', $status],
-        ])->orderBy('task_order')->get();
+            ])->orderBy('task_order')->get();
 
         return response()->json($tasks);
         
@@ -63,67 +63,93 @@ class CardProjectController extends Controller
     // se podría utilizar la funcion anterior pero se utiliza esta para que no quede 4 en la url, en referencia al id de las tarjetas ocultas
     public function givemehiddentasks(Request $request,$projectid, $phaseid)
     {
-       $hiddentasks = DB::table('card_projects')->where([
-            ['phase_id', '=', $phaseid],
-            ['status', '=', '4'],
+     $hiddentasks = DB::table('card_projects')->where([
+        ['phase_id', '=', $phaseid],
+        ['status', '=', '4'],
         ])->orderBy('task_order')->get();   
 
-       $project = ClientProject::find($projectid);
-       $actualphase = Phase::find($phaseid);
+     $project = ClientProject::find($projectid);
+     $actualphase = Phase::find($phaseid);
 
-       return view("organizer.projects.hiddentasks",["hiddentasks"=>$hiddentasks, "project"=>$project, "actualphase"=>$actualphase]);
+     return view("organizer.projects.hiddentasks",["hiddentasks"=>$hiddentasks, "project"=>$project, "actualphase"=>$actualphase]);
 
-    }
+ }
 
-     public function quickmodify(Request $request)
-    {
+ public function quickmodify(Request $request)
+ {
 
-        $card = CardProject::find($request["id"]);
-        $type = $request["type"];
-        $card->$type = $request["data"];
-        $card->save();
+    $card = CardProject::find($request["id"]);
+    $type = $request["type"];
+    $card->$type = $request["data"];
+    $card->save();
 
-        return response()->json([
-            "mensaje"=>"creado"
+    return response()->json([
+        "mensaje"=>"creado"
         ]);
+}
+
+public function givemetask(Request $request){
+    $task = CardProject::find($request["id"]);
+    return response()->json($task);
+}
+
+public function changestatus(Request $request, $id, $status){
+    $task = CardProject::find($id);
+    $task->status = $status;
+    $task->save();
+    return response()->json([
+        "mensaje"=>"Actualizado el estado."
+        ]);
+
+}
+
+public function changeorder(Request $request){
+ if ($request->ajax()) 
+ {
+
+    $newPositions = $request['neworder'];
+    $arrayLength = count($newPositions);
+
+    for ($i=0; $i < $arrayLength ; $i++) { 
+
+        $thisId = $newPositions[$i]['id'];
+        $thisPosition = $newPositions[$i]['position'];
+
+        $thisSlide = CardProject::find($thisId);
+        $thisSlide->task_order = $thisPosition;
+        $thisSlide->save();
+
     }
+    return response()->json($newPositions);
 
-    public function givemetask(Request $request){
-        $task = CardProject::find($request["id"]);
-        return response()->json($task);
+} 
+}
+
+public function  appchangeorder (Request $request, $id, $neworder){
+
+    // si pongo el segundo paametro en true me devuelve un array de arryas y no un array de objetos
+    $newPositions = json_decode($neworder, true);
+    $arrayLength = count($newPositions);
+    
+    for ($i=0; $i < $arrayLength ; $i++) { 
+
+        $thisId = $newPositions[$i]['id'];
+
+        $thisPosition = $newPositions[$i]['position'];
+
+        $thisSlide = CardProject::find($thisId);
+
+        $thisSlide->task_order = $thisPosition;
+        //print_r($thisId);
+        $thisSlide->save();
+
+      //  return response()->json($newPositions);
+
     }
+    // return($arrayLength);
+    return response()->json($newPositions);
+}
 
-    public function changestatus(Request $request, $id, $status){
-        $task = CardProject::find($id);
-        $task->status = $status;
-        $task->save();
-        return response()->json([
-            "mensaje"=>"Actualizado el estado."
-            ]);
-        
-    }
-
-    public function changeorder(Request $request){
-       if ($request->ajax()) 
-       {
-        
-        $newPositions = $request['neworder'];
-        $arrayLength = count($newPositions);
-   
-        for ($i=0; $i < $arrayLength ; $i++) { 
-       
-            $thisId = $newPositions[$i]['id'];
-            $thisPosition = $newPositions[$i]['position'];
-
-            $thisSlide = CardProject::find($thisId);
-            $thisSlide->task_order = $thisPosition;
-            $thisSlide->save();
-
-        }
-        return response()->json($newPositions);
-
-        } 
-    }
 
     public function show($id)
     {
@@ -141,7 +167,7 @@ class CardProjectController extends Controller
         //
     }
 
-  
+
     public function destroy($id)
     {
         //

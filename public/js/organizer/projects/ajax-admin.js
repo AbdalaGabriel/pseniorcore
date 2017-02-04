@@ -257,9 +257,6 @@ function updatecards()
 	//console.log( "- Limpieza" );
 
 
-	// Generación dinámica de ruta en base a la vista de grupo de tareas activa.
-	phaseId = $("#phaseId").val();
-	taskroute = baseurl+"mis-proyectos/"+projectId+"/phases/"+phaseId+"/tareas";
 
 	// Por cada columna de tareas ejecuto un llamado ajax queme traiga ordenadas mis tarjetas
 	$(".task-column").each(function(key, value)
@@ -267,7 +264,6 @@ function updatecards()
 		phaseId = $("#phaseId").val();
 		thisColumn = $(this);
 		thisColumnStatus = thisColumn.attr("data-tasks-status");
-		token = $("#token").val();
 
 		count = 0;
 		//console.log("el status de esta columna es "+ thisColumnStatus);
