@@ -73,6 +73,9 @@ Route::resource('/admin/users', 'UserController');
     Route::get('app/{userid?}/task/{taskid?}/{comment?}', 'CardCommentController@appMakeComment');
     Route::get('app/task/{taskid?}/comments', 'CardCommentController@appReturnCommentsForTask');
     
+
+    // BLOG
+	Route::get('/app/blog', 'BlogController@givemeposts');
 	
 
 // ORGANIZER

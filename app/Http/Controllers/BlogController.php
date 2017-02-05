@@ -56,6 +56,11 @@ class BlogController extends Controller
         
     }
 
+    public function givemeposts(){
+        $posts = Post::all();
+        return response()->json($posts);
+    }
+
 
     public function englishedit($id, Request $request)
     {
