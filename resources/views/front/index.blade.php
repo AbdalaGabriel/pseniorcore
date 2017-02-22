@@ -17,7 +17,7 @@
 
 	<!-- CSS Files -->
 	<link href="bootstrap-template-assets/materialKit/assets/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="bootstrap-template-assets/materialKit/assets/css/material-kit.css" rel="stylesheet"/>
+	
 	<link href="css/customization.css" rel="stylesheet"/>
 </head>
 
@@ -36,11 +36,9 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="http://www.creative-tim.com">
+				<a href="/">
 					<div class="logo-container">
-						<div class="logo">
-							<img src="assets/img/logo.png" alt="Creative Tim Logo" rel="tooltip" title="<b>Material Kit</b> was Designed & Coded with care by the staff from <b>Creative Tim</b>" data-placement="bottom" data-html="true">
-						</div>
+						
 						<div class="brand">
 							GABRIEL ABDALA
 						</div>
@@ -90,85 +88,84 @@
 
 
 	<div class="wrapper">
-		<div class="header header-filter" style="background-image: url('bootstrap-template-assets/materialKit/assets/img/bg2.jpeg');">
+		<div class="header header-filter">
+
+
 
 
 			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<div class="brand">
-							<h1>Hola,</h1>
-							<h3>Mi nombre es Gabriel Abdala, y soy diseñador.</h3>
-						</div>
-					</div>
+
+				<div id="particles-js"></div>
+				<div class="introduction-container">
+					<h1>Hola,</h1>
+					<h3>Mi nombre es Gabriel Abdala, y</h3>
+					<h3 class="changing-prhase">soy diseñador multimedial</h3>
 				</div>
 
-
-				
-
-			</div>
-		</div>
-
-		<div class="main main-raised">
-			<div class="container">
 
 				<div class="wrap">
 					<div class="slide">
 						<ul>
 							@foreach ($slides as $slide)	
-							<li style="background-image:url(/uploads/sliderhome/{!!$slide->path!!})">{!!$slide->title!!}</li>
-							@endforeach
-						</ul>
+							<li style="background-image:url(/uploads/sliderhome/{!!$slide->path!!})">
+								<h1>{!!$slide->title!!}</h1><h2>{!!$slide->subtitle!!}</h2></li>
+								@endforeach
+							</ul>
+						</div>
 					</div>
+
 				</div>
+			</div>
 
-				<section class="g-section">			
-					<div class="col-md-6">
-						<p>
-							For package developers. Takes a package folder and generates a .sublime-package file that can be uploaded onto the web and referenced in the packages.json file for a repository.
-						</p>
-						<p>
-							For package developers. Takes a package folder and generates a .sublime-package file that can be uploaded onto the web and referenced in the packages.json file for a repository.
-						</p>
-						<span class="firma">FIRMA</span>
-					</div>
-
-					<div class="col-md-6">
-					</div>
-				</section>
-
-				<section class="g-section">
-					<h2>Trabajos</h2>
-
-					@foreach ($projects as $project)		    
-					<div style="background-image: url('/uploads/projects/{!!$project->cover_image!!}')" class="porftolioItem col-md-3">
-						<!--<img src="/uploads/projects/{!!$project->cover_image!!}" alt="{!!$project->title!!}">-->
-						<a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a>
-					</div>
-					
-					@endforeach
-
-
-				</section>
+			<div class="main main-raised">
 				
-				<section class="g-section">
-					<h2>Novedades</h2>
-
-					@foreach ($posts as $post)		    
-					<div class="postItem col-md-3">
-						<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">{!!$post->title!!}</a>
-					</div>
-					
-					@endforeach
 
 
-				</section>
 
-				<section class="g-section">
-					<!-- Begin MailChimp Signup Form -->
-					<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-					<style type="text/css">
-						#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+					<section class="g-section descr-home">			
+						<div class="col-md-12">
+							<p>
+								For package developers. Takes a package folder and generates a .sublime-package file that can be uploaded onto the web and referenced in the packages.json file for a repository.
+							</p>
+							<p>
+								For package developers. Takes a package folder and generates a .sublime-package file that can be uploaded onto the web and referenced in the packages.json file for a repository.
+							</p>
+							<span class="firma">FIRMA</span>
+						</div>
+					</section>
+
+					<section class="g-section">
+						<h2>Trabajos</h2>
+
+						@foreach ($projects as $project)		    
+						<div style="background-image: url('/uploads/projects/{!!$project->cover_image!!}')" class="porftolioItem col-md-6">
+							<!--<img src="/uploads/projects/{!!$project->cover_image!!}" alt="{!!$project->title!!}">-->
+							<a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a>
+						</div>
+
+						@endforeach
+
+
+					</section>
+
+					<section class="g-section">
+						<h2>Novedades</h2>
+
+						@foreach ($posts as $post)		    
+						<div class="postItem col-md-3">
+							<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">{!!$post->title!!}</a>
+						</div>
+
+						@endforeach
+
+
+					</section>
+
+					<section class="g-section">
+						<!-- Begin MailChimp Signup Form -->
+						<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+						<style type="text/css">
+							#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
 						/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
 						We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 					</style>
@@ -186,7 +183,7 @@
 									<label for="mce-FNAME">Nombre </label>
 									<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
 								</div>
-			
+
 								<div class="mc-field-group">
 									<label for="mce-compania">Compañía</label>
 									<input type="text" value="" name="COMPANY" class="" id="mce-compania">
@@ -218,20 +215,19 @@
 						ftypes[2]='text';
 					}
 
-						(jQuery));
-					    var $mcj = jQuery.noConflict(true);
+					(jQuery));
+					var $mcj = jQuery.noConflict(true);
 
-					    console.log($mcj);
+					console.log($mcj);
 
-					   
 
-						</script>
-					<!--End mc_embed_signup-->
-				</section>
 
-			</div>
-		</div>
+				</script>
+				<!--End mc_embed_signup-->
+			</section>
+
 	</div>
+</div>
 
 
 
@@ -253,6 +249,11 @@
 {!!Html::script('bootstrap-template-assets/materialKit/assets/js/material-kit.js')!!}
 {!!Html::script('js/jquery.fadeImg.js')!!}
 {!!Html::script('js/form-controller.js')!!}
+
+<!--   Particulas  -->
+{!!Html::script('js/particles/particle.js')!!}
+{!!Html::script('js/functions.js')!!}
+
 {!!Html::script('js/baseurl.js')!!}
 
 <script>
