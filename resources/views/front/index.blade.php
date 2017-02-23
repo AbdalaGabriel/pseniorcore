@@ -40,7 +40,7 @@
 					<div class="logo-container">
 						
 						<div class="brand">
-							GABRIEL ABDALA
+							<img src="/img/front/g.svg">
 						</div>
 
 
@@ -96,11 +96,23 @@
 			<div class="container">
 
 				<div id="particles-js"></div>
-				<div class="introduction-container">
-					<h1>Hola,</h1>
-					<h3>Mi nombre es Gabriel Abdala, y</h3>
-					<h3 class="changing-prhase">soy diseñador multimedial</h3>
+				
+				<div class="inner-container">
+					<div class="introduction-container">
+						<h1>Hola,</h1>
+						<h3 class="home-phrase">Mi nombre es Gabriel Abdala, y</h3>
+						<h3 class="changing-prhase">soy diseñador multimedial</h3>
+					</div>
+
+					<a class="cta-home">Mirá mis trabajos</a>
+
+					<div class="big-g-container">
+						<img src="/img/front/g.svg">
+					</div>
+
 				</div>
+
+
 
 
 				<div class="wrap">
