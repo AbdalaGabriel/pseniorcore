@@ -56,11 +56,26 @@ a{
   color:white;
 }
 
+.main-raised {
+    padding: 0 0 3em 0;
+}
+
+p{
+    margin: 0 0 10px;
+    font-size: 1.4em;
+    line-height: 1.6em;
+}
+
 .header{
     height: 100vh;
     background: #0e0e0e;
     color: white;
     font-weight: 100;
+}
+
+.main .header{
+      background: url(../img/front/mainbg2.jpg);
+      background-size: cover;
 }
 
 .brand{
@@ -115,7 +130,7 @@ a{
     opacity: .5;
     right: 351px;
     -webkit-mask: url(/img/front/g.svg);
-    background: #343446;
+    background: #b91b45;
     top: 100px;
     /* text-align: right; */
 }

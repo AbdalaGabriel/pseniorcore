@@ -23,7 +23,7 @@
 
 </head>
 
-<body>
+<body class="main">
 
 	<!-- Navbar will come here -->
 
