@@ -19,6 +19,8 @@
 	<link href="bootstrap-template-assets/materialKit/assets/css/bootstrap.min.css" rel="stylesheet" />
 	
 	<link href="css/customization.css" rel="stylesheet"/>
+	<link href="https://fonts.googleapis.com/css?family=Old+Standard+TT:400,400i,700" rel="stylesheet">
+
 </head>
 
 <body>
@@ -99,15 +101,15 @@
 				
 				<div class="inner-container">
 					<div class="introduction-container">
-						<h1>Hola,</h1>
-						<h3 class="home-phrase">Mi nombre es Gabriel Abdala, y</h3>
+						<h1 class="hello">Hola,</h1>
+						<h3 class="home-phrase">Mi nombre es <span class="name">Gabriel Abdala</span>, y</h3>
 						<h3 class="changing-prhase">soy diseñador multimedial</h3>
 					</div>
 
 					<a class="cta-home">Mirá mis trabajos</a>
 
 					<div class="big-g-container">
-						<img src="/img/front/g.svg">
+						<!-- <img src="/img/front/g.svg"> -->
 					</div>
 
 				</div>
@@ -134,33 +136,23 @@
 
 
 
-					<section class="g-section descr-home">			
-						<div class="col-md-12">
-							<p>
-								For package developers. Takes a package folder and generates a .sublime-package file that can be uploaded onto the web and referenced in the packages.json file for a repository.
-							</p>
-							<p>
-								For package developers. Takes a package folder and generates a .sublime-package file that can be uploaded onto the web and referenced in the packages.json file for a repository.
-							</p>
-							<span class="firma">FIRMA</span>
-						</div>
-					</section>
-
 					<section class="g-section">
+						<div class="section-container">
 						<h2>Trabajos</h2>
 
 						@foreach ($projects as $project)		    
-						<div style="background-image: url('/uploads/projects/{!!$project->cover_image!!}')" class="porftolioItem col-md-6">
+						<div  class="porftolioItem col-md-6">
 							<!--<img src="/uploads/projects/{!!$project->cover_image!!}" alt="{!!$project->title!!}">-->
 							<a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a>
 						</div>
 
 						@endforeach
 
-
+						</div>
 					</section>
 
 					<section class="g-section">
+					<div class="section-container">
 						<h2>Novedades</h2>
 
 						@foreach ($posts as $post)		    
@@ -169,11 +161,13 @@
 						</div>
 
 						@endforeach
+						</div>
 
 
 					</section>
 
 					<section class="g-section">
+					<div class="section-container">
 						<!-- Begin MailChimp Signup Form -->
 						<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 						<style type="text/css">
@@ -236,6 +230,7 @@
 
 				</script>
 				<!--End mc_embed_signup-->
+				</div>
 			</section>
 
 	</div>
