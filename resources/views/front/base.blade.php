@@ -44,83 +44,76 @@
     {!!Html::style('css/customization.css')!!}
 </head>
 
-<body>
+<body class="intern">
 
 <!-- Navbar will come here -->
 
 <!-- end navbar -->
 
 <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
-	<div class="container">
-        <div class="navbar-header">
-	    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-index">
-	        	<span class="sr-only">Toggle navigation</span>
-	        	<span class="icon-bar"></span>
-	        	<span class="icon-bar"></span>
-	        	<span class="icon-bar"></span>
-	    	</button>
-	    	<a href="http://www.creative-tim.com">
-	        	<div class="logo-container">
-	                <div class="logo">
-	                    <img src="assets/img/logo.png" alt="Creative Tim Logo" rel="tooltip" title="<b>Material Kit</b> was Designed & Coded with care by the staff from <b>Creative Tim</b>" data-placement="bottom" data-html="true">
-	                </div>
-	                <div class="brand">
-	                    GABRIEL ABDALA
-	                </div>
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-index">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="/">
+					<div class="logo-container">
+						
+						<div class="brand">
+							<img src="/img/front/g.svg">
+						</div>
 
 
-				</div>
-	      	</a>
-	    </div>
+					</div>
+				</a>
+			</div>
 
-	    <div class="collapse navbar-collapse" id="navigation-index">
-	    	<ul class="nav navbar-nav navbar-right">
-				<li>
-						 {!! link_to_action('FrontController@index','Home') !!}
+			<div class="collapse navbar-collapse" id="navigation-index">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						{!! link_to_action('FrontController@index','Home') !!}
 					</li>
 					<li>
-						 {!! link_to_action('FrontController@portfolio','Portfolio') !!}
+						{!! link_to_action('FrontController@portfolio','Portfolio') !!}
 					</li>
 					<li>
-						 {!! link_to_action('FrontController@blog','Noticias y novedades') !!}
+						{!! link_to_action('FrontController@blog','Noticias y novedades') !!}
 					</li>
-				<li>
-					<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-						Acceso clientes
-					</a>
-				</li>
-				<li>
-					<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-						Multimedia now
-					</a>
-				</li>
-				<li>
-					<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-						Sobre mi
-					</a>
-				</li>
-				<li>
-					<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-						Contacto
-					</a>
-				</li>
+					<li>
+						<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
+							Acceso clientes
+						</a>
+					</li>
+					<li>
+						<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
+							Multimedia now
+						</a>
+					</li>
+					<li>
+						<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
+							Sobre mi
+						</a>
+					</li>
+					<li>
+						<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
+							Contacto
+						</a>
+					</li>
 
-	    	</ul>
-	    </div>
-	</div>
-</nav>
+				</ul>
+			</div>
+		</div>
+	</nav>
 <!-- End Navbar -->
 
 <div class="wrapper">
 	<div class="header header-filter" style="background-image: url('bootstrap-template-assets/materialKit/assets/img/bg2.jpeg');">
 		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					<div class="brand">
-						
-					</div>
-				</div>
-			</div>
+			<div id="particles-js"></div>
+			<div class="page-title">@yield('page-title')</div>
 
 		</div>
 	</div>
@@ -151,5 +144,7 @@
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	{!!Html::script('bootstrap-template-assets/materialKit/assets/js/material-kit.js')!!}
+	{!!Html::script('js/particles/particle.js')!!}
+	{!!Html::script('js/functions.js')!!}
 
 </html>

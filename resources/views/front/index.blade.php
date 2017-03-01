@@ -143,7 +143,8 @@
 						@foreach ($projects as $project)		    
 						<div  class="porftolioItem col-md-6">
 							<!--<img src="/uploads/projects/{!!$project->cover_image!!}" alt="{!!$project->title!!}">-->
-							<a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a>
+							<div class="project-image-container"></div>
+							<a class="item-name" href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a>
 						</div>
 
 						@endforeach
@@ -157,6 +158,7 @@
 
 						@foreach ($posts as $post)		    
 						<div class="postItem col-md-3">
+							<div class="project-image-container"></div>
 							<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">{!!$post->title!!}</a>
 						</div>
 

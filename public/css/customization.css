@@ -217,13 +217,25 @@ font-size: 1.6em;
 }
 
 .porftolioItem{
-        min-height: 20em;
+
+}
+
+.project-image-container{
+        min-height: 12em;
     background: #dedede;
     line-height: 20em;
     text-align: center;
     color: white;
     border: 2px solid;
     font-size: 2em;
+    margin: 0 0 .5em 0;
+}
+
+ a.item-name{
+  font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    color: black;
 }
 
 .dropzone {
@@ -436,4 +448,22 @@ display: block;
     border-radius: 1em;
     z-index: 100;
     display: none;
+}
+
+.intern .header{
+height: 65vh;
+}
+
+.page-title{
+    color: white;
+    position: absolute;
+    z-index: 1000;
+    width: 90%;
+    margin: 0 5%;
+    top: 30vh;
+    text-align: center;
+    font-size: 3em;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 7px;
 }

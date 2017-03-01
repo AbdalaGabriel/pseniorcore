@@ -7,6 +7,7 @@
 
 @section('mainTitle'){!!$project->title!!}@endsection
 
+@section('page-title'){!!$project->title!!}@endsection
 @section('main')
 
 @if($project->en_urlfriendly != "")
