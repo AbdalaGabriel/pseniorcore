@@ -7,15 +7,13 @@ $( document ).ready(function()
 
 function init()
 {
-	console.log("- Function init - Blog");
+	console.log("- Function init - Blog - Edition mode");
 	var submit = $("#sendForm");
 
 	detectEvents();
-
 	submit.click(function(e)
 	{
-		
-		// Evitamos que haga submit via formulario, para manejarlo por JS.
+			// Evitamos que haga submit via formulario, para manejarlo por JS.
 		e.preventDefault();
 		console.log("- Click submit");
 
@@ -31,12 +29,12 @@ function init()
 		var description = $("#new-post-content").val();
 		var meta_description = $("#new-meta-content").val();
 		var coverImage = fileSelected;
-		var routeNew = baseurl+'admin/blog';
+		var itemId = $(".item-id").val();
+		var routeEdit = baseurl+'admin/blog/'+itemId;
 		var urlfContent = $("#new-post-urlf").val();
-
+		
 		
 		// Sending test
-
 		console.log(title);
 		console.log(token);
 		console.log(description);
@@ -50,9 +48,9 @@ function init()
 		//AJAX Mandamos el formulario manualmente via AJAX.
 		$.ajax(
 		{
-			url: routeNew,
+			url: routeEdit,
 			headers: {'X-CSRF-TOKEN': token},
-			type: 'POST',
+			type: 'PUT',
 			dataType: 'json',
 			data: 
 			{
@@ -61,17 +59,20 @@ function init()
 				categories:categories ,
 				urlf: urlfContent,
 				metadescription: meta_description,
+				editionMethod: 'full',
 			},
 
 			success: function(projectId){
-				console.log("- Proyecto creado exitosamente");
+				console.log("- Proyecto editado exitosamente");
 				console.log("- Iniciamos Carga de imagen en proyecto");
-				dropzone.processQueue();
+				//dropzone.processQueue();
 				console.log(projectId);
 				//$.redirect(baseurl+'admin/blog/');
 			}
 		});
 	});
+
+
 }
 
 function detectEvents(){

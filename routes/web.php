@@ -136,6 +136,9 @@ Route::get('/admin', 'FrontController@admin');
 		// Categorías del blog
 		Route::resource('/admin/categorias', 'CategoryController');
 
+		// Imagen de portada.
+		Route::post('admin/blog/uploadimage', 'BlogController@uploadimage');
+
 		// VERSIÓN EN INGLÉS
 		Route::get('admin/blog/en/{id?}/edit', 'BlogController@englishedit' );
 		Route::put('admin/blog/en/{id?}/update/', 'BlogController@englishupdate' );

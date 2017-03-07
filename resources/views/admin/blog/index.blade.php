@@ -19,6 +19,7 @@
 
 		<table class="table">
 			<thead>
+				<th>Cover</th>
 				<th>Titulo</th>
 				<th>URL</th>
 				<th>Categorias</th>

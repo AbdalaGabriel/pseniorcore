@@ -111,9 +111,12 @@
 
 <div class="wrapper">
 	<div class="header header-filter" style="background-image: url('bootstrap-template-assets/materialKit/assets/img/bg2.jpeg');">
+		@yield('cover-image')
 		<div class="container">
 			<div id="particles-js"></div>
-			<div class="page-title">@yield('page-title')</div>
+			<div class="page-title">
+				<h1>@yield('page-title')</h1>
+			</div>
 
 		</div>
 	</div>

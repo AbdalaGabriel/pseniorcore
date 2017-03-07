@@ -34,7 +34,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 </head>
 
-<body>
+<body class="admin">
 
 
 	<div class="wrapper">
@@ -46,7 +46,7 @@
 
 		        Tip 2: you can also add an image using data-image tag
 		    -->
-
+			<div id="particles-js"></div>
 			<div class="logo">
 				<a href="http://www.creative-tim.com" class="simple-text">
 					Administrar sitio
@@ -97,7 +97,7 @@
 								
 							</li>
 							<li>
-								    <{!! link_to_action('ProjectCategoryController@index','Categorias') !!}
+								    {!! link_to_action('ProjectCategoryController@index','Categorias') !!}
 								
 							</li>
 						</ul>
@@ -116,12 +116,7 @@
 	    </div>
 
 	    <div class="main-panel">
-			<nav class="navbar navbar-transparent navbar-absolute">
-				<div class="container-fluid">
-				<!-- HEADER-->
-					<h2 class="adminTitle">@yield('title')</h2>
-				</div>
-			</nav>
+			<h2 class="adminTitle">@yield('title')</h2>
 
 			<div class="content">
 				<div class="container-fluid">
@@ -185,8 +180,16 @@
 	<!-- Material Dashboard javascript methods -->
 	<!-- <script src="../resources/assets/bootstrap-template-assets/js/material-dashboard.js"></script>-->
 	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/js/froala_editor.min.js'></script>
+	{!!Html::script('js/particles/particle.js')!!}
 	
 	@yield('aditional-scripts')
+
+	<script>
+		console.log("Particles =)");
+	particlesJS.load('particles-js', '/js/particles/particles.json', function() {
+	  console.log('callback - particles.js config loaded');
+	});
+	</script>
 	
 
 </html>

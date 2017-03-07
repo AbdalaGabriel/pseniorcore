@@ -116,8 +116,10 @@ class BlogController extends Controller
     {
         // Recibo la informacion que me llega
         $title = $request['title'];
-        $content = $request['content'];
-        $CategoriesIds = Input::get('ch');
+        $content = $request['description'];
+        $CategoriesIds = $request['categories'];
+        $urlfriendly = $request['urlf'];
+        $metadescription = $request['metadescription'];
         $categoriesNames = array();
 
         //Guardo con los ids de categorias que estan en el checkbox, los nombres de las mismas ne un array.
@@ -133,6 +135,8 @@ class BlogController extends Controller
         Post::create([
             'title' => $title,
             'content' => $content,
+            'urlfriendly' => $urlfriendly,
+            'meta_description' => $metadescription,
             ]);
 
         // Busco su id mediante una querie que me traiga el ultimo posteo en base a su nombre.
@@ -145,16 +149,42 @@ class BlogController extends Controller
         
     }
 
-    public function appendCategoriesForPost($idLastPost, $CategoriesIds)
+    
+    // GUARDADO DE IMAGEN DE PORTADA
+    public function uploadimage(Request $request)
     {
+          // Obtngo datos via request.
+       $image = $request->file('file');
+          //Seteo variables de path y nombre.
+       $path = public_path().'\uploads\posts';
+       $imageName=$image->getClientOriginalName() ;
 
-        $post = Post::find($idLastPost);
+          // Selecciono ultimo proyecto agregado a la base de datos, mediante una query
+       $ultimoPost = DB::table('posts')->select('id')->latest()->first();
+       $idUltimoPost = $ultimoPost->id;
+       $post = Post::find($idUltimoPost);
+
+          //Accedo al campo cover_image, del objeto Project, traido mediante su id y le pongo el de la imagen subida.
+       $post->cover_image = $imageName;
+       $post->save();
+
+          //Muevo el arvhio al directorio publico para imagenes del proyecto.
+       $image->move($path, $imageName);
+       return("Se creo la imagen de portada y se almaceno");
+   }
+
+
+    //Agregado de categorias
+   public function appendCategoriesForPost($idLastPost, $CategoriesIds)
+   {
+
+    $post = Post::find($idLastPost);
 
         // Funcion que sincroniza todos los ids de un array y los va asignando al id del posteo en cuestion en la tabla pivot.
-        $post->categories()->sync($CategoriesIds);
+    $post->categories()->sync($CategoriesIds);
 
-        return Redirect::to('/admin/blog');
-    }    
+    return Redirect::to('/admin/blog');
+}    
 
     /**
      * Display the specified resource.
@@ -244,27 +274,61 @@ class BlogController extends Controller
         if ($request->ajax())
         {
             $post = Post::find($id);
-            $post->title = $request['title'];
-            $CategoriesIds =  $request['categoyData'];
-            $arrayLength = count($CategoriesIds);
-            $allCategoriesIds = array();
+            $editionMethod = $request['editionMethod'];
 
-            for ($i=0; $i < $arrayLength ; $i++) { 
-                $thisId = $CategoriesIds[$i]['catid'];
-                $belongstopost = $CategoriesIds[$i]['belongstopost'];
+            // Pregunto si el metodo de edicion es quick edit o full
+            // Edicion completa - pagina editar post
+            if($editionMethod == "full")
+            {
 
-                if($belongstopost == "true"){
-                    $allCategoriesIds[] = $thisId; 
+                $post->title = $request['title'];
+                $post->content = $request['description'] ;
+                $post->urlfriendly = $request['urlf'];
+                $post->meta_description = $request['meta_description'] ;
+
+                $CategoriesIds = $request['categories'];
+                $arrayLength = count($CategoriesIds);
+                $allCategoriesIds = array();
+
+                for ($i=0; $i < $arrayLength ; $i++) { 
+                    $thisId = $CategoriesIds[$i]['catid'];
+                    $belongstopost = $CategoriesIds[$i]['belongstopost'];
+
+                    if($belongstopost == "true"){
+                        $allCategoriesIds[] = $thisId; 
+                    }
                 }
 
-                
+                $post->categories()->sync($allCategoriesIds);
+
             }
+           
+            //Edicion rapida - pop up - quick edit
+            elseif($editionMethod == "quick")
+           
+            {
+                $CategoriesIds =  $request['categoyData'];
+                $post->title = $request['title'];
+                $arrayLength = count($CategoriesIds);
+                $allCategoriesIds = array();
+
+                for ($i=0; $i < $arrayLength ; $i++) { 
+                    $thisId = $CategoriesIds[$i]['catid'];
+                    $belongstopost = $CategoriesIds[$i]['belongstopost'];
+
+                    if($belongstopost == "true"){
+                        $allCategoriesIds[] = $thisId; 
+                    }
+                }
+
+                $post->categories()->sync($allCategoriesIds);
+            }
+
             
-            $post->categories()->sync($allCategoriesIds);
             $post->save();
 
             return response()->json([
-                "mensaje" =>$belongstopost
+                "mensaje" =>'Proyecto editado satisfactoriamente'
                 ]);
         }
         else
@@ -347,8 +411,14 @@ class BlogController extends Controller
     {
         $post = Post::find($id);
         $post->categories()->detach();
-        $post->delete();
+        
+        $coverImageName = $post->cover_image;
+        $coverImagePath = public_path()."/uploads/posts/".$coverImageName;
 
+        // Eliminar imágenes que tenia relacionadas en la base de datos, que se guardaban en la carpeta projects-
+        File::delete($coverImagePath);
+
+        $post->delete();
 
         return response()->json([
             "mensaje" =>"borrado"
