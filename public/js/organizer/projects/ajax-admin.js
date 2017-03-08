@@ -202,7 +202,7 @@ function carga()
 			$(res).each(function(key, value)
 			{
 				//console.log("Agregada tarea "+value.title)
-				grouptasks.append('<a  href="'+baseurl+"mis-proyectos/"+projectId+"/phase/"+value.id+'">'+value.title+'</a> - <a class="deletePhase" data-toggle="modal" data-target="#delete-this-phase" data-id="'+value.id+'" href="#">Borrar</a></br>');
+				grouptasks.append('<a  href="'+baseurl+"mis-proyectos/"+projectId+"/phase/"+value.id+'">'+value.title+'</a> - <a class="deletePhase" data-toggle="modal" data-target="#delete-this-phase" data-id="'+value.id+'" href="#">Borrar</a>');
 			});
 		} 
 		else

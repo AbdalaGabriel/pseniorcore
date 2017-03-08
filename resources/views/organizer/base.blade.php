@@ -17,11 +17,7 @@
     <!-- Bootstrap core CSS     -->
      {!!Html::style('bootstrap-template-assets/css/bootstrap.min.css')!!}
 
-    <!--  Material Dashboard CSS    -->
-	 {!!Html::style('bootstrap-template-assets/css/material-dashboard.css')!!}
- 
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-	 {!!Html::style('bootstrap-template-assets/css/demo.css')!!}
+   
     	
     <!-- Include Editor style. -->
 <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
@@ -30,53 +26,29 @@
 	
 
 	 {!!Html::style('css/customization.css')!!}
+	 {!!Html::style('css/organizer.css')!!}
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 </head>
 
-<body>
+<body class="organizer">
 
 
 	<div class="wrapper">
 				
-
-	    <div class="sidebar" data-color="purple" data-image="http://localhost/coresenior/public/bootstrap-template-assets/img/sidebar-1.jpg">
-			<!--
-		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
-
-		        Tip 2: you can also add an image using data-image tag
-		    -->
-
-			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text">
-					Administrar sitio
-				</a>
-			</div>
-
-	    	<div class="sidebar-wrapper">
-	           
-	              <ul class="nav">
-					<li>
-						<a href="dashboard.html">
-							Proyectos
-						</a>
-					</li>
-					
-
-				  </ul>    
-					
-	    	</div>
-	    </div>
-
-	    <div class="main-panel">
-			<nav class="navbar navbar-transparent navbar-absolute">
-				<div class="container-fluid">
+	    <header class="organizer-header">
+				<div id="particles-js"></div>
 				<!-- HEADER-->
 					<h2 class="adminTitle">@yield('title')</h2>
-				</div>
-			</nav>
+					<div class="description-container">@yield('descr-project')</div>
+					
+		</header>
+		@yield('project-tasks')
+
+	    <div class="main-panel">
+			
 
 			<div class="content">
 				<div class="container-fluid">
@@ -144,5 +116,6 @@
 	
 	@yield('aditional-scripts')
 	
-
+{!!Html::script('js/particles/particle.js')!!}
+	{!!Html::script('js/functions.js')!!}
 </html>

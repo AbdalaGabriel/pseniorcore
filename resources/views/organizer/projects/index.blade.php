@@ -6,8 +6,11 @@
 <input data-type="title" data-url="clientproject/quickmodify" data-id="{!!$project->id!!}" title="Editar titulo del proyecto" class="inputOff" type="text" id="projectName" data-element-type="project" value="{!!$project->title!!}">
 @endsection
 
-
-
+@section('project-tasks')
+<div id="grouptasks"></div> 
+<a  class="new-group-task"   data-toggle="modal" data-target="#createPhase" href="#">Crear nueva fase.</a>
+@endsection
+    
 @section('main')
 
 
@@ -15,15 +18,14 @@
 @include('organizer.projects.messages.createtask')
 @include('organizer.projects.messages.deletephase')
 @include('organizer.projects.card.card-detail')
-
-<input data-type="description" data-url="clientproject/quickmodify" data-id="{!!$project->id!!}" title="Editar descripción del proyecto" class="inputOff" type="text" id="projectName" data-element-type="project" value="{!!$project->description!!}">
+	
+	@section('descr-project')
+	<input data-type="description" data-url="clientproject/quickmodify" data-id="{!!$project->id!!}" title="Editar descripción del proyecto" class="inputOff" type="text" id="projectName" data-element-type="project" value="{!!$project->description!!}">
+	@endsection
 
 	<input id="projectId" type="hidden" name="" value="{!! $project->id !!}">
 	
-	<div id="grouptasks"></div> 
-	<a  class="new-group-task"   data-toggle="modal" data-target="#createPhase" href="#">Crear nueva fase.</a>
 	
-	<h6>Vista de tareas para</h6>
 
 	<h2>Fase: 
 	<input data-type="title" data-url="clientproject/grouptask/quickmodify" data-id="{!!$actualphase->id!!}" title="Editar titulo del proyecto" class="inputOff" type="text" id="phaseName" data-element-type="phase" value="{!!$actualphase->title!!}">

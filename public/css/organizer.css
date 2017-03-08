@@ -1,0 +1,57 @@
+.organizer .inputOff {
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 100%;
+        letter-spacing: 2px;
+}
+
+.organizer-header{
+      background: #303054;
+      padding: 2em;
+          position: relative;
+              overflow: hidden;
+}
+
+.organizer-header h2{
+    background: none;
+    color: white;
+    padding: 0;
+    font-weight: 100;
+}
+
+.description-container input{
+  color: #bcbcde;
+    letter-spacing: 1px;
+    font-size: 1.2em;
+    width: 100%;
+}
+#grouptasks {
+    background: #e0e0e0;
+    padding: 1em 2em;
+    overflow: hidden;
+}
+
+#grouptasks a{
+    background: #6076ad;
+    padding: .5em 1.5em;
+    display: block;
+    float: left;
+    letter-spacing: 1px;
+    font-weight: 300;
+    border-radius: 2em;
+    margin: 0 1em 0 0;
+}
+
+.new-group-task{
+    position: absolute;
+    top: 10em;
+    right: 1em;
+    background: #b51956;
+    border-radius: 2em;
+    padding: 1em 2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 300;
+    font-size: 12px;
+}
