@@ -9,7 +9,7 @@ function init()
 {
 	console.log("- Function init - Blog - Edition mode");
 	var submit = $("#sendForm");
-
+	$('#new-post-content').froalaEditor();
 	detectEvents();
 	submit.click(function(e)
 	{
@@ -62,11 +62,12 @@ function init()
 				editionMethod: 'full',
 			},
 
-			success: function(projectId){
+			success: function(data){
 				console.log("- Proyecto editado exitosamente");
 				console.log("- Iniciamos Carga de imagen en proyecto");
-				//dropzone.processQueue();
-				console.log(projectId);
+				dropzone.processQueue();
+				console.log(itemId);
+				$("body").append('<p class="wellmessage">'+data+'</p>');
 				//$.redirect(baseurl+'admin/blog/');
 			}
 		});

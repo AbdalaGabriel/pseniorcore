@@ -46,9 +46,11 @@
 			{!!Form::label('categories', 'Categorías', ['class' => 'form-control top-0 ']);!!}
 			@foreach ($finalObj->categoryData as $category)		    
 				@if($category['belongstopost']==true)
-					<input checked  data-postid="{{$category['catid']}}" class="categoryCheckbox"  type="checkbox" name="ch[]" value="{{$category['catid']}}"> 
+					<label class="input-label"><input checked  data-postid="{{$category['catid']}}" class="categoryCheckbox"  type="checkbox" name="ch[]" value="{{$category['catid']}}"> {{$category['title']}}</label>
+					
 				@elseif($category['belongstopost']==false)
-					<input data-postid="{{$category['catid']}}" class="categoryCheckbox"  type="checkbox" name="ch[]" value="{{$category['catid']}}">
+					<label class="input-label"><input data-postid="{{$category['catid']}}" class="categoryCheckbox"  type="checkbox" name="ch[]" value="{{$category['catid']}}">{{$category['title']}}</label>
+					
 				@endif
 			@endforeach
 		
@@ -76,7 +78,7 @@
 @section('aditional-scripts')
 {!!Html::script('js/baseurl.js')!!}
 {!! Html::script('js/blog/create.js') !!}
-{!! Html::script('js/blog/ajax-admin.js') !!}
+
 {!! Html::script('dropzone/dist/dropzone.js') !!}
 {!! Html::script('js/blog/dz-control.js') !!}
 

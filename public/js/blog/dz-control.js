@@ -2,6 +2,7 @@
 Dropzone.autoDiscover = false;
 var dropzoneO;
 token = $("div#myDropZone").attr("data-token");
+tokenEdit = $("div#myDropZone-edit").attr("data-token");
 var fileSelected;
 console.log(token);
 
@@ -49,7 +50,7 @@ $("div#myDropZone-edit").dropzone({
    uploadMultiple: false,
    maxFilezise: 10,
    maxFiles: 1,
-   headers: { "X-CSRF-TOKEN": token },
+   headers: { "X-CSRF-TOKEN": tokenEdit },
 
    init: function() {
       dropzone = this;

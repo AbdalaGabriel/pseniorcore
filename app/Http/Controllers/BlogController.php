@@ -214,50 +214,65 @@ class BlogController extends Controller
         //Los tengo por separado para compararlos contra los ids de las demas categorias, y construir los checks.
 
         $thisPostCategoriesIds = array();
-
+        $index = 0;
         foreach ($categories as $category) {
-            $thisPostCategoriesIds[]=$category->id;
+
+            $thisPostCategoriesIds[$index]["id"]=$category->id;
+            $thisPostCategoriesIds[$index]["title"]=$category->title;
+             $index++;
         }
+
 
         //IDS GENERALES DE TODAS LAS CATEGORRIAS
 
         $allcategories = Category::all();
         $allCategoriesIds = array();
+        $arrayLengthAllCats = count($allcategories);
 
-        foreach ($allcategories as $itemcategory) {
-            $allCategoriesIds[]=$itemcategory->id;
+        for ($i=0; $i < $arrayLengthAllCats ; $i++) 
+        {
+            $allCategoriesIds[$i]["id"]=$allcategories[$i]["id"];
+            $allCategoriesIds[$i]["title"]=$allcategories[$i]["title"];
         }
 
+        //var_dump($allCategoriesIds);
         //COMPARACION ENTRE IDS DE ARRAYS, detecto cuales de los ids de la cat generales corresponden a las del post, si es asi creo un nuevo objeto que indique que de todas las categorias el post tiene esa.
 
         $finalObjectCategoriesThisPost = array();
         $index = 0;
+        $arrayLength = count($allCategoriesIds);
 
-        foreach ($allcategories as $finalItemCategory) {
-            $thisIdCat = $finalItemCategory->id;
+        for ($i=0; $i < $arrayLength ; $i++) { 
+           
+            $thisIdCat = $allCategoriesIds[$i]['id'];
+            $search = array_search($thisIdCat, array_column($thisPostCategoriesIds, 'id'));
+            
             //comparo
-            if (in_array($thisIdCat, $thisPostCategoriesIds))
+            if ($search !== false) // Usar distinto estrictamente, sino toma el 0 como false.
             {
-                $finalObjectCategoriesThisPost[$index]['catid']=$thisIdCat;
-                $finalObjectCategoriesThisPost[$index]['belongstopost']=true;
+                $finalObjectCategoriesThisPost[$i]['catid']=$thisIdCat;
+                $finalObjectCategoriesThisPost[$i]['belongstopost']=true;
+                $finalObjectCategoriesThisPost[$i]['title']=$allCategoriesIds[$i]["title"];
             }
             else
             {
-                $finalObjectCategoriesThisPost[$index]['catid']=$thisIdCat;
-                $finalObjectCategoriesThisPost[$index]['belongstopost']=false;
+                $finalObjectCategoriesThisPost[$i]['catid']=$thisIdCat;
+                $finalObjectCategoriesThisPost[$i]['belongstopost']=false;
+                $finalObjectCategoriesThisPost[$i]['title']=$allCategoriesIds[$i]["title"];
             }
-            $index++;
+            
         }
 
         // Contruyo mi objeto final que tiene los datos del post, y todas las categorias, mas a las que éste pertenece
         $finalObj['categoryData'] = $finalObjectCategoriesThisPost;
-
+        
+       // var_dump($finalObj);
         if ($request->ajax()) 
         {
             return response()->json($finalObj);
-        }else
+        }
+        else
         {
-
             return view('admin.blog.edit', ['finalObj'=>$finalObj]);
         };
     }
@@ -284,22 +299,12 @@ class BlogController extends Controller
                 $post->title = $request['title'];
                 $post->content = $request['description'] ;
                 $post->urlfriendly = $request['urlf'];
-                $post->meta_description = $request['meta_description'] ;
+                $post->meta_description = $request['metadescription'] ;
 
                 $CategoriesIds = $request['categories'];
-                $arrayLength = count($CategoriesIds);
-                $allCategoriesIds = array();
+                
+                $post->categories()->sync($CategoriesIds);
 
-                for ($i=0; $i < $arrayLength ; $i++) { 
-                    $thisId = $CategoriesIds[$i]['catid'];
-                    $belongstopost = $CategoriesIds[$i]['belongstopost'];
-
-                    if($belongstopost == "true"){
-                        $allCategoriesIds[] = $thisId; 
-                    }
-                }
-
-                $post->categories()->sync($allCategoriesIds);
 
             }
            
@@ -322,14 +327,14 @@ class BlogController extends Controller
                 }
 
                 $post->categories()->sync($allCategoriesIds);
+           
             }
-
-            
+        
             $post->save();
 
             return response()->json([
                 "mensaje" =>'Proyecto editado satisfactoriamente'
-                ]);
+            ]);
         }
         else
         {

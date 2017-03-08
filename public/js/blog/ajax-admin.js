@@ -11,7 +11,6 @@ $( document ).ready(function()
 function carga()
 {
 	counter++;
-	$('#new-post-content').froalaEditor()
 	console.log( "- Carga "+counter );
 	var route = baseurl+"admin/blog";
 	console.log("- Ruta de trabajo: " + route);
@@ -135,11 +134,11 @@ function defineListerner()
 				{
 					if(categoyData[i].belongstopost == true)
 					{
-						checksContainer.append('<input  data-postid="'+postid+'" class="categoryCheckbox" checked type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].catid)
+						checksContainer.append('<label class="input-label"> <input  data-postid="'+postid+'" class="categoryCheckbox" checked type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].title+'</label>')
 
 					}else
 					{
-						checksContainer.append('<input  data-postid="'+postid+'" class="categoryCheckbox" type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].catid)
+						checksContainer.append('<label class="input-label">  <input  data-postid="'+postid+'" class="categoryCheckbox" type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].title+'</label>')
 
 					}
 				}

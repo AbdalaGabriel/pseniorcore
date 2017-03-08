@@ -9,7 +9,7 @@ function init()
 {
 	console.log("- Function init - Blog");
 	var submit = $("#sendForm");
-
+	$('#new-post-content').froalaEditor();
 	detectEvents();
 
 	submit.click(function(e)
