@@ -75,8 +75,6 @@
 
 </div>
 
-
-
 </div>
 
 @section('aditional-scripts')

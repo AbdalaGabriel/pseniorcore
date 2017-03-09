@@ -11,11 +11,7 @@ use Redirect;
 
 class BlogController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
     {
         if ($request->ajax()) 
@@ -70,48 +66,39 @@ class BlogController extends Controller
 
     public function englishupdate(Request $request, $id)
     {
-      $post = Post::find($id);
-      $post->en_title = $request['en_title'];
-      $post->en_content = $request['en_content'];
-      $post->en_urlfriendly = $request['en_urlf'];
-      $post->save();
-      return Redirect::to('/admin/blog');
-  }
-
-
-  public function front($id, $title)
-  {
-    $post = Post::find($id);
-    $realtitle = $post->urlfriendly;
-
-        // Efectuo redireción en caso que el usuario me escriba otro titulo, debido a que solo toma el ID para la busqueda
-    if($title == $realtitle)
-    {
-        return view("front.post", ['post'=>$post]);
+          $post = Post::find($id);
+          $post->en_title = $request['en_title'];
+          $post->en_content = $request['en_content'];
+          $post->en_urlfriendly = $request['en_urlf'];
+          $post->save();
+          return Redirect::to('/admin/blog');
     }
-    else
-    {
-        return Redirect::to('/');
-    }
-}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function front($id, $title)
+    {
+        $post = Post::find($id);
+        $realtitle = $post->urlfriendly;
+
+            // Efectuo redireción en caso que el usuario me escriba otro titulo, debido a que solo toma el ID para la busqueda
+        if($title == $realtitle)
+        {
+            return view("front.post", ['post'=>$post]);
+        }
+        else
+        {
+            return Redirect::to('/');
+        }
+    }
+
+
     public function create()
     {
         $categories = Category::all();
         return view("admin.blog.new", ['categories'=>$categories]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         // Recibo la informacion que me llega
@@ -123,12 +110,10 @@ class BlogController extends Controller
         $categoriesNames = array();
 
         //Guardo con los ids de categorias que estan en el checkbox, los nombres de las mismas ne un array.
-
         foreach ($CategoriesIds as $CategoryId) 
         {
             $thiscat = Category::find($CategoryId);
             $categoriesNames[] = $thiscat->title;
-
         }
 
         // Creo el posteo con la info que me llego.
@@ -153,22 +138,23 @@ class BlogController extends Controller
     // GUARDADO DE IMAGEN DE PORTADA
     public function uploadimage(Request $request)
     {
-          // Obtngo datos via request.
+       // Obtngo datos via request.
        $image = $request->file('file');
-          //Seteo variables de path y nombre.
+       
+       //Seteo variables de path y nombre.
        $path = public_path().'\uploads\posts';
        $imageName=$image->getClientOriginalName() ;
 
-          // Selecciono ultimo proyecto agregado a la base de datos, mediante una query
+       // Selecciono ultimo proyecto agregado a la base de datos, mediante una query
        $ultimoPost = DB::table('posts')->select('id')->latest()->first();
        $idUltimoPost = $ultimoPost->id;
        $post = Post::find($idUltimoPost);
 
-          //Accedo al campo cover_image, del objeto Project, traido mediante su id y le pongo el de la imagen subida.
+       //Accedo al campo cover_image, del objeto Project, traido mediante su id y le pongo el de la imagen subida.
        $post->cover_image = $imageName;
        $post->save();
 
-          //Muevo el arvhio al directorio publico para imagenes del proyecto.
+       //Muevo el arvhio al directorio publico para imagenes del proyecto.
        $image->move($path, $imageName);
        return("Se creo la imagen de portada y se almaceno");
    }
@@ -215,7 +201,7 @@ class BlogController extends Controller
 
         $thisPostCategoriesIds = array();
         $index = 0;
-        
+
         foreach ($categories as $category) {
 
             $thisPostCategoriesIds[$index]["id"]=$category->id;
