@@ -215,6 +215,7 @@ class BlogController extends Controller
 
         $thisPostCategoriesIds = array();
         $index = 0;
+        
         foreach ($categories as $category) {
 
             $thisPostCategoriesIds[$index]["id"]=$category->id;
@@ -295,16 +296,13 @@ class BlogController extends Controller
             // Edicion completa - pagina editar post
             if($editionMethod == "full")
             {
-
                 $post->title = $request['title'];
                 $post->content = $request['description'] ;
                 $post->urlfriendly = $request['urlf'];
                 $post->meta_description = $request['metadescription'] ;
-
                 $CategoriesIds = $request['categories'];
-                
-                $post->categories()->sync($CategoriesIds);
 
+                $post->categories()->sync($CategoriesIds);
 
             }
            
