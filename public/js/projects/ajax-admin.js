@@ -125,13 +125,13 @@ function defineListerner()
 				var largeCats = categoyData.length;
 				for (var i = 0; i < largeCats; i++) 
 				{
-					if(categoyData[i].belongstoproyect == true)
+					if(categoyData[i].belongstoproject == true)
 					{
-						checksContainer.append('<input  data-postid="'+postid+'" class="categoryCheckbox" checked type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].catid)
+						checksContainer.append('<label class="input-label"> <input  data-postid="'+postid+'" class="categoryCheckbox" checked type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].title+'</label>')
 
 					}else
 					{
-						checksContainer.append('<input  data-postid="'+postid+'" class="categoryCheckbox" type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].catid)
+						checksContainer.append('<label class="input-label">  <input  data-postid="'+postid+'" class="categoryCheckbox" type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].title+'</label>')
 
 					}
 				}
@@ -173,7 +173,7 @@ function defineListerner()
 						console.log('- se chequeo');
 						var result = searchInCategories(thiscatid, categoyData);
 						console.log(result);
-						result.belongstoproyect = true;
+						result.belongstoproject = true;
 						
 						console.log("se mdifico el objeto");
 						console.log(result);
@@ -185,7 +185,7 @@ function defineListerner()
 						console.log("- se deschequeo");
 						var result = searchInCategories(thiscatid, categoyData);
 						console.log(result);
-						result.belongstoproyect = false;
+						result.belongstoproject = false;
 						
 						console.log("se mdifico el objeto");
 						console.log(result);
@@ -209,7 +209,7 @@ function defineListerner()
 					headers: {'X-CSRF-TOKEN': token},
 					type: 'PUT',
 					dataType: 'json',
-					data: {title: newTitle, categoyData: categoyData},
+					data: {title: newTitle, categoyData: categoyData, editionMethod: 'quick'},
 
 					success: function(){
 						carga();
