@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'localhost'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 25),
+    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'designer@gabrielabdala.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'g.abdala.04@gmail.com'),
         'name' => env('MAIL_FROM_NAME', 'Gabriel'),
     ],
 
@@ -84,7 +84,7 @@ return [
     |
     */
 
-    'username' => env('designer@gabrielabdala.com'),
+    'username' => 'g.abdala.04@gmail.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -97,7 +97,7 @@ return [
     |
     */
 
-    'password' => env('Bauhaus.04'),
+    'password' => 'foltkernetch.44',
 
     /*
     |--------------------------------------------------------------------------

@@ -1,5 +1,6 @@
 <?php
 use App\Page;
+use App\Mail\Registration;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,13 @@ Route::get('/attachemail', 'MailController@attachment_email');
 
 // FRONTEND
 // --------------------------------------------------------------------------------------- //
+
+Route::get('/mail', function () {
+    // send an email to "batman@batcave.io"
+    Mail::to('g.abdala.04@gmail.com')->send(new FormSend);
+
+    return view('front.contactme');
+});
 
 
 // HOME

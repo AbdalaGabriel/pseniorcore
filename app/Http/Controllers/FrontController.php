@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Project;
 use App\ProjectCategory;
 use App\Post;
-use App\Contact;
+use App\Inquirie;
 use App\Page;
 use App\User;
 use App\Slide;
@@ -65,37 +65,48 @@ class FrontController extends Controller
 
         $this->validate($request, [
         'name' => 'required',
-        'mail' => 'required|email',
+        'email' => 'required|email',
         'number' => 'numeric',
         'consulta' => 'required',
         ]);
 
-         // Si pasó la validación del formulario enviamos un mail.
-
-        return $this->sendmail($request);
+       
 
         // E ingresamos estos datos en la base de datos.
         
-        $contact = Contact::create([
+        $inquirie = Inquirie::create([
              'name' => $request['name'],
              'mail' => $request['email'],
              'number' => $request['number'],
              'message' => $request['consulta'],
 
         ]);
+
+          // Si pasó la validación del formulario enviamos un mail.
+
+        return $this->sendmail($request);
        
     }
 
 
     public function sendmail($request){
 
+        // Email para el usuario
         $data=['name'=>'Gabriel Abdala'];
         Mail::send(['text'=>'mail'], $data, function($message){
             $message->to('g.abdala.04@gmail.com','Gabriel')->subject('Hemos recibido tu consulta, a la brevedad te responderé =)');
-            $message->from('designer@gabrielabdala.com','Gabi');
+            $message->from('designer@gabrielabdala.com','Gabriel');
         });
        
-        echo 'Basics Email was sent!';
+        //Email para el diseñador, avisando de la consulta del usuario.
+        $data=['inquirie'=>$request['consulta'],'name'=>$request['name'] ];
+
+        Mail::send(['text'=>'mail.new-form-send'], $data, function($message){
+            $message->to('g.abdala.04@gmail.com','Gabriel')->subject('Tienes una nueva consulta -');
+            $message->from('designer@gabrielabdala.com','Sitio web');
+        });
+
+        return view('front.contactme').with("mensaje","Mensaje enviado con exito muchas gracias!"); 
 
     }
 

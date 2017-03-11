@@ -13,7 +13,7 @@ class CreateContacsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('inquiries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('mail');
@@ -30,6 +30,6 @@ class CreateContacsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacs');
+        Schema::dropIfExists('inquiries');
     }
 }

@@ -50,6 +50,33 @@
 				</a>
 			</div>
 
+			<!-- PREGUNTAR SI ESTA LOGUEADO O NO -->
+		
+		@if (Auth::guest())
+			<li><a href="{{ url('/login') }}">Login</a></li>
+			<li><a href="{{ url('/register') }}">Register</a></li>
+			@else
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+					{{ Auth::user()->name }} <span class="caret"></span>
+				</a>
+
+				<ul class="dropdown-menu" role="menu">
+					<li>
+						<a href="{{ url('/logout') }}"
+						onclick="event.preventDefault();
+						document.getElementById('logout-form').submit();">
+						Logout
+					</a>
+
+					<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+						{{ csrf_field() }}
+					</form>
+				</li>
+			</ul>
+		</li>
+		@endif
+
 			<div class="collapse navbar-collapse" id="navigation-index">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
@@ -77,9 +104,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-							Contacto
-						</a>
+						{!! link_to_action('FrontController@contact','Contacto') !!}
 					</li>
 
 				</ul>
@@ -88,92 +113,90 @@
 	</nav>
 	<!-- End Navbar -->
 
-
-	<div class="wrapper">
-		<div class="header header-filter">
-
+<div class="wrapper">
+	<div class="header header-filter">
 
 
 
-			<div class="container">
 
-				<div id="particles-js"></div>
-				
-				<div class="inner-container">
-					<div class="introduction-container">
-						<h1 class="hello">Hola,</h1>
-						<h3 class="home-phrase">Mi nombre es <span class="name">Gabriel Abdala</span>, y</h3>
-						<h3 class="changing-prhase">soy diseñador multimedial</h3>
-					</div>
+		<div class="container">
 
-					<a class="cta-home">Mirá mis trabajos</a>
+			<div id="particles-js"></div>
 
-					<div class="big-g-container">
-						<!-- <img src="/img/front/g.svg"> -->
-					</div>
-
+			<div class="inner-container">
+				<div class="introduction-container">
+					<h1 class="hello">Hola,</h1>
+					<h3 class="home-phrase">Mi nombre es <span class="name">Gabriel Abdala</span>, y</h3>
+					<h3 class="changing-prhase">soy diseñador multimedial</h3>
 				</div>
 
+				<a class="cta-home">Mirá mis trabajos</a>
 
-
-
-				<div class="wrap">
-					<div class="slide">
-						<ul>
-							@foreach ($slides as $slide)	
-							<li style="background-image:url(/uploads/sliderhome/{!!$slide->path!!})">
-								<h1>{!!$slide->title!!}</h1><h2>{!!$slide->subtitle!!}</h2></li>
-								@endforeach
-							</ul>
-						</div>
-					</div>
-
+				<div class="big-g-container">
+					<!-- <img src="/img/front/g.svg"> -->
 				</div>
+
 			</div>
 
-			<div class="main main-raised">
-				
 
 
 
-					<section class="g-section">
-						<div class="section-container">
-						<h2>Trabajos</h2>
+			<div class="wrap">
+				<div class="slide">
+					<ul>
+						@foreach ($slides as $slide)	
+						<li style="background-image:url(/uploads/sliderhome/{!!$slide->path!!})">
+							<h1>{!!$slide->title!!}</h1><h2>{!!$slide->subtitle!!}</h2></li>
+							@endforeach
+						</ul>
+					</div>
+				</div>
 
-						@foreach ($projects as $project)		    
-						<div  class="porftolioItem col-md-6">
-							<!--<img src="/uploads/projects/{!!$project->cover_image!!}" alt="{!!$project->title!!}">-->
-							<div class="project-image-container"></div>
-							<a class="item-name" href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a>
-						</div>
+			</div>
+		</div>
 
-						@endforeach
-
-						</div>
-					</section>
-
-					<section class="g-section">
-					<div class="section-container">
-						<h2>Novedades</h2>
-
-						@foreach ($posts as $post)		    
-						<div class="postItem col-md-3">
-							<div class="project-image-container"></div>
-							<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">{!!$post->title!!}</a>
-						</div>
-
-						@endforeach
-						</div>
+		<div class="main main-raised">
 
 
-					</section>
 
-					<section class="g-section">
-					<div class="section-container">
-						<!-- Begin MailChimp Signup Form -->
-						<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-						<style type="text/css">
-							#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+			<section class="g-section">
+				<div class="section-container">
+					<h2>Trabajoss</h2>
+
+					@foreach ($projects as $project)		    
+					<div  class="porftolioItem col-md-6">
+						<!--<img src="/uploads/projects/{!!$project->cover_image!!}" alt="{!!$project->title!!}">-->
+						<div class="project-image-container"></div>
+						<a class="item-name" href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a>
+					</div>
+
+					@endforeach
+
+				</div>
+			</section>
+
+			<section class="g-section">
+				<div class="section-container">
+					<h2>Novedades</h2>
+
+					@foreach ($posts as $post)		    
+					<div class="postItem col-md-3">
+						<div class="project-image-container"></div>
+						<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">{!!$post->title!!}</a>
+					</div>
+
+					@endforeach
+				</div>
+
+
+			</section>
+
+			<section class="g-section">
+				<div class="section-container">
+					<!-- Begin MailChimp Signup Form -->
+					<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+					<style type="text/css">
+						#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
 						/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
 						We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 					</style>
@@ -187,7 +210,9 @@
 									</label>
 									<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
 								</div>
-								<div class="mc-field-group">
+
+								@if (Auth::guest())
+									<div class="mc-field-group">
 									<label for="mce-FNAME">Nombre </label>
 									<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
 								</div>
@@ -197,6 +222,10 @@
 									<input type="text" value="" name="COMPANY" class="" id="mce-compania">
 								</div>
 
+								@else
+									
+								@endif
+								
 								<input type="hidden" name="type" value="c">
 
 								<div id="mce-responses" class="clear">
@@ -232,8 +261,8 @@
 
 				</script>
 				<!--End mc_embed_signup-->
-				</div>
-			</section>
+			</div>
+		</section>
 
 	</div>
 </div>
