@@ -23,7 +23,7 @@
 
 		<!-- Descripcion  -->
 		{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
-		{!!Form::textarea('content', $finalObj->content, ['id'=>'new-post-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
+		{!!Form::textarea('content', $finalObj->description, ['id'=>'new-post-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
 
 	</div>
 	<div class="col-md-4">
@@ -40,7 +40,7 @@
 			<label>Cambiar foto de portada</label>
 
 			<div class="cover-edit-image">
-				<img src="/uploads/posts/{!!$finalObj->cover_image!!}" alt="" >
+				<img src="/uploads/projects/{!!$finalObj->cover_image!!}" alt="" >
 			</div>
 
 			<div class="dropzone coverImage" id="myDropZone-edit" data-token="{{ csrf_token() }}"></div>
@@ -64,11 +64,11 @@
 		<!-- Metadescription  -->
 		{!!Form::label('metadescr', 'Descripciòn de su posteo para búesquedas', ['class' => 'form-control']);!!}
 		{!!Form::textarea('metadescription', $finalObj->meta_description, ['id'=>'new-meta-content', 'class'=>'form-control','placeholder'=>'Ej: Trabajo de diseño de identidad corporativa realizado para la marca LOREMIPSUM' ]) !!}
-
+		<input type="hidden" class="item-id" value="{{$finalObj->id}}">
 		<input type="hidden" name="_categorydata" value="" id="categorydata">
 		<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 
-		{!! Form::submit('Update project', ['class'=>'btn btn-primary btn-round']); !!}
+		{!! Form::submit('Update project', ['class'=>'btn btn-primary btn-round', 'id' => 'sendForm']); !!}
 		{!! Form::close() !!}
 
 	</div>	
@@ -80,7 +80,10 @@
 @section('aditional-scripts')
 {!!Html::script('js/baseurl.js')!!}
 {!! Html::script('js/blog/create.js') !!}
-{!! Html::script('js/projects/formController.js') !!}
+{!! Html::script('dropzone/dist/dropzone.js') !!}
+{!! Html::script('js/projects/dz-control.js') !!}
+
+{!! Html::script('js/projects/formController-edit.js') !!}
 @endsection
 
 @endsection

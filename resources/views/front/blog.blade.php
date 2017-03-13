@@ -1,9 +1,13 @@
-@extends('front.base')
-@section('meta')
-<meta name="description" content="{!!$page->meta_description!!}">
+@extends('front.grid-base')
+<!-- Titulo de la pestaña -->
+	@section('mainTitle'){!!$page->title!!}@endsection
 
-@endsection
-@section('mainTitle'){!!$page->title!!}@endsection
+	<!-- Metadescription-->
+	@section('metadescription'){!!$page->meta_description!!}@endsection
+
+	<!-- Titulo de pagina -->
+	@section('page-title'){!!$page->title!!}@endsection
+
 @section('main')
 
 @if($page->en_urlfriendly != "")
@@ -13,12 +17,12 @@
 <section class="g-section">
 
 	@foreach ($posts as $post)		    
-	<div class="postItem col-md-3">
-		<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">{!!$post->title!!}</a>
-		<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
-		
-		
-	</div>
+	<article class="postItem col-md-6">
+		<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">
+			<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
+			<h2 class="post-title">{!!$post->title!!}</h2>
+		</a>
+	</article>
 
 	@endforeach
 

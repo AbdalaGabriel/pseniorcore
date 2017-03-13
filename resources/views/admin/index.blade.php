@@ -57,18 +57,11 @@
 	           
 	              <ul class="nav">
 					<li>
-						<a href="dashboard.html">
-							<i class="material-icons">dashboard</i>
-							<p>Dashboard</p>
-						</a>
+						{!! link_to_action('BlogController@index', 'Blog') !!}
 					</li>
 					<li>
 					
 						<ul>
-							<li>
-								    {!! link_to_action('BlogController@index', 'Blog') !!}
-								</a>
-							</li>
 							<li>
 								    {!! link_to_action('CategoryController@index','Categorias') !!}
 								</a>
@@ -79,23 +72,15 @@
 					</li>
 
 					<li class="">
-						{!! link_to_action('PageController@index','PAginas') !!}
-						<ul>
-							<li>
-								    {!! link_to_action('ProjectController@index','Home') !!}
-								
-							</li>
-							
-						</ul>
-						
+						{!! link_to_action('PageController@index','Páginas') !!}
+		
 					</li>
 
-					<li class="">
+					 <li>
+						 {!! link_to_action('ProjectController@index','Portfolio') !!}
+				
 						<ul>
-							<li>
-								    {!! link_to_action('ProjectController@index','Portfolio') !!}
-								
-							</li>
+		
 							<li>
 								    {!! link_to_action('ProjectCategoryController@index','Categorias') !!}
 								

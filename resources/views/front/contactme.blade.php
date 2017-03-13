@@ -31,7 +31,7 @@
 		    </div>
 		@endif
 
-		{!! Form::open(['url' => 'http://localhost:8000/form/validate', 'method'=>'POST']) !!}
+		{!! Form::open(['url' => 'http://localhost:8000/form/validate', 'class'=>'contact-form', 'method'=>'POST']) !!}
 
 			<!-- Si est alogueado que autcomplete nombre y mail con datos de usuarios logueado, sino que me pida numero tambien-->
 		
@@ -55,6 +55,7 @@
 
 			{!!Form::label('consulta', 'Consulta', ['class' => 'form-control'])!!}
 			{!!Form::textarea('consulta', null, ['id'=>'new-meta-content', 'class'=>'form-control','placeholder'=>'Que desea consultarme '.Auth::user()->name]) !!}
+			<div class="g-recaptcha" data-sitekey="6LebnhgUAAAAAGl9c7GbqAAZ8ELe5UD34UrlKfc7"></div>
 
 		{!! Form::submit('Enviar consulta', ['class'=>'btn btn-primary btn-round', 'id'=>'sendForm'])!!}
 

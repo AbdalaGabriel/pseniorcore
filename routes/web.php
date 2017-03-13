@@ -165,7 +165,7 @@ Route::get('/admin', 'FrontController@admin');
 		// Imagen de portada del proyecto
 		Route::post('admin/project/uploadimage', 'ProjectController@uploadimage');
 		// Imágenes del proyecto.
-		Route::resource('/admin/project/uploadimages', 'ProjectImageController');
+		//Route::resource('/admin/project/uploadimages', 'ProjectImageController');
 		Route::post('/admin/project/uploadimages', 'ProjectImageController@uploadimages');
 
 		// VERSION EN INGLES

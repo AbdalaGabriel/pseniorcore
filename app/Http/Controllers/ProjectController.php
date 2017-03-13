@@ -272,7 +272,7 @@ public function update(Request $request, $id)
         if($editionMethod == "full")
         {
             $project->title = $request['title'];
-            $project->content = $request['description'] ;
+            $project->description = $request['description'] ;
             $project->urlfriendly = $request['urlf'];
             $project->meta_description = $request['metadescription'] ;
             $categoriesIds = $request['categories'];
@@ -305,7 +305,7 @@ public function update(Request $request, $id)
 
         $project->save();
         return response()->json([
-            "mensaje" =>$belongstoproject
+             "mensaje" =>'Proyecto editado satisfactoriamente'
             ]);
     }
     else

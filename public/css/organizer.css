@@ -4,6 +4,11 @@
     cursor: pointer;
     width: 100%;
         letter-spacing: 2px;
+            font-weight: 400;
+}
+
+.content .inputOff{
+    text-align: center;
 }
 
 .organizer-header{
@@ -40,7 +45,15 @@
     letter-spacing: 1px;
     font-weight: 300;
     border-radius: 2em;
+
+        color: white;
     margin: 0 1em 0 0;
+}
+
+.deletePhase{
+    background: none !important;
+    color: black !important;
+    border: 1px solid !important;
 }
 
 .new-group-task{
@@ -54,4 +67,5 @@
     letter-spacing: 1px;
     font-weight: 300;
     font-size: 12px;
+        color: white;
 }

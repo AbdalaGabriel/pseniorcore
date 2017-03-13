@@ -50,7 +50,7 @@
 
 </head>
 
-<body class="intern">
+<body class="intern grid">
 	<input type="hidden" class="hidden-title" value="@yield('hiddentitle')">
 	<!-- Navbar will come here -->
 	<nav class="hidden-menu">
@@ -93,7 +93,7 @@
 	<!-- end navbar -->
 
 	<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
-		<div class="container">
+		<div class="container ">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-index">
 					<span class="sr-only">Toggle navigation</span>
@@ -152,7 +152,7 @@
 <!-- End Navbar -->
 
 <div class="wrapper">
-	<div class="header header-filter" style="background-image: url('bootstrap-template-assets/materialKit/assets/img/bg2.jpeg');">
+	<div class="header header-filter">
 		@yield('cover-image')
 		<div class="container">
 			<div id="particles-js"></div>
@@ -162,11 +162,9 @@
 		</div>
 	</div>
 
-	<div class="main main-raised">
-		<div class="container">
-			<article>
+	<div class="main ">
+		<div class="container large">
 			@yield('main')
-			</article>
 		</div>
 	</div>
 </div>

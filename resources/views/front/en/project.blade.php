@@ -1,20 +1,57 @@
+
 @extends('front.en.base')
 
-@section('meta')
-<meta name="description" content="{!!$project->en_meta_description!!}">
+	<!-- Titulo de la pestaña -->
+	@section('mainTitle'){!!$project->en_title!!}@endsection
 
-@endsection
+	<!-- Metadescription-->
+	@section('metadescription'){!!$project->en_meta_description!!}@endsection
 
-@section('mainTitle'){!!$project->en_title!!}@endsection
+	<!-- Imagen de cover -->
+	@section('cover-image')
+		<img class="cover-image" src="/uploads/projects/{!!$project->cover_image!!}" alt="">
+	@endsection
 
-@section('main')
+	<!-- Titulo de pagina -->
+	@section('page-title')
+		{!!$project->en_title!!}
+	@endsection
 
-<a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">Change language</a>
+	<!-- Contenido principal -->
+	@section('main')
 
-<section class="g-section">
-	<h2>{!!$project->en_title!!}</h2>
-	<p>{!!$project->en_description!!}</p>
+	
+	<div class="language-container">Idioma: <a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">ES</a></div>
 
-</section>
+	<section class="g-section">
+		
+		<p>{!!$project->en_description!!}</p>
 
-@endsection
+	</section>
+
+
+	<!-- SHARE EN REDES SOCIALES -->
+
+		<section class="g-section">
+
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.8";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
+
+			<div class="fb-like"  data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+			<div class="g-plus" data-action="share" data-href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}"></div>
+
+			<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="your_hash_tag" data-via="your_screen_name" data-count="vertical">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+				<p>{!!$project->content!!}</p>
+
+		</section>
+
+	    <!-- //////////////////////// -->
+
+	@endsection

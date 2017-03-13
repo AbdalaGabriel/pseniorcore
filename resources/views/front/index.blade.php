@@ -162,31 +162,31 @@
 			<!--PORTFOLIO -->
 			<section class="g-section">
 				<div class="section-container">
-					<h2>Trabajoss</h2>
+					<h2>Trabajos</h2>
 					@foreach ($projects as $project)		    
-						<div  class="porftolioItem col-md-6">
-							<!--<img src="/uploads/projects/{!!$project->cover_image!!}" alt="{!!$project->title!!}">-->
-							<div class="project-image-container"></div>
-							<a class="item-name" href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a>
-						</div>
+						<article class="postItem col-md-6">
+							<a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">
+								<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}"" alt="">
+								<h2 class="post-title">{!!$project->title!!}</h2>
+							</a>
+						</article>
 					@endforeach
 				</div>
 			</section>
 
 			<!--BLOG -->
 			<section class="g-section">
+				<h2>Noticias y novedades</h2>
 				<div class="section-container">
-					<h2>Novedades</h2>
+				@foreach ($posts as $post)		    
+				<article class="postItem col-md-6">
+					<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">
+						<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
+						<h2 class="post-title">{!!$post->title!!}</h2>
+					</a>
+				</article>
 
-					@foreach ($posts as $post)		    
-					<div class="postItem col-md-3">
-						<div class="project-image-container">
-							<img src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
-						</div>
-						<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">{!!$post->title!!}</a>
-					</div>
-
-					@endforeach
+				@endforeach
 				</div>
 			</section>
 

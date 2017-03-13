@@ -46,11 +46,12 @@
 	{!!Html::style('bootstrap-template-assets/materialKit/assets/css/bootstrap.min.css')!!}
 	{!!Html::style('bootstrap-template-assets/materialKit/assets/css/material-kit.css')!!}
 	{!!Html::style('css/customization.css')!!}
-
+	<script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
 
 <body class="intern">
+
 	<input type="hidden" class="hidden-title" value="@yield('hiddentitle')">
 	<!-- Navbar will come here -->
 	<nav class="hidden-menu">
@@ -153,9 +154,10 @@
 
 <div class="wrapper">
 	<div class="header header-filter">
+	<div id="particles-js"></div>
 		@yield('cover-image')
 		<div class="container">
-			<div id="particles-js"></div>
+			
 			<div class="page-title">
 				<h1>@yield('page-title')</h1>
 			</div>

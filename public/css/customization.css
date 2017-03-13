@@ -58,19 +58,43 @@ h2 {
     text-transform: uppercase;
 }
 
+nav li{
+  list-style-type: none !important;
+}
 
+.language-container a{
+  color: #da003a
+}
 
 .admin a{
   color: #c30541;
 }
 
 
+.intern  label{
+
+    text-transform: uppercase !important;
+    color: #b5a3a3 !important;
+    background-image: none !important;
+}
+
+.intern .form-group {
+    padding-bottom: 7px;
+    margin: 0;
+    font-weight: 500;
+}
+
 .admin .content{
   margin: 0;
 }
 
-a{
-  color:white;
+.contact-form{
+  max-width: 600px;
+    margin: 0 auto;
+}
+
+a, a:hover, a:focus {
+    color: #878488;
 }
 
 .btn.btn-primary, .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active, .btn.btn-primary.active, .btn.btn-primary:active:focus, .btn.btn-primary:active:hover, .btn.btn-primary.active:focus, .btn.btn-primary.active:hover, .open > .btn.btn-primary.dropdown-toggle, .open > .btn.btn-primary.dropdown-toggle:focus, .open > .btn.btn-primary.dropdown-toggle:hover, .navbar .navbar-nav > li > a.btn.btn-primary, .navbar .navbar-nav > li > a.btn.btn-primary:hover, .navbar .navbar-nav > li > a.btn.btn-primary:focus, .navbar .navbar-nav > li > a.btn.btn-primary:active, .navbar .navbar-nav > li > a.btn.btn-primary.active, .navbar .navbar-nav > li > a.btn.btn-primary:active:focus, .navbar .navbar-nav > li > a.btn.btn-primary:active:hover, .navbar .navbar-nav > li > a.btn.btn-primary.active:focus, .navbar .navbar-nav > li > a.btn.btn-primary.active:hover, .open >
@@ -322,6 +346,11 @@ a:hover, a:focus {
         z-index: 10;
 }
 
+.admin #particles-js{
+
+     z-index: 0;
+}
+
 .descr-home{
 
     background: #0b0617;
@@ -380,14 +409,22 @@ font-size: 1.6em;
 
 }
 
+.large{
+      width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .full{    width: 100% !important;}
+
+
 
 .postItem{
     height: 10em;
     line-height: 10em;
     text-align: center;
-    color: white;
-    border: 2px solid;
+    /* color: white; */
+    border: 1px solid;
     font-size: 2em;
     overflow: hidden;
 }
@@ -396,8 +433,18 @@ font-size: 1.6em;
     max-width: 160%;
     position: absolute;
     left: -30%;
+    z-index: 0;
 }
 
+.post-title{
+    color: white;
+    z-index: 1;
+    position: absolute;
+    width: 90%;
+    bottom: 1em;
+    text-align: left;
+    left: 2em;
+}
 
 .project-image-container{
     min-height: 12em;
@@ -630,7 +677,14 @@ display: block;
 }
 
 .intern .header{
-height: 65vh;
+height: 45vh;
+overflow: hidden;
+}
+
+.grid .main{
+    background: #06080e;
+    position: relative;
+    z-index: 3;
 }
 
 .page-title{
@@ -639,7 +693,7 @@ height: 65vh;
     z-index: 1000;
     width: 90%;
     margin: 0 5%;
-    top: 30vh;
+    top: 18vh;
     text-align: center;
     font-size: 3em;
     text-transform: uppercase;
@@ -853,4 +907,10 @@ footer {
 .news #mc_embed_signup{
   background: none;
   color: white;
+}
+
+
+.organizer {
+    color: black;
+    font-weight: 400;
 }
