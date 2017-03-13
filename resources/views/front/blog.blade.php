@@ -11,15 +11,16 @@
 @endif
 
 <section class="g-section">
-	<h2>Novedades</h2>
 
 	@foreach ($posts as $post)		    
 	<div class="postItem col-md-3">
 		<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">{!!$post->title!!}</a>
+		<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
+		
+		
 	</div>
-	
-	@endforeach
 
+	@endforeach
 
 </section>
 

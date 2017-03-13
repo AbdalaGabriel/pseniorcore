@@ -1,4 +1,4 @@
-@extends('front.base')
+@extends('front.post-base')
 	
 	<!-- Titulo de la pestaña -->
 	@section('mainTitle'){!!$post->title!!}@endsection

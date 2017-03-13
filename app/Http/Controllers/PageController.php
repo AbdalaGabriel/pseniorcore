@@ -87,6 +87,7 @@ public function update(Request $request, $id)
     $page = Page::find($id);
         // actualiza nombre con lo que le llega via AJAX.
     $page->title = $request['title'];
+    $page->content = $request['content'];
     $page->urlfriendly = $request['urlfriendly'];
     $page->meta_description = $request['meta_description'];
     $page->save();
@@ -101,6 +102,7 @@ public function update(Request $request, $id)
    {
        $configuraciones = DB::table('configs')->where('page_id', $id)->get();
        $configLegth = count($configuraciones);
+
 
         for ($i=0; $i < $configLegth ; $i++) { 
            

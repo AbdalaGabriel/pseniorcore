@@ -65,6 +65,10 @@ Route::get('/home', 'HomeController@index');
 	//Validacion de formularios
 	Route::post('/form/validate', 'FrontController@validateform');
 
+
+	// Contacto
+	Route::get('/multimedia-now', 'FrontController@multimediaNow');
+
 /* --------------------------------------------------------------------------------------- */
 /////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -12,11 +12,17 @@
 	@if($page->reference == "home")		
 	
 	@else
-	{!!Form::label('urlf', 'URL Friendly', ['class' => 'form-control']);!!}
-	<p>Se generará automaticamente a partir de su titulo, si desea modificar su url amigable para este proyecto, puede editarla a continuación,</p>
+		{!!Form::label('urlf', 'URL Friendly', ['class' => 'form-control']);!!}
+		<p>Se generará automaticamente a partir de su titulo, si desea modificar su url amigable para este proyecto, puede editarla a continuación,</p>
 
-	{!!Form::text('urlfriendly', null, ['id'=>'new-post-urlf', 'class'=>'form-control','placeholder'=>'URL amigable','data-version' => 'en']) !!}
+		{!!Form::text('urlfriendly', null, ['id'=>'new-post-urlf', 'class'=>'form-control','placeholder'=>'URL amigable','data-version' => 'en']) !!}
 	@endif
+
+	@if( $page->writable_content == "1")
+		<!-- Descripcion  -->
+		{!!Form::label('content', 'Contenido de su página', ['class' => 'form-control ']);!!}
+		{!!Form::textarea('content', $page->content, ['id'=>'new-post-content', 'class'=>'form-control froala','placeholder'=>'Ingrese el contenido de su sitio']) !!}
+	@endif		
 
 	{!!Form::label('metadescr', 'Descripciòn de su página para búesquedas', ['class' => 'form-control']);!!}
 
@@ -26,16 +32,24 @@
 	<h3>Configuraciones de página {!! $page->title !!}</h3>
 		
 	@foreach($configs as $config)
-		<div class="configContainer">	
+				
 			{!!Form::label($config->reference,  $config->configname, ['class' => 'form-control']);!!}
 
 			@if( $config->type == "t")
+				<div class="configContainer">	
 				{!!Form::text($config->reference, $config->value, ['class'=>'form-control','placeholder'=>'Ingrese el valor solicitado']) !!}
 			
+			@elseif($config->type == "tf")
+				<div class="configContainer full">	
+				{!!Form::textarea($config->reference, $config->value, ['class'=>'form-control froala','placeholder'=>'Ingrese el valor solicitado']) !!}
+			
 			@elseif($config->type == "s")
+				<div class="configContainer">	
 				<?php $options = explode(",", $config->options);?>
 				<div class="configOptionsContainer">
+			
 				@foreach($options as $option)
+			
 					<div class="configOptions">
 						{!!Form::label($config->configname, $option, ['class' => 'form-control']);!!}
 						@if($config->value == $option)
@@ -45,6 +59,7 @@
 						@endif
 						
 					</div>
+			
 				@endforeach
 				</div>
 
@@ -60,7 +75,9 @@
 		
 	@section('aditional-scripts')
 	{!!Html::script('js/baseurl.js')!!}
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/js/froala_editor.min.js'></script>
 	{!! Html::script('js/pages/form-controller.js') !!}
+
 	@endsection
 
 @endsection

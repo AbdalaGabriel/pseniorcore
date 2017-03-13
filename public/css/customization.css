@@ -84,6 +84,9 @@ a{
 
 .main-raised {
     padding: 0 0 3em 0;
+        padding: 0 0 3em 0;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 p{
@@ -100,7 +103,7 @@ p{
 }
 
 .main .header{
-      background: url(../img/front/mainbg2.jpg);
+     /* background: url(../img/front/mainbg2.jpg);*/
       background-size: cover;
 }
 
@@ -162,6 +165,121 @@ p{
 }
 
 
+.close-hidden-menu{
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  display: block;
+  font-size: 1em;
+  width: 1em;
+  height: 1em;
+}
+a:hover, a:focus {
+    color: #b52a36;
+    text-decoration: none;
+}
+.hidden-menu{
+   position: fixed;
+    top: 0;
+    background: #151515;
+    width: 100vw;
+    padding: 0;
+    z-index: 0;
+    /* margin: 2.5vh 0; */
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+#particles-js-2 {
+    position: absolute !important;
+    width: 100%;
+    height: 100vh;
+}
+
+.main-menu-button{
+  float: right;
+}
+
+.logo-container-menu{
+    margin: 2em auto;
+    display: block;
+    height: 4em;
+    width: 3.2em;
+
+    bottom: 0;
+
+    -webkit-mask: url(/img/front/g.svg);
+    background: #da003a;
+}
+
+.hidden-menu ul{
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  list-style-type: none;
+   margin:13em 0 6em 0;
+       z-index: 1000;
+    position: relative;
+}
+
+
+.hidden-menu ul li{
+    margin: 2em 0;
+
+}
+
+.hidden-menu ul li a{
+      font-size: 2em;
+}
+
+.no-padding{
+  padding: 0 !important;
+}
+
+
+.showmenu{
+    -webkit-animation-name: showmenu; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: .5s; /* Safari 4.0 - 8.0 */
+     animation-name: showmenu;
+    animation-duration: .5s;
+   -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation-fill-mode: forwards;
+}
+
+@keyframes showmenu {
+      from {height: 0;  opacity: 0; z-index: 0}
+    to {height: 100vh;     opacity: 1; z-index: 2000}
+}
+
+@-webkit-keyframes  showmenu {
+      from {height: 0;  opacity: 0;  z-index: 0}
+    to {height: 100vh;     opacity: 1;  z-index: 2000}
+}
+
+
+.hidemenu{
+    -webkit-animation-name: hidemenu; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: .5s; /* Safari 4.0 - 8.0 */
+     animation-name: hidemenu;
+    animation-duration: .5s;
+   -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation-fill-mode: forwards;
+}
+
+@keyframes hidemenu {
+      from {height: 100vh; opacity:1;  z-index: 2000}
+    to {height: 0; opacity:0;  z-index: 0}
+}
+
+@-webkit-keyframes  hidemenu {
+      from {height: 100vh; opacity:1;  z-index: 2000}
+    to {height: 0; opacity:0;  z-index: 0}
+}
+
+
+
+
 
 
 .hello{
@@ -201,6 +319,7 @@ p{
     height: 100vh;
     position: absolute;
     left: 0;
+        z-index: 10;
 }
 
 .descr-home{
@@ -261,16 +380,38 @@ font-size: 1.6em;
 
 }
 
+.full{    width: 100% !important;}
+
+.postItem{
+    height: 10em;
+    line-height: 10em;
+    text-align: center;
+    color: white;
+    border: 2px solid;
+    font-size: 2em;
+    overflow: hidden;
+}
+
+.postItem img{
+    max-width: 160%;
+    position: absolute;
+    left: -30%;
+}
+
+
 .project-image-container{
-        min-height: 12em;
-    background: #dedede;
+    min-height: 12em;
     line-height: 20em;
     text-align: center;
     color: white;
     border: 2px solid;
     font-size: 2em;
     margin: 0 0 .5em 0;
+    position: relative;
+    overflow: hidden;
 }
+
+
 
  a.item-name{
   font-size: 20px;
@@ -315,15 +456,6 @@ font-size: 1.6em;
     margin-top: 0;
 }
 
-.postItem{
-    height: 10em;
-    background: #7ef7f1;
-    line-height: 10em;
-    text-align: center;
-    color: white;
-    border: 2px solid;
-    font-size: 2em;
-}
 
 .configOptionsContainer{
   overflow: hidden;
@@ -647,4 +779,78 @@ margin-bottom: 2em;
     color: white;
     padding: 0;
    cursor: pointer;
+}
+.twit-container {
+    background: #00ceff;
+    padding: 1em;
+    float: left;
+    width: 23%;
+    max-height: 285px;
+    font-size: 1em;
+    margin: 1%;
+    overflow: hidden;
+    height: 285px;
+}
+.twit-container p {
+        margin: 0 0 10px;
+    font-size: 1.2vw;
+    color: rebeccapurple;
+    line-height: 1.6em;
+    font-weight: 500;
+}
+
+.twit-container h3, .h3 {
+    font-size: 1.6vw;
+    line-height: 1.4em;
+    margin: 20px 0 10px;
+}
+
+.engagement-container{
+    color: white;
+    background: #06080e;
+    padding: 1em 0;
+    text-align: center;
+}
+
+.engagement-container a{
+    text-transform: uppercase;
+    background: #ffffff;
+    color: #2d3256;
+    padding: 1em;
+    border-radius: 2em;
+    display: block;
+    width: 18em;
+    font-weight: 500;
+    margin: 2em auto 1em;
+}
+
+.tuts{
+    background: #2d3256;
+    color: white;
+}
+
+
+.org{
+    background: #692134;
+    color: white;
+}
+
+.contact .section-container{
+      padding: 2em;
+    min-height: 25em;
+}
+
+footer {
+  padding:0 !important;
+}
+
+
+.news{
+  background: #0c0c0c;
+    color: white;
+}
+
+.news #mc_embed_signup{
+  background: none;
+  color: white;
 }

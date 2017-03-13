@@ -5,15 +5,42 @@
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	
+	<!--  Metadescription -->
+	<meta name="description" content="@yield('metadescription')"/>
 
-	<title>Gabriel Abdala - Diseñador Multimedial </title>
+	<!--  Page title -->
+	<title>@yield('mainTitle')</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-
+	<script src="https://apis.google.com/js/platform.js" async defer>
+		{lang: 'es-419'}
+	</script>
 	<!--     Fonts and icons     -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+	<!--     Favico    -->
+	<link rel="apple-touch-icon" sizes="57x57" href="/icon.ico/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/icon.ico/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/icon.ico/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/icon.ico/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/icon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+	<link rel="shortcut icon" href="/icon.ico/favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="/icon.ico/favicon.ico" type="image/x-icon">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 
 	<!-- CSS Files -->
 	{!!Html::style('bootstrap-template-assets/materialKit/assets/css/bootstrap.min.css')!!}
@@ -21,11 +48,10 @@
 	{!!Html::style('css/customization.css')!!}
 
 
-
 </head>
 
-<body class="main">
-		<div id="particles-js"></div>
+<body class="intern">
+	<input type="hidden" class="hidden-title" value="@yield('hiddentitle')">
 	<!-- Navbar will come here -->
 	<nav class="hidden-menu">
 		<div id="particles-js-2" class="absolute-pos"></div>
@@ -64,7 +90,8 @@
 		</span>	
 		
 	</nav>
-	
+	<!-- end navbar -->
+
 	<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
 		<div class="container">
 			<div class="navbar-header">
@@ -88,9 +115,10 @@
 
 
 			<!-- PREGUNTAR SI ESTA LOGUEADO O NO -->
+
 			@if (Auth::guest())
-				<li><a href="{{ url('/login') }}">Login</a></li>
-				<li><a href="{{ url('/register') }}">Register</a></li>
+			<li><a href="{{ url('/login') }}">Login</a></li>
+			<li><a href="{{ url('/register') }}">Register</a></li>
 			@else
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -103,15 +131,15 @@
 						onclick="event.preventDefault();
 						document.getElementById('logout-form').submit();">
 						Logout
-						</a>
+					</a>
 
-						<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-							{{ csrf_field() }}
-						</form>
-					</li>
-				</ul>
-			</li>
-			@endif
+					<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+						{{ csrf_field() }}
+					</form>
+				</li>
+			</ul>
+		</li>
+		@endif
 
 
 		<div class="collapse navbar-collapse" id="navigation-index">
@@ -123,76 +151,25 @@
 </nav>
 <!-- End Navbar -->
 
-
 <div class="wrapper">
-	<div class="header header-filter">
+	<div class="header header-filter" style="background-image: url('bootstrap-template-assets/materialKit/assets/img/bg2.jpeg');">
+		@yield('cover-image')
 		<div class="container">
-		
-				<div class="inner-container">
-					<div class="introduction-container">
-						<h1 class="hello">Hola,</h1>
-						<h3 class="home-phrase">Mi nombre es <span class="name">Gabriel Abdala</span>, y</h3>
-						<h3 class="changing-prhase">soy diseñador multimedial</h3>
-					</div>
-
-				<a class="cta-home">Mirá mis trabajos</a>
-
-				<div class="big-g-container">
-					<!-- <img src="/img/front/g.svg"> -->
-				</div>
-			</div>
-
-
-			<!--SLIDER -->
-			<div class="wrap">
-				<div class="slide">
-					<ul>
-						@foreach ($slides as $slide)	
-						<li style="background-image:url(/uploads/sliderhome/{!!$slide->path!!})">
-							<h1>{!!$slide->title!!}</h1><h2>{!!$slide->subtitle!!}</h2></li>
-							@endforeach
-						</ul>
-					</div>
-				</div>
+			<div id="particles-js"></div>
+			<div class="page-title">
+				<h1>@yield('page-title')</h1>
 			</div>
 		</div>
+	</div>
 
-		<div class="main ">
-			
-			<!--PORTFOLIO -->
-			<section class="g-section">
-				<div class="section-container">
-					<h2>Trabajoss</h2>
-					@foreach ($projects as $project)		    
-						<div  class="porftolioItem col-md-6">
-							<!--<img src="/uploads/projects/{!!$project->cover_image!!}" alt="{!!$project->title!!}">-->
-							<div class="project-image-container"></div>
-							<a class="item-name" href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a>
-						</div>
-					@endforeach
-				</div>
-			</section>
+	<div class="main main-raised">
+		<div class="container">
+			@yield('main')
+		</div>
+	</div>
+</div>
 
-			<!--BLOG -->
-			<section class="g-section">
-				<div class="section-container">
-					<h2>Novedades</h2>
-
-					@foreach ($posts as $post)		    
-					<div class="postItem col-md-3">
-						<div class="project-image-container">
-							<img src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
-						</div>
-						<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">{!!$post->title!!}</a>
-					</div>
-
-					@endforeach
-				</div>
-			</section>
-
-
-
-			<!-- footer -->
+<!-- footer -->
 			<section class="g-section no-padding contact">
 				<div class="section-container  col-md-4 tuts">
 						<h2>Tutoriales y recursos</h2>
@@ -291,6 +268,8 @@
 		</nav>
 
 </footer>
+
+
 </body>
 
 <!--   Core JS Files   -->
@@ -306,26 +285,7 @@
 
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 {!!Html::script('bootstrap-template-assets/materialKit/assets/js/material-kit.js')!!}
-{!!Html::script('js/jquery.fadeImg.js')!!}
-{!!Html::script('js/form-controller.js')!!}
-
-<!--   Particulas  -->
 {!!Html::script('js/particles/particle.js')!!}
 {!!Html::script('js/functions.js')!!}
-
-{!!Html::script('js/baseurl.js')!!}
-
-<script>
-	$(document).ready(function($) {
-		$(".slide").fadeImages({
-			time:3000,
-			arrows: true,
-			complete: function() {
-				console.log("Fade Images Complete");
-			}
-		});
-
-	});
-</script>
 
 </html>

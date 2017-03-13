@@ -53,6 +53,12 @@ class FrontController extends Controller
         
     }
 
+    public function multimediaNow()
+    {
+        return view('front.multimedia-now'); 
+        
+    }
+
     public function contact()
     {
         return view('front.contactme'); 

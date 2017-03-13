@@ -9,7 +9,7 @@ function init()
 {
 	console.log("- Function init");
 	var submit = $("#sendForm");
-
+	$('.froala').froalaEditor();
 	detectEvents();
 }
 

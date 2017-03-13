@@ -16,6 +16,11 @@ class CreatePagesTable extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->integer('writable_content');
+            $table->string('can_be_deleted');
+            
+            $table->string('content');
+            $table->string('en_content');
             $table->string('urlfirendly');
             $table->string('en_title');
             $table->string('en_urlfriendly');
