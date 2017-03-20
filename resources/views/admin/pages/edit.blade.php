@@ -4,6 +4,9 @@
 
 @section('main')
 
+	@include('admin.pages.Blocks.text-block')
+	@include('admin.pages.Blocks.image-block')
+
 	{!!Form::model($page,['route'=>['paginas.update',$page],'method'=>'PUT'])!!}
 
 	{!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
@@ -66,6 +69,16 @@
 			@endif
 		</div>
 	@endforeach
+
+	<h3>Bloques: </h3>
+	
+	<div id="blocks-container">
+	
+	</div>
+
+	<span  id="add-block">Agregar bloque</span>
+
+
 	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 	<input type="hidden" name="reference" value="{!! $page->reference !!}" id="reference">
 	<input type="hidden" name="idPage" value="{!! $page->id !!}" id="reference">
@@ -77,7 +90,7 @@
 	{!!Html::script('js/baseurl.js')!!}
 	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/js/froala_editor.min.js'></script>
 	{!! Html::script('js/pages/form-controller.js') !!}
-
+	{!!Html::script('js/pages/blocks.js')!!}
 	@endsection
 
 @endsection

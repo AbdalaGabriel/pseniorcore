@@ -914,3 +914,75 @@ footer {
     color: black;
     font-weight: 400;
 }
+
+.addInternBlock {
+    display: block;
+    float: left;
+    margin: 1em;
+    padding: .5em 1em;
+    background: white;
+    color: red;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.block{
+  overflow: hidden;
+    padding: 1em;
+    background: aliceblue;
+    margin: 1em;
+}
+
+.block-columns{
+      overflow: hidden;
+    background: #cecece;
+}
+
+.half{
+      background: #cecece;
+    width: 48%;
+    float: left;
+    margin: 1%;
+    padding: 1em;
+}
+
+.single{
+      background: #cecece;
+    width: 98%;
+    margin: 1%;
+    padding: 1em;
+}
+
+.div-3{
+      background: #cecece;
+    width: 31%;
+    margin: 1%;
+    padding: 1em;
+    float: left;
+}
+
+.div-4{
+      background: #cecece;
+    width: 22%;
+    margin: 1%;
+    padding: 1em;
+    float: left;
+}
+
+.div-65{
+      background: #cecece;
+    width: 73%;
+    margin: 1%;
+    padding: 1em;
+    float: left;
+}
+
+.addbutton{
+  background: white;
+    padding: .5em;
+    border-radius: 1em;
+    float: left;
+    display: block;
+    cursor: pointer;
+    margin: .5em;
+}
