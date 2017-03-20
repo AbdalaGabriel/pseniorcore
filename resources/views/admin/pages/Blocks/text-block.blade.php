@@ -8,11 +8,11 @@
       <div class="modal-body">
          <h3>Contenido:</h3>
 
-         {!!Form::textarea('content', '' , ['id'=>'new-block-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo bloque']) !!}
+         {!!Form::textarea('content', '' , ['id'=>'new-block-text-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo bloque']) !!}
         
       </div>
       <div class="modal-footer">
-        {!!link_to('#', $title='Agregar', $attributes = ['id'=>'confirm-add', 'class'=>'btn btn-primary', 'data-dismiss'=>'modal'], $secure = null)!!}
+        {!!link_to('#', $title='Agregar', $attributes = ['id'=>'confirm-add-text', 'class'=>'btn btn-primary', 'data-dismiss'=>'modal'], $secure = null)!!}
       </div>
     </div>
   </div>

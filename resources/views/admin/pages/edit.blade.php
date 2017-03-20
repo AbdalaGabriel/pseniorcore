@@ -5,6 +5,7 @@
 @section('main')
 
 	@include('admin.pages.Blocks.text-block')
+	@include('admin.pages.Blocks.edit-text-block')
 	@include('admin.pages.Blocks.image-block')
 
 	{!!Form::model($page,['route'=>['paginas.update',$page],'method'=>'PUT'])!!}
