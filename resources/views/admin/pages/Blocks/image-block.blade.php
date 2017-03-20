@@ -7,6 +7,22 @@
       </div>
       <div class="modal-body">
          <h3>Imagenes:</h3>
+         <div class="tab">
+          <button class="tablinks" data-tabname="galery" >Imagenes en galería</button>
+          <button class="tablinks" data-tabname="uploadimages">Subir imagen</button>
+        </div>
+
+        <div id="galery" class="tabcontent active">
+          <h3>London</h3>
+          <p>London is the capital city of England.</p>
+        </div>
+
+        <div id="uploadimages" class="tabcontent">
+          <h3>Paris</h3>
+          <p>Paris is the capital of France.</p> 
+        </div>
+
+       
          
         
       </div>

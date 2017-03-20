@@ -1,18 +1,18 @@
 $( document ).ready(function() 
 {
 	console.log( "- Block logic ready" );
-	init();
+	initEdition();
 });
 
 
-function init()
+function initEdition()
 {
 	console.log("- Function init");
 	$('#new-block-text-content').froalaEditor();
 	$('#edit-block-text-content').froalaEditor();
 	//$('.froala').froalaEditor();
 	blocksmaster();
-	
+	imagesMaster();
 }
 
 function blocksmaster(){
@@ -248,6 +248,43 @@ function eventsMaster()
 
 		});
 	};		
+}
+
+function imagesMaster()
+{
+	console.log("- Init images logic")
+	var tablinks = $(".tablinks");
+	tablinks.click(function(evt)
+	{
+
+		console.log("- clicktab")
+		var tabname = $(this).attr("data-tabname");
+		console.log(tabname);
+
+		
+	    // Declare all variables
+	    var i, tabcontent, tablinks;
+
+	    // Get all elements with class="tabcontent" and hide them
+	    tabcontent = document.getElementsByClassName("tabcontent");
+	    for (i = 0; i < tabcontent.length; i++) {
+	        tabcontent[i].style.display = "none";
+	    }
+
+	    // Get all elements with class="tablinks" and remove the class "active"
+	    tablinks = document.getElementsByClassName("tablinks");
+	    for (i = 0; i < tablinks.length; i++) {
+	        tablinks[i].className = tablinks[i].className.replace(" active", "");
+	    }
+
+	    // Show the current tab, and add an "active" class to the button that opened the tab
+	    document.getElementById(tabname).style.display = "block";
+	    evt.currentTarget.className += " active";
+		
+				
+	});
+
+	
 }
 
 
