@@ -13,13 +13,17 @@
         </div>
 
         <div id="galery" class="tabcontent active">
-          <h3>London</h3>
-          <p>London is the capital city of England.</p>
+          <h2>Archivos en galería</h2>
+          <div id="grid-container">
+            
+          </div>
         </div>
 
         <div id="uploadimages" class="tabcontent">
-          <h3>Paris</h3>
-          <p>Paris is the capital of France.</p> 
+          <h2>Subir imagen</h2>
+          <div id="upload-image">
+            
+          </div>
         </div>
 
        

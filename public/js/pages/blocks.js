@@ -2,6 +2,7 @@ $( document ).ready(function()
 {
 	console.log( "- Block logic ready" );
 	initEdition();
+	mediaMaster();
 });
 
 
@@ -44,7 +45,7 @@ function blocksmaster(){
 
 		// Llamado de eventos para creación de bloques internos.
 		internBlockEvents();
-	
+
 	});
 
 
@@ -73,32 +74,32 @@ function blocksmaster(){
 				case "1":
 			    	//Simple block
 			    	console.log("- 1 div");
-			   		blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock single">Single</div>');
-			   		internCounter++;
-			    break;
-			    
-			    case "2":
+			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock single">Single</div>');
+			    	internCounter++;
+			    	break;
+
+			    	case "2":
 			    	// Grilla doble
 			    	console.log("- 2 div");
 			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half">Half</div>');
 			    	internCounter++;
 			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half">Half</div>');
 			    	internCounter++;
-			    		
-			    break;
 
-			    case "3":
+			    	break;
+
+			    	case "3":
 			    	// Grilla dividida en 3
-				    console.log("- 3 div");
-				    blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"> <div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
-				    internCounter++;
-				    blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3">Third</div>');
-				    internCounter++;
-				    blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3">Third</div>');
-				    internCounter++;
-			    break;
+			    	console.log("- 3 div");
+			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"> <div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
+			    	internCounter++;
+			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3">Third</div>');
+			    	internCounter++;
+			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3">Third</div>');
+			    	internCounter++;
+			    	break;
 
-			    case "4":
+			    	case "4":
 				    //Grilla dividida en 4
 				    console.log("- 4 div");
 				    blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4">Fourth</div>');
@@ -110,9 +111,9 @@ function blocksmaster(){
 				    blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4">Fourth</div>');
 				    internCounter++;
 
-			    break;
+				    break;
 
-			    case "2-65":
+				    case "2-65":
 				    //Grilla 25% - 75%
 				    console.log("- 2-66 div");
 				    blockToModify.append('<div id="intern-block-'+internCounter+'" class="internblock div-4">Fourth</div>');
@@ -120,9 +121,9 @@ function blocksmaster(){
 				    blockToModify.append('<div id="intern-block-'+internCounter+'" class="internblock div-65">Fourth</div>');
 				    internCounter++;
 
-			    break;
+				    break;
 
-			}
+				}
 
 			// Llamado al manejador de eventos.
 			eventsMaster();
@@ -268,20 +269,20 @@ function imagesMaster()
 	    // Get all elements with class="tabcontent" and hide them
 	    tabcontent = document.getElementsByClassName("tabcontent");
 	    for (i = 0; i < tabcontent.length; i++) {
-	        tabcontent[i].style.display = "none";
+	    	tabcontent[i].style.display = "none";
 	    }
 
 	    // Get all elements with class="tablinks" and remove the class "active"
 	    tablinks = document.getElementsByClassName("tablinks");
 	    for (i = 0; i < tablinks.length; i++) {
-	        tablinks[i].className = tablinks[i].className.replace(" active", "");
+	    	tablinks[i].className = tablinks[i].className.replace(" active", "");
 	    }
 
 	    // Show the current tab, and add an "active" class to the button that opened the tab
 	    document.getElementById(tabname).style.display = "block";
 	    evt.currentTarget.className += " active";
-		
-				
+
+
 	});
 
 	
@@ -290,7 +291,74 @@ function imagesMaster()
 
 
 
+function mediaMaster(){
+	console.log("- Init media master");
 
+	var token = $("#token").val();
+	var gridContainer = $("#grid-container");
+	var urlGrid  = baseurl+"admin/media";
+	var uploadImageContainer = $("#upload-image");
+
+	// Llenado de grilla en base a imagenes d ela base de datos.
+	$.ajax(
+	{
+		url: urlGrid,
+		headers: {'X-CSRF-TOKEN': token},
+		type: 'GET',
+		dataType: 'json',
+
+		success: function(data){
+			console.log("- se obtuvieron datos de la grilla");
+			console.log(data);
+			$(data).each(function(key, value)
+			{
+				// TODO: actualizar rutas en produccion, no puede quedar como file
+				gridContainer.append('<div class="col-md-3"><img style="max-width: 100%;" src="/uploads/media/'+value.path+'"/></div>');
+
+			});
+
+			console.log("- Grilla armada");
+
+		}
+	});
+
+
+	// Inicializaciòn de modulo de carga de imagenes
+	uploadImageContainer.dropzone({
+	   url : baseurl+"admin/upload",
+	   method: "POST",
+	   autoProcessQueue: false,
+	   uploadMultiple: false,
+	   maxFilezise: 10,
+	   maxFiles: 1,
+	   headers: { "X-CSRF-TOKEN": token },
+
+	   init: function() {
+	   	console.log("dz upload");
+	      dropzone = this;
+	     /* submitButton = $("#sendForm")
+	      submitButton.click(function(e) {
+	        e.preventDefault();
+	        e.stopPropagation();
+	     });
+
+
+	      this.on("addedfile", function(file)
+	      { 
+	         console.log("- Archivo agregado correctamente al visor");
+	         fileSelected = file;
+	         dropzoneO = dropzone;
+	      });
+
+	      this.on("complete", function(file)
+	      { 
+	         console.log("- Query de carga de archivos completada");
+	         dropzone.removeFile(file);
+	      });*/
+	      
+	   }
+	});
+}
 
 
 

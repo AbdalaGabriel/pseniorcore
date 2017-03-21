@@ -88,10 +88,13 @@
 	{!! Form::close() !!}
 		
 	@section('aditional-scripts')
-	{!!Html::script('js/baseurl.js')!!}
-	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/js/froala_editor.min.js'></script>
-	{!! Html::script('js/pages/form-controller.js') !!}
-	{!!Html::script('js/pages/blocks.js')!!}
+		{!!Html::script('js/baseurl.js')!!}
+		{!! Html::script('dropzone/dist/dropzone.js') !!}
+		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/js/froala_editor.min.js'></script>
+		{!! Html::script('js/pages/form-controller.js') !!}
+		{!!Html::script('js/pages/blocks.js')!!}
+
+
 	@endsection
 
 @endsection
