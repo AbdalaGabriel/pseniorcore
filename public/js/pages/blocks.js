@@ -12,6 +12,8 @@ function initEdition()
 	$('#new-block-text-content').froalaEditor();
 	$('#edit-block-text-content').froalaEditor();
 	//$('.froala').froalaEditor();
+	
+
 	blocksmaster();
 	imagesMaster();
 }
@@ -140,11 +142,17 @@ function eventsMaster()
 
 	// Variables globales;
 	var forBlock = "";
+	var imageForBlock = "";
+	var imageForInternBlock = "";
 	var forInternBlock = "";
 	var numberBlock = "";
 	var numberInner = "";
 	var textCounter = 0;
+	var imageCounter = 0;
 	var textContainer = $("#new-block-text-content");
+	var imageForAppendContainer = $("#selected-image-container");
+	var inputAlt = $(".selected-image-alt");
+	var inputTitle = $(".selected-image-title");
 
 	// Invocación Texto
 	var addtext = $(".add-text");
@@ -194,10 +202,11 @@ function eventsMaster()
 		$(".fr-element").empty();
 
 		listenToEvents();
+
 	});
 
 
-	// Escuchar eventos para borrar o modificar contenido appendeado.
+	// Escuchar eventos para borrar o modificar contenido de texto appendeado.
 	function listenToEvents()
 	{
 		
@@ -248,7 +257,125 @@ function eventsMaster()
 			});
 
 		});
-	};		
+	};
+
+
+	// Invocación imagen
+	var addimage = $(".add-image");
+	addimage.off();
+	addimage.click(function()
+	{
+		// Function init log
+		console.log("Click add image");
+		
+		// Leo información data, del elemento clikeado, obtengo bloque al que pertenece
+		imageForInternBlock = $(this).attr("data-from-inter-block");
+		imageForBlock = $(this).attr("data-from-block");
+
+		// Log de bloques pertenecientes.
+		console.log(imageForInternBlock);
+		console.log(imageForBlock);
+	});
+
+
+	// Confirmar agregado de imagen temporal al bloque;
+	var confirmAddImageButton = $("#confirm-add-image");
+	confirmAddImageButton.off();
+	confirmAddImageButton.click(function()
+	{
+		// Funcion init log.
+		console.log("- click over add");
+
+		// Levanto imagen que selecciono el usuario.
+		var finalImage = $(".final-image-for-append");
+		var finalImageSource = finalImage.attr("src");
+		var finalTitle = finalImage.attr("title");
+		var finalAlt = finalImage.attr("alt");
+
+		// Construyo el query del contenedor al cual le quiero appender al contenido, en base al llenado de variables globales.
+		var imageFatherBlock = $("#"+imageForBlock);
+		var imageChildBlock = $("#"+imageForInternBlock);
+		var imageInnerBlockForAppend = $("#"+imageForBlock+" #"+ imageForInternBlock + ' .content');
+
+		// Obtengo los numeros de block e innerblock para contruir ids de imagen;
+		imageNumberBlock = imageForBlock.slice(-1);
+		imageNumberInner = imageForInternBlock.slice(-1);
+
+		imageInnerBlockForAppend.append('<div id="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'-container" class="inner-block-image"><div class="image-content"><img class="final-image-for-append-thumb" title="'+finalTitle+'"  alt="'+finalAlt+'" class="image-for-append" src="'+finalImageSource+'"/></div> <span data-delete="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" title="Borrar imagen" class="delete-image-temp">X</span> <span data-edit="image-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" data-toggle="modal" data-target="#new-block-image"  title="Selecciona otra imagen" class="edit-image-temp">E</span></div>');
+		imageCounter++;
+
+		// Datos appendeados log
+		console.log("Apended");
+		console.log(finalImageSource);
+		console.log(finalTitle);
+		console.log(finalAlt);
+		
+		// Reset de elementos del popup
+		imageForAppendContainer.empty();
+		inputAlt.val('');
+		inputTitle.val('');
+
+		// Funcion end log.
+		console.log("- Image added to block");
+
+		listenToImageEvents();
+	});
+
+
+	// Escuchar eventos para borrar o modificar contenido de imagen appendeada.
+	function listenToImageEvents()
+	{
+		
+		// borrado de imagen
+		var deleteImageButton = $(".delete-image-temp");
+		deleteImageButton.off();
+		deleteImageButton.click(function()
+		{
+			console.log("- Click delete element");
+			var elementToDeleteName = $(this).attr("data-delete");
+			var elementToDelete = $("#"+elementToDeleteName+"-container");
+			elementToDelete.remove();
+
+			console.log("- Removed " + elementToDeleteName);
+
+		});
+
+		// Edit de input texto
+		var editTextButton = $(".edit-text-input");
+		var elementToEditName = "";
+		var elementToEdit = "";
+
+		editTextButton.off();
+		editTextButton.click(function()
+		{
+			console.log("- Click edit element");
+			elementToEditName = $(this).attr("data-edit");
+			elementToEdit = $("#"+elementToEditName+"-container .text-content");
+			
+			// Reemplazo en el modal por el contenido a editar.
+			var editContainer = ("#edit-block-text-content");
+			var editTextContainer = $("#edit-block-text .fr-element");
+			console.log(editTextContainer.html());
+			editTextContainer.html(elementToEdit.html());
+			
+			console.log("- Edited " + elementToEditName);
+
+			// Confirmar edicion-
+			var confirmButton = $("#confirm-edit-text");
+			confirmButton.off();
+			confirmButton.click(function()
+			{
+				console.log("- Confirm edition");
+				edition = $("#edit-block-text-content").val();
+				elementToEdit.html(edition);
+				console.log("- Edited");
+
+			});
+
+		});
+	};
+
+				
 }
 
 function imagesMaster()
@@ -313,15 +440,59 @@ function mediaMaster(){
 			$(data).each(function(key, value)
 			{
 				// TODO: actualizar rutas en produccion, no puede quedar como file
-				gridContainer.append('<div class="col-md-3"><img style="max-width: 100%;" src="/uploads/media/'+value.path+'"/></div>');
+				gridContainer.append('<div class="col-md-3"><img data-title="'+value.title+'"  data-alt="'+value.alt+'" class="image-for-append" src="/uploads/media/'+value.path+'"/></div>');
 
 			});
 
 			console.log("- Grilla armada");
+			eventsForImageGrid();
 
 		}
 	});
 
+
+	function eventsForImageGrid()
+	{
+		// Funcion init log.
+		console.log("- Events for image grid init");
+
+		//Variables gloales
+		var selectedimage = $(".image-for-append");
+
+		// Click over image for append
+		selectedimage.click(function()
+		{
+			// Funcion init log.
+			console.log("- click over image");
+			
+			// Variales Globales
+			var selectedImageSource = $(this).attr("src");
+			var selectedImageTitle = $(this).attr("data-title");
+			var selectedImageAlt = $(this).attr("data-alt");
+			var imageForAppendContainer = $("#selected-image-container");
+			var inputAlt = $(".selected-image-alt");
+			var inputTitle = $(".selected-image-title");
+			
+
+			// Log variables Globales
+			console.log(selectedImageSource);
+			console.log(selectedImageTitle);
+			console.log(selectedImageAlt);
+
+			// LLenado temporal de imagen a attachear y datos relativos.
+			imageForAppendContainer.html('<img class="final-image-for-append" title="'+selectedImageTitle+'"  alt="'+selectedImageAlt+'" class="image-for-append" src="'+selectedImageSource+'"/>')
+			inputAlt.val(selectedImageAlt);
+			inputTitle.val(selectedImageTitle);
+
+			// Funcion end log.
+			console.log("- Image ready to replace");
+		});
+
+
+		
+
+
+	}
 
 	// Inicializaciòn de modulo de carga de imagenes
 	uploadImageContainer.dropzone({

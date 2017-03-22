@@ -997,6 +997,8 @@ footer {
     margin: .5em 0;
 }
 
+
+
 #new-block-img .modal-dialog{
     width: 90%;
     max-width: 90%;
@@ -1046,4 +1048,58 @@ div.tab button.active {
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+}
+
+#galery #grid-container{
+  overflow: hidden;
+  width: 80%;
+  float: left;
+}
+
+#new-block-img .modal-dialog #galery {
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+}
+
+#selected-image-general-container{
+      width: 20%;
+    float: left;
+    height: 100%;
+    background: #dedede;
+}
+
+#galery h2{
+      margin: 1em 0 2em 0;
+}
+
+.image-for-append{
+  max-width: 100%;
+    cursor: pointer;
+}
+
+.image-for-append:hover{
+  -webkit-box-shadow: 0px 10px 43px -17px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 10px 43px -17px rgba(0,0,0,0.75);
+box-shadow: 0px 10px 43px -17px rgba(0,0,0,0.75);
+}
+
+.final-image-for-append{
+      max-width: 100%;
+}
+
+
+
+.inner-block-image{
+      background: white;
+    padding: .5em;
+    margin: .5em 0;
+}
+
+.image-content{
+  max-width: 50px;
+}
+
+.image-content img{
+  max-width: 100%;
 }
