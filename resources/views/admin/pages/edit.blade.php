@@ -7,6 +7,7 @@
 	@include('admin.pages.Blocks.text-block')
 	@include('admin.pages.Blocks.edit-text-block')
 	@include('admin.pages.Blocks.image-block')
+	
 
 	{!!Form::model($page,['route'=>['paginas.update',$page],'method'=>'PUT'])!!}
 
@@ -83,7 +84,7 @@
 	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 	<input type="hidden" name="reference" value="{!! $page->reference !!}" id="reference">
 	<input type="hidden" name="idPage" value="{!! $page->id !!}" id="reference">
-	{!! Form::submit('Actualizar página', ['class'=>'btn btn-primary btn-round']); !!}
+	{!! Form::submit('Actualizar página', ['class'=>'btn btn-primary btn-round', 'id'=>'edit-page']); !!}
 
 	{!! Form::close() !!}
 		

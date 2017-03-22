@@ -28,6 +28,8 @@ class CreatePagesTable extends Migration
             $table->string('reference');
              $table->string('meta_description');
             $table->string('en_meta_description');
+            $table->string('jsoneditdata');
+            $table->string('htmleditdata');
         });
     }
 

@@ -199,7 +199,7 @@ function eventsMaster()
 		numberBlock = forBlock.slice(-1);
 		numberInner = forInternBlock.slice(-1);
 
-		innerBlockForAppend.append('<div id="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'-container" class="inner-block-text"><div class="text-content">'+textForAppend+'</div> <span data-delete="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'" title="Borrar campo de texto" class="delete-text-input">X</span> <span data-edit="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'" data-toggle="modal" data-target="#edit-block-text"  title="Editar campo de texto" class="edit-text-input">E</span></div>');
+		innerBlockForAppend.append('<div id="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'-container" class="innerelement inner-block-text"><div class="innercontent text-content">'+textForAppend+'</div> <span data-delete="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'" title="Borrar campo de texto" class="delete-text-input">X</span> <span data-edit="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'" data-toggle="modal" data-target="#edit-block-text"  title="Editar campo de texto" class="edit-text-input">E</span></div>');
 		textCounter++;
 
 		console.log("Apended");
@@ -312,7 +312,7 @@ function eventsMaster()
 		imageNumberBlock = imageForBlock.slice(-1);
 		imageNumberInner = imageForInternBlock.slice(-1);
 
-		imageInnerBlockForAppend.append('<div id="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'-container" class="inner-block-image"><div class="image-content"><img class="final-image-for-append-thumb" title="'+finalTitle+'"  alt="'+finalAlt+'" class="image-for-append" src="'+finalImageSource+'"/></div> <span data-delete="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" title="Borrar imagen" class="delete-image-temp">X</span> <span data-edit="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" data-toggle="modal" data-target="#new-block-img"  title="Selecciona otra imagen" class="edit-image-temp">E</span></div>');
+		imageInnerBlockForAppend.append('<div id="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'-container" class="innerelement inner-block-image"><div class="innercontent image-content"><img class="final-image-for-append-thumb" title="'+finalTitle+'"  alt="'+finalAlt+'" class="image-for-append" src="'+finalImageSource+'"/></div> <span data-delete="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" title="Borrar imagen" class="delete-image-temp">X</span> <span data-edit="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" data-toggle="modal" data-target="#new-block-img"  title="Selecciona otra imagen" class="edit-image-temp">E</span></div>');
 		imageCounter++;
 
 		// Datos appendeados log
@@ -423,7 +423,6 @@ function eventsMaster()
 
 		});
 	};
-
 				
 }
 
@@ -458,10 +457,7 @@ function imagesMaster()
 	    document.getElementById(tabname).style.display = "block";
 	    evt.currentTarget.className += " active";
 
-
-	});
-
-	
+	});	
 }
 
 
@@ -536,10 +532,6 @@ function mediaMaster(){
 			// Funcion end log.
 			console.log("- Image ready to replace");
 		});
-
-
-		
-
 
 	}
 
