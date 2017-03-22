@@ -76,16 +76,16 @@ function blocksmaster(){
 				case "1":
 			    	//Simple block
 			    	console.log("- 1 div");
-			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock single">Single</div>');
+			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock single"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
 			    	break;
 
 			    	case "2":
 			    	// Grilla doble
 			    	console.log("- 2 div");
-			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half">Half</div>');
+			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
-			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half">Half</div>');
+			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
 
 			    	break;
@@ -95,22 +95,22 @@ function blocksmaster(){
 			    	console.log("- 3 div");
 			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"> <div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
-			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3">Third</div>');
+			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
-			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3">Third</div>');
+			    	blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
 			    	break;
 
 			    	case "4":
 				    //Grilla dividida en 4
 				    console.log("- 4 div");
-				    blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4">Fourth</div>');
+				    blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
-				    blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4">Fourth</div>');
+				    blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
-				    blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4">Fourth</div>');
+				    blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
-				    blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4">Fourth</div>');
+				    blockToModify.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
 
 				    break;
@@ -118,9 +118,9 @@ function blocksmaster(){
 				    case "2-65":
 				    //Grilla 25% - 75%
 				    console.log("- 2-66 div");
-				    blockToModify.append('<div id="intern-block-'+internCounter+'" class="internblock div-4">Fourth</div>');
+				    blockToModify.append('<div id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
-				    blockToModify.append('<div id="intern-block-'+internCounter+'" class="internblock div-65">Fourth</div>');
+				    blockToModify.append('<div id="intern-block-'+internCounter+'" class="internblock div-65"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
 
 				    break;
@@ -153,6 +153,13 @@ function eventsMaster()
 	var imageForAppendContainer = $("#selected-image-container");
 	var inputAlt = $(".selected-image-alt");
 	var inputTitle = $(".selected-image-title");
+	var editImageFlag = false;
+	var confirmAddImageButton = $("#confirm-add-image");
+	var confirmEditImageButton = $("#confirm-edit-image");
+
+
+	// default config
+	confirmEditImageButton.css("display","none");
 
 	// Invocación Texto
 	var addtext = $(".add-text");
@@ -267,6 +274,11 @@ function eventsMaster()
 	{
 		// Function init log
 		console.log("Click add image");
+
+		// Reset variables y botones 
+		editImageFlag = false;
+		confirmEditImageButton.css("display","none");
+		confirmAddImageButton.css("display","block");
 		
 		// Leo información data, del elemento clikeado, obtengo bloque al que pertenece
 		imageForInternBlock = $(this).attr("data-from-inter-block");
@@ -279,7 +291,6 @@ function eventsMaster()
 
 
 	// Confirmar agregado de imagen temporal al bloque;
-	var confirmAddImageButton = $("#confirm-add-image");
 	confirmAddImageButton.off();
 	confirmAddImageButton.click(function()
 	{
@@ -289,8 +300,8 @@ function eventsMaster()
 		// Levanto imagen que selecciono el usuario.
 		var finalImage = $(".final-image-for-append");
 		var finalImageSource = finalImage.attr("src");
-		var finalTitle = finalImage.attr("title");
-		var finalAlt = finalImage.attr("alt");
+		var finalTitle = $(".selected-image-title").val();
+		var finalAlt = $(".selected-image-alt").val();
 
 		// Construyo el query del contenedor al cual le quiero appender al contenido, en base al llenado de variables globales.
 		var imageFatherBlock = $("#"+imageForBlock);
@@ -301,7 +312,7 @@ function eventsMaster()
 		imageNumberBlock = imageForBlock.slice(-1);
 		imageNumberInner = imageForInternBlock.slice(-1);
 
-		imageInnerBlockForAppend.append('<div id="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'-container" class="inner-block-image"><div class="image-content"><img class="final-image-for-append-thumb" title="'+finalTitle+'"  alt="'+finalAlt+'" class="image-for-append" src="'+finalImageSource+'"/></div> <span data-delete="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" title="Borrar imagen" class="delete-image-temp">X</span> <span data-edit="image-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" data-toggle="modal" data-target="#new-block-image"  title="Selecciona otra imagen" class="edit-image-temp">E</span></div>');
+		imageInnerBlockForAppend.append('<div id="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'-container" class="inner-block-image"><div class="image-content"><img class="final-image-for-append-thumb" title="'+finalTitle+'"  alt="'+finalAlt+'" class="image-for-append" src="'+finalImageSource+'"/></div> <span data-delete="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" title="Borrar imagen" class="delete-image-temp">X</span> <span data-edit="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" data-toggle="modal" data-target="#new-block-img"  title="Selecciona otra imagen" class="edit-image-temp">E</span></div>');
 		imageCounter++;
 
 		// Datos appendeados log
@@ -341,33 +352,71 @@ function eventsMaster()
 		});
 
 		// Edit de input texto
-		var editTextButton = $(".edit-text-input");
+		var editImagetButton = $(".edit-image-temp");
 		var elementToEditName = "";
 		var elementToEdit = "";
 
-		editTextButton.off();
-		editTextButton.click(function()
+		editImagetButton.off();
+		editImagetButton.click(function()
 		{
-			console.log("- Click edit element");
+			console.log("- Click edit image element");
+			editImageFlag = true;
 			elementToEditName = $(this).attr("data-edit");
-			elementToEdit = $("#"+elementToEditName+"-container .text-content");
+			console.log(elementToEditName);
+			elementToEdit = $("#"+elementToEditName+"-container .image-content .final-image-for-append-thumb");
+			console.log("#img-"+elementToEditName+"-container .image-content .final-image-for-append-thumb");
+			elementToEditSrc = elementToEdit.attr("src");
+			elementToEditAlt = elementToEdit.attr("alt");
+			elementToEditTitle = elementToEdit.attr("title");
 			
+			
+			// Log variables 
+			console.log(elementToEditSrc);
+			console.log(elementToEditTitle);
+			console.log(elementToEditAlt);
+
 			// Reemplazo en el modal por el contenido a editar.
-			var editContainer = ("#edit-block-text-content");
-			var editTextContainer = $("#edit-block-text .fr-element");
-			console.log(editTextContainer.html());
-			editTextContainer.html(elementToEdit.html());
+			imageForAppendContainer.html('<img class="final-image-for-append" title="'+elementToEditTitle+'"  alt="'+elementToEditAlt+'" class="image-for-append" src="'+elementToEditSrc+'"/>')
+			inputAlt.val(elementToEditAlt);
+			inputTitle.val(elementToEditTitle);
+
 			
-			console.log("- Edited " + elementToEditName);
+			console.log("- Replaced data to edit");
 
 			// Confirmar edicion-
-			var confirmButton = $("#confirm-edit-text");
-			confirmButton.off();
-			confirmButton.click(function()
+			if(editImageFlag){
+				confirmEditImageButton.css("display","block");
+				confirmAddImageButton.css("display","none");
+			}
+
+			confirmEditImageButton.off();
+			confirmEditImageButton.click(function()
 			{
-				console.log("- Confirm edition");
-				edition = $("#edit-block-text-content").val();
-				elementToEdit.html(edition);
+				console.log("- Confirm image edition");
+				// Recopilacion de datos.
+				var finalImage = $(".final-image-for-append");
+				var finalImageSource = finalImage.attr("src");
+				var finalTitle = $(".selected-image-title").val();
+				var finalAlt = $(".selected-image-alt").val();
+
+				console.log(finalImageSource);
+				console.log(finalTitle);
+				console.log(finalAlt);
+
+				elementToEdit.attr("src",finalImageSource);
+			    elementToEdit.attr("alt",finalAlt);
+			    elementToEdit.attr("title",finalTitle);
+
+				// Reset de elementos del popup
+				imageForAppendContainer.empty();
+				inputAlt.val('');
+				inputTitle.val('');
+
+				// Reset variables y botones 
+				editImageFlag = false;
+				confirmEditImageButton.css("display","none");
+				confirmAddImageButton.css("display","block");
+
 				console.log("- Edited");
 
 			});

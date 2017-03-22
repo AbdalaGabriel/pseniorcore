@@ -38,6 +38,7 @@
         
       </div>
       <div class="modal-footer">
+        {!!link_to('#', $title='Editar', $attributes = ['id'=>'confirm-edit-image', 'class'=>'btn btn-primary', 'data-dismiss'=>'modal'], $secure = null)!!}
         {!!link_to('#', $title='Agregar', $attributes = ['id'=>'confirm-add-image', 'class'=>'btn btn-primary', 'data-dismiss'=>'modal'], $secure = null)!!}
       </div>
     </div>
