@@ -71,6 +71,7 @@ function collectBlocksInformation()
 
 	// Objetos para render en frontend.
 	var blocksObject = new Object();
+	
 	var innerBlocksObject = new Object();
 	var innerBlocksElements = new Object();
 
@@ -86,67 +87,97 @@ function collectBlocksInformation()
 
 	blocks.each(function(Iindex) {
 		
-		// Father
+		// Bloques principales
 		var thisBlock =  $(this);
 		var i = Iindex;
 		var thisBlockId = thisBlock.attr("id");
+		var rowsObject = new Object();
 
-		// Segundo bucle for levanto informacion de innerblocks y la guardo en un nuevo objeto.
-		var innerblocks = $("#"+thisBlockId+" .internblock");
-		innerblocks.each(function(Jindex) 
+		// Segundo bucle for levanto informacion de rows y la guardo en un nuevo objeto.
+		var innerRows = $("#"+thisBlockId+" .innerrow");
+		
+		if(innerRows.length > 0)
 		{
-			var thisInnerBlock =  $(this);
-			var j = Jindex;
-			var thisInnerBlockID = thisInnerBlock.attr("id");
-
-
-			// tercer bucle for levanto informacion de elementos del innerblock y la guardo en un nuevo objeto.
-			var thisInnerBlocksElements = $("#"+thisInnerBlockID+" .content > .innerelement");
-
-			if(thisInnerBlocksElements.length > 0)
+			innerRows.each(function(Gindex) 
 			{
-				thisInnerBlocksElements.each(function(Kindex) 
+				var thisInnerRow=  $(this);
+				var g = Gindex;
+				var thisInnerRowID = thisInnerRow.attr("id");
+
+				// tercer bucle for levanto informacion de innerblocks y la guardo en un nuevo objeto.
+				var innerblocks = $("#"+thisBlockId+" #"+thisInnerRowID+" .internblock");
+				innerblocks.each(function(Jindex) 
 				{
-					var thisInnerBlockElement =  $(this);
-					var k = Kindex;
-					var thisInnerBlockElementId = thisInnerBlockElement.attr("id");
-					var thisInnerBlockContent = $("#"+thisInnerBlockElementId+ " .innercontent");
+					var thisInnerBlock =  $(this);
+					var j = Jindex;
+					var thisInnerBlockID = thisInnerBlock.attr("id");
 
-					console.log("INner el id: "+thisInnerBlockElementId);
-					innerBlocksElements[k] = 
-					{ 
-						id: thisInnerBlockElementId,
-						html: thisInnerBlockContent.html(),
-					};
 
-				});
+					// cuarto bucle for levanto informacion de elementos del innerblock y la guardo en un nuevo objeto.
+					var thisInnerBlocksElements = $("#"+thisBlockId+" #"+thisInnerRowID+" #"+thisInnerBlockID+" .content > .innerelement");
 
-				innerblocks[j] = 
+					if(thisInnerBlocksElements.length > 0)
+					{
+						thisInnerBlocksElements.each(function(Kindex) 
+						{
+							var thisInnerBlockElement =  $(this);
+							var k = Kindex;
+							var thisInnerBlockElementId = thisInnerBlockElement.attr("id");
+							var thisInnerBlockContent = $("#"+thisInnerBlockElementId+ " .innercontent");
+
+							console.log("INner el id: "+thisInnerBlockElementId);
+							innerBlocksElements[k] = 
+							{ 
+								id: thisInnerBlockElementId,
+								html: thisInnerBlockContent.html(),
+							};
+
+						});
+
+						innerblocks[j] = 
+						{ 
+							id: thisInnerBlockID,
+							innerblockselements: innerBlocksElements,
+						};
+
+						innerBlocksElements = new Object();
+
+					}
+					else
+					{
+						innerblocks[j] = 
+						{ 
+							id: thisInnerBlockID,
+							innerblockselements: 0,
+						};
+					}
+
+				});	
+
+				rowsObject[g] = 
 				{ 
-					id: thisInnerBlockID,
-					innerblockselements: innerBlocksElements,
+					id: thisInnerRowID,
+					innerblocks: innerblocks,
 				};
 
-				innerBlocksElements = new Object();
-
-			}
-			else
-			{
-				innerblocks[j] = 
-				{ 
-					id: thisInnerBlockID,
-					innerblockselements: 0,
-				};
-			}
-
-		});
-
-		// Finalmentec contruyo mi objeto.
-		blocksObject[i] = 
-		{ 
-			id: thisBlockId,
-			innerblocks: innerblocks,
-		};
+			});
+		
+			// Finalmentec contruyo mi objeto.
+			blocksObject[i] = 
+			{ 
+				id: thisBlockId,
+				rows: rowsObject,
+			};
+		}
+		else
+		{
+			blocksObject[i] = 
+			{ 
+				id: thisBlockId,
+				rows: 0,
+			};
+		}
+	
 	});
 
 	// Hijos bloques
