@@ -85,45 +85,42 @@ public function edit(Request $request, $id)
 public function update(Request $request, $id)
 {
     $page = Page::find($id);
-        // actualiza nombre con lo que le llega via AJAX.
+    
+    // SI los datos vienen via AJAX
     $page->title = $request['title'];
-    $page->content = $request['content'];
+    $page->htmleditdata = $request['htmlForEdition'];
+    $page->jsoneditdata = $request['blocks'];
     $page->urlfriendly = $request['urlfriendly'];
-    $page->meta_description = $request['meta_description'];
+    //$page->meta_description = $request['meta_description'];
     $page->save();
-
-    if ($request->ajax())
-    {
-       return response()->json([
-        "mensaje" =>"listo"
-        ]);
-    }
-   else
-   {
-       $configuraciones = DB::table('configs')->where('page_id', $id)->get();
-       $configLegth = count($configuraciones);
+    
+    $configuraciones = DB::table('configs')->where('page_id', $id)->get();
+    $configLegth = count($configuraciones);
 
 
-        for ($i=0; $i < $configLegth ; $i++) { 
+    for ($i=0; $i < $configLegth ; $i++) { 
            
-           $thisRef = $configuraciones[$i]->reference;
-           $thisId =   $configuraciones[$i]->id;
+        $thisRef = $configuraciones[$i]->reference;
+        $thisId =   $configuraciones[$i]->id;
 
-           $config = Config::find($thisId);
-           //Referencia de esta configuración
-           $thisReference = $config->reference;
-           //referencia que venia en el request, en base al mismo nombre de la configuracion
-           $valueReferenceGet = $request[$thisReference];
-           //que el valor de esta configuracion sea igual al que trae el request.
-           $config->value =  $valueReferenceGet;
+        $config = Config::find($thisId);
+        //Referencia de esta configuración
+        $thisReference = $config->reference;
+        //referencia que venia en el request, en base al mismo nombre de la configuracion
+        $valueReferenceGet = $request[$thisReference];
+        //que el valor de esta configuracion sea igual al que trae el request.
+        $config->value =  $valueReferenceGet;
 
-           $config->save();
+        $config->save();
+    }  
 
-        }
- 
-        return Redirect::to('/admin/paginas');
-    }
+    return response()->json([
+       "mensaje" =>"Pagina editada correctamente"
+    ]);
+    //return Redirect::to('/admin/paginas/'.$id.'/edit');
+
  }
+
 
 public function destroy($id)
 {   

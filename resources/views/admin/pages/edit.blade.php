@@ -75,7 +75,7 @@
 	<h3>Bloques: </h3>
 	
 	<div id="blocks-container">
-	
+		<?php echo $page->htmleditdata; ?>
 	</div>
 
 	<span  id="add-block">Agregar bloque</span>
@@ -83,7 +83,7 @@
 
 	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 	<input type="hidden" name="reference" value="{!! $page->reference !!}" id="reference">
-	<input type="hidden" name="idPage" value="{!! $page->id !!}" id="reference">
+	<input type="hidden" name="idPage" value="{!! $page->id !!}" id="idPage">
 	{!! Form::submit('Actualizar página', ['class'=>'btn btn-primary btn-round', 'id'=>'edit-page']); !!}
 
 	{!! Form::close() !!}

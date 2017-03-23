@@ -20,6 +20,7 @@ function detectEvents(){
 		var title = $("#this-page-title").val();
 		var urlf = $("#new-post-urlf");
 		var token = $("#token").val();
+
 		var version = $("#new-post-urlf").attr("data-version");
 
 		$.ajax(
@@ -71,7 +72,6 @@ function collectBlocksInformation()
 
 	// Objetos para render en frontend.
 	var blocksObject = new Object();
-	
 	var innerBlocksObject = new Object();
 	var innerBlocksElements = new Object();
 
@@ -180,7 +180,6 @@ function collectBlocksInformation()
 	
 	});
 
-	// Hijos bloques
 
 	// Logs:
 	console.log("Front: ");
@@ -188,6 +187,50 @@ function collectBlocksInformation()
 
 	console.log("Edition: ");
 	//console.log(htmlForEditionMod);
+
+	// Finalmente enviar informacion via ajax para confirmar edicion.-
+	sendAllInformation(htmlForEditionMod, blocksObject);
+}
+
+
+function sendAllInformation(html, jsonObj)
+{
+	// Log inicio funcion-
+	console.log("- Envio final de información");
+	var title = $("#this-page-title").val();
+	var description;
+	var urlfriendly;
+	var token = $("#token").val();
+	var blocksForFrontend =JSON.stringify(jsonObj);
+	var htmlForEdition =  html;
+	var idPage = $("#idPage").val();
+	var routeEdit = baseurl+'admin/paginas/'+idPage;
+
+
+	console.log(title);
+	console.log(blocksForFrontend);
+	console.log(routeEdit);
+
+	$.ajax(
+		{
+			url: routeEdit,
+			headers: {'X-CSRF-TOKEN': token},
+			type: 'PUT',
+			dataType: 'json',
+			data: 
+			{
+				title: title, 
+				htmlForEdition:htmlForEdition,
+				blocks: blocksForFrontend,
+			},
+
+			success: function(data){
+				console.log("- Proyecto editado exitosamente");
+				
+				$("body").append('<p class="wellmessage">'+data+'</p>');
+				//$.redirect(baseurl+'admin/blog/');
+			}
+		});
 }
 
 
