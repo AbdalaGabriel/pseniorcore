@@ -238,6 +238,13 @@ function eventsMaster()
 	// Escuchar eventos para borrar o modificar contenido de texto appendeado.
 	function listenToEvents()
 	{
+		// Hacer draggeable los contenedores
+		$(".content").sortable(
+		{
+      		connectWith: ".content"
+   		 });
+		console.log("- Drag and drop implemented");
+
 		
 		// borrado de input texto
 		var deleteTextButton = $(".delete-text-input");
@@ -359,6 +366,7 @@ function eventsMaster()
 	function listenToImageEvents()
 	{
 		
+
 		// borrado de imagen
 		var deleteImageButton = $(".delete-image-temp");
 		deleteImageButton.off();
@@ -557,8 +565,9 @@ function mediaMaster(){
 
 	}
 
+	Dropzone.autoDiscover = false;
 	// Inicializaciòn de modulo de carga de imagenes
-	uploadImageContainer.dropzone({
+	/*uploadImageContainer.dropzone({
 	   url : baseurl+"admin/upload",
 	   method: "POST",
 	   autoProcessQueue: false,
@@ -588,10 +597,10 @@ function mediaMaster(){
 	      { 
 	         console.log("- Query de carga de archivos completada");
 	         dropzone.removeFile(file);
-	      });*/
+	      });
 	      
 	   }
-	});
+	});*/
 }
 
 

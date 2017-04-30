@@ -28,7 +28,7 @@
 
         <div id="uploadimages" class="tabcontent">
           <h2>Subir imagen</h2>
-          <div id="upload-image">
+          <div class="dropzone" data-token="{{csrf_token()}}" id="upload-image">
             
           </div>
         </div>

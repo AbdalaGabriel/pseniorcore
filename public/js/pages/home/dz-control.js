@@ -3,6 +3,7 @@ var dropzoneO;
 token = $("div#myDropZone").attr("data-token");
 var fileSelected;
 console.log(token);
+console.log("s");
 
 $("div#myDropZone").dropzone({
    url : baseurl+"admin/paginas/home/slider/uploadimages",
