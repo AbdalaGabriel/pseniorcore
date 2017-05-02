@@ -23,7 +23,7 @@ $urlfPortfolio = "portfolio";
 
 $blog = Page::find(13);
 //$urlfBlog = $blog->urlfriendly;
-$urlfBlog = "2blog";
+$urlfBlog = "blog";
 
 Route::get('/basicemail', 'MailController@basic_email');
 Route::get('/htmlemail', 'MailController@html_email');
@@ -68,6 +68,9 @@ Route::get('/home', 'HomeController@index');
 
 	// Contacto
 	Route::get('/multimedia-now', 'FrontController@multimediaNow');
+
+	// Paginas secundarias
+	Route::get('/{urflf}', 'PageController@getPage' );
 
 /* --------------------------------------------------------------------------------------- */
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -134,6 +137,7 @@ Route::get('/admin', 'FrontController@admin');
 
 	// PAGINAS
 	Route::resource('/admin/paginas', 'PageController');
+	Route::get('/admin/menu', 'PageController@menu');
 		
 		Route::resource('/admin/paginas/home/slider', 'SliderController');
 		// Home Slider

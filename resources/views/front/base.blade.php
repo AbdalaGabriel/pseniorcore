@@ -172,7 +172,7 @@
 </div>
 
 <!-- footer -->
-			<section class="g-section no-padding contact">
+			<section class="g-section no-padding contact pre-footer">
 				<div class="section-container  col-md-4 tuts">
 						<h2>Tutoriales y recursos</h2>
 						<h3>Acceda de forma abierta a tutoriales y recursos multimediales, abiertos para la comunidad</h3>

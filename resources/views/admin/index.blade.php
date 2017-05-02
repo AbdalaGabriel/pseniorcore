@@ -56,6 +56,10 @@
 	    	<div class="sidebar-wrapper">
 	           
 	              <ul class="nav">
+	             	 <li class="">
+						{!! link_to_action('PageController@menu','Menu') !!} 
+						
+					</li>
 					<li>
 						{!! link_to_action('BlogController@index', 'Blog') !!}
 					</li>

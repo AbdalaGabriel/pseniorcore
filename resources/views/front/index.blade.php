@@ -66,7 +66,7 @@
 	</nav>
 	
 	<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
-		<div class="container">
+		<div class="container header-container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-index">
 					<span class="sr-only">Toggle navigation</span>
@@ -126,7 +126,7 @@
 
 <div class="wrapper">
 	<div class="header header-filter">
-		<div class="container">
+		<div class="container ">
 		
 				<div class="inner-container">
 					<div class="introduction-container">
@@ -193,7 +193,7 @@
 
 
 			<!-- footer -->
-			<section class="g-section no-padding contact">
+			<section class="g-section no-padding contact pre-footer">
 				<div class="section-container  col-md-4 tuts">
 						<h2>Tutoriales y recursos</h2>
 						<h3>Acceda de forma abierta a tutoriales y recursos multimediales, abiertos para la comunidad</h3>

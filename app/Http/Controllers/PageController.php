@@ -64,6 +64,26 @@ public function show($id)
         //
 }
 
+public function getPage($urlfriendly)
+{
+    $page = Page::where('urlfriendly', $urlfriendly)->first();
+
+    if($page != null)
+    {
+        return view("front.page", ['page'=>$page]);
+    }
+    else{
+        return view("errors.404");
+    }
+}
+    
+
+public function menu()
+{
+    $pages = Page::all();
+    return view('admin.pages.menu', ['pages'=>$pages]);
+}
+
 
 public function edit(Request $request, $id)
 {
