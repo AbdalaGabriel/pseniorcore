@@ -46,6 +46,8 @@
 	{!!Html::style('bootstrap-template-assets/materialKit/assets/css/bootstrap.min.css')!!}
 	{!!Html::style('bootstrap-template-assets/materialKit/assets/css/material-kit.css')!!}
 	{!!Html::style('css/customization.css')!!}
+	@yield('styles')
+
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>

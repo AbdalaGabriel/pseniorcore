@@ -21,6 +21,8 @@
  
     <!--  CSS for Demo Purpose, don't include it in your project     -->
 	 {!!Html::style('bootstrap-template-assets/css/demo.css')!!}
+
+
     	
     <!-- Include Editor style. -->
 <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
@@ -29,6 +31,9 @@
 
 	 {!!Html::style('css/customization.css')!!}
 
+	 @yield('styles')
+
+
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
@@ -36,6 +41,7 @@
 
 <body class="admin">
 
+	@yield('main')
 
 	<div class="wrapper">
 				

@@ -2,11 +2,14 @@
 @section('pageTitle', 'Administrar páginas')
 @section('title', 'Editanto página '.$page->title.' de su sitio web')
 
-@section('main')
-
+@section('popups')
 	@include('admin.pages.Blocks.text-block')
 	@include('admin.pages.Blocks.edit-text-block')
 	@include('admin.pages.Blocks.image-block')
+@endsection
+
+@section('main')
+
 	
 
 	{!!Form::model($page,['route'=>['paginas.update',$page],'method'=>'PUT'])!!}

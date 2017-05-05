@@ -198,8 +198,8 @@ function sendAllInformation(html, jsonObj)
 	// Log inicio funcion-
 	console.log("- Envio final de información");
 	var title = $("#this-page-title").val();
-	var description;
-	var urlfriendly;
+	var meta_description = $("#new-meta-content").val();
+	var urlfriendly = $("#new-post-urlf").val();
 	var token = $("#token").val();
 	var blocksForFrontend =JSON.stringify(jsonObj);
 	var htmlForEdition =  html;
@@ -207,9 +207,15 @@ function sendAllInformation(html, jsonObj)
 	var routeEdit = baseurl+'admin/paginas/'+idPage;
 
 
+	console.log("- Sending info for update:");
+
 	console.log(title);
 	console.log(blocksForFrontend);
 	console.log(routeEdit);
+	console.log(urlfriendly);
+	console.log(meta_description);
+	
+	console.log("-------------------------");
 
 	$.ajax(
 		{
@@ -221,6 +227,8 @@ function sendAllInformation(html, jsonObj)
 			{
 				title: title, 
 				htmlForEdition:htmlForEdition,
+				urlfriendly: urlfriendly,
+				meta_description: meta_description,
 				blocks: blocksForFrontend,
 			},
 

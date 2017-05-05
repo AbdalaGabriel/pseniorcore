@@ -111,7 +111,7 @@ public function update(Request $request, $id)
     $page->htmleditdata = $request['htmlForEdition'];
     $page->jsoneditdata = $request['blocks'];
     $page->urlfriendly = $request['urlfriendly'];
-    //$page->meta_description = $request['meta_description'];
+    $page->meta_description = $request['meta_description'];
     $page->save();
     
     $configuraciones = DB::table('configs')->where('page_id', $id)->get();

@@ -1,3 +1,4 @@
+
 $( document ).ready(function() 
 {
 	console.log( "- Block logic ready" );
@@ -15,6 +16,7 @@ function initEdition()
 	
 
 	blocksmaster();
+	eventsMaster();
 	imagesMaster();
 }
 
@@ -149,8 +151,7 @@ function blocksmaster(){
 
 				}
 
-			// Llamado al manejador de eventos.
-			eventsMaster();
+			
 			console.log(blockToModifyName);
 		});
 	}

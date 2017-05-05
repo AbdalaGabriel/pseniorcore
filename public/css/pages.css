@@ -1,0 +1,10 @@
+.row-container{
+	width: 100%;
+	overflow: hidden;
+}
+
+.r-3{
+	width: 31%;
+	float: left;
+	margin: 1%;
+}

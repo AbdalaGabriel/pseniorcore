@@ -11,9 +11,16 @@
 	
 	@endsection
 
+
+
 	<!-- Titulo de pagina -->
 	@section('page-title')
 		{!!$page->title!!}
+	@endsection
+
+		<!-- External css -->
+	@section('styles')
+		{!!Html::style('css/pages.css')!!}
 	@endsection
 
 	<!-- Contenido principal -->
@@ -33,14 +40,13 @@ $BlockNumbers = count($jsonBlocks);
 echo $BlockNumbers;
 for ($i=0; $i < $BlockNumbers ; $i++) { 
 ?>
-	<section> <h1>titulooooo</h1>
+	<section>
 	<?php
 		$rowsnumber = count($jsonBlocks[$i]["rows"]); 
 		for ($j=0; $j < $rowsnumber; $j++) 
 		{ 
 		?>
 			<div class="row-container">
-				<h2>Subcont</h2>
 			<?php
 				
 				$innerBlocksNumber = count($jsonBlocks[$i]["rows"][$j]["innerblocks"])-2;
@@ -49,7 +55,7 @@ for ($i=0; $i < $BlockNumbers ; $i++) {
 				for ($k=0; $k < $innerBlocksNumber; $k++)
 				{ 
 					?>
-					<div class="innerBlock">
+					<div class="innerBlock r-{!!$innerBlocksNumber!!}">
 					<?php
 					$innerElements = $jsonBlocks[$i]["rows"][$j]["innerblocks"][$k]["innerblockselements"];
 
