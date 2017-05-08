@@ -41,7 +41,7 @@
 
 <body class="admin">
 
-	@yield('main')
+	@yield('popups')
 
 	<div class="wrapper">
 				

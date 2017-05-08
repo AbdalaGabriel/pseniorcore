@@ -6,6 +6,7 @@
 	@include('admin.pages.Blocks.text-block')
 	@include('admin.pages.Blocks.edit-text-block')
 	@include('admin.pages.Blocks.image-block')
+	@include('admin.pages.Blocks.link-block')
 @endsection
 
 @section('main')

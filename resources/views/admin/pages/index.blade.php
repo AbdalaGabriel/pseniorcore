@@ -4,12 +4,15 @@
 @section('title', 'Administrar páginas de su sitio web')
 
 
-
-@section('main')
+@section('popups')
 
 	@include('admin.pages.messages.confirmation')
 	@include('admin.pages.messages.create')
 	@include('admin.pages.messages.quick-edit')
+	@endsection
+
+
+@section('main')
 
 	<div class=".col-md-4 center adminBlock">
 
