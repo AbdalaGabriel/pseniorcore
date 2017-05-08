@@ -291,5 +291,6 @@
 {!!Html::script('bootstrap-template-assets/materialKit/assets/js/material-kit.js')!!}
 {!!Html::script('js/particles/particle.js')!!}
 {!!Html::script('js/functions.js')!!}
+@yield('aditionalScripts')
 
 </html>

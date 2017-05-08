@@ -124,12 +124,26 @@ function collectBlocksInformation()
 							var k = Kindex;
 							var thisInnerBlockElementId = thisInnerBlockElement.attr("id");
 							var thisInnerBlockContent = $("#"+thisInnerBlockElementId+ " .innercontent");
+							var hasLink = thisInnerBlockContent.attr("data-has-link");
+							var linkvalue = thisInnerBlockContent.attr("data-linked-to");
 
-							console.log("INner el id: "+thisInnerBlockElementId);
-							innerBlocksElements[k] = 
-							{ 
-								id: thisInnerBlockElementId,
-								html: thisInnerBlockContent.html(),
+							if(hasLink = "y")
+							{
+								innerBlocksElements[k] = 
+								{ 
+									id: thisInnerBlockElementId,
+									html: thisInnerBlockContent.html(),
+									link: linkvalue,
+								};
+							}
+							else
+							{
+								innerBlocksElements[k] = 
+								{ 
+									id: thisInnerBlockElementId,
+									html: thisInnerBlockContent.html(),
+									link: "n",
+								};
 							};
 
 						});

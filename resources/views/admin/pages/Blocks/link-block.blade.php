@@ -5,20 +5,22 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">Insertar linnk a página</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body links-container">
          <div class="tab">
-          <button class="tablinks" data-tabname="galery" >Páginas en su sitio web</button>
-          <button class="tablinks" data-tabname="uploadimages">Url personalizada</button>
+          <button class="link-tablinks" data-tabname="pageurls" >Páginas en su sitio web</button>
+          <button class="link-tablinks" data-tabname="externalurls">Url personalizada</button>
         </div>
 
-        <div id="galery" class="tabcontent active">
+        <div id="pageurls" class="link-tabcontent active">
           <h2>Linkear a:</h2>
           <div id="pages-for-link-container">
-              <select name="" id=""></select>
+              <select id="url-select">
+                <option value="select">Seleccione una página</option>
+              </select>
           </div>
         </div>
 
-        <div id="uploadimages" class="tabcontent">
+        <div id="externalurls" class="tabcontent">
           <h2>Ingrese URL</h2>
           <div id="personal-url">
             <input type="text">
@@ -27,7 +29,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        {!!link_to('#', $title='Agregar', $attributes = ['id'=>'confirm-add-text', 'class'=>'btn btn-primary', 'data-dismiss'=>'modal'], $secure = null)!!}
+        {!!link_to('#', $title='Agregar', $attributes = ['id'=>'confirm-add-link', 'class'=>'btn btn-primary', 'data-dismiss'=>'modal'], $secure = null)!!}
       </div>
     </div>
   </div>

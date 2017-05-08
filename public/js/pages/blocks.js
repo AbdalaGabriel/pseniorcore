@@ -16,8 +16,11 @@ function initEdition()
 	
 
 	blocksmaster();
+
 	eventsMaster();
 	imagesMaster();
+	linksMaster();
+	linkEvents();
 }
 
 function blocksmaster(){
@@ -26,7 +29,8 @@ function blocksmaster(){
 	var contenedorBloques = $("#blocks-container");
 	var addBlock = $("#add-block");
 	var blockCounter = 0;
-	
+	internBlockEvents();
+
 	// Evito duplicado de eventos
 	addBlock.off();
 	addBlock.click(function()
@@ -46,8 +50,6 @@ function blocksmaster(){
 
 		console.log(thisBlockName);
 		console.log("- Finalizo el agregado de bloque");
-
-		// Llamado de eventos para creación de bloques internos.
 		internBlockEvents();
 
 	});
@@ -83,7 +85,7 @@ function blocksmaster(){
 			    	blockToModify.append('<div id="row-'+rowCounter+'" class="innerrow"></div>');
 			    	var thisRow = $("#"+blockToModifyName+" #row-"+rowCounter);
 	
-			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock single"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span><span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#link-block-popup" class="addbutton add-link">link</span></div><div class="content"></div></div>');
+			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock single"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	
 			    	internCounter++;
 			    	rowCounter++;
@@ -95,9 +97,9 @@ function blocksmaster(){
 			    	blockToModify.append('<div id="row-'+rowCounter+'" class="innerrow"></div>');
 			    	var thisRow = $("#"+blockToModifyName+" #row-"+rowCounter);
 
-			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span><span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#link-block-popup" class="addbutton add-link">link</span></div><div class="content"></div></div>');
+			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
-			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span><span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#link-block-popup" class="addbutton add-link">link</span></div><div class="content"></div></div>');
+			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
 
 			    	rowCounter++;
@@ -110,11 +112,11 @@ function blocksmaster(){
 			    	blockToModify.append('<div id="row-'+rowCounter+'" class="innerrow"></div>');
 			    	var thisRow = $("#"+blockToModifyName+" #row-"+rowCounter);
 
-			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"> <div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span><span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#link-block-popup" class="addbutton add-link">link</span></div><div class="content"></div></div>');
+			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"> <div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
-			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span><span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#link-block-popup" class="addbutton add-link">link</span></div><div class="content"></div></div>');
+			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
-			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span><span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#link-block-popup" class="addbutton add-link">link</span></div><div class="content"></div></div>');
+			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
 			    	rowCounter++;
 			    	break;
@@ -125,13 +127,13 @@ function blocksmaster(){
 				    blockToModify.append('<div id="row-'+rowCounter+'" class="innerrow"></div>');
 			    	var thisRow = $("#"+blockToModifyName+" #row-"+rowCounter);
 
-				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span><span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#link-block-popup" class="addbutton add-link">link</span></div><div class="content"></div></div>');
+				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
-				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span><span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#link-block-popup" class="addbutton add-link">link</span></div><div class="content"></div></div>');
+				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
-				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span><span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#link-block-popup" class="addbutton add-link">link</span></div><div class="content"></div></div>');
+				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
-				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span><span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#link-block-popup" class="addbutton add-link">link</span></div><div class="content"></div></div>');
+				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
 				    rowCounter++;
 				    break;
@@ -142,9 +144,9 @@ function blocksmaster(){
 				    blockToModify.append('<div id="row-'+rowCounter+'" class="innerrow"></div>');
 			    	var thisRow = $("#"+blockToModifyName+" #row-"+rowCounter);
 
-				    thisRow.append('<div id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span><span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#link-block-popup" class="addbutton add-link">link</span></div><div class="content"></div></div>');
+				    thisRow.append('<div id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
-				    thisRow.append('<div id="intern-block-'+internCounter+'" class="internblock div-65"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span><span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#link-block-popup" class="addbutton add-link">link</span></div><div class="content"></div></div>');
+				    thisRow.append('<div id="intern-block-'+internCounter+'" class="internblock div-65"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
 				    rowCounter++;
 				    break;
@@ -179,7 +181,7 @@ function eventsMaster()
 	var editImageFlag = false;
 	var confirmAddImageButton = $("#confirm-add-image");
 	var confirmEditImageButton = $("#confirm-edit-image");
-
+	
 
 	// default config
 	confirmEditImageButton.css("display","none");
@@ -222,7 +224,7 @@ function eventsMaster()
 		numberBlock = forBlock.slice(-1);
 		numberInner = forInternBlock.slice(-1);
 
-		innerBlockForAppend.append('<div id="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'-container" class="innerelement inner-block-text"><div class="innercontent text-content">'+textForAppend+'</div> <span data-delete="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'" title="Borrar campo de texto" class="delete-text-input">X</span> <span data-edit="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'" data-toggle="modal" data-target="#edit-block-text"  title="Editar campo de texto" class="edit-text-input">E</span></div>');
+		innerBlockForAppend.append('<div id="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'-container" class="innerelement inner-block-text"><div class="innercontent text-content">'+textForAppend+'</div> <span data-delete="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'" title="Borrar campo de texto" class="delete-text-input">X</span> <span data-for="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'-container"  data-edit="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'" data-toggle="modal" data-target="#edit-block-text"  title="Editar campo de texto" class="edit-text-input">E</span> <span  data-for="text-'+numberBlock+'-'+numberInner+'-'+textCounter+'-container"  data-edit="linkto-'+numberBlock+'-'+numberInner+'-'+textCounter+'" data-toggle="modal" data-target="#link-block-popup" class="add-link">+ link</span></div>');
 		textCounter++;
 
 		console.log("Apended");
@@ -232,6 +234,7 @@ function eventsMaster()
 		$(".fr-element").empty();
 
 		listenToEvents();
+		linkEvents();
 
 	});
 
@@ -294,6 +297,8 @@ function eventsMaster()
 			});
 
 		});
+
+
 	};
 
 
@@ -342,7 +347,7 @@ function eventsMaster()
 		imageNumberBlock = imageForBlock.slice(-1);
 		imageNumberInner = imageForInternBlock.slice(-1);
 
-		imageInnerBlockForAppend.append('<div id="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'-container" class="innerelement inner-block-image"><div class="innercontent image-content"><img class="final-image-for-append-thumb" title="'+finalTitle+'"  alt="'+finalAlt+'" class="image-for-append" src="'+finalImageSource+'"/></div> <span data-delete="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" title="Borrar imagen" class="delete-image-temp">X</span> <span data-edit="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" data-toggle="modal" data-target="#new-block-img"  title="Selecciona otra imagen" class="edit-image-temp">E</span></div>');
+		imageInnerBlockForAppend.append('<div id="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'-container" class="innerelement inner-block-image"><div class="innercontent image-content"><img class="final-image-for-append-thumb" title="'+finalTitle+'"  alt="'+finalAlt+'" class="image-for-append" src="'+finalImageSource+'"/></div> <span data-delete="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" title="Borrar imagen" class="delete-image-temp">X</span> <span data-edit="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" data-toggle="modal" data-target="#new-block-img"  title="Selecciona otra imagen" class="edit-image-temp">E</span><span data-edit="linkto-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'" data-toggle="modal" data-target="#link-block-popup" data-for="img-'+imageNumberBlock+'-'+imageNumberInner+'-'+imageCounter+'-container"  class=" add-link">+ link</span></div>');
 		imageCounter++;
 
 		// Datos appendeados log
@@ -360,8 +365,10 @@ function eventsMaster()
 		console.log("- Image added to block");
 
 		listenToImageEvents();
+		 linkEvents()
 	});
 
+	
 
 	// Escuchar eventos para borrar o modificar contenido de imagen appendeada.
 	function listenToImageEvents()
@@ -492,6 +499,107 @@ function imagesMaster()
 }
 
 
+function linksMaster()
+{
+	console.log("- Init link logic")
+	var tablinks = $(".link-tablinks");
+	getlinks();
+
+	tablinks.click(function(evt)
+	{
+
+		console.log("- clicktab")
+		var tabname = $(this).attr("data-tabname");
+		console.log(tabname);
+
+		
+	    // Declare all variables
+	    var i, tabcontent, tablinks;
+
+	    // Get all elements with class="tabcontent" and hide them
+	    tabcontent = document.getElementsByClassName("link-tabcontent");
+	    for (i = 0; i < tabcontent.length; i++) {
+	    	tabcontent[i].style.display = "none";
+	    }
+
+	    // Get all elements with class="tablinks" and remove the class "active"
+	    tablinks = document.getElementsByClassName("link-tablinks");
+	    for (i = 0; i < tablinks.length; i++) {
+	    	tablinks[i].className = tablinks[i].className.replace(" active", "");
+	    }
+
+	    // Show the current tab, and add an "active" class to the button that opened the tab
+	    document.getElementById(tabname).style.display = "block";
+	    evt.currentTarget.className += " active";
+
+	});	
+
+	function getlinks()
+	{
+		var token = $("#token").val();
+		var linkSelect = $("#url-select");
+		console.log("- init url get.");
+
+
+		// Llenado de select en base a urls friendlys de la bd.
+		$.ajax(
+		{
+			url: baseurl+"admin/paginas",
+			headers: {'X-CSRF-TOKEN': token},
+			type: 'GET',
+			dataType: 'json',
+
+			success: function(data){
+				console.log("- se obtuvieron datos de urls");
+				console.log(data);
+				$(data).each(function(key, value)
+				{
+					// TODO: actualizar rutas en produccion, no puede quedar como file
+					linkSelect.append('<option id="'+value.urlfriendly+'" data-id="'+value.id+'"  data-url="'+value.urlfriendly+'" class="link-for-block">'+value.title+'</option>');
+
+				});
+
+				console.log("- Linnks apended");
+
+			}
+		});
+	}
+
+	
+
+}
+
+
+
+function linkEvents()
+{
+	addLinkButton = $(".add-link");
+	addLinkButton.off();
+	addLinkButton.click(function()
+	{
+		console.log("- Click to add link");	
+		var blockToLinkName = $(this).attr("data-for");
+		var confirmAddLink = $("#confirm-add-link");
+		blockToLink = $("#"+blockToLinkName + " .innercontent");
+		console.log(blockToLinkName);
+
+
+		confirmAddLink.off();
+		confirmAddLink.click(function()
+		{
+			console.log("- Confirm add link");
+
+			linkSelected = $( "#url-select option:selected" );
+
+			blockToLink.attr("data-has-link","y");
+			blockToLink.attr("data-linked-to",linkSelected.attr("data-id"));
+			console.log(linkSelected.text());
+			console.log(linkSelected.attr("data-id"));
+
+		});
+
+	});
+}
 
 
 function mediaMaster(){

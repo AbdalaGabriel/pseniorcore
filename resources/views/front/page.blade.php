@@ -71,7 +71,21 @@ for ($i=0; $i < $BlockNumbers ; $i++) {
 						{ 
 							# code...
 							$innerHtml = $jsonBlocks[$i]["rows"][$j]["innerblocks"][$k]["innerblockselements"][$l]["html"];
-							echo $innerHtml;
+
+							$innerhtmlLink = $jsonBlocks[$i]["rows"][$j]["innerblocks"][$k]["innerblockselements"][$l]["link"];
+
+
+							if($innerhtmlLink == "n")
+							{
+								echo $innerHtml;
+							}else
+							{
+								$finalHtml = '<a href="#" class="linksforBlock" data-idurlreplace="'.$innerhtmlLink.'">';
+								$finalHtml =  $finalHtml.$innerHtml;
+								$finalHtml = $finalHtml.'</a>';
+
+								echo $finalHtml;
+							}							
 
 						};
 
@@ -99,4 +113,9 @@ for ($i=0; $i < $BlockNumbers ; $i++) {
 
 	
 
+	@endsection
+
+	@section('aditionalScripts')
+	{!!Html::script('js/baseurl.js')!!}
+	{!!Html::script('js/replacelinks.js')!!}
 	@endsection
