@@ -26,10 +26,17 @@ class CreatePagesTable extends Migration
             $table->string('en_urlfriendly');
             $table->timestamps();
             $table->string('reference');
-             $table->string('meta_description');
+            $table->string('meta_description');
             $table->string('en_meta_description');
             $table->string('jsoneditdata');
             $table->string('htmleditdata');
+            
+        });
+
+
+         Schema::table('pages', function ($table) {
+            $table->integer('visible_in_menu');
+            $table->integer('order_in_menu');
         });
     }
 

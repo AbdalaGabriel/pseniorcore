@@ -145,6 +145,9 @@ Route::get('/admin', 'FrontController@admin');
 		Route::post('/admin/paginas/home/slider/updateorder', 'SliderController@updateorder');
 
 
+		Route::post('/paginas/{id?}/changeorder', 'PageController@changeorder');
+
+
 	// BLOG
 	Route::resource('/admin/blog', 'BlogController');
 		// Edición rápida de categorías

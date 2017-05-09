@@ -10,21 +10,21 @@
 
 	<div class=".col-md-4 center adminBlock">
 
-		<a id="createPage" data-toggle="modal" data-target="#pageModal" href="#">Crear página nueva</a>
+		
 		<table class="table">
 			<thead>
-				<th>Titulo</th>
-				<th>URL</th>
-				<th>Operaciones</th>
+				<th>Título</th>
+				<th>Visible</th>
+				
 			</thead>
 			
-			<tbody id="datos">
+			<tbody id="datos-menu">
 				
 			</tbody>
 		</table>
 		
 	</div>
-
+	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 
 	<tbody id="datos"></tbody>
 
@@ -33,6 +33,7 @@
 	@section('aditional-scripts')
 	{!!Html::script('js/baseurl.js')!!}
 	{!! Html::script('js/pages/menu.js') !!}
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	@endsection
 
 @endsection

@@ -12,7 +12,17 @@ class PageController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $pages = Page::all();
+            if($request['from']="menu")
+            {
+                $pages = DB::table('pages')
+                ->orderBy('order_in_menu', 'asc')
+                ->get();
+            }
+            else{
+                $pages = Page::all();
+            }
+            
+            
             return response()->json($pages);
         } else{
            return view('admin.pages.index'); 
@@ -77,6 +87,28 @@ public function getPage($urlfriendly)
     }
 }
     
+public function changeorder(Request $request){
+ if ($request->ajax()) 
+ {
+
+    $newPositions = $request['neworder'];
+    $arrayLength = count($newPositions);
+
+    for ($i=0; $i < $arrayLength ; $i++) { 
+
+        $thisId = $newPositions[$i]['id'];
+        $thisPosition = $newPositions[$i]['position'];
+
+        $thisSlide = Page::find($thisId);
+        $thisSlide->order_in_menu = $thisPosition;
+        $thisSlide->save();
+
+    }
+   
+
+} 
+}
+
 
 public function menu()
 {

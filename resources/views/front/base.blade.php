@@ -59,33 +59,8 @@
 	<nav class="hidden-menu">
 		<div id="particles-js-2" class="absolute-pos"></div>
 		<a href="#" title="Cerrar menú" class="close-hidden-menu">X</a>
-		<ul>
-			<li>
-				{!! link_to_action('FrontController@index','Home') !!}
-			</li>
-			<li>
-				{!! link_to_action('FrontController@portfolio','Portfolio') !!}
-			</li>
-			<li>
-				{!! link_to_action('FrontController@blog','Noticias y novedades') !!}
-			</li>
-			<li>
-				<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-					Acceso clientes
-				</a>
-			</li>
-			<li>
-				{!! link_to_action('FrontController@multimediaNow','#Multimedia Now') !!}
-			</li>
-			<li>
-				<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-					Sobre mi
-				</a>
-			</li>
-			<li>
-				{!! link_to_action('FrontController@contact','Contacto') !!}
-
-			</li>
+		<ul id="main-menu">
+			
 
 		</ul>
 
@@ -261,6 +236,7 @@
 
 	</div>
 </div>
+<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 <footer>	
 		<div class="engagement-container">	
 				<h2>¿Listo para que iniciemos un proyecto juntos?</h2>

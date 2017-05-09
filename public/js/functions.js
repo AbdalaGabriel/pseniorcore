@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-	init();
+	initpage();
 	initParticles();
 	getsubscribers();
 	detectPage();	
@@ -14,7 +14,7 @@ function initParticles()
 	});
 }
 
-function init(){
+function initpage(){
 	// funcion cambio de palabras home.
 	setInterval(changingStatus, 3000);
 
@@ -56,6 +56,41 @@ function init(){
 		
 		particulas.css("display", "none");
 	});
+
+	fillmenu()
+	function fillmenu()
+	{
+		console.log("init function fillmenu");
+		var token = $("#token").val();
+		var menucontainer = $("#main-menu");
+
+		// Llenado de tabla en base a paginas en la base de datos.
+		$.ajax(
+		{
+			url: baseurl+"admin/paginas",
+			headers: {'X-CSRF-TOKEN': token},
+			type: 'GET',
+			dataType: 'json',
+			data: {from:'menu'},
+
+			success: function(data)
+			{
+				console.log("- se obtuvieron datos de urls");
+				console.log(data);
+				$(data).each(function(key, value)
+				{
+					menucontainer.append('<li><a href="/'+value.urlfriendly+'">'+value.title+'</a></li>');
+
+				});
+
+				console.log("- Menu created");
+			
+
+			}
+
+			
+		});
+		}
 
 }
 
