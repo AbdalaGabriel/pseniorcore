@@ -14,9 +14,11 @@
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 	<script src="https://apis.google.com/js/platform.js" async defer>
+
 		{lang: 'es-419'}
 	</script>
 	<!--     Fonts and icons     -->
+	<script src="https://use.fontawesome.com/062fcbdd8d.js"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
@@ -243,7 +245,21 @@
 				<a href="/contactame" class="contact">Pogámonos en contacto</a>
 		</div>
 		
-		<nav>	
+		<nav>
+		<div class="brand-footer-container">
+			G
+		</div>
+
+		<div class="social-icons-container">
+			<span>Instagram</span>
+			<span>Linkedin</span>
+			<span>Behance</span>
+			<i class="fa fa-behance" aria-hidden="true"></i>
+		</div>
+
+		<div class="copyright-container">
+			Sitio web diseñado y desarrollado por Gabriel Abdala.
+		</div>
 				
 		</nav>
 
@@ -267,6 +283,10 @@
 {!!Html::script('bootstrap-template-assets/materialKit/assets/js/material-kit.js')!!}
 {!!Html::script('js/particles/particle.js')!!}
 {!!Html::script('js/functions.js')!!}
+
+
 @yield('aditionalScripts')
+
+
 
 </html>

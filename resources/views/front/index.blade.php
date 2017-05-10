@@ -11,6 +11,7 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
 	<!--     Fonts and icons     -->
+	<script src="https://use.fontawesome.com/062fcbdd8d.js"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
@@ -261,9 +262,51 @@
 				<a href="/contactame" class="contact">Pogámonos en contacto</a>
 		</div>
 		
-		<nav>	
+		
+		
+
+		<div class="section-container">
+
+			<div class="footer-box contact-me">
+				<h3 class="footer-title">Navega</h3>
+				<span>Home</span>
+				<span>Servicios</span>
+				<span>Blog</span>
+				<span>Contactame</span>
 				
-		</nav>
+			</div>
+
+			<div class="footer-box contact-me">
+				<h3 class="footer-title">Contactame</h3>
+				<span><i class="fa fa-mobile" aria-hidden="true"></i> (011) 1562485374</span>
+				<span><i class="fa fa-envelope-o" aria-hidden="true"></i> gabrielabdala.dm@gmail.com</span>
+				
+			</div>
+
+			<div class="footer-box contact-me">
+				<h3 class="footer-title">Lee mas</h3>
+				<span>¿Que hacen los usuarios?</span>
+				
+			</div>
+
+			<div class="footer-box social-icons-container">
+				<h3 class="footer-title">Seguime</h3>
+				<i class="fa fa-instagram" aria-hidden="true"></i>
+				<i class="fa fa-behance" aria-hidden="true"></i>
+				<i class="fa fa-linkedin" aria-hidden="true"></i>
+				
+			</div>
+
+			
+		</div>
+
+		<div class="copyright-container">
+		<div class="brand-footer-container">
+			G
+		</div>
+				Sitio web diseñado y desarrollado por Gabriel Abdala.
+		</div>
+					
 
 </footer>
 </body>
