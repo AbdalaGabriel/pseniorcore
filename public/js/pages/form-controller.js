@@ -127,7 +127,7 @@ function collectBlocksInformation()
 							var hasLink = thisInnerBlockContent.attr("data-has-link");
 							var linkvalue = thisInnerBlockContent.attr("data-linked-to");
 
-							if(hasLink = "y")
+							if(hasLink == "y")
 							{
 								innerBlocksElements[k] = 
 								{ 
@@ -145,6 +145,8 @@ function collectBlocksInformation()
 									link: "n",
 								};
 							};
+
+							console.log("TIENE LINK: " + hasLink);
 
 						});
 
@@ -197,7 +199,7 @@ function collectBlocksInformation()
 
 	// Logs:
 	console.log("Front: ");
-	console.log(blocksObject);
+	//console.log(blocksObject);
 
 	console.log("Edition: ");
 	//console.log(htmlForEditionMod);
@@ -224,7 +226,7 @@ function sendAllInformation(html, jsonObj)
 	console.log("- Sending info for update:");
 
 	console.log(title);
-	console.log(blocksForFrontend);
+	//console.log(blocksForFrontend);
 	console.log(routeEdit);
 	console.log(urlfriendly);
 	console.log(meta_description);

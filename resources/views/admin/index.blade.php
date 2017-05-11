@@ -30,6 +30,7 @@
 	
 
 	 {!!Html::style('css/customization.css')!!}
+	 {!!Html::style('css/admin.css')!!}
 
 	 @yield('styles')
 

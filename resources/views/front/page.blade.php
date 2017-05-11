@@ -76,7 +76,7 @@ for ($i=0; $i < $BlockNumbers ; $i++) {
 							$innerhtmlLink = $jsonBlocks[$i]["rows"][$j]["innerblocks"][$k]["innerblockselements"][$l]["link"];
 
 
-							if($innerhtmlLink == "n")
+							if($innerhtmlLink == 'n')
 							{
 								echo $innerHtml;
 							}else

@@ -1,0 +1,16 @@
+.innerrow{
+ position: relative;
+}
+
+
+.deletethisrow{
+      position: absolute;
+    top: 0;
+    right: 0;
+    background: #8a8a8a;
+    border-radius: 2em;
+    padding: .2em .7em;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
