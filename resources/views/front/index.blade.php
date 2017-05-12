@@ -309,6 +309,7 @@
 					
 
 </footer>
+<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 </body>
 
 <!--   Core JS Files   -->

@@ -189,6 +189,10 @@ Route::get('/admin', 'FrontController@admin');
 		Route::post('admin/upload', 'MediaController@uploadimages' );
 		Route::post('admin/appendinfo', 'MediaController@appendinfo' );
 
+	// USUARIOS
+	Route::resource('/admin/usuarios', 'UserController');
+
+
 
 /* --------------------------------------------------------------------------------------- */
 /////////////////////////////////////////////////////////////////////////////////////////////

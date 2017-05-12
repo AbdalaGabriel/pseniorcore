@@ -185,6 +185,8 @@
 									<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
 								</div>
 
+								
+
 								@if (Auth::guest())
 									<div class="mc-field-group">
 									<label for="mce-FNAME">Nombre </label>
@@ -211,6 +213,7 @@
 							</div>
 						</form>
 					</div>
+
 					<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'>
 						
 					</script><script type='text/javascript'>
@@ -238,7 +241,7 @@
 
 	</div>
 </div>
-<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
+
 <footer>	
 		<div class="engagement-container">	
 				<h2>¿Listo para que iniciemos un proyecto juntos?</h2>
@@ -264,6 +267,7 @@
 		</nav>
 
 </footer>
+
 
 
 </body>

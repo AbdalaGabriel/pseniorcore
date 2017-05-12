@@ -13,11 +13,24 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     public function index(Request $request)
     {
-        //
-    }
+        $users = DB::table('users')
+            ->orderBy('name', 'asc')         
+            ->get();
 
+        if ($request->ajax())
+        {
+            return response()->json($users);
+        
+        } 
+        else
+        {
+
+           return view('admin.users.index',  ['users' => $users]); 
+        }
+
+   }
     /**
      * Show the form for creating a new resource.
      *
@@ -36,7 +49,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->ajax()) {
+         $user = User::create([
+         'company' => $request['company'],
+         'name' => $request['name'],
+         'email' => $request['email'],
+         'password'  => 'sldfkjijnJKH88,30',
+         'newsletter'  => '1',
+         'status'  => '1',
+
+         ]);
+        }
+
     }
 
     /**
