@@ -43,9 +43,36 @@
 <body class="admin">
 
 	@yield('popups')
-
+ 
 	<div class="wrapper">
 				
+     	
+			<!-- PREGUNTAR SI ESTA LOGUEADO O NO -->
+			@if (Auth::guest())
+				
+			@else
+			<div class="admin-logged-bar">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+					{{ Auth::user()->name }} <span class="caret"></span>
+				</a>
+
+				<ul class="dropdown-menu" role="menu">
+					<li>
+						<a href="{{ url('/logout') }}"
+						onclick="event.preventDefault();
+						document.getElementById('logout-form').submit();">
+						Logout
+						</a>
+
+						<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+							{{ csrf_field() }}
+						</form>
+					</li>
+				</ul>
+			</li>
+			</div>
+			@endif
 
 	    <div class="sidebar" data-color="purple" data-image="http://localhost/coresenior/public/bootstrap-template-assets/img/sidebar-1.jpg">
 			<!--
@@ -103,6 +130,10 @@
 
 					<li class="">
 						{!! link_to_action('MediaController@index','Media') !!}
+						
+					</li>
+					<li class="">
+						{!! link_to_action('UserController@index','Usuarios') !!}
 						
 					</li>
 

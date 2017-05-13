@@ -27,12 +27,6 @@
 		{!!Form::text('urlfriendly', null, ['id'=>'new-post-urlf', 'class'=>'form-control','placeholder'=>'URL amigable','data-version' => 'en']) !!}
 	@endif
 
-	@if( $page->writable_content == "1")
-		<!-- Descripcion  -->
-		{!!Form::label('content', 'Contenido de su página', ['class' => 'form-control ']);!!}
-		{!!Form::textarea('content', $page->content, ['id'=>'new-post-content', 'class'=>'form-control froala','placeholder'=>'Ingrese el contenido de su sitio']) !!}
-	@endif		
-
 	{!!Form::label('metadescr', 'Descripciòn de su página para búesquedas', ['class' => 'form-control']);!!}
 
 	{!!Form::textarea('meta_description', null, ['id'=>'new-meta-content', 'class'=>'form-control','placeholder'=>'Ej: Trabajo de diseño de identidad corporativa realizado para la marca LOREMIPSUM']) !!}
@@ -76,13 +70,17 @@
 		</div>
 	@endforeach
 
-	<h3>Bloques: </h3>
-	
-	<div id="blocks-container">
-		<?php echo $page->htmleditdata; ?>
-	</div>
 
-	<span  id="add-block">Agregar bloque</span>
+	@if( $page->writable_content == "1")
+		
+		<h3>Bloques: </h3>
+	
+		<div id="blocks-container">
+			<?php echo $page->htmleditdata; ?>
+		</div>
+
+		<span  id="add-block">Agregar bloque</span>
+	@endif		
 
 
 	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">

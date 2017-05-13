@@ -26,7 +26,7 @@
 </head>
 
 <body class="main">
-		<div id="particles-js"></div>
+		
 	<!-- Navbar will come here -->
 	<nav class="hidden-menu">
 		<div id="particles-js-2" class="absolute-pos"></div>
@@ -102,30 +102,34 @@
 
 <div class="wrapper">
 	<div class="header header-filter">
-		<div class="container ">
+		<div class="container  slider-container">
 		
-				<div class="inner-container">
-					<div class="introduction-container">
-						<h1 class="hello">Hola,</h1>
-						<h3 class="home-phrase">Mi nombre es <span class="name">Gabriel Abdala</span>, y</h3>
-						<h3 class="changing-prhase">soy diseñador multimedial</h3>
-					</div>
-
-				<a class="cta-home">Mirá mis trabajos</a>
-
-				<div class="big-g-container">
-					<!-- <img src="/img/front/g.svg"> -->
-				</div>
-			</div>
-
+				
 
 			<!--SLIDER -->
 			<div class="wrap">
 				<div class="slide">
 					<ul>
+						<li>
+							<div class="inner-container">
+							<div id="particles-js"></div>
+								<div class="introduction-container">
+									<h1 class="hello">Hola,</h1>
+									<h3 class="home-phrase">Mi nombre es <span class="name">Gabriel Abdala</span>, y</h3>
+									<h3 class="changing-prhase">soy diseñador multimedial</h3>
+								</div>
+
+							<a class="cta-home">Mirá mis trabajos</a>
+
+								<div class="big-g-container">
+									<!-- <img src="/img/front/g.svg"> -->
+								</div>
+							</div>
+
+						</li>
 						@foreach ($slides as $slide)	
 						<li style="background-image:url(/uploads/sliderhome/{!!$slide->path!!})">
-							<h1>{!!$slide->title!!}</h1><h2>{!!$slide->subtitle!!}</h2></li>
+							<h1 class="slide-title">{!!$slide->title!!}</h1><h2  class="slide-subtitle">{!!$slide->subtitle!!}</h2></li>
 							@endforeach
 						</ul>
 					</div>
@@ -337,7 +341,7 @@
 <script>
 	$(document).ready(function($) {
 		$(".slide").fadeImages({
-			time:3000,
+			time:123000,
 			arrows: true,
 			complete: function() {
 				console.log("Fade Images Complete");

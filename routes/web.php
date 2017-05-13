@@ -44,7 +44,7 @@ Route::get('/mail', function () {
 // HOME
 Route::get('/', 'FrontController@index');
 Route::get('/en', 'FrontController@enIndex');
-Route::get('/home', 'HomeController@index');
+Route::get('/profile', 'HomeController@index');
 
 	// Portfolio
 	Route::get('/'.$urlfPortfolio, 'FrontController@portfolio');
@@ -130,14 +130,17 @@ Route::resource('/admin/users', 'UserController');
 // --------------------------------------------------------------------------------------- //
 
 // ADMIN 
-Route::get('/admin', 'FrontController@admin');
+Route::get('/admin', 'FrontController@admin')->middleware('admin');
 
 	// Generador de Cadenas
 	Route::get('/admin/geturl', 'UrlEncoder@encode');
 
-	// PAGINAS
-	Route::resource('/admin/paginas', 'PageController');
-	Route::get('/admin/menu', 'PageController@menu');
+	
+	Route::group(['middleware' => 'admin'], function() {
+	 // PAGINAS
+	  Route::resource('/admin/paginas', 'PageController');
+
+	  Route::get('/admin/menu', 'PageController@menu');
 		
 		Route::resource('/admin/paginas/home/slider', 'SliderController');
 		// Home Slider
@@ -193,10 +196,17 @@ Route::get('/admin', 'FrontController@admin');
 	Route::resource('/admin/usuarios', 'UserController');
 
 
+	});
+
+
+	
+
+	
+
+
 
 /* --------------------------------------------------------------------------------------- */
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
