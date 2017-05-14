@@ -26,7 +26,8 @@
     <h1>Bienvenido! {{ Auth::user()->name }}</h1>
     <a href="#">Editar perfil</a>
     <a href="/organizer/{{ Auth::user()->id }}">Ir al organizador</a>
-    <a href="http://twitter.us14.list-manage.com/unsubscribe?u=21939b15fd9aeae487bd56ef1&id=a5ecdc5c4a">Darme de baja del newsletter</a>
+    <a href="http://twitter.us14.list-manage.com/unsubscribe?u=21939b15fd9aeae487bd56ef1&id=a5ecdc5c4a">Darme de baja del newsletter
+    </a>
 
     
 

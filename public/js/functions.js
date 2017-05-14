@@ -79,18 +79,49 @@ function initpage(){
 				console.log(data);
 				$(data).each(function(key, value)
 				{
-					menucontainer.append('<li><a href="/'+value.urlfriendly+'">'+value.title+'</a></li>');
-
+					menucontainer.append('<li><a id="option-'+value.id+'" href="/'+value.urlfriendly+'">'+value.title+'</a></li>');
+					if(value.subpages != "n")
+					{
+						subLength = value.subpages.length;
+						console.log(value.id + "-tiene hijos");
+						let children = value.subpages;
+						$("#option-"+value.id).parent("li").append('<span data-show="submenu-'+value.id+'" class="sub-lgt">('+subLength+')<span class="arrowsee">></span><span>');
+						$("#option-"+value.id).append('<ul id="submenu-'+value.id+'" class="suboptionscontainer"></ul>');
+						$(children).each(function(key, child)
+						{
+							$("#option-"+value.id+" .suboptionscontainer").append('<li><a id="option-'+child.id+'" href="/'+child.urlfriendly+'">'+child.title+'</a></li>');
+						});
+						
+					}
 				});
 
 				console.log("- Menu created");
-			
+				detectSubmenuEvents();
 
 			}
 
 			
 		});
+
+		function detectSubmenuEvents()
+		{
+			console.log("function Showing suboption");
+			$(".sub-lgt").click(function()
+			{
+				$(".suboptionscontainer").css("display","none");
+				let thisSubOption = $(this);
+				let show = thisSubOption.attr("data-show");
+
+				let ulToShow = $("#"+show);
+				ulToShow.css("display","block");
+				console.log("Showing suboption");
+
+			});
 		}
+
+		
+
+	}
 
 }
 

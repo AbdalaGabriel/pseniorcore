@@ -14,7 +14,6 @@
 		<table class="table">
 			<thead>
 				<th>Título</th>
-				<th>Visible</th>
 				
 			</thead>
 			

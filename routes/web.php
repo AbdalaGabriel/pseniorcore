@@ -148,7 +148,7 @@ Route::get('/admin', 'FrontController@admin')->middleware('admin');
 		Route::post('/admin/paginas/home/slider/updateorder', 'SliderController@updateorder');
 
 
-		Route::post('/paginas/{id?}/changeorder', 'PageController@changeorder');
+		Route::post('/paginas/changeorder', 'PageController@changeorder');
 
 
 	// BLOG

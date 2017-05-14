@@ -28,3 +28,10 @@
 .admin-logged-bar li a{
 	color: white;
 }
+
+.childspace{
+	    background: #ececec;
+    min-height: 2em;
+    margin: 0 0 0 3em;
+}
+

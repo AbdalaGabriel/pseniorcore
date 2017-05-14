@@ -40,7 +40,22 @@
     padding-left: 1em;
 }
 
-
+.sub-lgt {
+    color: white;
+    font-size: 19px;
+    cursor: pointer;
+}
+a ul.suboptionscontainer{
+  margin: .5em 0 1em;
+  display: none;
+}
+a ul.suboptionscontainer li{
+  margin: 0;
+}
+a ul.suboptionscontainer li a{
+      font-size: 0.6em;
+    color: #cacaca;
+}
 .modal-backdrop.in {
 
     z-index: 0 !important;

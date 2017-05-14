@@ -14,9 +14,39 @@ class PageController extends Controller
         if ($request->ajax()) {
             if($request['from']="menu")
             {
+                //Consulta que devuelve un objeto de arrays.
                 $pages = DB::table('pages')
+                ->where("father", null)
                 ->orderBy('order_in_menu', 'asc')
-                ->get();
+                ->get()->map(function ($item, $key) {
+                    return (array) $item;
+                })->all();
+
+                 $menuArrayLenght = count($pages);
+
+                  for ($i=0; $i < $menuArrayLenght; $i++) 
+                  { 
+                    $thisPageId = $pages[$i]["id"];
+                    $hasChildren = $pages[$i]["has_children"];
+                    if($hasChildren == "y")
+                    {   
+                        // pido opciones de submenu
+                         $subpages = DB::table('pages')
+                        ->where("father", $thisPageId)
+                        ->orderBy('order_in_submenu', 'asc')
+                        ->get()->map(function ($item, $key) {
+                            return (array) $item;
+                        })->all();
+
+                        $pages[$i]["subpages"] = $subpages;
+
+                    }
+                    else
+                    {
+                        $pages[$i]["subpages"] = "n";
+                    }
+                  }
+
             }
             else{
                 $pages = Page::all();
@@ -88,25 +118,71 @@ public function getPage($urlfriendly)
 }
     
 public function changeorder(Request $request){
- if ($request->ajax()) 
- {
+     if ($request->ajax()) 
+     {
 
-    $newPositions = $request['neworder'];
-    $arrayLength = count($newPositions);
+        $from = $request['from'];
+        // Detecto si viene de una opcion interna del menu o de una opcion main.
+        if($from == "innermenuoption" )
+        {
+             $fatherId = $request['father'];
+             $innerPositions = $request['innerneworder'];
+             $arrayLength = count($innerPositions);
 
-    for ($i=0; $i < $arrayLength ; $i++) { 
+             $father = Page::find($fatherId);
+             $father->has_children = "y";
+             $father->save();
 
-        $thisId = $newPositions[$i]['id'];
-        $thisPosition = $newPositions[$i]['position'];
+             for ($i=0; $i < $arrayLength ; $i++) { 
 
-        $thisSlide = Page::find($thisId);
-        $thisSlide->order_in_menu = $thisPosition;
-        $thisSlide->save();
+                $thisId = $innerPositions[$i]['id'];
+                $thisPosition = $innerPositions[$i]['position'];
 
-    }
-   
+                $thisOption = Page::find($thisId);
+                $thisOption->order_in_submenu = $thisPosition;
+                $thisOption->order_in_menu = -1;
+                $thisOption->father = $fatherId;
+                $thisOption->save();
 
-} 
+            }
+
+        }
+        elseif($from == "emptyfather")
+        {
+             $fatherId = $request['father'];
+             $father = Page::find($fatherId);
+             $father->has_children = "n";
+             $father->save();
+        }
+        elseif($from == "mainOptionBack")
+        {
+             $pageId = $request['id'];
+             $thisPage = Page::find($pageId);
+             $thisPage->father = null;
+             $thisPage->save();
+
+        }
+        else
+        {
+            $newPositions = $request['neworder'];
+            $arrayLength = count($newPositions);
+
+            for ($i=0; $i < $arrayLength ; $i++) { 
+
+                $thisId = $newPositions[$i]['id'];
+                $thisPosition = $newPositions[$i]['position'];
+
+                $thisSlide = Page::find($thisId);
+                $thisSlide->order_in_menu = $thisPosition;
+                $thisSlide->save();
+
+            }
+        }
+
+        return response()->json([
+           "mensaje" =>"PSucesse"
+        ]);
+    } 
 }
 
 
