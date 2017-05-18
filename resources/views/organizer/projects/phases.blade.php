@@ -7,15 +7,8 @@
 @endsection
 
 @section('project-tasks')
-
-<div class="task-bar">
-	<h2>
-	<input data-type="title" data-url="clientproject/grouptask/quickmodify" data-id="{!!$actualphase->id!!}" title="Editar titulo del proyecto" class="inputOff" type="text" id="phaseName" data-element-type="phase" value="{!!$actualphase->title!!}">
-	</h2>
-
-	<input data-type="description" data-url="clientproject/grouptask/quickmodify" data-id="{!!$actualphase->id!!}" title="Editar descripción del proyecto" class="inputOff" type="text" id="projectName" data-element-type="phase" value="{!!$actualphase->description!!}">
-
-	</div>	
+<div id="ssgrouptasks"></div> 
+<a  class="new-group-task"   data-toggle="modal" data-target="#createPhase" href="#">Crear nueva fase.</a>
 @endsection
     
 @section('main')
@@ -33,6 +26,12 @@
 	<input id="projectId" type="hidden" name="" value="{!! $project->id !!}">
 	
 	
+
+	<h2>
+	<input data-type="title" data-url="clientproject/grouptask/quickmodify" data-id="{!!$actualphase->id!!}" title="Editar titulo del proyecto" class="inputOff" type="text" id="phaseName" data-element-type="phase" value="{!!$actualphase->title!!}">
+	</h2>
+
+	<input data-type="description" data-url="clientproject/grouptask/quickmodify" data-id="{!!$actualphase->id!!}" title="Editar descripción del proyecto" class="inputOff" type="text" id="projectName" data-element-type="phase" value="{!!$actualphase->description!!}">
 
 	<input id="phaseId" type="hidden" value="{!! $actualphase->id !!}" name="">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">

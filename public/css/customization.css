@@ -680,20 +680,7 @@ body {
   opacity: 1;
 }
 
-.task-title{
-      width: 30%;
-    margin-right: 3%;
-    float: left;
-    text-align: center;
-}
-.task-column{
-      width: 30%;
-    margin-right: 3%;
-    float: left;
-    height: 500px;
-    border: 1px solid #a97cb0;
-        position: relative;
-}
+
 
 #done-column .task-container{
       text-decoration: line-through !important;
@@ -705,7 +692,7 @@ display: block;
 
 .task-container{
   cursor: pointer;
-  background: #e0dede;
+  background: #ececec;
     padding: .5em;
     margin: 1em;
     border-radius: .6em;
@@ -724,7 +711,10 @@ display: block;
 }
 
 .task-container a{
-  display: block;
+      display: block;
+    color: black;
+    font-weight: 500;
+    font-size: 1.2em;
 }
 
 .inputOff{
@@ -1238,3 +1228,5 @@ width: 23%;
     margin: 0 10px 0 0;
 }
 }
+
+

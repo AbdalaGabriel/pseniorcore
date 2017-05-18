@@ -1,10 +1,10 @@
 .organizer .inputOff {
-    border: none;
+     border: none;
     background: none;
     cursor: pointer;
     width: 100%;
-        letter-spacing: 2px;
-            font-weight: 400;
+    letter-spacing: 1px;
+    font-weight: 300;
 }
 
 .content .inputOff{
@@ -12,17 +12,19 @@
 }
 
 .organizer-header{
-      background: #303054;
+      background: #232635;
       padding: 2em;
           position: relative;
               overflow: hidden;
 }
 
 .organizer-header h2{
-    background: none;
-    color: white;
+        background: none;
+    color: #e9eaf1;
     padding: 0;
     font-weight: 100;
+    letter-spacing: 0.1em;
+    font-size: 15px;
 }
 
 .description-container input{
@@ -68,4 +70,97 @@
     font-weight: 300;
     font-size: 12px;
         color: white;
+}
+
+.hola{
+    width: 100%;
+    text-align: center;
+    font-size: 5em;
+    margin: 40px 0 0 0;
+  }
+
+.user-name-organizer{
+    font-size: 2em;
+    margin: 0 !important;
+}
+
+.projectsContainer a{
+        width: 100%;
+    display: block;
+    font-size: 2em;
+    color: red;
+    text-align: center;
+    font-weight: 100;
+    letter-spacing: 2px;
+
+}
+
+.create-new-container{
+   position: absolute;
+   bottom: 2em;
+   width: 100%;
+}
+
+
+.create-new{
+       background: none;
+    color: #e9eaf1;
+    padding: 0;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    font-size: 15px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: 20em;
+    color: #232635;
+    padding: 1em;
+    border: 1px solid;
+    font-weight: 300;
+    border-radius: 2em;
+}
+
+
+.projects-title-organizer{
+        font-size: 1.2em;
+    text-transform: inherit;
+    letter-spacing: 1px;
+    margin: 3em 0 1.5em 0;
+}
+
+.task-title{
+      width: 30%;
+    margin-right: 3%;
+    float: left;
+    text-align: center;
+    background: #232635;
+    color: white;
+    padding: .5em 0;
+}
+.task-column{
+      width: 30%;
+    margin-right: 3%;
+    float: left;
+    height: 500px;
+    border: 1px solid #a97cb0;
+        position: relative;
+}
+
+
+.task-bar{
+    background: #ececec;
+    padding: 1em 2em;
+}
+
+.task-bar h2{
+    margin: 0;
+    font-size: 1.2em;
+    letter-spacing: 1px !important;
+    font-weight: 200;
+}
+
+.task-bar input{
+       font-weight: 500;
+ letter-spacing: 0px;
+
 }
