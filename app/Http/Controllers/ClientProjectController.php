@@ -162,7 +162,7 @@ class ClientProjectController extends Controller
             //->join('phases', 'client_projects.id', '=', 'phases.client_project_id')->get();
             //$projects->toArray();
 
-            // IMPORTANTE : cuando realizo una consulta con db: devuelve un objeto que no puede convertirse a array porque no tiene los metodos via laravel, con lo cual si yo ejecuto el metodo toArra() lo que hace es un array de objetos, es decir que no puedo acceder a cada uno, para solucionar esto se agrega la magia map, despues del get d ela consulta,
+            // IMPORTANTE : cuando realizo una consulta con db: devuelve un objeto que no puede convertirse a array porque no tiene los metodos via laravel, con lo cual si yo ejecuto el metodo toArray() lo que hace es un array de objetos, es decir que no puedo acceder a cada uno, para solucionar esto se agrega la magia map, despues del get d ela consulta,
 
             /* Más info:
             http://stackoverflow.com/questions/41447275/laravel-toarray-still-returning-an-object-in-dbraw
@@ -170,7 +170,7 @@ class ClientProjectController extends Controller
             "When you call toArray() on a Collection, if the underlying items implement the Illuminate\Contracts\Support\Arrayable interface, the collection will attempt to call toArray() on each item. However, when you use the query builder, the result will be a Collection of stdClass objects, and stdClass objects are plain objects that do not implement that interface and do not have a toArray() method. Therefore, when you call toArray() on a Collection of stdClass objects, you will just get a plain array of the stdClass objects back."
             */
 
-            // Todo esto lo hago para hacer arrays multidinamicos que me tengan toda la info de fase por proyecto, es decir poder acceder a sus posiciones y nombres de propiedades mediante [], luego finalmente lo empaqueto en json y se lo envio a la app.
+            // Todo esto lo hago para hacer arrays multidemnsionales que me tengan toda la info de fase por proyecto, es decir poder acceder a sus posiciones y nombres de propiedades mediante [], luego finalmente lo empaqueto en json y se lo envio a la app.
 
             $projectsArrayLenght = count($projects);
 

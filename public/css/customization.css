@@ -1227,6 +1227,9 @@ width: 23%;
       font-size: 21px;
     margin: 0 10px 0 0;
 }
+
+
+
+.row-container .innerBlock img{
+  max-width: 100% !important;
 }
-
-

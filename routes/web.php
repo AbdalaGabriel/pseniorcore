@@ -89,6 +89,8 @@ Route::resource('/admin/users', 'UserController');
     Route::get('app/task/{taskid?}/comments', 'CardCommentController@appReturnCommentsForTask');
     
 
+    Route::get('app/phases/{projectid?}/{phasename?}/{shortdesc?}', 'PhaseController@appAddPhase')->middleware('corsg');
+
     // BLOG
 	Route::get('/app/blog', 'BlogController@givemeposts');
 	

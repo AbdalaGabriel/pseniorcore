@@ -80,6 +80,22 @@ class PhaseController extends Controller
         }
     }
 
+    public function appAddPhase(Request $request, $projectid, $phasename, $shortdesc,)
+    {
+       
+        $phase = Phase::create([
+           'title' => $phasename,
+           'description' => $shortdesc,
+           'client_project_id' =>  $projectid,
+           ]);
+         return response()->json([
+            "mensaje"=>"creado"
+            ]);
+        
+    }
+
+
+
     /**
      * Display the specified resource.
      *
