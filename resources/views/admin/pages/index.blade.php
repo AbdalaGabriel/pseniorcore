@@ -21,7 +21,9 @@
 			<thead>
 				<th>Titulo</th>
 				<th>URL</th>
-				<th>Operaciones</th>
+				<th>Versión en inglés</th>
+				<th>Edicion</th>
+				<th>Borrar</th>
 			</thead>
 			
 			<tbody id="datos">

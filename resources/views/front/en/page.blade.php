@@ -1,10 +1,10 @@
 @extends('front.base')
 
 	<!-- Titulo de la pestaña -->
-	@section('mainTitle'){!!$page->title!!}@endsection
+	@section('mainTitle'){!!$page->en_title!!}@endsection
 
 	<!-- Metadescription-->
-	@section('metadescription'){!!$page->meta_description!!}@endsection
+	@section('metadescription'){!!$page->en_meta_description!!}@endsection
 
 	<!-- Imagen de cover -->
 	@section('cover-image')
@@ -15,7 +15,7 @@
 
 	<!-- Titulo de pagina -->
 	@section('page-title')
-		{!!$page->title!!}
+		{!!$page->en_title!!}
 	@endsection
 
 		<!-- External css -->
@@ -28,13 +28,13 @@
 	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 
 	@if($page->en_urlfriendly != "")
-	<div class="language-container">Idioma: <a href="/en/{!!$page->en_urlfriendly!!}">EN</a></div>
+	<div class="language-container">Idioma: <a href="/{!!$page->urlfriendly!!}">EN</a></div>
 	@endif
 
 
 		
 		<?php
-$jsonBlocks = json_decode($page->jsoneditdata, True); // true devuelve todos los objetos internos como array
+$jsonBlocks = json_decode($page->en_jsoneditdata, True); // true devuelve todos los objetos internos como array
 $BlockNumbers = count($jsonBlocks);
 
 

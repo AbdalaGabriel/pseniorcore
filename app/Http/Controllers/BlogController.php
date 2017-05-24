@@ -75,6 +75,24 @@ class BlogController extends Controller
           return Redirect::to('/admin/blog');
     }
 
+    public function englishversion($id, $title)
+    {
+        $post = Post::find($id);
+
+        $realtitle = $post->en_urlfriendly;
+
+    // Efectuo redireción en caso que el usuario me escriba otro titulo, debido a que solo toma el ID para la busqueda
+        if($title == $realtitle)
+        {
+            return view("front.en.post", ['post'=>$post]);
+        }
+        else
+        {
+            return Redirect::to('/');
+        }
+
+    }
+
 
     public function front($id, $title)
     {

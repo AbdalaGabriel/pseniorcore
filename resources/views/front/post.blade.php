@@ -20,7 +20,7 @@
 	@section('main')
 
 		@if($post->en_urlfriendly != "")
-			<a href="/en/post/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">Cambiar idioma</a>
+			<a href="/en/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">Cambiar idioma</a>
 		@endif
 
 

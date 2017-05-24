@@ -71,6 +71,7 @@ Route::get('/profile', 'HomeController@index');
 
 	// Paginas secundarias
 	Route::get('/{urflf}', 'PageController@getPage' );
+	Route::get('en/{urflf}', 'PageController@englishversion' );
 
 /* --------------------------------------------------------------------------------------- */
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -138,9 +139,12 @@ Route::get('/admin', 'FrontController@admin')->middleware('admin');
 	Route::get('/admin/geturl', 'UrlEncoder@encode');
 
 	
+
+Route::resource('/admin/paginas', 'PageController');
+	
 	Route::group(['middleware' => 'admin'], function() {
 	 // PAGINAS
-	  Route::resource('/admin/paginas', 'PageController');
+	  
 
 	  Route::get('/admin/menu', 'PageController@menu');
 		
@@ -151,6 +155,10 @@ Route::get('/admin', 'FrontController@admin')->middleware('admin');
 
 
 		Route::post('/paginas/changeorder', 'PageController@changeorder');
+
+		// VERSIÓN EN INGLÉS
+		Route::get('admin/paginas/en/{id?}/edit', 'PageController@englishedit' );
+		Route::put('admin/paginas/en/{id?}/update/', 'PageController@englishupdate' );
 
 
 	// BLOG

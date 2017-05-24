@@ -22,69 +22,124 @@ class PageController extends Controller
                     return (array) $item;
                 })->all();
 
-                 $menuArrayLenght = count($pages);
+                $menuArrayLenght = count($pages);
 
-                  for ($i=0; $i < $menuArrayLenght; $i++) 
-                  { 
+                for ($i=0; $i < $menuArrayLenght; $i++) 
+                { 
                     $thisPageId = $pages[$i]["id"];
                     $hasChildren = $pages[$i]["has_children"];
                     if($hasChildren == "y")
                     {   
                         // pido opciones de submenu
-                         $subpages = DB::table('pages')
-                        ->where("father", $thisPageId)
-                        ->orderBy('order_in_submenu', 'asc')
-                        ->get()->map(function ($item, $key) {
-                            return (array) $item;
-                        })->all();
+                       $subpages = DB::table('pages')
+                       ->where("father", $thisPageId)
+                       ->orderBy('order_in_submenu', 'asc')
+                       ->get()->map(function ($item, $key) {
+                        return (array) $item;
+                    })->all();
 
-                        $pages[$i]["subpages"] = $subpages;
+                       $pages[$i]["subpages"] = $subpages;
 
-                    }
-                    else
-                    {
-                        $pages[$i]["subpages"] = "n";
-                    }
-                  }
-
+                   }
+                   else
+                   {
+                    $pages[$i]["subpages"] = "n";
+                }
             }
-            else{
-                $pages = Page::all();
-            }
-            
-            
-            return response()->json($pages);
-        } else{
-           return view('admin.pages.index'); 
-       }
+        }
+        else{
+            $pages = Page::all();
+        }
 
-   }
+        return response()->json($pages);
+    } else{
+     return view('admin.pages.index'); 
+ }
 
-   public function create(Request $request)
-   {
-       if ($request->ajax()) {
-        $pages = Page::create([
-         'title' => $request['page']
-
-         ]);
-
-        return response()->json([
-            "mensaje"=>"creado"
-            ]);
-    } else
-    {
-        return("h");
-    }
 }
 
+public function create(Request $request)
+{
+ if ($request->ajax()) {
+    $pages = Page::create([
+       'title' => $request['page']
+
+       ]);
+
+    return response()->json([
+        "mensaje"=>"creado"
+        ]);
+} else
+{
+    return("h");
+}
+}
+
+
+public function englishedit($id, Request $request)
+{
+    $page = Page::find($id);
+    $configs = $page->configs;
+            //return response()->json($configs);
+        return view('admin.pages.en.edit', ['page'=>$page, 'configs'=>$configs]);
+}
+
+public function englishupdate(Request $request, $id)
+{
+   $page = Page::find($id);
+    
+    // SI los datos vienen via AJAX
+    $page->en_title = $request['title'];
+    $page->en_htmleditdata = $request['htmlForEdition'];
+    $page->en_jsoneditdata = $request['blocks'];
+    $page->en_urlfriendly = $request['urlfriendly'];
+    $page->en_meta_description = $request['meta_description'];
+    $page->save();
+    
+    $configuraciones = DB::table('configs')->where('page_id', $id)->get();
+    $configLegth = count($configuraciones);
+
+
+    for ($i=0; $i < $configLegth ; $i++) { 
+
+        $thisRef = $configuraciones[$i]->reference;
+        $thisId =   $configuraciones[$i]->id;
+
+        $config = Config::find($thisId);
+        //Referencia de esta configuración
+        $thisReference = $config->reference;
+        //referencia que venia en el request, en base al mismo nombre de la configuracion
+        $valueReferenceGet = $request[$thisReference];
+        //que el valor de esta configuracion sea igual al que trae el request.
+        $config->value =  $valueReferenceGet;
+
+        $config->save();
+    }  
+
+    return response()->json([
+     "mensaje" =>"Pagina editada correctamente: english version"
+     ]);
+}
+
+public function englishversion($urflf)
+{
+    $page = Page::where('en_urlfriendly', $urflf)->first();
+
+
+
+    return view("front.en.page", ['page'=>$page]);
+
+ 
+
+}
 
 public function store(Request $request)
 {
   if ($request->ajax()) {
     $pages = Page::create([
-     'title' => $request['page']
+       'title' => $request['page']
 
-     ]);
+       ]);
 
     
     return response()->json([
@@ -108,6 +163,7 @@ public function getPage($urlfriendly)
 {
     $page = Page::where('urlfriendly', $urlfriendly)->first();
 
+
     if($page != null)
     {
         return view("front.page", ['page'=>$page]);
@@ -116,73 +172,73 @@ public function getPage($urlfriendly)
         return view("errors.404");
     }
 }
-    
+
 public function changeorder(Request $request){
-     if ($request->ajax()) 
-     {
+   if ($request->ajax()) 
+   {
 
-        $from = $request['from'];
+    $from = $request['from'];
         // Detecto si viene de una opcion interna del menu o de una opcion main.
-        if($from == "innermenuoption" )
-        {
-             $fatherId = $request['father'];
-             $innerPositions = $request['innerneworder'];
-             $arrayLength = count($innerPositions);
+    if($from == "innermenuoption" )
+    {
+       $fatherId = $request['father'];
+       $innerPositions = $request['innerneworder'];
+       $arrayLength = count($innerPositions);
 
-             $father = Page::find($fatherId);
-             $father->has_children = "y";
-             $father->save();
+       $father = Page::find($fatherId);
+       $father->has_children = "y";
+       $father->save();
 
-             for ($i=0; $i < $arrayLength ; $i++) { 
+       for ($i=0; $i < $arrayLength ; $i++) { 
 
-                $thisId = $innerPositions[$i]['id'];
-                $thisPosition = $innerPositions[$i]['position'];
+        $thisId = $innerPositions[$i]['id'];
+        $thisPosition = $innerPositions[$i]['position'];
 
-                $thisOption = Page::find($thisId);
-                $thisOption->order_in_submenu = $thisPosition;
-                $thisOption->order_in_menu = -1;
-                $thisOption->father = $fatherId;
-                $thisOption->save();
+        $thisOption = Page::find($thisId);
+        $thisOption->order_in_submenu = $thisPosition;
+        $thisOption->order_in_menu = -1;
+        $thisOption->father = $fatherId;
+        $thisOption->save();
 
-            }
+    }
 
-        }
-        elseif($from == "emptyfather")
-        {
-             $fatherId = $request['father'];
-             $father = Page::find($fatherId);
-             $father->has_children = "n";
-             $father->save();
-        }
-        elseif($from == "mainOptionBack")
-        {
-             $pageId = $request['id'];
-             $thisPage = Page::find($pageId);
-             $thisPage->father = null;
-             $thisPage->save();
+}
+elseif($from == "emptyfather")
+{
+   $fatherId = $request['father'];
+   $father = Page::find($fatherId);
+   $father->has_children = "n";
+   $father->save();
+}
+elseif($from == "mainOptionBack")
+{
+   $pageId = $request['id'];
+   $thisPage = Page::find($pageId);
+   $thisPage->father = null;
+   $thisPage->save();
 
-        }
-        else
-        {
-            $newPositions = $request['neworder'];
-            $arrayLength = count($newPositions);
+}
+else
+{
+    $newPositions = $request['neworder'];
+    $arrayLength = count($newPositions);
 
-            for ($i=0; $i < $arrayLength ; $i++) { 
+    for ($i=0; $i < $arrayLength ; $i++) { 
 
-                $thisId = $newPositions[$i]['id'];
-                $thisPosition = $newPositions[$i]['position'];
+        $thisId = $newPositions[$i]['id'];
+        $thisPosition = $newPositions[$i]['position'];
 
-                $thisSlide = Page::find($thisId);
-                $thisSlide->order_in_menu = $thisPosition;
-                $thisSlide->save();
+        $thisSlide = Page::find($thisId);
+        $thisSlide->order_in_menu = $thisPosition;
+        $thisSlide->save();
 
-            }
-        }
+    }
+}
 
-        return response()->json([
-           "mensaje" =>"PSucesse"
-        ]);
-    } 
+return response()->json([
+ "mensaje" =>"PSucesse"
+ ]);
+} 
 }
 
 
@@ -227,7 +283,7 @@ public function update(Request $request, $id)
 
 
     for ($i=0; $i < $configLegth ; $i++) { 
-           
+
         $thisRef = $configuraciones[$i]->reference;
         $thisId =   $configuraciones[$i]->id;
 
@@ -243,11 +299,11 @@ public function update(Request $request, $id)
     }  
 
     return response()->json([
-       "mensaje" =>"Pagina editada correctamente"
-    ]);
+     "mensaje" =>"Pagina editada correctamente"
+     ]);
     //return Redirect::to('/admin/paginas/'.$id.'/edit');
 
- }
+}
 
 
 public function destroy($id)
