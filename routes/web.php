@@ -128,6 +128,10 @@ Route::resource('/admin/users', 'UserController');
 		Route::post('task/quickmodify', 'CardProjectController@quickmodify');
 		Route::get('/mis-proyectos/{projectid?}/phase/{phaseid?}/tareas-ocultas', 'CardProjectController@givemehiddentasks');
 
+		Route::post('/mis-proyectos/deletecards', 'CardProjectController@destroy');
+
+		Route::post('/mis-proyectos/restorecards', 'CardProjectController@restore');
+
 
 // ADMIN USUARIO
 // --------------------------------------------------------------------------------------- //
@@ -147,6 +151,7 @@ Route::resource('/admin/paginas', 'PageController');
 	  
 
 	  Route::get('/admin/menu', 'PageController@menu');
+	  Route::get('/admin/footer', 'PageController@footer');
 		
 		Route::resource('/admin/paginas/home/slider', 'SliderController');
 		// Home Slider
@@ -159,6 +164,8 @@ Route::resource('/admin/paginas', 'PageController');
 		// VERSIÓN EN INGLÉS
 		Route::get('admin/paginas/en/{id?}/edit', 'PageController@englishedit' );
 		Route::put('admin/paginas/en/{id?}/update/', 'PageController@englishupdate' );
+
+		Route::post('/admin/editconfs', 'ConfigController@editconfs');
 
 
 	// BLOG

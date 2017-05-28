@@ -33,26 +33,58 @@
 	<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 	
 
-	
-	<a id="new-task" data-toggle="modal" data-target="#create-task" href="#" class="addcard todo">Añadir una tarjeta</a>
 
-	<div class="columns-container">
-		<div data-tasks-status="1" id="todo-column" class="task-column"></div>
-		<div data-tasks-status="2" id="inprogress-column" class="task-column"></div>
-		<div data-tasks-status="3" id="done-column" class="task-column">
-		@foreach ($hiddentasks as $hiddentask)	
-			<a href="#">{!!$hiddentask->title!!}</a>
+	<div class="hidden-tasks-container">
+		
+		
+			<div class="select-actions-container">
+				<button class="select-all">Seleccionar todas</button>
+				<span>Acción</span>
+				<select class="actions">
+				  <option value="sele" selected>Seleccionar accion</option>	
+				  <option value="del">Borrar</option>
+				  <option value="res">Restaurar</option>
+				</select>
+
+				<button class="do-action">Aplicar</button>
+
+			</div>
+
+			<table class="hiddentasks-container">
+				<tr>
+				<th></th>
+				<th>Tarea</th>
+				<th>Descripcion</th>
+				<th></th>
+				<th></th>
+				</tr>		
+				<tbody>
+
+					@foreach ($hiddentasks as $hiddentask)	
+					<tr>
+						<td><input class="checktask" type="checkbox" name="hiddentasks[]" value="{!!$hiddentask->id!!}"></td>
+						<td>{!!$hiddentask->title!!}</td>
+						<td>{!!$hiddentask->description!!}</td>
+						<td><span data-task-id="{!!$hiddentask->id!!}" class="delete-task">Borrar</span></td>
+						<td><span data-task-id="{!!$hiddentask->id!!}" class="delete-restore">Restaurar</span></td>
+					</tr>
+					
 		@endforeach
+				</tbody>
+	
+			</table>
 
 
-		</div>	
+	
+
+
 	</div>
 	
 
 
 @section('aditional-scripts')
 {!!Html::script('js/baseurl.js')!!}
-{!! Html::script('js/organizer/projects/hidden/') !!}
+{!! Html::script('js/organizer/projects/hiddentasks.js') !!}
 @endsection
 
 @endsection

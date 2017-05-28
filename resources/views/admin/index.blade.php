@@ -94,6 +94,10 @@
 						{!! link_to_action('PageController@menu','Menu') !!} 
 						
 					</li>
+					<li class="">
+						{!! link_to_action('PageController@footer','Footer') !!} 
+						
+					</li>
 					 <li class="">
 						{!! link_to_action('SliderController@index','Slider') !!} 
 						

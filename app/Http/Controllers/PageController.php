@@ -96,7 +96,7 @@ public function englishupdate(Request $request, $id)
     $page->en_meta_description = $request['meta_description'];
     $page->save();
     
-    $configuraciones = DB::table('configs')->where('page_id', $id)->get();
+   /* $configuraciones = DB::table('configs')->where('page_id', $id)->get();
     $configLegth = count($configuraciones);
 
 
@@ -114,7 +114,14 @@ public function englishupdate(Request $request, $id)
         $config->value =  $valueReferenceGet;
 
         $config->save();
-    }  
+    }*/
+
+    $configs = $request['configs'];
+    foreach ($configs as $config)
+    {
+      $dbConfig = Config::find($config->id);  
+    }
+
 
     return response()->json([
      "mensaje" =>"Pagina editada correctamente: english version"
@@ -162,11 +169,14 @@ public function show($id)
 public function getPage($urlfriendly)
 {
     $page = Page::where('urlfriendly', $urlfriendly)->first();
-
+    $pagesBlock = Config::find(11);
+    $contactBlock = Config::find(15);
+    $postsBlock = Config::find(13);
+    $shareBlock = Config::find(17);
 
     if($page != null)
     {
-        return view("front.page", ['page'=>$page]);
+        return view("front.page", ['page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
     }
     else{
         return view("errors.404");
@@ -248,6 +258,13 @@ public function menu()
     return view('admin.pages.menu', ['pages'=>$pages]);
 }
 
+public function footer()
+{
+     $footer = Page::find(21);
+     $configs = $footer->configs;
+    return view('admin.pages.footer', ['footer'=>$footer, 'configs'=>$configs]);
+}
+
 
 public function edit(Request $request, $id)
 {
@@ -278,28 +295,19 @@ public function update(Request $request, $id)
     $page->meta_description = $request['meta_description'];
     $page->save();
     
-    $configuraciones = DB::table('configs')->where('page_id', $id)->get();
-    $configLegth = count($configuraciones);
+   
 
+    $configs =json_decode( $request['configs'], true);
+    foreach ($configs as $config)
+    {
+      $dbConfig = Config::find($config["id"]);  
+      $dbConfig->value = $config["value"];
+      $dbConfig->save();
+    }
 
-    for ($i=0; $i < $configLegth ; $i++) { 
-
-        $thisRef = $configuraciones[$i]->reference;
-        $thisId =   $configuraciones[$i]->id;
-
-        $config = Config::find($thisId);
-        //Referencia de esta configuración
-        $thisReference = $config->reference;
-        //referencia que venia en el request, en base al mismo nombre de la configuracion
-        $valueReferenceGet = $request[$thisReference];
-        //que el valor de esta configuracion sea igual al que trae el request.
-        $config->value =  $valueReferenceGet;
-
-        $config->save();
-    }  
 
     return response()->json([
-     "mensaje" =>"Pagina editada correctamente"
+     "mensaje" =>"Pagina editada correctamente y configs guardadas"
      ]);
     //return Redirect::to('/admin/paginas/'.$id.'/edit');
 

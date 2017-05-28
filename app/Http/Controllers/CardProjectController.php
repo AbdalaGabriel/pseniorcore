@@ -167,9 +167,36 @@ public function  appchangeorder (Request $request, $id, $neworder){
         //
     }
 
-
-    public function destroy($id)
+    public function restore(Request $request)
     {
-        //
+        $idsForDestroy = $request['cardsids'];
+        $arrayLength = count($idsForDestroy);
+
+        for ($i=0; $i < $arrayLength ; $i++) { 
+
+            $thisId = $idsForDestroy[$i];
+            $thisSlide = CardProject::find($thisId);
+
+            $thisSlide->status = 3;
+
+            $thisSlide->save();
+
+        }
+    }
+
+
+    public function destroy(Request $request)
+    {
+        $idsForDestroy = $request['cardsids'];
+        $arrayLength = count($idsForDestroy);
+
+        for ($i=0; $i < $arrayLength ; $i++) { 
+
+            $thisId = $idsForDestroy[$i];
+          
+
+            $thisSlide = CardProject::destroy($thisId);
+
+        }
     }
 }

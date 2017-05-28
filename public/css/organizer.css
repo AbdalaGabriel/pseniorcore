@@ -164,3 +164,32 @@
  letter-spacing: 0px;
 
 }
+.modal-body label
+{
+        border: none !important;
+    box-shadow: none !important;
+    font-family: Raleway !important;
+}
+
+table{
+    width: 100%;
+    max-width: 1280px;
+
+}
+
+table th{
+        background: #232635;
+    color: white;
+    padding: .6em;
+    font-family: Raleway;
+    font-weight: 300;
+    border-right: 1px solid white;
+}
+
+table tbody td{
+    background: #eaeaea;
+    color: black;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: .6em;
+}

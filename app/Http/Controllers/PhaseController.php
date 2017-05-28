@@ -80,7 +80,7 @@ class PhaseController extends Controller
         }
     }
 
-    public function appAddPhase(Request $request, $projectid, $phasename, $shortdesc,)
+    public function appAddPhase(Request $request, $projectid, $phasename, $shortdesc)
     {
        
         $phase = Phase::create([

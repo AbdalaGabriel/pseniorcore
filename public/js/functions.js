@@ -8,9 +8,9 @@ $( document ).ready(function() {
 function initParticles()
 {
 	
-	console.log("Particles =)");
+	//console.log("Particles =)");
 	particlesJS.load('particles-js', '/js/particles/particles.json', function() {
-	  console.log('callback - particles.js config loaded');
+	  //console.log('callback - particles.js config loaded');
 	});
 }
 
@@ -29,15 +29,15 @@ function initpage(){
 		// Evitar propagacion para que los elementos del interior no disparen el evento mas de una vez
 		ev.stopPropagation();
 
-		console.log("- Menu click");
-		console.log("show");
+		//console.log("- Menu click");
+		//console.log("show");
 		hiddenMenu.addClass("showmenu");
 		hiddenMenu.removeClass("hidemenu");
 
 		particulas.css("display", "block");
-		console.log("Particles =)");
+		//console.log("Particles =)");
 		particlesJS.load('particles-js-2', '/js/particles/particles.json', function() {
-		  console.log('callback - particles.js config loaded');
+		  //console.log('callback - particles.js config loaded');
 		});
 
 
@@ -49,8 +49,8 @@ function initpage(){
 		// Evitar propagacion para que los elementos del interior no disparen el evento mas de una vez
 		ev.stopPropagation();
 
-		console.log("- close Menu click");
-		console.log("show");
+		//console.log("- close Menu click");
+		//console.log("show");
 		hiddenMenu.addClass("hidemenu");
 		hiddenMenu.removeClass("showmenu");
 		
@@ -60,7 +60,7 @@ function initpage(){
 	fillmenu()
 	function fillmenu()
 	{
-		console.log("init function fillmenu");
+		//console.log("init function fillmenu");
 		var token = $("#token").val();
 		var menucontainer = $("#main-menu");
 
@@ -75,15 +75,15 @@ function initpage(){
 
 			success: function(data)
 			{
-				console.log("- se obtuvieron datos de urls");
-				console.log(data);
+				//console.log("- se obtuvieron datos de urls");
+				//console.log(data);
 				$(data).each(function(key, value)
 				{
 					menucontainer.append('<li><a id="option-'+value.id+'" href="/'+value.urlfriendly+'">'+value.title+'</a></li>');
 					if(value.subpages != "n")
 					{
 						subLength = value.subpages.length;
-						console.log(value.id + "-tiene hijos");
+						//console.log(value.id + "-tiene hijos");
 						let children = value.subpages;
 						$("#option-"+value.id).parent("li").append('<span data-show="submenu-'+value.id+'" class="sub-lgt">('+subLength+')<span class="arrowsee">></span><span>');
 						$("#option-"+value.id).append('<ul id="submenu-'+value.id+'" class="suboptionscontainer"></ul>');
@@ -95,7 +95,7 @@ function initpage(){
 					}
 				});
 
-				console.log("- Menu created");
+				//console.log("- Menu created");
 				detectSubmenuEvents();
 
 			}
@@ -105,7 +105,7 @@ function initpage(){
 
 		function detectSubmenuEvents()
 		{
-			console.log("function Showing suboption");
+			//console.log("function Showing suboption");
 			$(".sub-lgt").click(function()
 			{
 				$(".suboptionscontainer").css("display","none");
@@ -114,7 +114,7 @@ function initpage(){
 
 				let ulToShow = $("#"+show);
 				ulToShow.css("display","block");
-				console.log("Showing suboption");
+				//console.log("Showing suboption");
 
 			});
 		}
@@ -125,6 +125,13 @@ function initpage(){
 
 }
 
+
+fillfooter();
+
+function fillfooter()
+{
+	console.log("-fill footer");
+};
 
 function changingStatus(){
 
@@ -141,35 +148,35 @@ function getsubscribers()
 	var company = $("#mce-compania").val();
 
 	sendButton.click(function(){
-		console.log("- Click en enviar form")
-		console.log(mail);
-		console.log(user);
-		console.log(company);
+		//console.log("- Click en enviar form")
+		//console.log(mail);
+		//console.log(user);
+		//console.log(company);
 	});
 }
 
 function detectPage()
 {
-	console.log("Detectando pagina");
+	//console.log("Detectando pagina");
 	var pageTitle = $(".hidden-title").val();
-	console.log(pageTitle);
+	//console.log(pageTitle);
 	
 	if(pageTitle == "multimedianow ")
 	{
-		console.log("Página Multimedia Now");
+		//console.log("Página Multimedia Now");
 		routeMultimedia = "http://gabrielabdala.com/twitterapi/";
 
-		console.log("- Funcion simple de peticiòn AJAX");
+		//console.log("- Funcion simple de peticiòn AJAX");
 		var ajax =  $.get(routeMultimedia, function(res)
 		{
-			console.log(res);
+			//console.log(res);
 		})
 
 		.done(function(res) 
 		{
-			//console.log(consulta);
+			////console.log(consulta);
 			twitsData = JSON.parse(res);
-			console.log(twitsData);
+			//console.log(twitsData);
 			twitsContainer = $("#twitsContainer");
 			twitsContainer.empty();
 

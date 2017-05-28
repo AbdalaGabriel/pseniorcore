@@ -39,21 +39,21 @@
 			{!!Form::label($config->reference,  $config->configname, ['class' => 'form-control']);!!}
 
 			@if( $config->type == "t")
-				<div class="configContainer">	
-				{!!Form::text($config->reference, $config->value, ['class'=>'form-control','placeholder'=>'Ingrese el valor solicitado']) !!}
+				<div data-config-id="<?php echo $config->id ?>" data-type="t" class="configContainer">	
+				{!!Form::text($config->reference, $config->value, ['class'=>'form-control textinput','placeholder'=>'Ingrese el valor solicitado']) !!}
 			
 			@elseif($config->type == "tf")
-				<div class="configContainer full">	
+				<div data-config-id="<?php echo $config->id ?>"  data-type="tf"  class="configContainer full">	
 				{!!Form::textarea($config->reference, $config->value, ['class'=>'form-control froala','placeholder'=>'Ingrese el valor solicitado']) !!}
 			
 			@elseif($config->type == "s")
-				<div class="configContainer">	
+				<div data-config-id="<?php echo $config->id ?>"  data-type="s" class="configContainer">	
 				<?php $options = explode(",", $config->options);?>
 				<div class="configOptionsContainer">
 			
 				@foreach($options as $option)
 			
-					<div class="configOptions">
+					<div data-config-id="<?php echo $config->id ?>"  data-type="s" class="configOptions">
 						{!!Form::label($config->configname, $option, ['class' => 'form-control']);!!}
 						@if($config->value == $option)
 							{!!Form::radio($config->reference, $option, true)!!}

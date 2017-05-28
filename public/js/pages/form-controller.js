@@ -1,3 +1,4 @@
+var configsObject = new Object();
 $( document ).ready(function() 
 {
 	console.log( "- Document ready" );
@@ -12,6 +13,42 @@ function init()
 	$('.froala').froalaEditor();
 	detectEvents();
 	submitControl();
+	checkconfigs();
+
+}
+
+
+function checkconfigs()
+{
+	console.log("-check configs");
+	let textconfig = $(".textinput").focusout(function()
+	{
+		console.log("focus out");
+		let value = $(this).val();
+		let type = $(this).parent(".configContainer").attr("data-type");
+		let id = $(this).parent(".configContainer").attr("data-config-id");
+		configsObject[id] = { 	value: value,
+								type: type,
+								id: id,
+						
+							};
+		console.log(configsObject);
+	});	
+
+	let radioInputs = $("input[type='radio']");
+	radioInputs.change(function()
+	{
+		console.log("- change");
+		let value = $(this).val();
+		let type = $(this).parent(".configOptions").attr("data-type");
+		let id = $(this).parent(".configOptions").attr("data-config-id");
+		configsObject[id] = { 	value: value,
+								type: type,
+								id: id,
+						
+							};
+		console.log(configsObject);
+	});
 }
 
 function detectEvents(){
@@ -221,6 +258,8 @@ function sendAllInformation(html, jsonObj)
 	var htmlForEdition =  html;
 	var idPage = $("#idPage").val();
 	var routeEdit = baseurl+'admin/paginas/'+idPage;
+	var configsst = JSON.stringify(configsObject)
+
 
 
 	console.log("- Sending info for update:");
@@ -230,6 +269,7 @@ function sendAllInformation(html, jsonObj)
 	console.log(routeEdit);
 	console.log(urlfriendly);
 	console.log(meta_description);
+	console.log(configsst);
 	
 	console.log("-------------------------");
 
@@ -246,6 +286,7 @@ function sendAllInformation(html, jsonObj)
 				urlfriendly: urlfriendly,
 				meta_description: meta_description,
 				blocks: blocksForFrontend,
+				configs: configsst,
 			},
 
 			success: function(data){

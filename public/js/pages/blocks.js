@@ -311,6 +311,8 @@ function eventsMaster()
 
 	});
 
+	listenToEvents();
+
 	// Escuchar eventos para borrar o modificar contenido de texto appendeado.
 	function listenToEvents()
 	{
