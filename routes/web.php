@@ -25,6 +25,10 @@ $blog = Page::find(13);
 //$urlfBlog = $blog->urlfriendly;
 $urlfBlog = "blog";
 
+$resources = Page::find(21);
+//$urlfBlog = $blog->urlfriendly;
+$urlfResources = "recursos-y-tutoriales";
+
 Route::get('/basicemail', 'MailController@basic_email');
 Route::get('/htmlemail', 'MailController@html_email');
 Route::get('/attachemail', 'MailController@attachment_email');
@@ -59,6 +63,13 @@ Route::get('/profile', 'HomeController@index');
 		// Noticias y novedades
 		Route::get('/blog/{id?}/{urflf}', 'BlogController@front' );
 		Route::get('en/blog/{id?}/{urflf}', 'BlogController@englishversion' );
+
+	// recursos y tutoriales
+	Route::get('/'.$urlfResources, 'FrontController@resources');
+
+	
+		Route::get('/recursos-y-tutoriales/{id?}/{urflf}', 'TutsAndResourcesController@front' );
+		Route::get('en/recursos-y-tutoriales/{id?}/{urflf}', 'TutsAndResourcesController@englishversion' );
 
 	// Contacto
 	Route::get('/contactame', 'FrontController@contact');
@@ -181,6 +192,23 @@ Route::resource('/admin/paginas', 'PageController');
 		// VERSIÓN EN INGLÉS
 		Route::get('admin/blog/en/{id?}/edit', 'BlogController@englishedit' );
 		Route::put('admin/blog/en/{id?}/update/', 'BlogController@englishupdate' );
+
+
+	// TUTORIALES Y RECURSOS
+	Route::resource('/admin/tutoriales-y-recursos', 'TutsAndResourcesController');
+		
+		// Edición rápida de categorías
+		Route::post('/admin/tutoriales-y-recursos/editcats', 'TutsAndResourcesController@quickeditcategories');
+		// Categorías del recurso
+		Route::resource('/admin/tutoriales-y-recursos-tags', 'TutsAndResourcesTagsController');
+
+		// Imagen de portada.
+		Route::post('admin/tutoriales-y-recursos/uploadimage', 'TutsAndResourcesController@uploadimage');
+
+		// VERSIÓN EN INGLÉS
+		Route::get('admin/tutoriales-y-recursos/en/{id?}/edit', 'TutsAndResourcesController@englishedit' );
+		Route::put('admin/tutoriales-y-recursos/en/{id?}/update/', 'TutsAndResourcesController@englishupdate' );
+
 		
 
 	// PORTFOLIO

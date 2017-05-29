@@ -136,6 +136,22 @@
 						
 					</li>
 
+					<li>
+						{!! link_to_action('TutsAndResourcesController@index', 'Tutoriales y recursos') !!}
+					</li>
+					<li>
+					
+						<ul>
+							<li>
+								    {!! link_to_action('TutsAndResourcesTagsController@index','Tags') !!}
+								</a>
+							</li>
+						</ul>
+						
+						
+
+					</li>
+
 					<li class="">
 						{!! link_to_action('MediaController@index','Media') !!}
 						

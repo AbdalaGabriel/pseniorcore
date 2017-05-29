@@ -1,15 +1,15 @@
 @extends('admin.index')
 
 @section('pageTitle', 'Administrar categorias')
-@section('title', 'Administrar categorias de su blog web')
+@section('title', 'Administrar tags de sus tutoriales')
 
 
 
 @section('main')
 
-	@include('admin.blog.categories.messages.create')
-	@include('admin.blog.categories.messages.quick-edit')
-	@include('admin.blog.categories.messages.delete')
+	@include('admin.resources.categories.messages.create')
+	@include('admin.resources.categories.messages.quick-edit')
+	@include('admin.resources.categories.messages.delete')
 
 	<div class=".col-md-4 center adminBlock">
 		<a id="createCategory" data-toggle="modal" data-target="#create" href="#">Crear categoría nueva</a>
@@ -32,7 +32,7 @@
 
 	@section('aditional-scripts')
 		{!!Html::script('js/baseurl.js')!!}
-		{!! Html::script('js/blog/category/ajax-admin.js') !!}
+		{!! Html::script('js/resources/category/ajax-admin.js') !!}
 	@endsection
 
 @endsection

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMenusTable extends Migration
+class CreateTutsAndResourcesTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateMenusTable extends Migration
      */
     public function up()
     {
-        Schema::create('menu', function (Blueprint $table) {
+        Schema::create('tuts_and_resources_tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('menuname');
-            $table->string('structure');
-           
+            $table->string('title');
+            $table->string('en_title');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ class CreateMenusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('tuts_and_resources_tags');
     }
 }

@@ -11,6 +11,7 @@ use App\Page;
 use App\User;
 use App\Slide;
 use App\PostCategory;
+use App\TutsAndResource;
 use Mail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -126,6 +127,13 @@ class FrontController extends Controller
     }
 
 
+    public function resources(Request $request)
+    {
+        $page = Page::find(21);
+        $tuts = TutsAndResource::all();
+        return view('front.tuts', ['tuts'=>$tuts, 'page'=>$page]); 
+        
+    }
 
     public function admin(Request $request)
     {
