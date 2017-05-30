@@ -38,6 +38,8 @@
 	<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 	
 	<a id="hiddenCards" href="#"></a>
+
+	<a id="new-task" data-toggle="modal" data-target="#createPhase" href="#" class="addcard todo">Añadir una fase</a>
 	
 	<a id="new-task" data-toggle="modal" data-target="#create-task" href="#" class="addcard todo">Añadir una tarjeta</a>
 

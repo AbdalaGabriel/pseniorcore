@@ -307,7 +307,9 @@ class TutsAndResourcesController extends Controller
                 $resource->content = $request['description'] ;
                 $resource->urlfriendly = $request['urlf'];
                 $resource->meta_description = $request['metadescription'] ;
+                $resource->resource = $request['resource'];
                 $CategoriesIds = $request['categories'];
+
 
                 $resource->categories()->sync($CategoriesIds);
 

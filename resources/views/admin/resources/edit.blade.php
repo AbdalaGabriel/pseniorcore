@@ -19,6 +19,11 @@
 		<!-- TITULO  -->
 		{!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
 		{!!Form::text('title', $finalObj->title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
+
+		{!!Form::label('embed', 'Link a Recurso / video de youtube', ['class' => 'form-control ']);!!}
+		    {!!Form::text('title', $finalObj->resource, ['id'=>'new-resource', 'class'=>'form-control new-embed','placeholder'=>'Ingrese su link o embebido de youtube']) !!}
+
+
 		
 		<!-- Descripcion  -->
 		{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
@@ -84,12 +89,12 @@
 
 @section('aditional-scripts')
 {!!Html::script('js/baseurl.js')!!}
-{!! Html::script('js/blog/create.js') !!}
+{!! Html::script('js/resources/create.js') !!}
 
 {!! Html::script('dropzone/dist/dropzone.js') !!}
-{!! Html::script('js/blog/dz-control.js') !!}
+{!! Html::script('js/resources/dz-control.js') !!}
 
-{!! Html::script('js/blog/formController-edit.js') !!}
+{!! Html::script('js/resources/formController-edit.js') !!}
 @endsection
 
 @endsection

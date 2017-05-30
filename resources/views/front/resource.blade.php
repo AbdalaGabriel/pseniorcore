@@ -23,7 +23,9 @@
 			<a href="/en/blog/{!!$resource->id!!}/{!!$resource->en_urlfriendly!!}">Cambiar idioma</a>
 		@endif
 
-
+		<div class="resource-container">
+			{!!$resource->resource!!}
+		</div>
 
 
 
