@@ -145,9 +145,24 @@ a, a:hover, a:focus {
 }
 
 p{
-    margin: 0 0 10px;
-    font-size: 1.4em;
-    line-height: 1.6em;
+        margin: 0 0 10px;
+    font-size: 16px;
+    line-height: 29px;
+}
+
+.long-text-container{
+  max-width: 56em;
+    margin: 0 auto 5em;
+}
+
+.g-section .long-text-container h2{
+      margin: 4em 0 3em 0 !important;
+}
+.g-section .long-text-container ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin: 2em 0;
+    line-height: 2.4em;
 }
 
 .header{
