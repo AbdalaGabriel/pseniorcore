@@ -56,36 +56,10 @@
 	<nav class="hidden-menu">
 		<div id="particles-js-2" class="absolute-pos"></div>
 		<a href="#" title="Cerrar menú" class="close-hidden-menu">X</a>
-		<ul>
-			<li>
-				{!! link_to_action('FrontController@index','Home') !!}
-			</li>
-			<li>
-				{!! link_to_action('FrontController@portfolio','Portfolio') !!}
-			</li>
-			<li>
-				{!! link_to_action('FrontController@blog','Noticias y novedades') !!}
-			</li>
-			<li>
-				<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-					Acceso clientes
-				</a>
-			</li>
-			<li>
-				{!! link_to_action('FrontController@multimediaNow','#Multimedia Now') !!}
-			</li>
-			<li>
-				<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-					Sobre mi
-				</a>
-			</li>
-			<li>
-				{!! link_to_action('FrontController@contact','Contacto') !!}
-
-			</li>
+		<ul id="main-menu">
+			
 
 		</ul>
-
 		<span class="logo-container-menu">	
 		</span>	
 		
@@ -145,6 +119,9 @@
 		<div class="collapse navbar-collapse" id="navigation-index">
 			<div class="main-menu-button">	
 				Menu
+			</div>
+			<div class="language-container">
+				@yield('language')
 			</div>
 		</div>
 	</div>
@@ -263,9 +240,51 @@
 				<a href="/contactame" class="contact">Pogámonos en contacto</a>
 		</div>
 		
-		<nav>	
+			
+		
+
+		<div class="section-container">
+
+			<div class="footer-box contact-me">
+				<h3 class="footer-title">Navega</h3>
+				<span>Home</span>
+				<span>Servicios</span>
+				<span>Blog</span>
+				<span>Contactame</span>
 				
-		</nav>
+			</div>
+
+			<div class="footer-box contact-me">
+				<h3 class="footer-title">Contactame</h3>
+				<span><i class="fa fa-mobile" aria-hidden="true"></i> (011) 1562485374</span>
+				<span><i class="fa fa-envelope-o" aria-hidden="true"></i> gabrielabdala.dm@gmail.com</span>
+				
+			</div>
+
+			<div class="footer-box contact-me">
+				<h3 class="footer-title">Lee mas</h3>
+				<span>¿Que hacen los usuarios?</span>
+				
+			</div>
+
+			<div class="footer-box social-icons-container">
+				<h3 class="footer-title">Seguime</h3>
+				<i class="fa fa-instagram" aria-hidden="true"></i>
+				<i class="fa fa-behance" aria-hidden="true"></i>
+				<i class="fa fa-linkedin" aria-hidden="true"></i>
+				
+			</div>
+
+			
+		</div>
+
+		<div class="copyright-container">
+		<div class="brand-footer-container">
+			G
+		</div>
+				Sitio web diseñado y desarrollado por Gabriel Abdala.
+		</div>
+					
 
 </footer>
 
@@ -287,5 +306,6 @@
 {!!Html::script('bootstrap-template-assets/materialKit/assets/js/material-kit.js')!!}
 {!!Html::script('js/particles/particle.js')!!}
 {!!Html::script('js/functions.js')!!}
+{!!Html::script('js/baseurl.js')!!}
 
 </html>

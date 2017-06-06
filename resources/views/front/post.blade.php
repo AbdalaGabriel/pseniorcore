@@ -13,7 +13,10 @@
 
 	<!-- Titulo de pagina -->
 	@section('page-title')
+		<span class="date-container">{!!$post->created_at->format('Y-m-d')!!}</span>
 		{!!$post->title!!}
+
+		<a class="share-cont-button" href="#share-content-container">Compartí este post!</a>
 	@endsection
 
 	<!-- Contenido principal -->
@@ -32,7 +35,8 @@
 		<section class="g-section">
 
 		<div class="post-body long-text-container">{!!$post->content!!}</div>
-
+	
+		<div id="share-content-container">
 			<div id="fb-root"></div>
 			<script>(function(d, s, id) {
 			  var js, fjs = d.getElementsByTagName(s)[0];
@@ -48,7 +52,7 @@
 			<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="your_hash_tag" data-via="your_screen_name" data-count="vertical">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 			
-
+		</div>
 		</section>
 
 	    <!-- //////////////////////// -->

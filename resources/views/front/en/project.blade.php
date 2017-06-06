@@ -19,9 +19,12 @@
 
 	<!-- Contenido principal -->
 	@section('main')
+	
+	@section('language') 
+	  <div class="language-container">Language: <a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">ES</a> - <a href="/proyecto/{!!$project->id!!}/{!!$project->en_urlfriendly!!}">EN</a></div>
+	  @endsection
 
 	
-	<div class="language-container">Idioma: <a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">ES</a></div>
 
 	<section class="g-section">
 		

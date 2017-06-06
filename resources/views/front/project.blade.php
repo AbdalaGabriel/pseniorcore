@@ -20,7 +20,9 @@
 	@section('main')
 
 	@if($project->en_urlfriendly != "")
-	<div class="language-container">Idioma: <a href="/en/project/{!!$project->id!!}/{!!$project->en_urlfriendly!!}">EN</a></div>
+	@section('language') 
+	  Idioma: <a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">ES</a> - <a href="/project/{!!$project->id!!}/{!!$project->en_urlfriendly!!}">EN</a></div>
+	  @endsection
 	@endif
 
 	<section class="g-section">

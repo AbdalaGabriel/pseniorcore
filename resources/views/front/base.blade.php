@@ -126,6 +126,10 @@
 			<div class="main-menu-button">	
 				Menu
 			</div>
+
+			<div class="language-container">
+				@yield('language')
+			</div>
 		</div>
 	</div>
 </nav>
@@ -243,18 +247,16 @@
 </div>
 
 <footer>	
-		<div class="engagement-container">	
-				<h2>¿Listo para que iniciemos un proyecto juntos?</h2>
-				<a href="/contactame" class="contact">Pogámonos en contacto</a>
-		</div>
 		
 		
+
+			
 		
 
 		<div class="section-container">
 
 			<div class="footer-box contact-me">
-				<h3 class="footer-title">{!!$pagesBlock->value!!}</h3>
+				<h3 class="footer-title">Navega</h3>
 				<span>Home</span>
 				<span>Servicios</span>
 				<span>Blog</span>
@@ -263,20 +265,20 @@
 			</div>
 
 			<div class="footer-box contact-me">
-				<h3 class="footer-title">{!!$contactBlock->value!!}</h3>
+				<h3 class="footer-title">Contactame</h3>
 				<span><i class="fa fa-mobile" aria-hidden="true"></i> (011) 1562485374</span>
 				<span><i class="fa fa-envelope-o" aria-hidden="true"></i> gabrielabdala.dm@gmail.com</span>
 				
 			</div>
 
 			<div class="footer-box contact-me">
-				<h3 class="footer-title">{!!$postsBlock->value!!}</h3>
+				<h3 class="footer-title">Lee mas</h3>
 				<span>¿Que hacen los usuarios?</span>
 				
 			</div>
 
 			<div class="footer-box social-icons-container">
-				<h3 class="footer-title">{!!$shareBlock->value!!}</h3>
+				<h3 class="footer-title">Seguime</h3>
 				<i class="fa fa-instagram" aria-hidden="true"></i>
 				<i class="fa fa-behance" aria-hidden="true"></i>
 				<i class="fa fa-linkedin" aria-hidden="true"></i>
@@ -315,7 +317,7 @@
 {!!Html::script('bootstrap-template-assets/materialKit/assets/js/material-kit.js')!!}
 {!!Html::script('js/particles/particle.js')!!}
 {!!Html::script('js/functions.js')!!}
-
+{!!Html::script('js/baseurl.js')!!}
 
 @yield('aditionalScripts')
 

@@ -147,6 +147,9 @@
 			<div class="main-menu-button">	
 				Menu
 			</div>
+			<div class="language-container">
+				@yield('language')
+			</div>
 		</div>
 	</div>
 </nav>

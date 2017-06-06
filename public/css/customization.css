@@ -219,21 +219,15 @@ p{
 
 .big-g-container{
     
-    max-width: 34em;
-    margin: 3em auto;
-    width: 65em;
-    display: block;
-    height: 44em;
-    /* float: right; */
-    position: absolute;
-    opacity: .5;
-    right: 351px;
-    -webkit-mask: url(/img/front/g.svg);
-    background: #b91b45;
-    top: 100px;
+  
     /* text-align: right; */
 }
 
+
+.language-container{
+    float: right;
+    margin: 0 1.5em 0 0;
+}
 
 .close-hidden-menu{
   position: absolute;
@@ -248,6 +242,23 @@ a:hover, a:focus {
     color: #b52a36;
     text-decoration: none;
 }
+
+
+.date-container{
+      display: block;
+    font-size: 17px;
+    margin: -5em 0 2em;
+}
+
+.share-cont-button {
+    display: block;
+    font-size: 18px !important;
+    text-transform: capitalize;
+    letter-spacing: 0;
+    margin: 1em;
+    color: white;
+}
+
 .hidden-menu{
    position: fixed;
     top: 0;
@@ -372,12 +383,13 @@ a:hover, a:focus {
     margin: 0 auto;
 }
 .introduction-container{
-        position: absolute;
-    top: 14.5em;
-    left: 17vw;
+      position: absolute;
+    margin: 33.5vh 0 0 0;
+    left: 0;
     z-index: 100;
+    width: 100%;
     text-align: center;
-        color: #a7a7a7;
+    color: #a7a7a7;
 }
 
 .name{

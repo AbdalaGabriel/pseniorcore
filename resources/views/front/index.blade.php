@@ -186,6 +186,8 @@
 
 					<a href="#" class="register g-button">Registrarme</a>
 					<a href="#">¿Porqué registrarme?</a>
+					<!-- LightWidget WIDGET --><script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/70b5d6e8489f5de29666ab10673490fd.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+
 				</div>
 
 				<div class="section-container  col-md-4 news">
