@@ -21,8 +21,9 @@ class ClientProjectController extends Controller
 
         $primeraFase = DB::table('phases')->where('client_project_id', $cp->id)->oldest()->first();
         $phases = $cp->phases;
+         $phases = $project->phases;
 
-        return view("organizer.projects.index", ['project'=>$cp, 'actualphase'=> $primeraFase]);
+        return view("organizer.projects.index", ['project'=>$cp, 'actualphase'=> $primeraFase, 'phases'=>$phases]);
     }
 
 
@@ -33,7 +34,7 @@ class ClientProjectController extends Controller
         $primeraFase = DB::table('phases')->where('client_project_id', $cp->id)->oldest()->first();
         $phases = $cp->phases;
 
-        return view("organizer.projects.index", ['project'=>$cp, 'actualphase'=> $primeraFase]);
+        return view("organizer.projects.index", ['project'=>$cp, 'actualphase'=> $primeraFase, 'phases'=>$phases]);
     }
 
 

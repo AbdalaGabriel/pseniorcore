@@ -16,6 +16,7 @@ function carga()
 
 	clean();
 	console.log( "- Limpieza" );
+	otherfunctions();
 
 	//otra forma de hacer una peticion ajax,
 	var consulta =  $.get(route, function(res)
@@ -44,6 +45,40 @@ function carga()
 		console.log( "Error en carga Ajax" );
 	})
 };
+
+function otherfunctions()
+{
+	console.log("init-others-function");
+	var showphases = $(".show-phases");
+	var closephases = $(".close-phases");
+	var hiddenMenuPhases = $(".tasks-container");
+
+	showphases.click(function(ev)
+	{
+		console.log("init-click-function");
+		// Evitar propagacion para que los elementos del interior no disparen el evento mas de una vez
+		ev.stopPropagation();
+
+		hiddenMenuPhases.addClass("showmenu");
+		hiddenMenuPhases.removeClass("hidemenu");
+
+
+
+
+		
+	});
+
+	closephases.click(function(ev)
+	{
+		console.log("init-click-function");
+		// Evitar propagacion para que los elementos del interior no disparen el evento mas de una vez
+		ev.stopPropagation();
+
+		hiddenMenuPhases.addClass("hidemenu");
+		hiddenMenuPhases.removeClass("showmenu");
+
+	});
+}
 
 function clean()
 {

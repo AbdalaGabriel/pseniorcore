@@ -26,9 +26,9 @@ class PhaseController extends Controller
         {
             $project = ClientProject::find($projectid);
             $phases = $project->phases;
-
+            
             $actualphase = Phase::find($phaseid);
-            return view("organizer.projects.index", ['project'=>$project, 'actualphase'=> $actualphase]);
+            return view("organizer.projects.index", ['project'=>$project, 'actualphase'=>$actualphase, 'phases'=>$phases ]);
         }
     }
 

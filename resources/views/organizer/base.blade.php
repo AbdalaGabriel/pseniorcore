@@ -39,14 +39,30 @@
 	<div class="wrapper">
 				
 	    <header class="organizer-header">
-				<div id="particles-js"></div>
-				<!-- HEADER-->
+				<!-- <div id="particles-js"></div> !-->
+				
+				<div class="header-project-container col-md-6">
 					<h2 class="adminTitle">@yield('title')</h2>
 					<div class="description-container">@yield('descr-project')</div>
+				</div>
+
+				<div class="header-tasks-container col-md-6">
+					@yield('project-tasks')
+
+					
+
+				</div>
+
+					
 					
 		</header>
-		@yield('project-tasks')
+		<div class="tasks-container">
 
+			<h2>Fases de su proyecto</h2>
+
+			@yield('all-phases')
+			
+		</div>
 	    <div class="main-panel">
 			
 

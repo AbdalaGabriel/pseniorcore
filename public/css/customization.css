@@ -499,11 +499,14 @@ body {
     line-height: 10em;
     text-align: center;
     /* color: white; */
-    border: 1px solid #d6d6d6;
+        border: 1px solid #06080e;
     font-size: 2em;
     overflow: hidden;
 }
 
+.portfolioItem {
+    height: 20em;
+}
 .postItem img{
     max-width: 160%;
     position: absolute;
@@ -739,11 +742,7 @@ display: block;
 
 }
 
-#new-task{
-    display: block;
-    height: 2em;
-    margin: 1em;
-}
+
 
 .task-container a{
       display: block;
@@ -977,6 +976,11 @@ margin-bottom: 2em;
     margin: 2em auto 1em;
 }
 
+
+.columns-container{
+    max-width: 1280px;
+    margin: 0 auto;
+}
 
 
 .contact .section-container{
@@ -1273,8 +1277,27 @@ width: 23%;
     margin: 0 10px 0 0;
 }
 
-
+.grid-date-container{
+      color: #a5a5a5;
+    z-index: 1;
+    position: absolute;
+    width: 90%;
+    bottom: 11em;
+    text-align: left;
+    height: 3em;
+    left: 2em;
+    font-size: 16px;
+    letter-spacing: 2px;
+    /* border-bottom: 1px solid gray; */
+    padding-bottom: 10px;
+}
 
 .row-container .innerBlock img{
   max-width: 100% !important;
+}
+
+
+#share-content-container{
+  max-width: 45em;
+    margin: 0 auto;
 }

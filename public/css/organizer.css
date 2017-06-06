@@ -13,9 +13,15 @@
 
 .organizer-header{
       background: #232635;
-      padding: 2em;
+
           position: relative;
               overflow: hidden;
+}
+
+.span-button{
+    display: block;
+    float: right;
+    cursor: pointer;
 }
 
 .organizer-header h2{
@@ -157,7 +163,31 @@
     font-size: 1.2em;
     letter-spacing: 1px !important;
     font-weight: 200;
+    color: black;
 }
+
+.tasks-container{
+     padding: 2em;
+    background: #ff0059;
+    color: white;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+        z-index: 0;
+    opacity: 0;
+    height: 0;
+
+}
+
+.tasks-container h2{
+        font-size: 1em;
+    margin: 0;
+    text-align: left;
+    border-bottom: 1px solid;
+    padding-bottom: 1em;
+}
+
 
 .task-bar input{
        font-weight: 500;
@@ -169,6 +199,33 @@
         border: none !important;
     box-shadow: none !important;
     font-family: Raleway !important;
+}
+
+.phase-button{
+        color: white;
+    border: 1px solid;
+    padding: 20px 25px;
+    font-weight: 300;
+    letter-spacing: 2px;
+        margin: 2em 10px;
+    float: left;
+}
+
+#new-task{
+      float: left;
+    background: #c10e4c;
+    color: white;
+    padding: 0 13px;
+    /* margin: 10px; */
+    font-size: 32px;
+    line-height: 45px;
+    position: absolute;
+    border-radius: 3em;
+}
+
+.main-panel{
+    margin: 6em 0 0 0;
+    position: relative;
 }
 
 table{

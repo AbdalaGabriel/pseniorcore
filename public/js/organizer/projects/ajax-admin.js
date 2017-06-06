@@ -7,6 +7,7 @@ $( document ).ready(function()
 	inprogress = $("#inprogress-column");
 	done = $("#done-column");
 	interaction();
+	otherfunctions();
 
 });
 
@@ -57,6 +58,40 @@ function interaction()
 				}
 			});
 		}
+	});
+}
+
+function otherfunctions()
+{
+	console.log("init-others-function");
+	var showphases = $(".show-phases");
+	var closephases = $(".close-phases");
+	var hiddenMenuPhases = $(".tasks-container");
+
+	showphases.click(function(ev)
+	{
+		console.log("init-click-function");
+		// Evitar propagacion para que los elementos del interior no disparen el evento mas de una vez
+		ev.stopPropagation();
+
+		hiddenMenuPhases.addClass("showmenu");
+		hiddenMenuPhases.removeClass("hidemenu");
+
+
+
+
+		
+	});
+
+	closephases.click(function(ev)
+	{
+		console.log("init-click-function");
+		// Evitar propagacion para que los elementos del interior no disparen el evento mas de una vez
+		ev.stopPropagation();
+
+		hiddenMenuPhases.addClass("hidemenu");
+		hiddenMenuPhases.removeClass("showmenu");
+
 	});
 }
 

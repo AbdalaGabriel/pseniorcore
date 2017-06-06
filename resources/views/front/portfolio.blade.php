@@ -18,7 +18,7 @@
 	<h2>Trabajos</h2>
 
 	@foreach ($projects as $project)		    
-	<article class="postItem col-md-6">
+	<article class="postItem portfolioItem col-md-6">
 		<a  href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">
 			<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}"" alt="">
 			<h2 class="post-title">{!!$project->title!!}</h2>
