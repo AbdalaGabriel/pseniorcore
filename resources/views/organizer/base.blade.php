@@ -110,9 +110,7 @@
 </body>
 
 	<!--   Core JS Files   -->
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
+{!!Html::script('bootstrap-template-assets/materialKit/assets/js/jquery.min.js')!!}
 	{!!Html::script('bootstrap-template-assets/js/bootstrap.min.js')!!}
 	{!!Html::script('bootstrap-template-assets/js/material.min.js')!!}
 

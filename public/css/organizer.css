@@ -17,13 +17,28 @@
           position: relative;
               overflow: hidden;
 }
-
+#new-phase{
+    color: #ff70a2;
+    border: 1px solid;
+    padding: 20px 25px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin: 2em 10px;
+    float: left;
+    font-family: Raleway;
+}
 .span-button{
     display: block;
     float: right;
     cursor: pointer;
 }
+.header-tasks-container{
 
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #b50744;
+}
 .organizer-header h2{
         background: none;
     color: #e9eaf1;
@@ -64,19 +79,7 @@
     border: 1px solid !important;
 }
 
-.new-group-task{
-    position: absolute;
-    top: 10em;
-    right: 1em;
-    background: #b51956;
-    border-radius: 2em;
-    padding: 1em 2em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 300;
-    font-size: 12px;
-        color: white;
-}
+
 
 .hola{
     width: 100%;
@@ -135,13 +138,14 @@
 }
 
 .task-title{
-      width: 30%;
+       width: 30%;
     margin-right: 3%;
     float: left;
     text-align: center;
     background: #232635;
     color: white;
     padding: .5em 0;
+    font-family: Raleway;
 }
 .task-column{
       width: 30%;
@@ -154,21 +158,32 @@
 
 
 .task-bar{
-    background: #ececec;
-    padding: 1em 2em;
+       padding: 1em 2em;
+    color: white;
 }
-
+.hidecard {
+      position: absolute;
+    right: 0;
+    background: #0e1d67;
+    padding: .2em .6em;
+    display: block;
+    cursor: pointer;
+    border-radius: 1em;
+    z-index: 100;
+    display: none;
+    color: white;
+}
 .task-bar h2{
     margin: 0;
     font-size: 1.2em;
     letter-spacing: 1px !important;
     font-weight: 200;
-    color: black;
+    color: white;
 }
 
 .tasks-container{
      padding: 2em;
-    background: #ff0059;
+    background: #191c2b;
     color: white;
     overflow: hidden;
     position: absolute;
@@ -209,6 +224,7 @@
     letter-spacing: 2px;
         margin: 2em 10px;
     float: left;
+     font-family: Raleway;
 }
 
 #new-task{
@@ -249,4 +265,31 @@ table tbody td{
     border-right: 1px solid gray;
     border-bottom: 1px solid gray;
     padding: .6em;
+}
+
+.header-project-container h2, .header-project-container h2 input{
+        font-size: 1.2em;
+    font-family: Raleway;
+    text-transform: uppercase !important;
+    letter-spacing: 4px !important;
+    margin: .3em 0 0 0;
+}
+
+.header-tasks-container::before{
+  width: 0;
+    display: block;
+    height: 0;
+    border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  
+  border-left: 10px solid #232635;
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 2em;
+}
+
+
+#createPhase{
+    z-index: 3000;
 }

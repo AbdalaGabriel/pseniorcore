@@ -34,9 +34,9 @@
 						c
 	</span>
 
-	<a id="new-task" data-toggle="modal" data-target="#createPhase" href="#" class="addcard todo">Añadir una fase</a>
+	<a id="new-phase" data-toggle="modal" data-target="#createPhase" href="#" class="new-group-task">+ Añadir una fase</a>
 	@foreach ($phases as $phase)		    
-	<a class="phase-button" href="#">{!!$phase->title!!}</a>
+	<a class="phase-button" href="/mis-proyectos/{!!$project->id!!}/phase/{!!$phase->id!!}">{!!$phase->title!!}</a>
 	@endforeach
 
 

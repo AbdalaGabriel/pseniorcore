@@ -40,10 +40,10 @@ class CardProjectController extends Controller
              'task_order'  =>  $request['order'],
              ]);
 
+            $ultimatarea = DB::table('card_projects')->select('id')->latest()->first();
 
-            return response()->json([
-                "mensaje"=>"creado"
-                ]);
+
+            return response()->json($ultimatarea);
         }
     }
 
