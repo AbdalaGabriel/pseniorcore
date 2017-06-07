@@ -21,7 +21,7 @@ class ClientProjectController extends Controller
 
         $primeraFase = DB::table('phases')->where('client_project_id', $cp->id)->oldest()->first();
         $phases = $cp->phases;
-         $phases = $project->phases;
+        $phases = $project->phases;
 
         return view("organizer.projects.index", ['project'=>$cp, 'actualphase'=> $primeraFase, 'phases'=>$phases]);
     }
@@ -72,11 +72,32 @@ class ClientProjectController extends Controller
          ]);
 
 
-        return response()->json([
-            "mensaje"=>"creado"
-            ]);
+        return response()->json($ultimoProject);
+        }
     }
-}
+
+     public function appCreateProject(Request $request, $userid, $title, $content)
+    {
+        $clientProject = ClientProject::create([
+           'title' => $title,
+           'user_id' => $userid,
+           'description' => $content,
+
+           ]);
+
+        $ultimoProject = DB::table('client_projects')->latest()->first();
+
+        $firstGroupTask = Phase::create([
+         'title' => 'Tareas',
+         'furl' => 'tareas',
+         'description' => 'Tareas asignadas a este proyecto',
+         'client_project_id' =>  $ultimoProject->id,
+         ]);
+
+
+        return response()->json($ultimoProject);
+        
+    }
 
 
     /**

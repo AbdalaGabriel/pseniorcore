@@ -28,6 +28,26 @@ class CardProjectController extends Controller
     }
 
 
+
+   public function appCreateTask(Request $request, $title, $content, $projectid, $phaseid, $status, $order)
+    {
+        
+            $task = CardProject::create([
+             'title' => $title,
+             'description' => $content,
+             'client_project_id' =>  $projectid,
+             'phase_id' =>  $phaseid,
+             'status' =>  $status,
+             'task_order'  =>  $order,
+             ]);
+
+            $ultimatarea = DB::table('card_projects')->latest()->first();
+
+
+            return response()->json($ultimatarea);
+    }
+
+
     public function store(Request $request)
     {
         if ($request->ajax()) {

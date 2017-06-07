@@ -118,6 +118,9 @@ Route::resource('/admin/users', 'UserController');
 		Route::get('/mis-proyectos/{id?}', 'ClientProjectController@givemeproject');
 		Route::post('/mis-proyectos/delete', 'ClientProjectController@destroy');
 
+		Route::get('/mis-proyectos/create/{userid?}/{title?}/{content?}', 'ClientProjectController@appCreateProject');
+		
+
 		//FASES - GRUPO DE TAREAS
 		Route::resource('/mis-proyectos/{projectid?}/phase/{phaseid?}/', 'PhaseController');
 		Route::get('/mis-proyectos/fase/{id?}', 'PhaseController@givemetasks');
@@ -132,6 +135,8 @@ Route::resource('/admin/users', 'UserController');
 		Route::post('/tasks/{id?}/changeorder', 'CardProjectController@changeorder')->middleware('corsg');
 
 		Route::get('app/tasks/{id?}/changeorder/{neworder?}', 'CardProjectController@appchangeorder');
+
+		Route::get('app/tasks/create/{title?}/{content?}/{projectid?}/{phaseid?}/{status?}/{order?}', 'CardProjectController@appCreateTask');
 
 		Route::get('/phase/{phaseid?}/tasks/{status?}', 'CardProjectController@givemeyourtasks');
 		Route::post('/task/givemeinfo', 'CardProjectController@givemetask');
