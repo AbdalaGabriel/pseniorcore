@@ -169,10 +169,10 @@ public function show($id)
 public function getPage($urlfriendly)
 {
     $page = Page::where('urlfriendly', $urlfriendly)->first();
-    $pagesBlock = Config::find(11);
-    $contactBlock = Config::find(15);
-    $postsBlock = Config::find(13);
-    $shareBlock = Config::find(17);
+    $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
+    $contactBlock = Config::where('reference', "footer_contactme_es")->first();
+    $postsBlock = Config::where('reference', "footer_readmore_es")->first();
+    $shareBlock = Config::where('reference', "footer_followme_es")->first();
 
     if($page != null)
     {
@@ -260,7 +260,7 @@ public function menu()
 
 public function footer()
 {
-     $footer = Page::find(21);
+     $footer = Page::find(22);
      $configs = $footer->configs;
     return view('admin.pages.footer', ['footer'=>$footer, 'configs'=>$configs]);
 }

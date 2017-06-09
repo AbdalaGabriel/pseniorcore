@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Project;
+use App\Config;
 use App\ProjectCategory;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
@@ -57,10 +58,17 @@ public function front($id, $title)
 
     $realtitle = $project->urlfriendly;
 
+     // Footer dinamico
+         $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_es")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_es")->first();
+        $shareBlock = Config::where('reference', "footer_followme_es")->first();
+
+
 // Efectuo redireción en caso que el usuario me escriba otro titulo, debido a que solo toma el ID para la busqueda
     if($title == $realtitle)
     {
-        return view("front.project", ['project'=>$project]);
+        return view("front.project", ['project'=>$project, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
     }
     else
     {

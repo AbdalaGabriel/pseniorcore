@@ -8,6 +8,7 @@ use App\ProjectCategory;
 use App\Post;
 use App\Inquirie;
 use App\Page;
+use App\Config;
 use App\User;
 use App\Slide;
 use App\PostCategory;
@@ -27,11 +28,17 @@ class FrontController extends Controller
 
     public function index(Request $request)
     {
-
+        $page = Page::where('urlfriendly', '/')->first();
         $projects = DB::table('projects')->take(4)->get();
         $posts = DB::table('posts')->take(4)->get();	
         $slides = Slide::all();
-        return view('front.index', ['projects'=>$projects, 'posts'=>$posts, 'slides'=>$slides]); 
+        $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_es")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_es")->first();
+        $shareBlock = Config::where('reference', "footer_followme_es")->first();
+
+
+        return view('front.index', ['projects'=>$projects, 'posts'=>$posts, 'slides'=>$slides, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'page'=>$page ]); 
         
     }
 
@@ -50,7 +57,13 @@ class FrontController extends Controller
     {
         $page = Page::find(12);
         $projects = Project::all();
-        return view('front.portfolio', ['projects'=>$projects, 'page'=>$page]); 
+        // Footer dinamico
+         $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_es")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_es")->first();
+        $shareBlock = Config::where('reference', "footer_followme_es")->first();
+
+        return view('front.portfolio', ['projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
         
     }
 
@@ -122,7 +135,14 @@ class FrontController extends Controller
     {
         $page = Page::find(13);
         $posts = Post::all();
-        return view('front.blog', ['posts'=>$posts, 'page'=>$page]); 
+
+        // Footer dinamico
+         $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_es")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_es")->first();
+        $shareBlock = Config::where('reference', "footer_followme_es")->first();
+
+        return view('front.blog', ['posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
         
     }
 
@@ -131,7 +151,14 @@ class FrontController extends Controller
     {
         $page = Page::find(21);
         $tuts = TutsAndResource::all();
-        return view('front.tuts', ['tuts'=>$tuts, 'page'=>$page]); 
+
+        // Footer dinamico
+         $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_es")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_es")->first();
+        $shareBlock = Config::where('reference', "footer_followme_es")->first();
+
+        return view('front.tuts', ['tuts'=>$tuts, 'page'=>$page,  'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]); 
         
     }
 

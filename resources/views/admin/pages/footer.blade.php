@@ -18,7 +18,7 @@
 			{!!Form::label($config->reference,  $config->configname, ['class' => 'form-control']);!!}
 
 			@if( $config->type == "t")
-				<div data-config-id="<?php echo $config->id ?>" data-type="t" class="configContainer">	
+				<div data-config-id="{!!$config->id!!}}" data-type="t" class="configContainer">	
 				{!!Form::text($config->reference, $config->value, ['class'=>'form-control textinput','placeholder'=>'Ingrese el valor solicitado']) !!}
 			
 			@elseif($config->type == "tf")

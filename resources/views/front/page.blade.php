@@ -28,8 +28,11 @@
 	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 
 	@if($page->en_urlfriendly != "")
-	<div class="language-container">Idioma: <a href="/en/{!!$page->en_urlfriendly!!}">EN</a></div>
+	@section('language') 
+	  Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/{!!$page->en_urlfriendly!!}">EN</a></div>
+	  @endsection
 	@endif
+
 
 
 		

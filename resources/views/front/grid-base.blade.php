@@ -246,7 +246,7 @@
 		<div class="section-container">
 
 			<div class="footer-box contact-me">
-				<h3 class="footer-title">Navega</h3>
+				<h3 class="footer-title">{!!$pagesBlock->value!!}</h3>
 				<span>Home</span>
 				<span>Servicios</span>
 				<span>Blog</span>
@@ -255,20 +255,20 @@
 			</div>
 
 			<div class="footer-box contact-me">
-				<h3 class="footer-title">Contactame</h3>
+				<h3 class="footer-title">{!!$contactBlock->value!!}</h3>
 				<span><i class="fa fa-mobile" aria-hidden="true"></i> (011) 1562485374</span>
 				<span><i class="fa fa-envelope-o" aria-hidden="true"></i> gabrielabdala.dm@gmail.com</span>
 				
 			</div>
 
 			<div class="footer-box contact-me">
-				<h3 class="footer-title">Lee mas</h3>
+				<h3 class="footer-title">{!!$postsBlock->value!!}</h3>
 				<span>¿Que hacen los usuarios?</span>
 				
 			</div>
 
 			<div class="footer-box social-icons-container">
-				<h3 class="footer-title">Seguime</h3>
+				<h3 class="footer-title">{!!$shareBlock->value!!}</h3>
 				<i class="fa fa-instagram" aria-hidden="true"></i>
 				<i class="fa fa-behance" aria-hidden="true"></i>
 				<i class="fa fa-linkedin" aria-hidden="true"></i>
