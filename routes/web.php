@@ -35,6 +35,7 @@ Route::get('/mail', function () {
 Route::get('/', 'FrontController@index');
 Route::get('/en', 'FrontController@enIndex');
 Route::get('/profile', 'HomeController@index');
+Route::get('/login', 'HomeController@index');
 
 	// Portfolio
 
