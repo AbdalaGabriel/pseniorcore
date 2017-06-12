@@ -1,4 +1,4 @@
-@extends('front.en.base')
+@extends('front.en.basesbase')
 
 
 @section('main')

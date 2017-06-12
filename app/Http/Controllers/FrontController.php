@@ -45,33 +45,127 @@ class FrontController extends Controller
     public function enIndex(Request $request)
     {
 
+       $page = Page::where('urlfriendly', '/')->first();
         $projects = DB::table('projects')->take(4)->get();
         $posts = DB::table('posts')->take(4)->get();    
         $slides = Slide::all();
-        return view('front.en.index', ['projects'=>$projects, 'posts'=>$posts, 'slides'=>$slides]); 
+        $pagesBlock = Config::where('reference', "footer_pagesblock_en")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_en")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_en")->first();
+        $shareBlock = Config::where('reference', "footer_followme_en")->first();
+
+
+        return view('front.en.index', ['projects'=>$projects, 'posts'=>$posts, 'slides'=>$slides, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'page'=>$page ]); 
         
     }
 
 
-    public function portfolio(Request $request)
+    public function masterFrontPage(Request $request,  $urlfriendly)
     {
-        $page = Page::find(12);
-        $projects = Project::all();
-        // Footer dinamico
-         $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
+        $page = Page::where('urlfriendly', $urlfriendly)->first();
+        $pageReference = $page->reference;
+        $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
         $contactBlock = Config::where('reference', "footer_contactme_es")->first();
         $postsBlock = Config::where('reference', "footer_readmore_es")->first();
         $shareBlock = Config::where('reference', "footer_followme_es")->first();
 
-        return view('front.portfolio', ['projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
-        
+        if($page != null)
+        {
+            
+            if($pageReference != null){
+                switch($pageReference)
+                {
+                   case 'portfolio';
+                        $projects = Project::all();
+                        return view('front.portfolio', ['projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);     
+                   break;
+
+                   case 'news'; 
+                        $posts = Post::all();
+                        return view('front.blog', ['posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);   
+                       
+                   break;
+                   case 'tuts'; 
+                        $tuts = TutsAndResource::all();
+                        return view('front.tuts', ['tuts'=>$tuts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);   
+                       
+                   break;
+
+                   case 'contact'; 
+                        return view('front.contactme', [ 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);   
+                       
+                   break;
+
+                   default;
+                        return view("front.page", ['page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
+                   break;
+                }
+            }else
+            {
+                return view("front.page", ['page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]); 
+            }
+            
+        }
+        else
+        {
+            return view("errors.404");
+        }
     }
 
-    public function multimediaNow()
+    public function enMasterFrontPage(Request $request, $urlfriendly)
     {
-        return view('front.multimedia-now'); 
-        
+        $page = Page::where('en_urlfriendly', $urlfriendly)->first();
+        $pageReference = $page->reference;
+        $pagesBlock = Config::where('reference', "footer_pagesblock_en")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_en")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_en")->first();
+        $shareBlock = Config::where('reference', "footer_followme_en")->first();
+
+        if($page != null)
+        {
+            
+            if($pageReference != null){
+                switch($pageReference)
+                {
+                   case 'portfolio';
+                        $projects = Project::all();
+                        return view('front.en.portfolio', ['projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);     
+                   break;
+
+                   case 'news'; 
+                        $posts = Post::all();
+                        return view('front.en.blog', ['posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);   
+                       
+                   break;
+
+                   case 'tuts'; 
+                        $tuts = TutsAndResource::all();
+                        return view('front.en.tuts', ['tuts'=>$tuts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);   
+                       
+                   break;
+                   case 'contact'; 
+                        return view('front.en.contactme', [ 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);   
+                       
+                   break;
+
+                   default;
+                        return view("front.en.page", ['page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
+                   break;
+                }
+            }else
+            {
+                return view("front.en.page", ['page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]); 
+            }
+            
+        }
+        else
+        {
+            return view("errors.404");
+        }
     }
+
+   
+
 
     public function contact()
     {
@@ -131,37 +225,7 @@ class FrontController extends Controller
     }
 
 
-    public function blog(Request $request)
-    {
-        $page = Page::find(13);
-        $posts = Post::all();
-
-        // Footer dinamico
-         $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
-        $contactBlock = Config::where('reference', "footer_contactme_es")->first();
-        $postsBlock = Config::where('reference', "footer_readmore_es")->first();
-        $shareBlock = Config::where('reference', "footer_followme_es")->first();
-
-        return view('front.blog', ['posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
-        
-    }
-
-
-    public function resources(Request $request)
-    {
-        $page = Page::find(21);
-        $tuts = TutsAndResource::all();
-
-        // Footer dinamico
-         $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
-        $contactBlock = Config::where('reference', "footer_contactme_es")->first();
-        $postsBlock = Config::where('reference', "footer_readmore_es")->first();
-        $shareBlock = Config::where('reference', "footer_followme_es")->first();
-
-        return view('front.tuts', ['tuts'=>$tuts, 'page'=>$page,  'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]); 
-        
-    }
-
+    
     public function admin(Request $request)
     {
 

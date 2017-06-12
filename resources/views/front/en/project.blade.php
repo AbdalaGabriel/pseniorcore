@@ -1,5 +1,5 @@
 
-@extends('front.en.base')
+@extends('front.en.bases.base')
 
 	<!-- Titulo de la pestaña -->
 	@section('mainTitle'){!!$project->en_title!!}@endsection

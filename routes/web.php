@@ -15,20 +15,6 @@ use App\Mail\Registration;
 // MIDDLEWERES
 Auth::routes();
 
-
-
-$portfolio = Page::find(12);
-//$urlfPortfolio = $portfolio->urlfriendly;
-$urlfPortfolio = "portfolio";
-
-$blog = Page::find(13);
-//$urlfBlog = $blog->urlfriendly;
-$urlfBlog = "blog";
-
-$resources = Page::find(21);
-//$urlfBlog = $blog->urlfriendly;
-$urlfResources = "recursos-y-tutoriales";
-
 Route::get('/basicemail', 'MailController@basic_email');
 Route::get('/htmlemail', 'MailController@html_email');
 Route::get('/attachemail', 'MailController@attachment_email');
@@ -51,22 +37,18 @@ Route::get('/en', 'FrontController@enIndex');
 Route::get('/profile', 'HomeController@index');
 
 	// Portfolio
-	Route::get('/'.$urlfPortfolio, 'FrontController@portfolio');
 
 		// Proyectos
 		Route::get('/proyecto/{id?}/{urflf}', 'ProjectController@front' );
 		Route::get('en/project/{id?}/{urflf}', 'ProjectController@englishversion' );
 
 	// Blog
-	Route::get('/'.$urlfBlog, 'FrontController@blog');
 
 		// Noticias y novedades
 		Route::get('/blog/{id?}/{urflf}', 'BlogController@front' );
 		Route::get('en/blog/{id?}/{urflf}', 'BlogController@englishversion' );
 
 	// recursos y tutoriales
-	Route::get('/'.$urlfResources, 'FrontController@resources');
-
 	
 		Route::get('/recursos-y-tutoriales/{id?}/{urflf}', 'TutsAndResourcesController@front' );
 		Route::get('en/recursos-y-tutoriales/{id?}/{urflf}', 'TutsAndResourcesController@englishversion' );
@@ -77,12 +59,10 @@ Route::get('/profile', 'HomeController@index');
 	Route::post('/form/validate', 'FrontController@validateform');
 
 
-	// Contacto
-	Route::get('/multimedia-now', 'FrontController@multimediaNow');
 
 	// Paginas secundarias
-	Route::get('/{urflf}', 'PageController@getPage' );
-	Route::get('en/{urflf}', 'PageController@englishversion' );
+	Route::get('/{urflf}', 'FrontController@masterFrontPage' );
+	Route::get('en/{urflf}', 'FrontController@enMasterFrontPage' );
 
 /* --------------------------------------------------------------------------------------- */
 /////////////////////////////////////////////////////////////////////////////////////////////

@@ -20,7 +20,9 @@
     background: rgba(205, 202, 220, 0.36);
 
 }
-
+.app-dw{
+  text-align: center;
+}
 .adminButton{
     position: absolute;
     top: .8em;
@@ -29,6 +31,22 @@
     padding: 1em 2em;
     color: white !important;
     border-radius: 2em;
+}
+
+.qr-container img {
+    max-width: 14em;
+}
+
+.qr-link{
+  position: relative;
+  display: block;
+}
+
+.qr-container{
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 7em;
 }
 
 .table > thead > tr > th {

@@ -1,4 +1,4 @@
-@extends('front.base')
+@extends('front.en.bases.base')
 
 	<!-- Titulo de la pestaña -->
 	@section('mainTitle'){!!$page->en_title!!}@endsection
@@ -26,9 +26,10 @@
 	<!-- Contenido principal -->
 	@section('main')
 	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
-
-	@if($page->en_urlfriendly != "")
-	<div class="language-container">Idioma: <a href="/{!!$page->urlfriendly!!}">EN</a></div>
+@if($page->en_urlfriendly != "")
+	@section('language') 
+	  Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/{!!$page->en_urlfriendly!!}">EN</a></div>
+	  @endsection
 	@endif
 
 

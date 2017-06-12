@@ -115,19 +115,30 @@ $('a[href*="#"]')
 				//console.log(data);
 				$(data).each(function(key, value)
 				{
-					menucontainer.append('<li><a id="option-'+value.id+'" href="/'+value.urlfriendly+'">'+value.title+'</a></li>');
-					if(value.subpages != "n")
+					if(value.visible_in_menu == 1)
 					{
-						subLength = value.subpages.length;
-						//console.log(value.id + "-tiene hijos");
-						let children = value.subpages;
-						$("#option-"+value.id).parent("li").append('<span data-show="submenu-'+value.id+'" class="sub-lgt">('+subLength+')<span class="arrowsee">></span><span>');
-						$("#option-"+value.id).append('<ul id="submenu-'+value.id+'" class="suboptionscontainer"></ul>');
-						$(children).each(function(key, child)
+						if(value.urlfriendly != "/")
 						{
-							$("#option-"+value.id+" .suboptionscontainer").append('<li><a id="option-'+child.id+'" href="/'+child.urlfriendly+'">'+child.title+'</a></li>');
-						});
-						
+							menucontainer.append('<li><a id="option-'+value.id+'" href="/'+value.urlfriendly+'">'+value.title+'</a></li>');
+
+						}
+						else
+						{
+							menucontainer.append('<li><a id="option-'+value.id+'" href="'+value.urlfriendly+'">'+value.title+'</a></li>');
+						}
+						if(value.subpages != "n")
+						{
+							subLength = value.subpages.length;
+							//console.log(value.id + "-tiene hijos");
+							let children = value.subpages;
+							$("#option-"+value.id).parent("li").append('<span data-show="submenu-'+value.id+'" class="sub-lgt">('+subLength+')<span class="arrowsee">></span><span>');
+							$("#option-"+value.id).append('<ul id="submenu-'+value.id+'" class="suboptionscontainer"></ul>');
+							$(children).each(function(key, child)
+							{
+								$("#option-"+value.id+" .suboptionscontainer").append('<li><a id="option-'+child.id+'" href="/'+child.urlfriendly+'">'+child.title+'</a></li>');
+							});
+							
+						}
 					}
 				});
 

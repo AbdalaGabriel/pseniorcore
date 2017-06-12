@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
@@ -16,102 +16,42 @@
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
+	<!--     Favico    -->
+	<link rel="apple-touch-icon" sizes="57x57" href="/icon.ico/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/icon.ico/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/icon.ico/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/icon.ico/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/icon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+	<link rel="shortcut icon" href="/icon.ico/favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="/icon.ico/favicon.ico" type="image/x-icon">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
 	<!-- CSS Files -->
 	{!!Html::style('bootstrap-template-assets/materialKit/assets/css/bootstrap.min.css')!!}
 	{!!Html::style('bootstrap-template-assets/materialKit/assets/css/material-kit.css')!!}
 	{!!Html::style('css/customization.css')!!}
 
-
-
 </head>
 
 <body class="main">
-		
-	<!-- Navbar will come here -->
-	<nav class="hidden-menu">
-		<div id="particles-js-2" class="absolute-pos"></div>
-		<a href="#" title="Cerrar menú" class="close-hidden-menu">X</a>
-		<ul id="main-menu">
-			
 
-		</ul>
-
-		<span class="logo-container-menu">	
-		</span>	
-		
-	</nav>
-	
-	<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
-		<div class="container header-container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-index">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a href="/">
-					<div class="logo-container">
-						
-						<div class="brand">
-							<img src="/img/front/g.svg">
-						</div>
-
-
-					</div>
-				</a>
-			</div>
-
-
-			<!-- PREGUNTAR SI ESTA LOGUEADO O NO -->
-			@if (Auth::guest())
-				<li><a href="{{ url('/login') }}">Login</a></li>
-				<li><a href="{{ url('/register') }}">Register</a></li>
-			@else
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-					{{ Auth::user()->name }} <span class="caret"></span>
-				</a>
-
-				<ul class="dropdown-menu" role="menu">
-					<li>
-						<a href="{{ url('/logout') }}"
-						onclick="event.preventDefault();
-						document.getElementById('logout-form').submit();">
-						Logout
-						</a>
-
-						<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-							{{ csrf_field() }}
-						</form>
-					</li>
-				</ul>
-			</li>
-			@endif
-
-
-		<div class="collapse navbar-collapse" id="navigation-index">
-			<div class="main-menu-button">	
-				Menu
-			</div>
-
-			@if($page->en_urlfriendly != "")
-	  Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/{!!$page->en_urlfriendly!!}">EN</a></div>
-	
-	@endif
-
-		</div>
-	</div>
-</nav>
-<!-- End Navbar -->
-
+<!-- MENU -->	
+@include('front.structure.menu')
 
 <div class="wrapper">
 	<div class="header header-filter">
 		<div class="container  slider-container">
-		
-				
-
 			<!--SLIDER -->
 			<div class="wrap">
 				<div class="slide">
@@ -175,176 +115,23 @@
 				@endforeach
 				</div>
 			</section>
-
-
-
-			<!-- footer -->
-			<section class="g-section no-padding contact pre-footer">
-				<div class="section-container  col-md-4 tuts">
-						<h2>Tutoriales y recursos</h2>
-						<h3>Acceda de forma abierta a tutoriales y recursos multimediales, abiertos para la comunidad</h3>
-				</div>
-
-				<div class="section-container  col-md-4 org">
-					<h2>Organize sus proyectos</h2>
-					<h3>Registrese como usuario gratuitamente y acceda al organizador exclusivo para clientes</h3>
-					<h4>Juntos podemos crear grandes cosas</h4>
-
-					<a href="#" class="register g-button">Registrarme</a>
-					<a href="#">¿Porqué registrarme?</a>
-					<!-- LightWidget WIDGET --><script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/70b5d6e8489f5de29666ab10673490fd.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
-
-				</div>
-
-				<div class="section-container  col-md-4 news">
-					<!-- Begin MailChimp Signup Form -->
-					<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-					<style type="text/css">
-						#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
-						/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-						We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-					</style>
-					<div id="mc_embed_signup">
-						<form action="//twitter.us14.list-manage.com/subscribe/post?u=21939b15fd9aeae487bd56ef1&amp;id=a5ecdc5c4a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-							<div id="mc_embed_signup_scroll">
-								<h2>Suscribete al newsletter!</h2>
-								<div class="indicates-required"><span class="asterisk">*</span> campo obligatorio</div>
-								<div class="mc-field-group">
-									<label for="mce-EMAIL">Dirección de mail  <span class="asterisk">*</span>
-									</label>
-									<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-								</div>
-
-								@if (Auth::guest())
-									<div class="mc-field-group">
-									<label for="mce-FNAME">Nombre </label>
-									<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
-								</div>
-
-								<div class="mc-field-group">
-									<label for="mce-compania">Compañía</label>
-									<input type="text" value="" name="COMPANY" class="" id="mce-compania">
-								</div>
-
-								@else
-									
-								@endif
-								
-								<input type="hidden" name="type" value="c">
-
-								<div id="mce-responses" class="clear">
-									<div class="response" id="mce-error-response" style="display:none"></div>
-									<div class="response" id="mce-success-response" style="display:none"></div>
-								</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-								<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_21939b15fd9aeae487bd56ef1_a5ecdc5c4a" tabindex="-1" value=""></div>
-								<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-							</div>
-						</form>
-					</div>
-					<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'>
-						
-					</script><script type='text/javascript'>
-					(function($) 
-					{
-						window.fnames = new Array(); 
-						window.ftypes = new Array();
-						fnames[0]='EMAIL';
-						ftypes[0]='email';
-						fnames[1]='FNAME';
-						ftypes[1]='text';
-						fnames[2]='COMPANY';
-						ftypes[2]='text';
-					}
-
-					(jQuery));
-					var $mcj = jQuery.noConflict(true);
-
-					console.log($mcj);
-
-				</script>
-				<!--End mc_embed_signup-->
-			</div>
-		</section>
-
-	</div>
+	
+		</div>
 </div>
-<footer>	
-		<div class="engagement-container">	
-				<h2>¿Listo para que iniciemos un proyecto juntos?</h2>
-				<a href="/contactame" class="contact">Pogámonos en contacto</a>
-		</div>
-		
-		
-		
 
-		<div class="section-container">
+<!-- PREFOOTER -->
+@include('front.structure.prefooter')
 
-			<div class="footer-box contact-me">
-				<h3 class="footer-title">{!!$pagesBlock->value!!}</h3>
-				<span>Home</span>
-				<span>Servicios</span>
-				<span>Blog</span>
-				<span>Contactame</span>
-				
-			</div>
+<!-- FOOTER -->
+@include('front.structure.footer')
 
-			<div class="footer-box contact-me">
-				<h3 class="footer-title">{!!$contactBlock->value!!}</h3>
-				<span><i class="fa fa-mobile" aria-hidden="true"></i> (011) 1562485374</span>
-				<span><i class="fa fa-envelope-o" aria-hidden="true"></i> gabrielabdala.dm@gmail.com</span>
-				
-			</div>
-
-			<div class="footer-box contact-me">
-				<h3 class="footer-title">{!!$postsBlock->value!!}</h3>
-				<span>¿Que hacen los usuarios?</span>
-				
-			</div>
-
-			<div class="footer-box social-icons-container">
-				<h3 class="footer-title">{!!$shareBlock->value!!}</h3>
-				<i class="fa fa-instagram" aria-hidden="true"></i>
-				<i class="fa fa-behance" aria-hidden="true"></i>
-				<i class="fa fa-linkedin" aria-hidden="true"></i>
-				
-			</div>
-
-			
-		</div>
-
-		<div class="copyright-container">
-		<div class="brand-footer-container">
-			G
-		</div>
-				Sitio web diseñado y desarrollado por Gabriel Abdala.
-		</div>
-					
-
-</footer>
 <input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 </body>
 
-<!--   Core JS Files   -->
-{!!Html::script('bootstrap-template-assets/materialKit/assets/js/jquery.min.js')!!}
-{!!Html::script('bootstrap-template-assets/materialKit/assets/js/bootstrap.min.js')!!}
-{!!Html::script('bootstrap-template-assets/materialKit/assets/js/material.min.js')!!}
+@include('front.structure.scripts')
 
-<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-{!!Html::script('bootstrap-template-assets/materialKit/assets/js/nouislider.min.js')!!}
-
-<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-{!!Html::script('bootstrap-template-assets/materialKit/assets/js/bootstrap-datepicker.js')!!}
-
-<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-{!!Html::script('bootstrap-template-assets/materialKit/assets/js/material-kit.js')!!}
 {!!Html::script('js/jquery.fadeImg.js')!!}
 {!!Html::script('js/form-controller.js')!!}
-
-<!--   Particulas  -->
-{!!Html::script('js/particles/particle.js')!!}
-{!!Html::script('js/functions.js')!!}
-
-{!!Html::script('js/baseurl.js')!!}
 
 <script>
 	$(document).ready(function($) {

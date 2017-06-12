@@ -1,53 +1,152 @@
-@extends('front.en.base')
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" href="assets/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Gabriel Abdala - Diseñador Multimedial </title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+	<!--     Fonts and icons     -->
+	<script src="https://use.fontawesome.com/062fcbdd8d.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+	<!--     Favico    -->
+	<link rel="apple-touch-icon" sizes="57x57" href="/icon.ico/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/icon.ico/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/icon.ico/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/icon.ico/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/icon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+	<link rel="shortcut icon" href="/icon.ico/favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="/icon.ico/favicon.ico" type="image/x-icon">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+	<!-- CSS Files -->
+	{!!Html::style('bootstrap-template-assets/materialKit/assets/css/bootstrap.min.css')!!}
+	{!!Html::style('bootstrap-template-assets/materialKit/assets/css/material-kit.css')!!}
+	{!!Html::style('css/customization.css')!!}
+
+</head>
+
+<body class="main">
+
+<!-- MENU -->	
+@include('front.en.structure.menu')
 
 
-@section('main')
+<div class="wrapper">
+	<div class="header header-filter">
+		<div class="container  slider-container">
+		
+				
 
-<div class="wrap">
-					<div class="slide">
-						<ul>
+			<!--SLIDER -->
+			<div class="wrap">
+				<div class="slide">
+					<ul>
+						<li>
+							<div class="inner-container">
+							<div id="particles-js"></div>
+								<div class="introduction-container">
+									<h1 class="hello">Hello,</h1>
+									<h3 class="home-phrase">I´m <span class="name">Gabriel Abdala</span>, y</h3>
+									<h3 class="changing-prhase">& i´m Multimedia Designer</h3>
+								</div>
+
+							<a class="cta-home">Look at my works/a>
+
+								<div class="big-g-container">
+									<!-- <img src="/img/front.en/g.svg"> -->
+								</div>
+							</div>
+
+						</li>
 						@foreach ($slides as $slide)	
-							<li style="background-image:url(/uploads/sliderhome/{!!$slide->path!!})">{!!$slide->title!!}</li>
-						@endforeach
+						<li style="background-image:url(/uploads/sliderhome/{!!$slide->path!!})">
+							<h1 class="slide-title">{!!$slide->title!!}</h1><h2  class="slide-subtitle">{!!$slide->subtitle!!}</h2></li>
+							@endforeach
 						</ul>
 					</div>
 				</div>
+			</div>
+		</div>
 
-				<section class="g-section">			
-					<div class="col-md-6">
-						<p>
-							For package developers. Takes a package folder and generates a .sublime-package file that can be uploaded onto the web and referenced in the packages.json file for a repository.
-						</p>
-						<p>
-							For package developers. Takes a package folder and generates a .sublime-package file that can be uploaded onto the web and referenced in the packages.json file for a repository.
-						</p>
-						<span class="firma">FIRMA</span>
-					</div>
-
-					<div class="col-md-6">
-					</div>
-				</section>
-
-				<section class="g-section">
+		<div class="main ">
+			
+			<!--PORTFOLIO -->
+			<section class="g-section">
+				<div class="section-container">
 					<h2>Works</h2>
-
 					@foreach ($projects as $project)		    
-					<div class="porftolioItem col-md-3"><a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a></div>
-					
+						<article class="postItem col-md-6">
+							<a href="/en/project/{!!$project->id!!}/{!!$project->en_urlfriendly!!}">
+								<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}"" alt="">
+								<h2 class="post-title">{!!$project->en_title!!}</h2>
+							</a>
+						</article>
 					@endforeach
+				</div>
+			</section>
 
+			<!--BLOG -->
+			<section class="g-section">
+				<h2>Lattest news</h2>
+				<div class="section-container">
+				@foreach ($posts as $post)		    
+				<article class="postItem col-md-6">
+					<a href="en/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">
+						<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
+						<h2 class="post-title">{!!$post->en_title!!}</h2>
+					</a>
+				</article>
 
-				</section>
-				
-				<section class="g-section">
-					<h2>Lattest news</h2>
+				@endforeach
+				</div>
+			</section>
+		
+	</div>
+</div>
+<!-- PREFOOTER -->
+@include('front.en.structure.prefooter')
 
-					@foreach ($posts as $post)		    
-					<div class="postItem col-md-3">{!!$post->title!!}</div>
-					
-					@endforeach
+<!-- FOOTER -->
+@include('front.en.structure.footer')
 
+<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
+</body>
 
-				</section>
+@include('front.en.structure.scripts')
 
-@endsection
+{!!Html::script('js/jquery.fadeImg.js')!!}
+{!!Html::script('js/form-controller.js')!!}
+
+<script>
+	$(document).ready(function($) {
+		$(".slide").fadeImages({
+			time:123000,
+			arrows: true,
+			complete: function() {
+				console.log("Fade Images Complete");
+			}
+		});
+
+	});
+</script>
+
+</html>

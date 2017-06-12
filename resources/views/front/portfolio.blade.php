@@ -1,4 +1,4 @@
-@extends('front.grid-base')
+@extends('front.bases.grid-base')
 <!-- Titulo de la pestaña -->
 	@section('mainTitle'){!!$page->title!!}@endsection
 
@@ -11,8 +11,11 @@
 @section('main')
 
 @if($page->en_urlfriendly != "")
-<a href="/en/project/{!!$post->id!!}/{!!$page->en_urlfriendly!!}">Cambiar idioma</a>
-@endif
+	@section('language') 
+	  Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/{!!$page->en_urlfriendly!!}">EN</a></div>
+	  @endsection
+	@endif
+
 
 <section class="g-section ">
 	<h2>Trabajos</h2>
