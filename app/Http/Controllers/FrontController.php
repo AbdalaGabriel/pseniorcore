@@ -63,14 +63,15 @@ class FrontController extends Controller
     public function masterFrontPage(Request $request,  $urlfriendly)
     {
         $page = Page::where('urlfriendly', $urlfriendly)->first();
-        $pageReference = $page->reference;
-        $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
-        $contactBlock = Config::where('reference', "footer_contactme_es")->first();
-        $postsBlock = Config::where('reference', "footer_readmore_es")->first();
-        $shareBlock = Config::where('reference', "footer_followme_es")->first();
-
         if($page != null)
         {
+            $pageReference = $page->reference;
+            $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
+            $contactBlock = Config::where('reference', "footer_contactme_es")->first();
+            $postsBlock = Config::where('reference', "footer_readmore_es")->first();
+            $shareBlock = Config::where('reference', "footer_followme_es")->first();
+
+       
             
             if($pageReference != null){
                 switch($pageReference)
@@ -115,14 +116,16 @@ class FrontController extends Controller
     public function enMasterFrontPage(Request $request, $urlfriendly)
     {
         $page = Page::where('en_urlfriendly', $urlfriendly)->first();
-        $pageReference = $page->reference;
-        $pagesBlock = Config::where('reference', "footer_pagesblock_en")->first();
-        $contactBlock = Config::where('reference', "footer_contactme_en")->first();
-        $postsBlock = Config::where('reference', "footer_readmore_en")->first();
-        $shareBlock = Config::where('reference', "footer_followme_en")->first();
-
+        
         if($page != null)
         {
+
+            $pageReference = $page->reference;
+            $pagesBlock = Config::where('reference', "footer_pagesblock_en")->first();
+            $contactBlock = Config::where('reference', "footer_contactme_en")->first();
+            $postsBlock = Config::where('reference', "footer_readmore_en")->first();
+            $shareBlock = Config::where('reference', "footer_followme_en")->first();
+        
             
             if($pageReference != null){
                 switch($pageReference)

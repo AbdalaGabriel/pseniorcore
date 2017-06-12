@@ -52,7 +52,7 @@ class ProjectController extends Controller
     }
 }
 
-public function front($id, $title)
+public function front($id,  $urflf)
 {
     $project = Project::find($id);
 
@@ -66,7 +66,7 @@ public function front($id, $title)
 
 
 // Efectuo redireción en caso que el usuario me escriba otro titulo, debido a que solo toma el ID para la busqueda
-    if($title == $realtitle)
+    if($urflf == $realtitle)
     {
         return view("front.project", ['project'=>$project, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
     }
@@ -283,6 +283,9 @@ public function update(Request $request, $id)
             $project->description = $request['description'] ;
             $project->urlfriendly = $request['urlf'];
             $project->meta_description = $request['metadescription'] ;
+            $project->jsoneditdata = $request['blocks'];
+            $project->htmleditdata = $request['htmlForEdition'];
+            $project->urlfriendly = $request['urlf'];
             $categoriesIds = $request['categories'];
 
             $project->projectsCategories()->sync($categoriesIds);    

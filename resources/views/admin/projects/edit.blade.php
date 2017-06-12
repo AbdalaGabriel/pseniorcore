@@ -2,7 +2,12 @@
 
 @section('pageTitle', 'Administrar proyectos')
 @section('title', 'Editando Proyecto')
-
+@section('popups')
+	@include('admin.pages.Blocks.text-block')
+	@include('admin.pages.Blocks.edit-text-block')
+	@include('admin.pages.Blocks.image-block')
+	@include('admin.pages.Blocks.link-block')
+@endsection
 
 @section('main')
 
@@ -24,7 +29,13 @@
 		<!-- Descripcion  -->
 		{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
 		{!!Form::textarea('content', $finalObj->description, ['id'=>'new-post-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
-
+		
+		<h3>Bloques: </h3>
+	
+		<div id="blocks-container">
+			<?php echo $finalObj->htmleditdata; ?>
+		</div>
+		<span  id="add-block">Agregar bloque</span>
 	</div>
 	<div class="col-md-4">
 
@@ -73,6 +84,8 @@
 
 	</div>	
 
+
+
 </div>
 
 </div>
@@ -82,7 +95,7 @@
 {!! Html::script('js/blog/create.js') !!}
 {!! Html::script('dropzone/dist/dropzone.js') !!}
 {!! Html::script('js/projects/dz-control.js') !!}
-
+{!!Html::script('js/projects/blocks.js')!!}
 {!! Html::script('js/projects/formController-edit.js') !!}
 @endsection
 

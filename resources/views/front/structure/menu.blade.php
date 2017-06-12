@@ -27,7 +27,7 @@
 						<div class="brand">
 							<img src="/img/front/g.svg">
 						</div>
-
+		
 
 					</div>
 				</a>
@@ -66,12 +66,7 @@
 				Menu
 			</div>
 			<div class="language-container">
-			@if($page->en_urlfriendly != "")
-
-			  Idioma: <a href="{!!$page->urlfriendly!!}">ES</a> - 
-			  <a href="{!!$page->en_urlfriendly!!}">EN</a>
-			
-			@endif
+				@yield('language')
 			</div>
 
 		</div>
