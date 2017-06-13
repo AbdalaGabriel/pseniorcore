@@ -6,12 +6,8 @@
 				</div>
 
 				<div class="section-container  col-md-4 org">
-					<h2>Organize sus proyectos</h2>
-					<h3>Registrese como usuario gratuitamente y acceda al organizador exclusivo para clientes</h3>
-					<h4>Juntos podemos crear grandes cosas</h4>
-
-					<a href="#" class="register g-button">Registrarme</a>
-					<a href="#">¿Porqué registrarme?</a>
+					<h2>Dibujos y social life</h2>
+					
 					<!-- LightWidget WIDGET --><script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/70b5d6e8489f5de29666ab10673490fd.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
 
 				</div>

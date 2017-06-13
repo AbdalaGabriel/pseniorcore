@@ -16,6 +16,7 @@
 		<table class="table">
 			<thead>
 				<th>Titulo</th>
+				<th>URL Friendly</th>
 				<th>Ediciòn</th>
 				<th>Borrado</th>
 			</thead>

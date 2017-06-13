@@ -156,6 +156,9 @@ class SliderController extends Controller
 
         $slide->title = $request['title'];
         $slide->subtitle = $request['subtitle'];
+        $slide->has_link = $request['hasLink'];
+        $slide->buttonText = $request['buttonText'];
+        $slide->buttonLink = $request['buttonLink'];
 
         $slide->save();
 

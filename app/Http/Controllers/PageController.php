@@ -52,9 +52,11 @@ class PageController extends Controller
         }
 
         return response()->json($pages);
-    } else{
+    }
+    else
+    {
      return view('admin.pages.index'); 
- }
+    }
 
 }
 

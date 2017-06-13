@@ -17,6 +17,13 @@
 	@endif
 
 <section class="section-container">
+	<div class="categories-container">	
+		@foreach ($categories as $category)		    
+		<a href="/{!!$page->urlfriendly!!}/cat/{!!$category->title!!}" class="categorytag">
+			{!!$category->title!!}
+		</a>
+		@endforeach
+	</div>
 
 	@foreach ($posts as $post)		    
 		<article class="postItem col-md-4">

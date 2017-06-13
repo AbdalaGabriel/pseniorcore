@@ -18,7 +18,13 @@
 
 
 <section class="g-section ">
-	<h2>Trabajos</h2>
+	<div class="categories-container">	
+		@foreach ($categories as $category)		    
+		<a href="/{!!$page->urlfriendly!!}/cat/{!!$category->urlfriendly!!}" class="categorytag">
+			{!!$category->title!!}
+		</a>
+		@endforeach
+	</div>
 
 	@foreach ($projects as $project)		    
 	<article class="postItem portfolioItem col-md-6">

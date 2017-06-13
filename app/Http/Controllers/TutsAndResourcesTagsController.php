@@ -34,6 +34,7 @@ class TutsAndResourcesTagsController extends Controller
         if ($request->ajax()) {
             $category = TutsAndResourcesTag::create([
                  'title' => $request['cat']
+                  'urlfriendly' => $request['urlfriendly'];
 
             ]);
             
@@ -52,6 +53,7 @@ class TutsAndResourcesTagsController extends Controller
         if ($request->ajax()) {
             $category = TutsAndResourcesTag::create([
                  'title' => $request['cat']
+                 'urlfriendly' => $request['urlfriendly'];
 
             ]);
             
@@ -91,6 +93,7 @@ class TutsAndResourcesTagsController extends Controller
 
         // actualiza nombre con lo que le llega via AJAX.
         $category->title = $request['title'];
+        $category->urlfriendly = $request['urlfriendly'];
         $category->save();
 
         return response()->json([

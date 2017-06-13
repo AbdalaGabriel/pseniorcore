@@ -33,6 +33,30 @@
     border-radius: 2em;
 }
 
+.baseUrl{
+  float: left;
+}
+
+.slideButton{
+  position: absolute;
+    bottom: 0px;
+    background: white;
+    width: initial;
+    z-index: 20;
+    padding: 1em 1.5em;
+    border-radius: 2em;
+    cursor: pointer;
+    display: block !important;
+    bottom: 9em;
+    left: calc((100% - 1140px)/2);
+}
+
+.buttonLink{
+
+    float: left;
+    max-width: 22em;
+}
+
 .qr-container img {
     max-width: 14em;
 }
@@ -994,6 +1018,11 @@ margin-bottom: 2em;
 .contact .section-container{
       padding: 2em;
     min-height: 25em;
+    text-align: center;
+}
+
+.contact .section-container h2{
+    text-align: center;
 }
 
 footer {

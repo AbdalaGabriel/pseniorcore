@@ -16,6 +16,13 @@
 		  @endsection
 		@endif
 <section class="g-section">
+	<div class="categories-container">	
+		@foreach ($categories as $category)		    
+		<a href="/{!!$page->urlfriendly!!}/cat/{!!$category->title!!}" class="categorytag">
+			{!!$category->title!!}
+		</a>
+		@endforeach
+	</div>
 
 	@foreach ($tuts as $tut)		    
 	<article class="postItem col-md-6">

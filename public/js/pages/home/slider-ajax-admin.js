@@ -17,6 +17,9 @@ function carga()
 	clean();
 	console.log( "- Limpieza" );
 
+	let spanUrl = $(".baseUrl");
+	spanUrl.text(baseurl);
+
 	//otra forma de hacer una peticion ajax,
 	var consulta =  $.get(route, function(res)
 	{
@@ -135,6 +138,21 @@ function defineListerner()
 				routeUpdate =  baseurl+"admin/paginas/home/slider/"+idQuickEditButton;
 				var newTitle = $("#nameslideEdit").val();
 				var newSubtitle = $("#subtitleslideEdit").val();
+				var buttonLink = $("#buttonLink").val();
+				var buttonText = $("#buttonText").val();
+				var hasLinkCheckbox = $("#haslink");
+				var hasLink = 1;
+
+				if(hasLinkCheckbox.is(":checked")){
+					console.log("- has link");
+					hasLink = 1;
+				}
+				else
+				{
+					console.log("- hasn`t link");
+					hasLink = 0;
+				}
+
 
 				$.ajax(
 				{
@@ -142,7 +160,7 @@ function defineListerner()
 					headers: {'X-CSRF-TOKEN': token},
 					type: 'PUT',
 					dataType: 'json',
-					data: {title: newTitle, subtitle: newSubtitle},
+					data: {title: newTitle, subtitle: newSubtitle, hasLink: hasLink, buttonText: buttonText, buttonLink: buttonLink},
 
 					success: function(){
 						

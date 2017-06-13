@@ -44,6 +44,8 @@ Route::get('/login', 'HomeController@index');
 		Route::get('en/project/{id?}/{urflf}', 'ProjectController@englishversion' );
 
 	// Blog
+			//Categorias
+	 Route::get('/{pagename}/cat/{urflf}', 'FrontController@categoryServe' );
 
 		// Noticias y novedades
 		Route::get('/blog/{id?}/{urflf}', 'BlogController@front' );

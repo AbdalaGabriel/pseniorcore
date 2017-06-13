@@ -35,7 +35,8 @@ class CategoryController extends Controller
     {
         if ($request->ajax()) {
             $category = Category::create([
-                 'title' => $request['cat']
+                 'title' => $request['cat'],
+                 'urlfriendly' => $request['urlfriendly']
 
             ]);
             
@@ -53,7 +54,8 @@ class CategoryController extends Controller
     {
         if ($request->ajax()) {
             $category = Category::create([
-                 'title' => $request['cat']
+                 'title' => $request['cat'],
+                 'urlfriendly' => $request['urlfriendly']
 
             ]);
             
@@ -93,6 +95,7 @@ class CategoryController extends Controller
 
         // actualiza nombre con lo que le llega via AJAX.
         $category->title = $request['title'];
+        $category->urlfriendly = $request['urlfriendly'];
         $category->save();
 
         return response()->json([

@@ -75,7 +75,17 @@
 						</li>
 						@foreach ($slides as $slide)	
 						<li style="background-image:url(/uploads/sliderhome/{!!$slide->path!!})">
-							<h1 class="slide-title">{!!$slide->title!!}</h1><h2  class="slide-subtitle">{!!$slide->subtitle!!}</h2></li>
+							<h1 class="slide-title">{!!$slide->title!!}</h1>
+							<h2  class="slide-subtitle">{!!$slide->subtitle!!}</h2>
+							
+							@if ($slide->has_link == 1)
+								<a href="/{!!$slide->buttonLink!!}" class="slideButton">
+									{!!$slide->buttonText!!}
+								</a>
+
+							@endif
+							</li>
+
 							@endforeach
 						</ul>
 					</div>

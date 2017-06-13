@@ -264,11 +264,16 @@ function sendAllInformation(html, jsonObj)
 
 	console.log("- Sending info for update:");
 
-	console.log(title);
-	//console.log(blocksForFrontend);
+	console.log(htmlForEdition);
+	console.log("-------------------------");
+    console.log(blocksForFrontend);
+    console.log("-------------------------");
 	console.log(routeEdit);
+	console.log("-------------------------");
 	console.log(urlfriendly);
+	console.log("-------------------------");
 	console.log(meta_description);
+	console.log("-------------------------");
 	console.log(configsst);
 	
 	console.log("-------------------------");

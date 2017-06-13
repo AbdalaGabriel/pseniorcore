@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 use App\ProjectCategory;
+use app\ProjectCategoriesProject;
+use App\TutsAndResourcesTag;
 use App\Post;
 use App\Inquirie;
 use App\Page;
 use App\Config;
 use App\User;
 use App\Slide;
-use App\PostCategory;
+use App\Category;
 use App\TutsAndResource;
 use Mail;
 use Illuminate\Database\Eloquent\Model;
@@ -59,6 +61,60 @@ class FrontController extends Controller
         
     }
 
+    public function categoryServe(Request $request, $pagename, $urlfriendly)
+    {
+       
+        $page = Page::where('urlfriendly', $pagename)->first();
+        $pagesBlock = Config::where('reference', "footer_pagesblock_en")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_en")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_en")->first();
+        $shareBlock = Config::where('reference', "footer_followme_en")->first();
+        $pageReference = $page->reference;
+
+
+        if($pageReference != null){
+                switch($pageReference)
+                {
+                   case 'portfolio';
+                        $category =  ProjectCategory::where('urlfriendly', $urlfriendly)->first();
+                        $categories = ProjectCategory::all();
+                        //ATENCION FIRST Y GET CAMBIA LA FORMA Q DEVUELVE EL OBJETO, Y HACE Q NO FUNCIONE CUANDO QUERES ACCEDER A PROPIEDADES INTERNAS CON ->
+                        $projects = $category->projects;
+                        return view('front.portfolio', ['categories'=> $categories, 'projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, ]);     
+                   break;
+
+                   case 'news'; 
+                        
+                        $category =  Category::where('urlfriendly', $urlfriendly)->first();
+                        $categories = Category::all();
+                        $posts = $category->posts;
+
+                        return view('front.blog', ['categories'=> $categories, 'posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories ]);   
+                       
+                   break;
+                   case 'tuts'; 
+                        $category =  TutsAndResourcesTag::where('urlfriendly', $urlfriendly)->first();
+                        $categories = TutsAndResourcesTag::all();
+                        $tuts = $category->resources;
+                        return view('front.tuts', ['categories'=> $categories,'tuts'=>$tuts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories ]);   
+                       
+                   break;
+
+                   case 'contact'; 
+                        return view('front.contactme', [ 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);   
+                       
+                   break;
+
+                   default;
+                        return view("front.page", ['page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
+                   break;
+                }
+            }else
+            {
+                return view("front.page", ['page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]); 
+            }
+
+    }
 
     public function masterFrontPage(Request $request,  $urlfriendly)
     {
@@ -78,17 +134,20 @@ class FrontController extends Controller
                 {
                    case 'portfolio';
                         $projects = Project::all();
-                        return view('front.portfolio', ['projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);     
+                        $categories = ProjectCategory::all();
+                        return view('front.portfolio', ['projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories ]);     
                    break;
 
                    case 'news'; 
                         $posts = Post::all();
-                        return view('front.blog', ['posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);   
+                        $categories = Category::all();
+                        return view('front.blog', ['posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories ]);   
                        
                    break;
                    case 'tuts'; 
                         $tuts = TutsAndResource::all();
-                        return view('front.tuts', ['tuts'=>$tuts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);   
+                        $categories = TutsAndResourcesTag::all();
+                        return view('front.tuts', ['tuts'=>$tuts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories ]);   
                        
                    break;
 

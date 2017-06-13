@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TutsAndResourcesTag extends Model
 {
     protected $fillable = [
-        'title', 'en_title'
+        'title', 'en_title', 'urlfriendly','en_urlfriendly'
     ];
 
      public function resources(){
