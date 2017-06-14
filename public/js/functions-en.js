@@ -119,12 +119,12 @@ $('a[href*="#"]')
 					{
 						if(value.en_urlfriendly != "/")
 						{
-							menucontainer.append('<li><a id="option-'+value.id+'" href="/'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
+							menucontainer.append('<li><a id="option-'+value.id+'" href="/en/'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
 
 						}
 						else
 						{
-							menucontainer.append('<li><a id="option-'+value.id+'" href="'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
+							menucontainer.append('<li><a id="option-'+value.id+'" href="/en/'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
 						}
 						if(value.subpages != "n")
 						{
