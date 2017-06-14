@@ -254,7 +254,7 @@ function sendAllInformation(html, jsonObj)
 	var meta_description = $("#new-meta-content").val();
 	var urlfriendly = $("#new-post-urlf").val();
 	var token = $("#token").val();
-	var blocksForFrontend =JSON.stringify(jsonObj);
+	var blocksForFrontend =JSON.stringify(jsonObj.get());
 	var htmlForEdition =  html;
 	var idPage = $("#idPage").val();
 	var routeEdit = baseurl+'admin/paginas/'+idPage;

@@ -54,7 +54,7 @@ for ($i=0; $i < $BlockNumbers ; $i++) {
 				<h2>Subcont</h2>
 			<?php
 				
-				$innerBlocksNumber = count($jsonBlocks[$i]["rows"][$j]["innerblocks"])-2;
+				$innerBlocksNumber = $jsonBlocks[$i]["rows"][$j]["innerblocks"]["length"];
 				// le resto dos porque el objeto json le appendea dos propiedades mas como hermanos de los bloques internos
 				
 				for ($k=0; $k < $innerBlocksNumber; $k++)
