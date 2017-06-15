@@ -96,7 +96,7 @@
 		<div class="main ">
 			
 			<!--PORTFOLIO -->
-			<section class="g-section">
+			<section class="g-section portfolio">
 				<div class="section-container">
 					<h2>Trabajos</h2>
 					@foreach ($projects as $project)		    
@@ -108,6 +108,9 @@
 						</article>
 					@endforeach
 				</div>
+				<a href="/portfolio" class="action-button">
+					Ver todos
+				</a>
 			</section>
 
 			<!--BLOG -->
@@ -115,15 +118,24 @@
 				<h2>Noticias y novedades</h2>
 				<div class="section-container">
 				@foreach ($posts as $post)		    
-				<article class="postItem col-md-6">
+				<article class="blogItem col-md-6">
 					<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">
 						<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
-						<h2 class="post-title">{!!$post->title!!}</h2>
+						
 					</a>
+					<h2 class="post-title">{!!$post->title!!}</h2>
+						
+					<div class="extract-container">
+						<p>{{ str_limit($post->content , 114) }}</p>
+					</div>	
 				</article>
 
 				@endforeach
+				
 				</div>
+				<a href="" class="action-button">
+					Ir al blog
+				</a>
 			</section>
 	
 		</div>
