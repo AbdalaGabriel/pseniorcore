@@ -16,6 +16,7 @@
 	<!-- Titulo de pagina -->
 	@section('page-title')
 		{!!$page->en_title!!}
+
 	@endsection
 
 		<!-- External css -->
@@ -32,7 +33,7 @@
 	  @endsection
 	@endif
 
-
+	
 		
 		<?php
 $jsonBlocks = json_decode($page->en_jsoneditdata, True); // true devuelve todos los objetos internos como array

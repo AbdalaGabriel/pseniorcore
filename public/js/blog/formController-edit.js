@@ -27,6 +27,7 @@ function init()
 		var token = $("#token").val();
 		var title = $("#new-post-title").val();
 		var description = $("#new-post-content").val();
+		var extract = $("#new-post-extract").val();
 		var meta_description = $("#new-meta-content").val();
 		var coverImage = fileSelected;
 		var itemId = $(".item-id").val();
@@ -42,6 +43,7 @@ function init()
 		console.log(coverImage);
 		console.log(meta_description);
 		console.log(urlfContent);
+		console.log(extract);
 		//
 
 		console.log("- Se subio la foto de portada a destino temporal");
@@ -57,6 +59,7 @@ function init()
 				title: title, 
 				description: description,
 				categories:categories ,
+				extract: extract,
 				urlf: urlfContent,
 				metadescription: meta_description,
 				editionMethod: 'full',

@@ -16,6 +16,7 @@
 	<!-- Titulo de pagina -->
 	@section('page-title')
 		{!!$page->title!!}
+		
 	@endsection
 
 		<!-- External css -->

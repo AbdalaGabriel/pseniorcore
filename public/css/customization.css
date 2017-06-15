@@ -413,14 +413,31 @@ a:hover, a:focus {
 
 
 
+.g-master-container{
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+    height: 15em;
+    top: -83px;
+}
 
+.g-master-container svg{
 
+    width: 40em;
+    height: initial;
+}
+
+.g-master-container svg polygon{
+    fill: rgba(39, 37, 37, 0.48);
+}
 
 .hello{
-      font-size: 61px;
-    letter-spacing: 19px;
+      font-size: 57px;
+    letter-spacing: 9px;
     text-transform: uppercase;
     font-weight: 100;
+        z-index: 1;
+    position: relative;
 }
 
 .home-phrase {
@@ -428,6 +445,7 @@ a:hover, a:focus {
     font-weight: 100;
     letter-spacing: 3px;
     margin: 10px 0 0 0;
+       
 }
 
 .inner-container{
@@ -447,6 +465,8 @@ a:hover, a:focus {
 
 .name{
   color: white;
+  z-index: 1;
+    position: relative;
 }
 #particles-js{
 
@@ -488,10 +508,13 @@ font-size: 1.6em;
 
 
 .changing-prhase {
-    color: #ffffff;
+    
+    color: #c41c48;
     font-weight: 200;
     letter-spacing: 3px;
-    margin: 10px 0 0 0;
+      z-index: 1;
+    position: relative;
+    margin: 0;
 }
 
 .errorPage-title{
@@ -539,7 +562,11 @@ body {
 
 .header-container{
   position: relative;
+  width: 100%;
+  max-width: 1280px;
 }
+
+
 
 
 .blogItem{
@@ -558,8 +585,22 @@ body {
 
 .extract-container{
       font-size: 16px;
-      margin: 1em 0 2em;
+      margin: 1em 0 1em;
 }
+.button-container-blog{
+  text-align: left;
+}
+.button-container-blog a{
+    height: inherit;
+    margin: 0 0 2em 0;
+    font-size: 16px;
+    color: #ea0e48;
+    /* float: right; */
+}
+
+.button-container-blog a:hover{
+    text-decoration: underline;
+  }
 
 .blogItem .post-title {
         color: #1d1d1d;
@@ -1138,6 +1179,20 @@ margin-bottom: 2em;
     white-space: nowrap;
     width: auto;
     margin: 2em auto 1em;
+}
+
+
+.r-2{
+  width: 48%;
+    margin: 1%;
+    padding: 1em;
+    float: left;
+
+}
+
+.extract-container p{
+      line-height: 1.5em;
+    font-size: .9em;
 }
 
 .g-section #mc_embed_signup .mc-field-group input {

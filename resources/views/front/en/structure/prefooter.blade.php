@@ -1,23 +1,27 @@
 	<!-- footer -->
 			<section class="g-section no-padding contact pre-footer">
-				<div class="section-container  col-md-4 tuts">
-						<h2>Tutoriales y recursos</h2>
-						<h3>Acceda de forma abierta a tutoriales y recursos multimediales, abiertos para la comunidad</h3>
-				</div>
-
+				<div class="section-container">
+					
 				<div class="section-container  col-md-4 org">
-					<h2>Organize sus proyectos</h2>
-					<h3>Registrese como usuario gratuitamente y acceda al organizador exclusivo para clientes</h3>
-					<h4>Juntos podemos crear grandes cosas</h4>
-
-					<a href="#" class="register g-button">Registrarme</a>
-					<a href="#">¿Porqué registrarme?</a>
+					<h2>Draws & social life</h2>
+					
 					<!-- LightWidget WIDGET --><script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/70b5d6e8489f5de29666ab10673490fd.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
 
 				</div>
+				
+				<div class="section-container  col-md-4 org app-dw">
+				<h2>Download the app!</h2>
+				<a target="_blank" class="qr-link" href="https://build.phonegap.com/apps/2457718/share">
+				<img src="/img/front/iphone.svg" alt="">
+				<div class="qr-container">
+					<img class="qr" src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://build.phonegap.com/apps/2457718/install/4MQRvpxbrnURxcKVLtxU&chld=L|1&choe=UTF-8" alt="">
+				</div>
+				</a>
+			</div>
 
-				<div  style="display: none" class="section-container  col-md-4 news">
+				<div   class="section-container  col-md-4 news">
 					<!-- Begin MailChimp Signup Form -->
+					<h2>Suscribe to newsletter!</h2>
 					<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 					<style type="text/css">
 						#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
@@ -27,22 +31,22 @@
 					<div id="mc_embed_signup">
 						<form action="//twitter.us14.list-manage.com/subscribe/post?u=21939b15fd9aeae487bd56ef1&amp;id=a5ecdc5c4a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 							<div id="mc_embed_signup_scroll">
-								<h2>Suscribete al newsletter!</h2>
-								<div class="indicates-required"><span class="asterisk">*</span> campo obligatorio</div>
+								
+								<div class="indicates-required"><span class="asterisk">*</span>obligatory field</div>
 								<div class="mc-field-group">
-									<label for="mce-EMAIL">Dirección de mail  <span class="asterisk">*</span>
+									<label for="mce-EMAIL">E-mail <span class="asterisk">*</span>
 									</label>
 									<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
 								</div>
 
 								@if (Auth::guest())
 									<div class="mc-field-group">
-									<label for="mce-FNAME">Nombre </label>
+									<label for="mce-FNAME">Name </label>
 									<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
 								</div>
 
 								<div class="mc-field-group">
-									<label for="mce-compania">Compañía</label>
+									<label for="mce-compania">Company</label>
 									<input type="text" value="" name="COMPANY" class="" id="mce-compania">
 								</div>
 
@@ -83,15 +87,9 @@
 
 				</script>
 				<!--End mc_embed_signup-->
-			</div>
-			<div class="section-container  col-md-4 org app-dw">
-				<h2>Descargá la app</h2>
-				<a target="_blank" class="qr-link" href="https://build.phonegap.com/apps/2457718/share">
-				<img src="/img/front/iphone.svg" alt="">
-				<div class="qr-container">
-					<img class="qr" src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://build.phonegap.com/apps/2457718/install/4MQRvpxbrnURxcKVLtxU&chld=L|1&choe=UTF-8" alt="">
-	
 				</div>
-				</a>
+			
+
+			
 			</div>
 		</section>

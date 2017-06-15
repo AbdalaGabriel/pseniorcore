@@ -71,6 +71,7 @@ class BlogController extends Controller
           $post->en_title = $request['en_title'];
           $post->en_content = $request['en_content'];
           $post->en_urlfriendly = $request['en_urlf'];
+          $post->en_extract = $request['extract'];
           $post->save();
           return Redirect::to('/admin/blog');
     }
@@ -125,6 +126,7 @@ class BlogController extends Controller
         $content = $request['description'];
         $CategoriesIds = $request['categories'];
         $urlfriendly = $request['urlf'];
+        $extract = $request['extract'];
         $metadescription = $request['metadescription'];
         $categoriesNames = array();
 
@@ -140,6 +142,7 @@ class BlogController extends Controller
             'title' => $title,
             'content' => $content,
             'urlfriendly' => $urlfriendly,
+            'extract' => $extract,
             'meta_description' => $metadescription,
             ]);
 
@@ -306,6 +309,7 @@ class BlogController extends Controller
                 $post->urlfriendly = $request['urlf'];
                 $post->meta_description = $request['metadescription'] ;
                 $CategoriesIds = $request['categories'];
+                $post->extract = $request['extract'];
 
                 $post->categories()->sync($CategoriesIds);
 
@@ -344,6 +348,7 @@ class BlogController extends Controller
             $post = Post::find($id);
             $post->title = $request['title'];
             $post->urlfriendly = $request['urlf'] ;
+            $post->extract = $request['extract'];
             $CategoriesIds = Input::get('ch');
             $arrayLength = count($CategoriesIds);
             $allCategoriesIds = array();

@@ -1,3 +1,6 @@
+
+var statuswords = 1;
+
 $( document ).ready(function() {
 	initpage();
 	initParticles();
@@ -16,7 +19,7 @@ function initParticles()
 
 function initpage(){
 	// funcion cambio de palabras home.
-	setInterval(changingStatus, 3000);
+	setInterval(changingStatus, 10000);
 
 	//Menu desplegable
 	var menuButton = $(".main-menu-button");
@@ -188,11 +191,30 @@ function fillfooter()
 	console.log("-fill footer");
 };
 
-function changingStatus(){
-
+function changingStatus()
+{  
 	let element = $(".changing-prhase");
-	element.text("Realizo sitios web SEO Friendly");
-	$("#particles-js").trigger("click");
+	switch(statuswords)
+	{
+		case 1:
+			element.text("diseño identidades para empresas");
+		break;
+
+		case 2:
+			element.text("estoy a punto de recibirme!");
+		break
+
+		case 3:
+			element.text("amo el diseño 3D");
+		break
+
+		case 4:
+			element.text("me gusta crear escenarios");
+			statuswords = 0;
+		break
+	}
+
+	statuswords++;
 }
 
 function getsubscribers()

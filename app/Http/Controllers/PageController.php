@@ -11,8 +11,9 @@ class PageController extends Controller
 
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            if($request['from']="menu")
+        if ($request->ajax()) 
+        {    
+            if($request['from']=="menu")
             {
                 //Consulta que devuelve un objeto de arrays.
                 $pages = DB::table('pages')
@@ -40,25 +41,29 @@ class PageController extends Controller
 
                        $pages[$i]["subpages"] = $subpages;
 
-                   }
-                   else
-                   {
-                    $pages[$i]["subpages"] = "n";
+                    }
+                    else
+                    {
+                        $pages[$i]["subpages"] = "n";
+                    }
                 }
             }
-        }
-        else{
-            $pages = Page::all();
+            else
+            {
+            
+                $pages = Page::all();
+            
+            }
+        
+            return response()->json($pages);
+        
+        }  
+        else
+        {
+            return view('admin.pages.index'); 
         }
 
-        return response()->json($pages);
     }
-    else
-    {
-     return view('admin.pages.index'); 
-    }
-
-}
 
 public function create(Request $request)
 {

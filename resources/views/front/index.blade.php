@@ -1,54 +1,23 @@
-<!doctype html>
-<html lang="es">
-<head>
-	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" href="assets/img/favicon.png">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+@extends('front.bases.homebase')
 
-	<title>Gabriel Abdala - Diseñador Multimedial </title>
+	<!-- Titulo de la pestaña -->
+	@section('mainTitle'){!!$page->title!!}@endsection
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<!-- Metadescription-->
+	@section('metadescription'){!!$page->meta_description!!}@endsection
+	
 
-	<!--     Fonts and icons     -->
-	<script src="https://use.fontawesome.com/062fcbdd8d.js"></script>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-
-	<!--     Favico    -->
-	<link rel="apple-touch-icon" sizes="57x57" href="/icon.ico/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="/icon.ico/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/icon.ico/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="/icon.ico/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="/icon/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
-	<link rel="shortcut icon" href="/icon.ico/favicon.ico" type="image/x-icon" />
-	<link rel="icon" href="/icon.ico/favicon.ico" type="image/x-icon">
-	<link rel="manifest" href="/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
-
-	<!-- CSS Files -->
-	{!!Html::style('bootstrap-template-assets/materialKit/assets/css/bootstrap.min.css')!!}
-	{!!Html::style('bootstrap-template-assets/materialKit/assets/css/material-kit.css')!!}
-	{!!Html::style('css/customization.css')!!}
-
-</head>
 
 <body class="main">
 
 <!-- MENU -->	
-@include('front.structure.menu')
 
+
+@section('language') 
+	Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/{!!$page->en_urlfriendly!!}">EN</a></div>
+@endsection
+
+@section('main') 
 <div class="wrapper">
 	<div class="header header-filter">
 		<div class="container  slider-container">
@@ -58,18 +27,25 @@
 					<ul>
 						<li>
 							<div class="inner-container">
-							<div id="particles-js"></div>
+								<div id="particles-js"></div>
+								
+								
 								<div class="introduction-container">
+									<div class="g-master-container">
+									<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						width="175px" height="161px" viewBox="-306.86 142.445 175 161" enable-background="new -306.86 142.445 175 161"
+						xml:space="preserve">
+									<g>
+										<polygon fill="#C41C48" points="-225.398,291.733 -296.36,154.157 -142.36,154.157 -155.257,169.761 -270.292,169.761 
+										-224.15,259.673 -195.437,213.44 -220.896,213.44 -210.25,196.802 -166.998,196.802 	"/>
+									</g>
+									</svg>
+								</div>
 									<h1 class="hello">Hola,</h1>
 									<h3 class="home-phrase">Mi nombre es <span class="name">Gabriel Abdala</span>, y</h3>
 									<h3 class="changing-prhase">soy diseñador multimedial</h3>
 								</div>
-
-							<a class="cta-home">Mirá mis trabajos</a>
-
-								<div class="big-g-container">
-									<!-- <img src="/img/front/g.svg"> -->
-								</div>
+												
 							</div>
 
 						</li>
@@ -126,7 +102,10 @@
 					<h2 class="post-title">{!!$post->title!!}</h2>
 						
 					<div class="extract-container">
-						<p>{{ str_limit($post->content , 114) }}</p>
+						<p>{{ str_limit($post->extract , 230) }}...</p>
+					</div>
+					<div class="button-container-blog">
+						<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">Leer noticia</a>
 					</div>	
 				</article>
 
@@ -140,32 +119,8 @@
 	
 		</div>
 </div>
+@endsection
 
-<!-- PREFOOTER -->
-@include('front.structure.prefooter')
 
-<!-- FOOTER -->
-@include('front.structure.footer')
-
-<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
-</body>
-
-@include('front.structure.scripts')
-
-{!!Html::script('js/jquery.fadeImg.js')!!}
-{!!Html::script('js/form-controller.js')!!}
-
-<script>
-	$(document).ready(function($) {
-		$(".slide").fadeImages({
-			time:123000,
-			arrows: true,
-			complete: function() {
-				console.log("Fade Images Complete");
-			}
-		});
-
-	});
-</script>
 
 </html>

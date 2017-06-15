@@ -1,3 +1,6 @@
+
+var statuswords = 1;
+
 $( document ).ready(function() {
 	initpage();
 	initParticles();
@@ -16,7 +19,7 @@ function initParticles()
 
 function initpage(){
 	// funcion cambio de palabras home.
-	setInterval(changingStatus, 3000);
+	setInterval(changingStatus, 10000);
 
 	//Menu desplegable
 	var menuButton = $(".main-menu-button");
@@ -180,11 +183,30 @@ function fillfooter()
 	console.log("-fill footer");
 };
 
-function changingStatus(){
-
+function changingStatus()
+{  
 	let element = $(".changing-prhase");
-	element.text("Realizo sitios web SEO Friendly");
-	$("#particles-js").trigger("click");
+	switch(statuswords)
+	{
+		case 1:
+			element.text("build identities for companies");
+		break;
+
+		case 2:
+			element.text("at 1 step of finish college!");
+		break
+
+		case 3:
+			element.text("i love <3 3D Design");
+		break
+
+		case 4:
+			element.text("i can`t stop drawing");
+			statuswords = 0;
+		break
+	}
+
+	statuswords++;
 }
 
 function getsubscribers()

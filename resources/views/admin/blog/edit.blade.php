@@ -19,6 +19,10 @@
 		<!-- TITULO  -->
 		{!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
 		{!!Form::text('title', $finalObj->title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
+
+		<!-- EXTRACTO	-->
+		{!!Form::label('extract', 'Extracto', ['class' => 'form-control']);!!}
+		{!!Form::textarea('extract', $finalObj->extract, ['id'=>'new-post-extract', 'class'=>'form-control','placeholder'=>'Ingrese su extracto para vista rápida en el front']) !!}
 		
 		<!-- Descripcion  -->
 		{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
