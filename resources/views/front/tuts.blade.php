@@ -6,23 +6,26 @@
 	@section('metadescription'){!!$page->meta_description!!}@endsection
 
 	<!-- Titulo de pagina -->
-	@section('page-title'){!!$page->title!!}@endsection
-
-@section('main')
-
-	@if($page->en_urlfriendly != "")
-		@section('language') 
-		  Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/{!!$page->en_urlfriendly!!}">EN</a></div>
-		  @endsection
-		@endif
-<section class="g-section">
-	<div class="categories-container">	
+	@section('page-title')
+	{!!$page->title!!}
+<div class="categories-container">	
 		@foreach ($categories as $category)		    
 		<a href="/{!!$page->urlfriendly!!}/cat/{!!$category->title!!}" class="categorytag">
 			{!!$category->title!!}
 		</a>
 		@endforeach
 	</div>
+	@endsection
+
+@section('main')
+
+	@if($page->en_urlfriendly != "")
+		@section('language') 
+		  Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/en/{!!$page->en_urlfriendly!!}">EN</a></div>
+		  @endsection
+		@endif
+<section class="g-section">
+	
 
 	@foreach ($tuts as $tut)		    
 	<article class="postItem col-md-6">

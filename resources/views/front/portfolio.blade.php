@@ -22,7 +22,7 @@
 
 @if($page->en_urlfriendly != "")
 	@section('language') 
-	  Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/{!!$page->en_urlfriendly!!}">EN</a></div>
+	  Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/en/{!!$page->en_urlfriendly!!}">EN</a></div>
 	  @endsection
 	@endif
 
@@ -35,6 +35,18 @@
 			<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}"" alt="">
 			<h2 class="post-title">{!!$project->title!!}</h2>
 		</a>
+		<?php 
+							$categories = $project->projectsCategories ;
+							?>
+							<div class="cat">
+							
+								@foreach ($categories as $category)	
+									
+										<a class="#catOnPost" href="/{!!$portfolio->urlfriendly!!}/cat/{!!$category->urlfriendly!!}">{!!$category->title!!}</a>
+									
+
+								@endforeach
+							</div>
 	</article>
 	@endforeach
 

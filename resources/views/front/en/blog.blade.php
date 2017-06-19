@@ -12,7 +12,7 @@
 
 @if($page->en_urlfriendly != "")
 	@section('language') 
-	  Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/{!!$page->en_urlfriendly!!}">EN</a></div>
+	  Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/en/{!!$page->en_urlfriendly!!}">EN</a></div>
 	  @endsection
 	@endif
 

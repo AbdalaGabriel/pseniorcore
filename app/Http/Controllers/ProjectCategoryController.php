@@ -35,7 +35,7 @@ class ProjectCategoryController extends Controller
         if ($request->ajax()) {
             $category = ProjectCategory::create([
                  'title' => $request['cat'],
-                  'urlfriendly' => $request['urlfriendly'];
+                  'urlfriendly' => $request['urlfriendly'],
 
             ]);
             
@@ -53,8 +53,8 @@ class ProjectCategoryController extends Controller
     {
         if ($request->ajax()) {
             $category = ProjectCategory::create([
-                 'title' => $request['cat']
-                 'urlfriendly' => $request['urlfriendly'];
+                 'title' => $request['cat'],
+                 'urlfriendly' => $request['urlfriendly'],
             ]);
             
             return response()->json([

@@ -14,7 +14,7 @@
 
 
 @section('language') 
-	Language: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/{!!$page->en_urlfriendly!!}">EN</a></div>
+	Language: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/en/{!!$page->en_urlfriendly!!}">EN</a></div>
 @endsection
 
 @section('main') 
@@ -75,6 +75,18 @@
 								<h2 class="post-title">{!!$project->en_title!!}</h2>
 							</a>
 						</article>
+						<?php 
+							$categories = $project->projectsCategories ;
+							?>
+							<div class="cat">
+							
+								@foreach ($categories as $category)	
+									
+										<a class="#catOnPost" href="/{!!$portfolio->en_urlfriendly!!}/cat/{!!$category->en_urlfriendly!!}">{!!$category->en_title!!}</a>
+									
+
+								@endforeach
+							</div>
 					@endforeach
 				</div>
 			</section>
@@ -89,6 +101,25 @@
 						<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
 						<h2 class="post-title">{!!$post->en_title!!}</h2>
 					</a>
+					<?php 
+						$postcategories = $post->categories ;
+				    ?>
+					<div class="cat">
+							
+								@foreach ($postcategories as $category)	
+									
+										<a class="#catOnPost" href="/{!!$blog->en_urlfriendly!!}/cat/{!!$category->en_urlfriendly!!}">{!!$category->en_title!!}</a>
+									
+
+								@endforeach
+							</div>
+						
+					<div class="extract-container">
+						<p>{{ str_limit($post->en_extract , 230) }}...</p>
+					</div>
+					<div class="button-container-blog">
+						<a href="/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">Leer noticia</a>
+					</div>	
 				</article>
 
 				@endforeach

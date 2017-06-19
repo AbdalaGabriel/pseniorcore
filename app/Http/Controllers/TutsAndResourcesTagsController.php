@@ -33,8 +33,8 @@ class TutsAndResourcesTagsController extends Controller
     {
         if ($request->ajax()) {
             $category = TutsAndResourcesTag::create([
-                 'title' => $request['cat']
-                  'urlfriendly' => $request['urlfriendly'];
+                 'title' => $request['cat'],
+                  'urlfriendly' => $request['urlfriendly'],
 
             ]);
             
@@ -52,8 +52,8 @@ class TutsAndResourcesTagsController extends Controller
     {
         if ($request->ajax()) {
             $category = TutsAndResourcesTag::create([
-                 'title' => $request['cat']
-                 'urlfriendly' => $request['urlfriendly'];
+                 'title' => $request['cat'],
+                 'urlfriendly' => $request['urlfriendly'],
 
             ]);
             

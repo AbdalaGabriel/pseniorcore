@@ -31,17 +31,19 @@ class FrontController extends Controller
     public function index(Request $request)
     {
         $page = Page::where('urlfriendly', '/')->first();
-        $projects = Project::with('ProjectCategory')->take(4)->get();
-        $posts = DB::table('posts')->take(4)->get();	
+        $portfolio = Page::where('reference', 'portfolio')->first();
+        $blog = Page::where('reference', 'news')->first();
+        $projects = Project::with('projectsCategories')->take(4)->get();
+        $posts = Post::with('categories')->take(4)->get();
         $slides = Slide::all();
         $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
         $contactBlock = Config::where('reference', "footer_contactme_es")->first();
         $postsBlock = Config::where('reference', "footer_readmore_es")->first();
         $shareBlock = Config::where('reference', "footer_followme_es")->first();
 
-        
 
-        return view('front.index', ['projects'=>$projects, 'posts'=>$posts, 'slides'=>$slides, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'page'=>$page ]); 
+
+        return view('front.index', ['projects'=>$projects, 'posts'=>$posts, 'slides'=>$slides, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'page'=>$page, 'portfolio' =>$portfolio, 'blog'=>$blog ]); 
         
     }
 
@@ -49,8 +51,10 @@ class FrontController extends Controller
     {
 
        $page = Page::where('urlfriendly', '/')->first();
-        $projects = DB::table('projects')->take(4)->get();
-        $posts = DB::table('posts')->take(4)->get();    
+        $portfolio = Page::where('reference', 'portfolio')->first();
+        $blog = Page::where('reference', 'news')->first();
+        $projects = Project::with('projectsCategories')->take(4)->get();
+        $posts = Post::with('categories')->take(4)->get(); 
         $slides = Slide::all();
         $pagesBlock = Config::where('reference', "footer_pagesblock_en")->first();
         $contactBlock = Config::where('reference', "footer_contactme_en")->first();
@@ -58,7 +62,7 @@ class FrontController extends Controller
         $shareBlock = Config::where('reference', "footer_followme_en")->first();
 
 
-        return view('front.en.index', ['projects'=>$projects, 'posts'=>$posts, 'slides'=>$slides, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'page'=>$page ]); 
+        return view('front.en.index', ['projects'=>$projects, 'posts'=>$posts, 'slides'=>$slides, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'page'=>$page , 'portfolio' =>$portfolio, 'blog'=>$blog]); 
         
     }
 
@@ -101,14 +105,6 @@ class FrontController extends Controller
                        
                    break;
 
-                   case 'contact'; 
-                        return view('front.contactme', [ 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);   
-                       
-                   break;
-
-                   default;
-                        return view("front.page", ['page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
-                   break;
                 }
             }else
             {
@@ -134,15 +130,17 @@ class FrontController extends Controller
                 switch($pageReference)
                 {
                    case 'portfolio';
-                        $projects = Project::all();
+                        $projects = Project::with('projectsCategories')->get();
+                        $portfolio = Page::where('reference', 'portfolio')->first();
                         $categories = ProjectCategory::all();
-                        return view('front.portfolio', ['projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories ]);     
+                        return view('front.portfolio', ['projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories, 'portfolio'=>$portfolio ]);     
                    break;
 
                    case 'news'; 
-                        $posts = Post::all();
+                        $posts = Post::with('categories')->get();
+                        $blog = Page::where('reference', 'news')->first();
                         $categories = Category::all();
-                        return view('front.blog', ['posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories ]);   
+                        return view('front.blog', ['posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories, 'blog'=>$blog ]);   
                        
                    break;
                    case 'tuts'; 
@@ -191,12 +189,12 @@ class FrontController extends Controller
                 switch($pageReference)
                 {
                    case 'portfolio';
-                        $projects = Project::all();
+                        $projects = Project::with('projectsCategories')->get();
                         return view('front.en.portfolio', ['projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);     
                    break;
 
                    case 'news'; 
-                        $posts = Post::all();
+                        $posts = Post::with('categories')->get();
                         return view('front.en.blog', ['posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);   
                        
                    break;

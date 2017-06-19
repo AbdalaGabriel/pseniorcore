@@ -14,7 +14,7 @@
 
 
 @section('language') 
-	Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/{!!$page->en_urlfriendly!!}">EN</a></div>
+	Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/en/{!!$page->en_urlfriendly!!}">EN</a></div>
 @endsection
 
 @section('main') 
@@ -76,13 +76,28 @@
 			<section class="g-section portfolio">
 				<div class="section-container">
 					<h2>Trabajos</h2>
+
 					@foreach ($projects as $project)		    
 						<article class="postItem col-md-6">
 							<a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">
 								<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}"" alt="">
 								<h2 class="post-title">{!!$project->title!!}</h2>
 							</a>
+							<?php 
+							$categories = $project->projectsCategories ;
+							?>
+							<div class="cat">
+							
+								@foreach ($categories as $category)	
+									
+										<a class="#catOnPost" href="/{!!$portfolio->urlfriendly!!}/cat/{!!$category->urlfriendly!!}">{!!$category->title!!}</a>
+									
+
+								@endforeach
+							</div>
+							
 						</article>
+						
 					
 					@endforeach
 				</div>
@@ -102,6 +117,18 @@
 						
 					</a>
 					<h2 class="post-title">{!!$post->title!!}</h2>
+					<?php 
+						$postcategories = $post->categories ;
+				    ?>
+					<div class="cat">
+							
+								@foreach ($postcategories as $category)	
+									
+										<a class="#catOnPost" href="/{!!$blog->urlfriendly!!}/cat/{!!$category->urlfriendly!!}">{!!$category->title!!}</a>
+									
+
+								@endforeach
+							</div>
 						
 					<div class="extract-container">
 						<p>{{ str_limit($post->extract , 230) }}...</p>
@@ -110,6 +137,7 @@
 						<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">Leer noticia</a>
 					</div>	
 				</article>
+				
 
 				@endforeach
 				
