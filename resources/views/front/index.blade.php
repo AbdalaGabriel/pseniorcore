@@ -58,9 +58,10 @@
 								<a href="/{!!$slide->buttonLink!!}" class="slideButton">
 									{!!$slide->buttonText!!}
 								</a>
-
+								
 							@endif
 							</li>
+						
 
 							@endforeach
 						</ul>
@@ -82,6 +83,7 @@
 								<h2 class="post-title">{!!$project->title!!}</h2>
 							</a>
 						</article>
+					
 					@endforeach
 				</div>
 				<a href="/portfolio" class="action-button">

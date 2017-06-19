@@ -6,7 +6,17 @@
 	@section('metadescription'){!!$page->meta_description!!}@endsection
 
 	<!-- Titulo de pagina -->
-	@section('page-title'){!!$page->title!!}@endsection
+	@section('page-title')
+	{!!$page->title!!}
+	<div class="categories-container">	
+		@foreach ($categories as $category)		    
+		<a href="/{!!$page->urlfriendly!!}/cat/{!!$category->urlfriendly!!}" class="categorytag">
+			{!!$category->title!!}
+		</a>
+		@endforeach
+	</div>
+	
+	@endsection
 
 @section('main')
 
@@ -18,14 +28,7 @@
 
 
 <section class="g-section ">
-	<div class="categories-container">	
-		@foreach ($categories as $category)		    
-		<a href="/{!!$page->urlfriendly!!}/cat/{!!$category->urlfriendly!!}" class="categorytag">
-			{!!$category->title!!}
-		</a>
-		@endforeach
-	</div>
-
+	
 	@foreach ($projects as $project)		    
 	<article class="postItem portfolioItem col-md-6">
 		<a  href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">

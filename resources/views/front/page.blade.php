@@ -53,14 +53,19 @@ $BlockNumbers = count($jsonBlocks);
 			<?php
 				
 				$innerBlocksNumber = $jsonBlocks[$i]["rows"][$j]["innerblocks"]["length"];
+
 				// le resto dos porque el objeto json le appendea dos propiedades mas como hermanos de los bloques internos
 
 				//ACTUALIZADO, si bien le appendea cosas, el numero es invariable puede appendear tanto 2 como 4 cosas, pero dentro de esas cosas que le appendea, existe la propiedad length que ya te dice cuantos innerblocks hay, con lo cual leo esa propiedad.
 				
 				for ($k=0; $k < $innerBlocksNumber; $k++)
 				{ 
+					
+					$type = $jsonBlocks[$i]["rows"][$j]["innerblocks"][$k]["type"];
 					?>
-					<div class="innerBlock r-{!!$innerBlocksNumber!!}">
+					
+
+					<div class="innerBlock r-{!!$type!!}">
 					<?php
 					$innerElements = $jsonBlocks[$i]["rows"][$j]["innerblocks"][$k]["innerblockselements"];
 

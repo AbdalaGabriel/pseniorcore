@@ -1,10 +1,17 @@
 .row-container{
 	width: 100%;
 	overflow: hidden;
+	    margin: 2em 0;
 }
 
 .r-3{
 	width: 31%;
 	float: left;
 	margin: 1%;
+}
+
+.r-half{
+	width: 48%;
+	margin: 1%;
+	float: left;
 }

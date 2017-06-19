@@ -42,6 +42,11 @@
   float: left;
 }
 
+.internblock .content{    min-height: 5em;
+    margin: 0;
+    background: #bfbfbf;
+}
+
 .slideButton{
   position: absolute;
     bottom: 0px;
@@ -1312,7 +1317,50 @@ footer {
     width: 31%;
     margin: 1%;
     padding: 1em;
+
     float: left;
+}
+
+.r-single{
+  max-width: 1000px;
+  margin: 2em auto;
+}
+.categories-container{
+  margin: .5em 0 0 0;
+}
+.categorytag{
+  font-size: 18px;
+    /* background: white; */
+    text-align: center;
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 2em;
+    border: 1px solid;
+    height: inherit;
+    line-height: initial;
+    color: white;
+}
+
+.r-third{
+    width: 31%;
+    margin: 1%;
+    padding: 1em;
+    float: left;
+    text-align: center;
+}
+
+.r-2-4{
+    width: 31%;
+    float: left;
+    text-align: center;
+    margin: 1%;
+}
+
+.r-6-5{
+    width: 64%;
+    float: left;
+    text-align: left;
+    margin: 1%;
 }
 
 .div-4{

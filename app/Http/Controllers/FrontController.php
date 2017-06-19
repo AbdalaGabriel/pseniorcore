@@ -31,7 +31,7 @@ class FrontController extends Controller
     public function index(Request $request)
     {
         $page = Page::where('urlfriendly', '/')->first();
-        $projects = DB::table('projects')->take(4)->get();
+        $projects = Project::with('ProjectCategory')->take(4)->get();
         $posts = DB::table('posts')->take(4)->get();	
         $slides = Slide::all();
         $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
@@ -39,6 +39,7 @@ class FrontController extends Controller
         $postsBlock = Config::where('reference', "footer_readmore_es")->first();
         $shareBlock = Config::where('reference', "footer_followme_es")->first();
 
+        
 
         return view('front.index', ['projects'=>$projects, 'posts'=>$posts, 'slides'=>$slides, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'page'=>$page ]); 
         
