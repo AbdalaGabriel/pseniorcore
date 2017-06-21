@@ -4,15 +4,16 @@
 @include('front.structure.head')
 </head>
 
-<body class="intern grid">
+<body class="intern form-reg">
     <!-- MENU -->   
 
 
-<div class="wrapper">
+<div class="wrapper-forms">
+<div id="particles-js"></div>
     <div class="header header-filter">
-        @yield('cover-image')
+      
         <div class="container">
-            <div id="particles-js"></div>
+           
             <div class="page-title">
                 <h1>@yield('page-title')</h1>
             </div>
@@ -21,6 +22,7 @@
 
     <div class="main ">
         <div class="container large">
+         
             @yield('content')
         </div>
     </div>
