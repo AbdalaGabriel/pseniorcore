@@ -5,7 +5,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Session;
 use Closure;
 use Auth;
-class Admin
+class StaginHost
 {
 
     protected $auth;
@@ -25,17 +25,10 @@ class Admin
     {
         if (Auth::check())
         {
-           if($this->auth->user()->id == 5)
-           {
-             // significa que continua con la peticion hhttp original, es decir sigue curso.
-             return $next($request);
-            }
-            else
-            {
- 
-             return redirect()->to('/');
+           
+            // significa que continua con la peticion hhttp original, es decir sigue curso.
+            return $next($request);
             
-            }
         }
         else
         {

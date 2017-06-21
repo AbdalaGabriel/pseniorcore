@@ -33,25 +33,42 @@
 							<div id="mc_embed_signup_scroll">
 								
 								<div class="indicates-required"><span class="asterisk">*</span>obligatory field</div>
+								@if (Auth::guest())
+								
+
 								<div class="mc-field-group">
 									<label for="mce-EMAIL">E-mail <span class="asterisk">*</span>
 									</label>
 									<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
 								</div>
 
-								@if (Auth::guest())
-									<div class="mc-field-group">
+								<div class="mc-field-group">
 									<label for="mce-FNAME">Name </label>
 									<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+								</div>
+
+								
+
+								@else
+
+								<div class="mc-field-group">
+									<label for="mce-EMAIL">E-mail<span class="asterisk">*</span>
+									</label>
+									<input type="email" value="{{ Auth::user()->email }}" name="EMAIL" class="required email" id="mce-EMAIL">
+								</div>
+
+								<div class="mc-field-group">
+									<label for="mce-FNAME">Name</label>
+									<input type="text" value="{{ Auth::user()->name }} " name="FNAME" class="" id="mce-FNAME">
 								</div>
 
 								<div class="mc-field-group">
 									<label for="mce-compania">Company</label>
 									<input type="text" value="" name="COMPANY" class="" id="mce-compania">
 								</div>
+								
 
-								@else
-									
+							
 								@endif
 								
 								<input type="hidden" name="type" value="c">

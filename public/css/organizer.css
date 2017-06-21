@@ -104,10 +104,10 @@
 
 }
 
-.create-new-container{
-   position: absolute;
-   bottom: 2em;
-   width: 100%;
+.create-new-container {
+    /* position: absolute; */
+    margin: 2em 0;
+    width: 100%;
 }
 
 

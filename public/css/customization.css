@@ -32,6 +32,32 @@
     z-index: 10;
 }
 
+
+.logged-user{
+    width: 4.3em;
+    float: right;
+    padding: .5em 0;
+    margin: 0 1em;
+}
+
+.logged-user img{
+    max-width: 1.3em;
+    margin: 0 .5em;
+}
+
+.logged-user .dropdown-menu{
+  right: 5em;
+  left: inherit;
+}
+
+.name-user{
+    display: block;
+    float: left;
+    color: #7857fd;
+    font-size: 1.4em;
+        text-transform: uppercase;
+}
+
 .form-reg .form-group label.control-label {
     font-size: 11px;
     line-height: 1.07143;
@@ -120,6 +146,10 @@
     display: block !important;
     bottom: 9em;
     left: calc((100% - 1140px)/2);
+}
+
+#mc_embed_signup_scroll input{
+  color: gray !important;
 }
 
 .buttonLink{

@@ -14,7 +14,7 @@
 
 
 @section('language') 
-	Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/en/{!!$page->en_urlfriendly!!}">EN</a></div>
+	Idioma: <a href="/"">ES</a> - <a href="/en">EN</a></div>
 @endsection
 
 @section('main') 

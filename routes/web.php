@@ -30,31 +30,33 @@ Route::get('/mail', function () {
     return view('front.contactme');
 });
 
+	Route::group(['middleware' => 'stagin'], function() {
 
-// HOME
-Route::get('/', 'FrontController@index');
-Route::get('/en', 'FrontController@enIndex');
-Route::get('/profile', 'HomeController@index');
-Route::get('/login', 'HomeController@index');
+
+	// HOME
+	Route::get('/', 'FrontController@index');
+	Route::get('/en', 'FrontController@enIndex');
+	Route::get('/profile', 'HomeController@index');
+	Route::get('/login', 'HomeController@index');
 
 	// Portfolio
 
-		// Proyectos
-		Route::get('/proyecto/{id?}/{urflf}', 'ProjectController@front' );
-		Route::get('en/project/{id?}/{urflf}', 'ProjectController@englishversion' );
+	// Proyectos
+	Route::get('/proyecto/{id?}/{urflf}', 'ProjectController@front' );
+	Route::get('en/project/{id?}/{urflf}', 'ProjectController@englishversion' );
 
 	// Blog
-			//Categorias
+	//Categorias
 	 Route::get('/{pagename}/cat/{urflf}', 'FrontController@categoryServe' );
 
-		// Noticias y novedades
-		Route::get('/blog/{id?}/{urflf}', 'BlogController@front' );
-		Route::get('en/blog/{id?}/{urflf}', 'BlogController@englishversion' );
+	// Noticias y novedades
+	Route::get('/blog/{id?}/{urflf}', 'BlogController@front' );
+	Route::get('en/blog/{id?}/{urflf}', 'BlogController@englishversion' );
 
 	// recursos y tutoriales
 	
-		Route::get('/recursos-y-tutoriales/{id?}/{urflf}', 'TutsAndResourcesController@front' );
-		Route::get('en/recursos-y-tutoriales/{id?}/{urflf}', 'TutsAndResourcesController@englishversion' );
+	Route::get('/recursos-y-tutoriales/{id?}/{urflf}', 'TutsAndResourcesController@front' );
+	Route::get('en/recursos-y-tutoriales/{id?}/{urflf}', 'TutsAndResourcesController@englishversion' );
 
 	// Contacto
 	Route::get('/contactame', 'FrontController@contact');
@@ -67,31 +69,9 @@ Route::get('/login', 'HomeController@index');
 	Route::get('/{urflf}', 'FrontController@masterFrontPage' );
 	Route::get('en/{urflf}', 'FrontController@enMasterFrontPage' );
 
-/* --------------------------------------------------------------------------------------- */
-/////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-// MOBILE APP
-// --------------------------------------------------------------------------------------- //
-Route::resource('/admin/users', 'UserController');
-
-// User login
-
-    Route::get('app/userlogin/{mail?}', 'UserController@loginApp');
-    Route::get('app/projects/{userid?}', 'ClientProjectController@projectsforapp');
-    Route::get('app/{userid?}/task/{taskid?}/{comment?}', 'CardCommentController@appMakeComment');
-    Route::get('app/task/{taskid?}/comments', 'CardCommentController@appReturnCommentsForTask');
-    
-
-    Route::get('app/phases/{projectid?}/{phasename?}/{shortdesc?}', 'PhaseController@appAddPhase')->middleware('corsg');
-
-    // BLOG
-	Route::get('/app/blog', 'BlogController@givemeposts');
-	
-
-// ORGANIZER
-// --------------------------------------------------------------------------------------- //
+	// ORGANIZER
+	// --------------------------------------------------------------------------------------- //
 	Route::get('/organizer/{id?}', 'FrontController@organizer');
 	//->middleware('auth');
 
@@ -132,6 +112,34 @@ Route::resource('/admin/users', 'UserController');
 		Route::post('/mis-proyectos/restorecards', 'CardProjectController@restore');
 
 
+});
+
+/* --------------------------------------------------------------------------------------- */
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+// MOBILE APP
+// --------------------------------------------------------------------------------------- //
+Route::resource('/admin/users', 'UserController');
+
+// User login
+
+    Route::get('app/userlogin/{mail?}', 'UserController@loginApp');
+    Route::get('app/projects/{userid?}', 'ClientProjectController@projectsforapp');
+    Route::get('app/{userid?}/task/{taskid?}/{comment?}', 'CardCommentController@appMakeComment');
+    Route::get('app/task/{taskid?}/comments', 'CardCommentController@appReturnCommentsForTask');
+    
+
+    Route::get('app/phases/{projectid?}/{phasename?}/{shortdesc?}', 'PhaseController@appAddPhase')->middleware('corsg');
+
+    // BLOG
+	Route::get('/app/blog', 'BlogController@givemeposts');
+	
+
+
+
+
 // ADMIN USUARIO
 // --------------------------------------------------------------------------------------- //
 
@@ -146,8 +154,16 @@ Route::get('/admin', 'FrontController@admin')->middleware('admin');
 Route::resource('/admin/paginas', 'PageController');
 	
 	Route::group(['middleware' => 'admin'], function() {
+
+
+
+
+
+
+
+
+
 	 // PAGINAS
-	  
 
 	  Route::get('/admin/menu', 'PageController@menu');
 	  Route::get('/admin/footer', 'PageController@footer');
