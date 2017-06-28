@@ -1,24 +1,53 @@
-@extends('front.base')
-@section('meta')
-<meta name="description" content="{!!$page->meta_description!!}">
+@extends('front.bases.grid-base')
+<!-- Titulo de la pestaña -->
+	@section('mainTitle'){!!$page->title!!}@endsection
 
-@endsection
-@section('mainTitle'){!!$page->title!!}@endsection
+	<!-- Metadescription-->
+	@section('metadescription'){!!$page->meta_description!!}@endsection
+
+	<!-- Titulo de pagina -->
+	@section('page-title')
+	{!!$page->title!!}
+	<div class="categories-container">	
+		@foreach ($categories as $category)		    
+		<a href="/{!!$page->urlfriendly!!}/cat/{!!$category->urlfriendly!!}" class="categorytag">
+			{!!$category->title!!}
+		</a>
+		@endforeach
+	</div>
+	
+	@endsection
+
 @section('main')
 
 @if($page->en_urlfriendly != "")
-<a href="/en/project/{!!$post->id!!}/{!!$page->en_urlfriendly!!}">Cambiar idioma</a>
-@endif
+	@section('language') 
+	  Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/en/{!!$page->en_urlfriendly!!}">EN</a></div>
+	  @endsection
+	@endif
 
-<section class="g-section">
-	<h2>Trabajos</h2>
 
+<section class="g-section ">
+	
 	@foreach ($projects as $project)		    
-	<div style="background-image: url('/uploads/projects/{!!$project->cover_image!!}')" class="porftolioItem col-md-3">
-		<!--<img src="/uploads/projects/{!!$project->cover_image!!}" alt="{!!$project->title!!}">-->
-		<a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">{!!$project->title!!}</a>
-	</div>
+	<article class="postItem portfolioItem col-md-6">
+		<a  href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">
+			<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}"" alt="">
+			<h2 class="post-title">{!!$project->title!!}</h2>
+		</a>
+		<?php 
+							$categories = $project->projectsCategories ;
+							?>
+							<div class="cat">
+							
+								@foreach ($categories as $category)	
+									
+										<a class="#catOnPost" href="/{!!$portfolio->urlfriendly!!}/cat/{!!$category->urlfriendly!!}">{!!$category->title!!}</a>
+									
 
+								@endforeach
+							</div>
+	</article>
 	@endforeach
 
 

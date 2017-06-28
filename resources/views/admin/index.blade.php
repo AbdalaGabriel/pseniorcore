@@ -19,22 +19,60 @@
     <!--  Material Dashboard CSS    -->
 	 {!!Html::style('bootstrap-template-assets/css/material-dashboard.css')!!}
  
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-	 {!!Html::style('bootstrap-template-assets/css/demo.css')!!}
-    
+ 
+
+    	
+    <!-- Include Editor style. -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+	
 
 	 {!!Html::style('css/customization.css')!!}
+	 {!!Html::style('css/admin.css')!!}
+
+	 @yield('styles')
+
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 </head>
 
-<body>
+<body class="admin">
 
-
+	@yield('popups')
+ 
 	<div class="wrapper">
 				
+     	
+			<!-- PREGUNTAR SI ESTA LOGUEADO O NO -->
+			@if (Auth::guest())
+				
+			@else
+			<div class="admin-logged-bar">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+					{{ Auth::user()->name }} <span class="caret"></span>
+				</a>
+
+				<ul class="dropdown-menu" role="menu">
+					<li>
+						<a href="{{ url('/logout') }}"
+						onclick="event.preventDefault();
+						document.getElementById('logout-form').submit();">
+						Logout
+						</a>
+
+						<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+							{{ csrf_field() }}
+						</form>
+					</li>
+				</ul>
+			</li>
+			</div>
+			@endif
 
 	    <div class="sidebar" data-color="purple" data-image="http://localhost/coresenior/public/bootstrap-template-assets/img/sidebar-1.jpg">
 			<!--
@@ -42,7 +80,7 @@
 
 		        Tip 2: you can also add an image using data-image tag
 		    -->
-
+			<div id="particles-js"></div>
 			<div class="logo">
 				<a href="http://www.creative-tim.com" class="simple-text">
 					Administrar sitio
@@ -52,19 +90,24 @@
 	    	<div class="sidebar-wrapper">
 	           
 	              <ul class="nav">
+	             	 <li class="">
+						{!! link_to_action('PageController@menu','Menu') !!} 
+						
+					</li>
+					<li class="">
+						{!! link_to_action('PageController@footer','Footer') !!} 
+						
+					</li>
+					 <li class="">
+						{!! link_to_action('SliderController@index','Slider') !!} 
+						
+					</li>
 					<li>
-						<a href="dashboard.html">
-							<i class="material-icons">dashboard</i>
-							<p>Dashboard</p>
-						</a>
+						{!! link_to_action('BlogController@index', 'Blog') !!}
 					</li>
 					<li>
 					
 						<ul>
-							<li>
-								    {!! link_to_action('BlogController@index', 'Blog') !!}
-								</a>
-							</li>
 							<li>
 								    {!! link_to_action('CategoryController@index','Categorias') !!}
 								</a>
@@ -75,34 +118,46 @@
 					</li>
 
 					<li class="">
-						{!! link_to_action('PageController@index','PAginas') !!}
+						{!! link_to_action('PageController@index','Páginas') !!}
+		
+					</li>
+
+					 <li>
+						 {!! link_to_action('ProjectController@index','Portfolio') !!}
+				
 						<ul>
+		
 							<li>
-								    {!! link_to_action('ProjectController@index','Home') !!}
+								    {!! link_to_action('ProjectCategoryController@index','Categorias') !!}
 								
 							</li>
-							
 						</ul>
+						
 						
 					</li>
 
-					<li class="">
+					<li>
+						{!! link_to_action('TutsAndResourcesController@index', 'Tutoriales y recursos') !!}
+					</li>
+					<li>
+					
 						<ul>
 							<li>
-								    {!! link_to_action('ProjectController@index','Portfolio') !!}
-								
-							</li>
-							<li>
-								    <{!! link_to_action('ProjectCategoryController@index','Categorias') !!}
-								
+								    {!! link_to_action('TutsAndResourcesTagsController@index','Tags') !!}
+								</a>
 							</li>
 						</ul>
 						
 						
+
 					</li>
 
 					<li class="">
 						{!! link_to_action('MediaController@index','Media') !!}
+						
+					</li>
+					<li class="">
+						{!! link_to_action('UserController@index','Usuarios') !!}
 						
 					</li>
 
@@ -112,12 +167,7 @@
 	    </div>
 
 	    <div class="main-panel">
-			<nav class="navbar navbar-transparent navbar-absolute">
-				<div class="container-fluid">
-				<!-- HEADER-->
-					<h2 class="adminTitle">@yield('title')</h2>
-				</div>
-			</nav>
+			<h2 class="adminTitle">@yield('title')</h2>
 
 			<div class="content">
 				<div class="container-fluid">
@@ -163,9 +213,9 @@
 </body>
 
 	<!--   Core JS Files   -->
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
+	
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
+
 	{!!Html::script('bootstrap-template-assets/js/bootstrap.min.js')!!}
 	{!!Html::script('bootstrap-template-assets/js/material.min.js')!!}
 
@@ -180,9 +230,17 @@
 
 	<!-- Material Dashboard javascript methods -->
 	<!-- <script src="../resources/assets/bootstrap-template-assets/js/material-dashboard.js"></script>-->
-
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/js/froala_editor.min.js'></script>
+	{!!Html::script('js/particles/particle.js')!!}
 	
 	@yield('aditional-scripts')
+
+	<script>
+		console.log("Particles =)");
+	particlesJS.load('particles-js', '/js/particles/particles.json', function() {
+	  console.log('callback - particles.js config loaded');
+	});
+	</script>
 	
 
 </html>

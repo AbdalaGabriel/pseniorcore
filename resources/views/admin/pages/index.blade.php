@@ -4,21 +4,26 @@
 @section('title', 'Administrar páginas de su sitio web')
 
 
-
-@section('main')
+@section('popups')
 
 	@include('admin.pages.messages.confirmation')
 	@include('admin.pages.messages.create')
 	@include('admin.pages.messages.quick-edit')
+	@endsection
+
+
+@section('main')
 
 	<div class=".col-md-4 center adminBlock">
 
-		<a id="createPage" data-toggle="modal" data-target="#pageModal" href="#">Crear página nueva</a>
+		<a id="createPage" class="adminButton" data-toggle="modal" data-target="#pageModal" href="#">Crear página nueva</a>
 		<table class="table">
 			<thead>
 				<th>Titulo</th>
 				<th>URL</th>
-				<th>Operaciones</th>
+				<th>Versión en inglés</th>
+				<th>Edicion</th>
+				<th>Borrar</th>
 			</thead>
 			
 			<tbody id="datos">

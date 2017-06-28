@@ -1,7 +1,7 @@
 (function($) {
     $.fn.fadeImages = function(options) {
         var opt = $.extend({
-            time: 2000, //动画间隔时间
+            time: 20000, //动画间隔时间
             fade: 1000, //淡入淡出的动画时间
             dots: true, //是否启用图片按钮
             arrows: false, //上一张，下一张

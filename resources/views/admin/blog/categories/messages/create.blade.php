@@ -8,6 +8,7 @@
       <div class="modal-body">
          <h3>Titulo de la nueva categoria:</h3>
          <input type="text" class="form-control" name="categoryname"  id="categoryname" placeholder="Ej: Tecnologia">
+         <input type="text" class="form-control" name="categoryUrl"  id="categoryUrl" placeholder="">
          <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
          <input type="hidden" id="id">
         

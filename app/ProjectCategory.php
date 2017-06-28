@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectCategory extends Model
 {
     protected $fillable = [
-        'title',
+        'title', 'en_title' , 'urlfriendly','en_urlfriendly'
     ];
 
     public function projects(){

@@ -18,6 +18,8 @@ $( document ).ready(function()
     	console.log( "Data Loaded: " );
     	initcatlisteners(categoyData)
   	});
+
+  	$('#new-post-content').froalaEditor();
 	
 
 	
@@ -54,8 +56,6 @@ function initcatlisteners(categoyData)
 			result.belongstopost = true;
 			categorydataInput.val(categoryDataForUpdate);
 			console.log("se mdifico el objeto");
-			
-
 		}
 		else
 		{

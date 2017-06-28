@@ -25,7 +25,7 @@ function carga()
 		console.log(res);
 		$(res).each(function(key, value)
 		{
-			tablaDatos.append('<tr><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-post" data-id="'+value.id+'">Quick Edit</a></td> <td>'+value.urlfriendly+'</br> En: '+value.en_urlfriendly+'</td><td class="post-categories" data-id="'+value.id+'">-</td><td><a href="http://localhost:8000/admin/blog/en/'+value.id+'/edit" data-id="'+value.id+'">Versión en inglés</a></td><td><td><a href="http://localhost:8000/admin/blog/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-post" data-id="'+value.id+'">Eliminar</button></td></tr>');
+			tablaDatos.append('<tr><td><img width:"30" height="30" src="/uploads/posts/'+value.cover_image+'"></td><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-post" data-id="'+value.id+'">Quick Edit</a></td> <td>'+value.urlfriendly+'</br> En: '+value.en_urlfriendly+'</td><td class="post-categories" data-id="'+value.id+'">-</td><td><a href="http://localhost:8000/admin/blog/en/'+value.id+'/edit" data-id="'+value.id+'">Versión en inglés</a></td><td><td><a href="http://localhost:8000/admin/blog/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-post" data-id="'+value.id+'">Eliminar</button></td></tr>');
 			celdaCategorias = $(".post-categories[data-id='"+value.id+"']");
 
 			var categories = value.categories;
@@ -134,11 +134,11 @@ function defineListerner()
 				{
 					if(categoyData[i].belongstopost == true)
 					{
-						checksContainer.append('<input  data-postid="'+postid+'" class="categoryCheckbox" checked type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].catid)
+						checksContainer.append('<label class="input-label"> <input  data-postid="'+postid+'" class="categoryCheckbox" checked type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].title+'</label>')
 
 					}else
 					{
-						checksContainer.append('<input  data-postid="'+postid+'" class="categoryCheckbox" type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].catid)
+						checksContainer.append('<label class="input-label">  <input  data-postid="'+postid+'" class="categoryCheckbox" type="checkbox" name="ch[]" value="'+categoyData[i].catid+'">'+categoyData[i].title+'</label>')
 
 					}
 				}
@@ -216,7 +216,7 @@ function defineListerner()
 					headers: {'X-CSRF-TOKEN': token},
 					type: 'PUT',
 					dataType: 'json',
-					data: {title: newTitle, categoyData: categoyData},
+					data: {title: newTitle, categoyData: categoyData, editionMethod: 'quick',},
 
 					success: function(){
 						carga();

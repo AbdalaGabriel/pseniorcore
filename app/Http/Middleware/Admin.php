@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 use Illuminate\Contracts\Auth\Guard;
 use Session;
 use Closure;
-
+use Auth;
 class Admin
 {
 
@@ -23,11 +23,26 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if($this->auth->user()->id != 1)
+        if (Auth::check())
         {
-           $request->session()->flash('message-error', 'Lo siento no tiene privilegios para ver esta página');
-           return redirect()->to('/');
+           if($this->auth->user()->id == 5)
+           {
+             // significa que continua con la peticion hhttp original, es decir sigue curso.
+             return $next($request);
+            }
+            else
+            {
+ 
+             return redirect()->to('/');
+            
+            }
         }
-        return $next($request);
+        else
+        {
+            return redirect()->to('/login');
+        }
+
     }
 }
+
+

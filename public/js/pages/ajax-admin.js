@@ -19,9 +19,21 @@ function carga()
 	//otra forma de hacer una peticion ajax,
 	var consulta =  $.get(route, function(res)
 	{
+		
+		console.log(res);
 		$(res).each(function(key, value)
 		{
-			tablaDatos.append('<tr><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-modal" data-id="'+value.id+'">Quick Edit</a></td> <td>'+value.urlfriendly+'</td><td><a href=baseurl+"admin/paginas/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#myModal" data-id="'+value.id+'">Eliminar</button></td></tr>');
+			if(value.visible_in_menu == 1)
+			{
+				if(value.can_be_deleted == 0){
+					tablaDatos.append('<tr><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-modal" data-id="'+value.id+'">Quick Edit</a></td> <td>'+value.urlfriendly+'</td><td><a href="http://localhost:8000/admin/paginas/en/'+value.id+'/edit" data-id="'+value.id+'">Versión en inglés</a></td><td><a href="'+baseurl+'admin/paginas/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td></tr>');
+		
+				}
+				else
+				{
+					tablaDatos.append('<tr><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-modal" data-id="'+value.id+'">Quick Edit</a></td> <td>'+value.urlfriendly+'</td><td><a href="http://localhost:8000/admin/paginas/en/'+value.id+'/edit" data-id="'+value.id+'">Versión en inglés</a></td><td><a href="'+baseurl+'admin/paginas/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#myModal" data-id="'+value.id+'">Eliminar</button></td></tr>');
+				}
+			}
 		});
 	})
 
@@ -154,4 +166,6 @@ function defineListerner()
 				});
 			});
 		});
+
+		// Metodo de edicion completa de pagina en form controller para generar logica de bloques.
 	}

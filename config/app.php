@@ -138,6 +138,7 @@ return [
 
     'providers' => [
 
+        'Barryvdh\Debugbar\ServiceProvider',
         /*
          * Laravel Framework Service Providers...
          */
@@ -164,6 +165,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        // Soporte de CORS
+        Barryvdh\Cors\ServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -174,7 +178,9 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
 
+        // debud
 
+        
 
 
         /*
@@ -200,6 +206,9 @@ return [
     */
 
     'aliases' => [
+
+        // Debug
+        'Debugbar' => 'Barryvdh\Debugbar\Facade',   
 
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -234,10 +243,13 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+
         //collective install
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+
 
     ],
 

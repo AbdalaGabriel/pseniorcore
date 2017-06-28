@@ -24,7 +24,7 @@ function carga()
 		console.log(res);
 		$(res).each(function(key, value)
 		{
-			tablaDatos.append('<tr><td>'+value.title+'<br/></td><td><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-category" data-id="'+value.id+'">Editar categoría</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-category" data-id="'+value.id+'">Eliminar</button></td></tr>');
+			tablaDatos.append('<tr><td>'+value.title+'<br/></td><td>'+value.urlfriendly+'<br/></td><td><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-category" data-id="'+value.id+'">Editar categoría</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-category" data-id="'+value.id+'">Eliminar</button></td></tr>');
 
 		});
 	})

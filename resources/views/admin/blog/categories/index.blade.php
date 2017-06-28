@@ -3,28 +3,7 @@
 @section('pageTitle', 'Administrar categorias')
 @section('title', 'Administrar categorias de su blog web')
 
-@section('menu')
-	<li>
-		<a href="dashboard.html">
-			<i class="material-icons">dashboard</i>
-			<p>Dashboard</p>
-		</a>
-	</li>
-	<li class="active">
-		<a  href="user.html">
-			<i class="material-icons">person</i>
-			<p>Blog</p>
-		</a>
-	</li>
 
-	<li>
-		<a href="user.html">
-			<i class="material-icons">person</i>
-			<p>Páginas</p>
-		</a>
-	</li>
-
-@endsection
 
 @section('main')
 
@@ -37,6 +16,7 @@
 		<table class="table">
 			<thead>
 				<th>Titulo</th>
+				<th>URL Friendly</th>
 				<th>Ediciòn</th>
 				<th>Borrado</th>
 			</thead>

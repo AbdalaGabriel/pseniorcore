@@ -15,7 +15,7 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-        
+        \Barryvdh\Cors\HandleCors::class,
     ];
 
     /**
@@ -48,7 +48,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-
+        
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -56,5 +56,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'admin' => \App\Http\Middleware\Admin::class,
+        'stagin' => \App\Http\Middleware\StaginHost::class,
+        'corsg' => \App\Http\Middleware\CorsG::class,
     ];
 }

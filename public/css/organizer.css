@@ -1,0 +1,295 @@
+.organizer .inputOff {
+     border: none;
+    background: none;
+    cursor: pointer;
+    width: 100%;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.content .inputOff{
+    text-align: center;
+}
+
+.organizer-header{
+      background: #232635;
+
+          position: relative;
+              overflow: hidden;
+}
+#new-phase{
+    color: #ff70a2;
+    border: 1px solid;
+    padding: 20px 25px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin: 2em 10px;
+    float: left;
+    font-family: Raleway;
+}
+.span-button{
+    display: block;
+    float: right;
+    cursor: pointer;
+}
+.header-tasks-container{
+
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #b50744;
+}
+.organizer-header h2{
+        background: none;
+    color: #e9eaf1;
+    padding: 0;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    font-size: 15px;
+}
+
+.description-container input{
+  color: #bcbcde;
+    letter-spacing: 1px;
+    font-size: 1.2em;
+    width: 100%;
+}
+#grouptasks {
+    background: #e0e0e0;
+    padding: 1em 2em;
+    overflow: hidden;
+}
+
+#grouptasks a{
+    background: #6076ad;
+    padding: .5em 1.5em;
+    display: block;
+    float: left;
+    letter-spacing: 1px;
+    font-weight: 300;
+    border-radius: 2em;
+
+        color: white;
+    margin: 0 1em 0 0;
+}
+
+.deletePhase{
+    background: none !important;
+    color: black !important;
+    border: 1px solid !important;
+}
+
+
+
+.hola{
+    width: 100%;
+    text-align: center;
+    font-size: 5em;
+    margin: 40px 0 0 0;
+  }
+
+.user-name-organizer{
+    font-size: 2em;
+    margin: 0 !important;
+}
+
+.projectsContainer a{
+        width: 100%;
+    display: block;
+    font-size: 2em;
+    color: red;
+    text-align: center;
+    font-weight: 100;
+    letter-spacing: 2px;
+
+}
+
+.create-new-container {
+    /* position: absolute; */
+    margin: 2em 0;
+    width: 100%;
+}
+
+
+.create-new{
+       background: none;
+    color: #e9eaf1;
+    padding: 0;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    font-size: 15px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: 20em;
+    color: #232635;
+    padding: 1em;
+    border: 1px solid;
+    font-weight: 300;
+    border-radius: 2em;
+}
+
+
+.projects-title-organizer{
+        font-size: 1.2em;
+    text-transform: inherit;
+    letter-spacing: 1px;
+    margin: 3em 0 1.5em 0;
+}
+
+.task-title{
+       width: 30%;
+    margin-right: 3%;
+    float: left;
+    text-align: center;
+    background: #232635;
+    color: white;
+    padding: .5em 0;
+    font-family: Raleway;
+}
+.task-column{
+      width: 30%;
+    margin-right: 3%;
+    float: left;
+    height: 500px;
+    border: 1px solid #a97cb0;
+        position: relative;
+}
+
+
+.task-bar{
+       padding: 1em 2em;
+    color: white;
+}
+.hidecard {
+      position: absolute;
+    right: 0;
+    background: #0e1d67;
+    padding: .2em .6em;
+    display: block;
+    cursor: pointer;
+    border-radius: 1em;
+    z-index: 100;
+    display: none;
+    color: white;
+}
+.task-bar h2{
+    margin: 0;
+    font-size: 1.2em;
+    letter-spacing: 1px !important;
+    font-weight: 200;
+    color: white;
+}
+
+.tasks-container{
+     padding: 2em;
+    background: #191c2b;
+    color: white;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+        z-index: 0;
+    opacity: 0;
+    height: 0;
+
+}
+
+.tasks-container h2{
+        font-size: 1em;
+    margin: 0;
+    text-align: left;
+    border-bottom: 1px solid;
+    padding-bottom: 1em;
+}
+
+
+.task-bar input{
+       font-weight: 500;
+ letter-spacing: 0px;
+
+}
+.modal-body label
+{
+        border: none !important;
+    box-shadow: none !important;
+    font-family: Raleway !important;
+}
+
+.phase-button{
+        color: white;
+    border: 1px solid;
+    padding: 20px 25px;
+    font-weight: 300;
+    letter-spacing: 2px;
+        margin: 2em 10px;
+    float: left;
+     font-family: Raleway;
+}
+
+#new-task{
+      float: left;
+    background: #c10e4c;
+    color: white;
+    padding: 0 13px;
+    /* margin: 10px; */
+    font-size: 32px;
+    line-height: 45px;
+    position: absolute;
+    border-radius: 3em;
+}
+
+.main-panel{
+    margin: 6em 0 0 0;
+    position: relative;
+}
+
+table{
+    width: 100%;
+    max-width: 1280px;
+
+}
+
+table th{
+        background: #232635;
+    color: white;
+    padding: .6em;
+    font-family: Raleway;
+    font-weight: 300;
+    border-right: 1px solid white;
+}
+
+table tbody td{
+    background: #eaeaea;
+    color: black;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: .6em;
+}
+
+.header-project-container h2, .header-project-container h2 input{
+        font-size: 1.2em;
+    font-family: Raleway;
+    text-transform: uppercase !important;
+    letter-spacing: 4px !important;
+    margin: .3em 0 0 0;
+}
+
+.header-tasks-container::before{
+  width: 0;
+    display: block;
+    height: 0;
+    border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  
+  border-left: 10px solid #232635;
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 2em;
+}
+
+
+#createPhase{
+    z-index: 3000;
+}
