@@ -163,8 +163,8 @@ class BlogController extends Controller
        // Obtngo datos via request.
        $image = $request->file('file');
        
-       //Seteo variables de path y nombre.
-       $path = public_path().'\uploads\posts';
+       //Seteo variables de path y nombre.(ruta actualizada para produccion.sale dos directorios)
+       $path = '\uploads\posts';
        $imageName=$image->getClientOriginalName() ;
 
        // Selecciono ultimo proyecto agregado a la base de datos, mediante una query
