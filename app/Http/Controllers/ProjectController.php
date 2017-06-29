@@ -109,7 +109,7 @@ public function uploadimage(Request $request)
 // Obtngo datos via request.
     $image = $request->file('file');
 //Seteo variables de path y nombre.
-    $path = public_path().'\uploads\projects';
+    $path = '\uploads\projects';
     $imageName=$image->getClientOriginalName() ;
 
 // Selecciono ultimo proyecto agregado a la base de datos, mediante una query

@@ -27,7 +27,7 @@
 		
 		<!-- Descripcion  -->
 		{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
-		{!!Form::textarea('content', $finalObj->content, ['id'=>'new-post-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
+		{!!Form::textarea('content', $finalObj->content, ['id'=>'new-post-content tiny', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
 
 	</div>	
 	

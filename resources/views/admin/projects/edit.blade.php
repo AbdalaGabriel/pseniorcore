@@ -28,7 +28,7 @@
 
 		<!-- Descripcion  -->
 		{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
-		{!!Form::textarea('content', $finalObj->description, ['id'=>'new-post-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
+		{!!Form::textarea('content', $finalObj->description, ['id'=>'new-post-content', 'class'=>'form-control tiny','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
 		
 		<h3>Bloques: </h3>
 	

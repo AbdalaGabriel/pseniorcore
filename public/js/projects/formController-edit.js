@@ -10,7 +10,7 @@ function init()
 {
 	console.log("- Function init - Project - Edition mode");
 	
-	$('#new-post-content').froalaEditor();
+	
 	detectEvents();
 	
 }

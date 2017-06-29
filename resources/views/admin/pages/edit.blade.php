@@ -29,7 +29,7 @@
 
 	{!!Form::label('metadescr', 'Descripciòn de su página para búesquedas', ['class' => 'form-control']);!!}
 
-	{!!Form::textarea('meta_description', null, ['id'=>'new-meta-content', 'class'=>'form-control','placeholder'=>'Ej: Trabajo de diseño de identidad corporativa realizado para la marca LOREMIPSUM']) !!}
+	{!!Form::textarea('meta_description', null, ['id'=>'new-meta-content', 'class'=>'form-control tiny','placeholder'=>'Ej: Trabajo de diseño de identidad corporativa realizado para la marca LOREMIPSUM']) !!}
 
 
 	<h3>Configuraciones de página {!! $page->title !!}</h3>

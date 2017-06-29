@@ -39,7 +39,7 @@
 
 	{!!Form::label('content', 'Descripciòn de su proyecto', ['class' => 'form-control']);!!}
 
-	{!!Form::textarea('content', null, ['id'=>'new-post-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo proyecto']) !!}
+	{!!Form::textarea('content', null, ['id'=>'new-post-content', 'class'=>'form-control tiny','placeholder'=>'Ingrese el contenido de nuevo proyecto']) !!}
 
 
 	{!!Form::label('metadescr', 'Descripciòn de su proyecto para búesquedas', ['class' => 'form-control']);!!}

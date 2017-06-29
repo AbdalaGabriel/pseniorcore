@@ -27,7 +27,7 @@
 		    {!!Form::text('title', null, ['id'=>'new-resource', 'class'=>'form-control new-embed','placeholder'=>'Ingrese su link o embebido de youtube']) !!}
 			
 			{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
-		    {!!Form::textarea('content', null, ['id'=>'new-post-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
+		    {!!Form::textarea('content', null, ['id'=>'new-post-content  tiny', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
 
 		    <input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 

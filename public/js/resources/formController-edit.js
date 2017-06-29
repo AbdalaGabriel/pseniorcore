@@ -9,7 +9,7 @@ function init()
 {
 	console.log("- Function init - tutoriales-y-recursos - Edition mode");
 	var submit = $("#sendForm");
-	$('#new-post-content').froalaEditor();
+	
 	detectEvents();
 	submit.click(function(e)
 	{

@@ -102,7 +102,7 @@ class MediaController extends Controller
     {
         $image = Media::find($id);
         $imagename = $image->path;
-        $imagePath = public_path()."/uploads/media/".$imagename;
+        $imagePath = "/uploads/media/".$imagename;
 
             // Eliminar imágenes que tenia relacionadas en la base de datos, que se guardaban en la carpeta projects-
         File::delete($imagePath);
