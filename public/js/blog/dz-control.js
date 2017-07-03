@@ -4,6 +4,7 @@ var dropzoneO;
 token = $("div#myDropZone").attr("data-token");
 tokenEdit = $("div#myDropZone-edit").attr("data-token");
 var fileSelected;
+idforEditedPost = $(".item-id").val();
 console.log(token);
 
 
@@ -44,7 +45,7 @@ $("div#myDropZone").dropzone({
 
 //Control de imagenes para version en edicion
 $("div#myDropZone-edit").dropzone({
-   url : baseurl+"admin/blog/uploadimage",
+   url : baseurl+"admin/blog/uploadimage/"+idforEditedPost,
    method: "POST",
    autoProcessQueue: false,
    uploadMultiple: false,

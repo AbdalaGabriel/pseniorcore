@@ -112,14 +112,29 @@ public function uploadimage(Request $request)
     $path = '\uploads\projects';
     $imageName=$image->getClientOriginalName() ;
 
-// Selecciono ultimo proyecto agregado a la base de datos, mediante una query
-    $ultimoProject = DB::table('projects')->select('id')->latest()->first();
-    $idUltimoProject = $ultimoProject->id;
-    $project = Project::find($idUltimoProject);
+
+
+    if(isset($id) && !empty($id) ){
+        $project = Project::find($id);
+    }
+    else
+    {
+        // Selecciono ultimo proyecto agregado a la base de datos, mediante una query
+        $ultimoProject = DB::table('projects')->select('id')->latest()->first();
+        $idUltimoProject = $ultimoProject->id;
+        $project = Project::find($idUltimoProject);
+
+    }
+       
+
+
+
 
 //Accedo al campo cover_image, del objeto Project, traido mediante su id y le pongo el de la imagen subida.
     $project->cover_image = $imageName;
     $project->save();
+
+
 
 //Muevo el arvhio al directorio publico para imagenes del proyecto.
     $image->move($path, $imageName);
@@ -181,8 +196,75 @@ public function show($id)
 public function englishedit($id, Request $request)
 {
     $project = Project::find($id);
-    return view('admin.projects.en.edit', ['project'=>$project]);
+    $categories = $project->projectsCategories;
+    $finalObj = $project;
+
+    // IDs CATEGORIAS DE ESTE project
+    // Accedo a los ids de las categorias que tiene este projecteo y me los guardo en un array.
+    //Los tengo por separado para compararlos contra los ids de las demas categorias, y construir los checks.
+    $thisProjectCategory = array();
+    $index = 0;
+
+    foreach ($categories as $category) {
+
+        $thisProjectCategory[$index]["id"]=$category->id;
+        $thisProjectCategory[$index]["en_title"]=$category->title;
+        $index++;
+    }
+
+    //IDS GENERALES DE TODAS LAS CATEGORRIAS
+
+    $allcategories = ProjectCategory::all();
+    $allcategoriesIds = array();
+    $arrayLengthAllCats = count($allcategories);
+
+    for ($i=0; $i < $arrayLengthAllCats ; $i++) 
+    {
+        $allcategoriesIds[$i]["id"]=$allcategories[$i]["id"];
+        $allcategoriesIds[$i]["en_title"]=$allcategories[$i]["en_title"];
+    }
+
+
+    //COMPARACION ENTRE IDS DE ARRAYS, detecto cuales de los ids de la cat generales corresponden a las del project, si es asi creo un nuevo objeto que indique que de todas las categorias el project tiene esa.
+    $finalObjectCategoriesThisproject = array();
+    $index = 0;
+    $arrayLength = count($allcategoriesIds);
+
+    for ($i=0; $i < $arrayLength ; $i++) { 
+           
+        $thisIdCat = $allcategoriesIds[$i]['id'];
+        $search = array_search($thisIdCat, array_column($thisProjectCategory, 'id'));
+            
+        //comparo
+        if ($search !== false) // Usar distinto estrictamente, sino toma el 0 como false.
+        {
+            $finalObjectCategoriesThisproject[$i]['catid']=$thisIdCat;
+            $finalObjectCategoriesThisproject[$i]['belongstoproject']=true;
+            $finalObjectCategoriesThisproject[$i]['en_title']=$allcategoriesIds[$i]["en_title"];
+        }
+        else
+        {
+            $finalObjectCategoriesThisproject[$i]['catid']=$thisIdCat;
+            $finalObjectCategoriesThisproject[$i]['belongstoproject']=false;
+            $finalObjectCategoriesThisproject[$i]['en_title']=$allcategoriesIds[$i]["en_title"];
+        }
+            
+    }
+ 
+
+    // Contruyo mi objeto final que tiene los datos del project, y todas las categorias, mas a las que éste pertenece
+    $finalObj['categoryData'] = $finalObjectCategoriesThisproject;
+
+    if ($request->ajax()) 
+    {
+        return response()->json($finalObj);
+    }
+    else
+    {
+        return view('admin.projects.en.edit', ['finalObj'=>$finalObj]);
+    };
 }
+
 
 public function edit($id, Request $request)
 {
@@ -274,18 +356,34 @@ public function update(Request $request, $id)
     {
         $project = Project::find($id);
         $editionMethod = $request['editionMethod'];
-
+        $language = $request['language'];
         // Pregunto si el metodo de edicion es quick edit o full
         // Edicion completa - pagina editar post
         if($editionMethod == "full")
         {
-            $project->title = $request['title'];
-            $project->description = $request['description'] ;
-            $project->urlfriendly = $request['urlf'];
-            $project->meta_description = $request['metadescription'] ;
-            $project->jsoneditdata = $request['blocks'];
-            $project->htmleditdata = $request['htmlForEdition'];
-            $project->urlfriendly = $request['urlf'];
+            
+            if($language == "en")
+            {
+                $project->en_title = $request['title'];
+                $project->en_description = $request['description'] ;
+                $project->en_urlfriendly = $request['urlf'];
+                $project->en_meta_description = $request['metadescription'] ;
+                $project->en_jsoneditdata = $request['blocks'];
+                $project->en_htmleditdata = $request['htmlForEdition'];
+                $project->en_urlfriendly = $request['urlf'];
+            }
+            else
+            {
+                $project->title = $request['title'];
+                $project->description = $request['description'] ;
+                $project->urlfriendly = $request['urlf'];
+                $project->meta_description = $request['metadescription'] ;
+                $project->jsoneditdata = $request['blocks'];
+                $project->htmleditdata = $request['htmlForEdition'];
+                $project->urlfriendly = $request['urlf'];
+            }
+
+            
             $categoriesIds = $request['categories'];
 
             $project->projectsCategories()->sync($categoriesIds);    

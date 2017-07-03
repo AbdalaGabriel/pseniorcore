@@ -2,6 +2,7 @@ $( document ).ready(function()
 {
 	console.log( "- Document ready" );
 	init();
+	
 });
 
 
@@ -9,7 +10,7 @@ function init()
 {
 	console.log("- Function init - Blog - Edition mode");
 	var submit = $("#sendForm");
-
+	var language = $("#actualLanguage").val();
 	detectEvents();
 	submit.click(function(e)
 	{
@@ -26,7 +27,7 @@ function init()
 
 		var token = $("#token").val();
 		var title = $("#new-post-title").val();
-		var description = $("#new-post-content").val();
+		var description = tinymce.get('new-post-content').getContent();
 		var extract = $("#new-post-extract").val();
 		var meta_description = $("#new-meta-content").val();
 		var coverImage = fileSelected;
@@ -36,6 +37,8 @@ function init()
 		
 		
 		// Sending test
+		console.log(routeEdit);
+		console.log(language)
 		console.log(title);
 		console.log(token);
 		console.log(description);
@@ -61,6 +64,7 @@ function init()
 				categories:categories ,
 				extract: extract,
 				urlf: urlfContent,
+				language: language,
 				metadescription: meta_description,
 				editionMethod: 'full',
 			},
@@ -68,9 +72,12 @@ function init()
 			success: function(data){
 				console.log("- Proyecto editado exitosamente");
 				console.log("- Iniciamos Carga de imagen en proyecto");
+				idforEditedPost = data.id;
 				dropzone.processQueue();
-				console.log(itemId);
-				$("body").append('<p class="wellmessage">'+data+'</p>');
+				console.log(idforEditedPost);
+				$(".wellmessage").remove();
+				$("body").append('<p class="wellmessage">'+data.mensaje+'</p>');
+
 				//$.redirect(baseurl+'admin/blog/');
 			}
 		});

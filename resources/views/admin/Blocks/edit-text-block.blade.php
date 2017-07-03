@@ -8,7 +8,7 @@
       <div class="modal-body">
          <h3>Contenido:</h3>
 
-         {!!Form::textarea('content', '' , ['id'=>'edit-block-text-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo bloque']) !!}
+         {!!Form::textarea('content', '' , ['id'=>'edit-block-text-content', 'class'=>'form-control tiny','placeholder'=>'Ingrese el contenido de nuevo bloque']) !!}
         
       </div>
       <div class="modal-footer">

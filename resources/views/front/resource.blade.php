@@ -1,4 +1,4 @@
-@extends('front.bases.post-base')
+@extends('front.bases.base')
 	
 	<!-- Titulo de la pestaña -->
 	@section('mainTitle'){!!$resource->title!!}@endsection

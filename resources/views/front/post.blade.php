@@ -1,4 +1,4 @@
-@extends('front.bases.post-base')
+@extends('front.bases.base')
 	
 	<!-- Titulo de la pestaña -->
 	@section('mainTitle'){!!$post->title!!}@endsection
@@ -22,9 +22,12 @@
 	<!-- Contenido principal -->
 	@section('main')
 
-		@if($post->en_urlfriendly != "")
-			<a href="/en/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">Cambiar idioma</a>
-		@endif
+	@if($post->en_urlfriendly != "")
+	@section('language') 
+	  Idioma: <a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">ES</a> - <a href="en/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">EN</a></div>
+	  @endsection
+	@endif
+
 
 
 

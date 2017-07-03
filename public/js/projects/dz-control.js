@@ -6,6 +6,7 @@ tokenEdit = $("div#myDropZone-edit").attr("data-token");
 var fileSelected;
 console.log(token);
 console.log("mdp- projects");
+idforEditedPost = $(".item-id").val();
 
 $("div#myDropZone").dropzone({
    url : baseurl+"admin/project/uploadimage",
@@ -43,7 +44,7 @@ $("div#myDropZone").dropzone({
 
 //Control de imagenes para version en edicion
 $("div#myDropZone-edit").dropzone({
-   url : baseurl+"admin/project/uploadimage",
+   url : baseurl+"admin/project/uploadimage/"+idforEditedPost,
    method: "POST",
    autoProcessQueue: false,
    uploadMultiple: false,

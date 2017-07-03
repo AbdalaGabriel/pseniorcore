@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\TutsAndResource;
 use App\TutsAndResourcesTag;
 use File;
+use App\Config;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Redirect;
@@ -80,11 +81,16 @@ class TutsAndResourcesController extends Controller
         $resource = TutsAndResource::find($id);
 
         $realtitle = $resource->en_urlfriendly;
+          $pagesBlock = Config::where('reference', "footer_pagesblock_en")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_en")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_en")->first();
+        $shareBlock = Config::where('reference', "footer_followme_en")->first();
+
 
     // Efectuo redireción en caso que el usuario me escriba otro titulo, debido a que solo toma el ID para la busqueda
         if($title == $realtitle)
         {
-            return view("front.en.post", ['post'=>$resource]);
+            return view("front.en.resource", ['resource'=>$resource, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
         }
         else
         {
@@ -98,11 +104,16 @@ class TutsAndResourcesController extends Controller
     {
         $resource = TutsAndResource::find($id);
         $realtitle = $resource->urlfriendly;
+          // Footer dinamico
+        $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_es")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_es")->first();
+        $shareBlock = Config::where('reference', "footer_followme_es")->first();
 
             // Efectuo redireción en caso que el usuario me escriba otro titulo, debido a que solo toma el ID para la busqueda
         if($title == $realtitle)
         {
-            return view("front.resource", ['resource'=>$resource]);
+              return view("front.resource", ['resource'=>$resource, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
         }
         else
         {
@@ -166,11 +177,23 @@ class TutsAndResourcesController extends Controller
        $path = '\uploads\resources';
        $imageName=$image->getClientOriginalName() ;
 
-       // Selecciono ultimo proyecto agregado a la base de datos, mediante una query
-       $ultimoResource = DB::table('tuts_and_resources')->select('id')->latest()->first();
-       $idUltimoResource = $ultimoResource->id;
-       $resource = TutsAndResource::find($idUltimoResource);
+       
 
+       
+        if(isset($id) && !empty($id) ){
+        $resource = TutsAndResource::find($id);
+        }
+        else
+        {
+            // Selecciono ultimo proyecto agregado a la base de datos, mediante una query
+           $ultimoResource = DB::table('tuts_and_resources')->select('id')->latest()->first();
+           $idUltimoResource = $ultimoResource->id;
+           $resource = TutsAndResource::find($idUltimoResource);
+
+        }
+       
+
+       
        //Accedo al campo cover_image, del objeto Project, traido mediante su id y le pongo el de la imagen subida.
        $resource->cover_image = $imageName;
        $resource->save();

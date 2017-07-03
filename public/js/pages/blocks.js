@@ -22,10 +22,6 @@ $( document ).ready(function()
 function initEdition()
 {
 	console.log("- Function init");
-	$('#new-block-text-content').froalaEditor();
-	$('#edit-block-text-content').froalaEditor();
-	//$('.froala').froalaEditor();
-	
 
 
 	checkIfExistContent();
@@ -111,9 +107,8 @@ function blocksmaster(){
 	{
 		console.log("- Eventos para bloque interno");
 		var addInternBlock = $(".addInternBlock");
-		var innerBlocksCounter = 0;
-		var rowCounter = 0;
 		var internCounter = 0;
+			var rowCounter = 0;
 
 		// Evito duplicado de eventos
 		addInternBlock.off();
@@ -122,8 +117,6 @@ function blocksmaster(){
 		{
 			console.log("- Crear nuevo bloque interno");
 			
-			
-
 			// Variables globales de esta funcion
 			var blockToModifyName = $(this).attr("data-for");
 			var blockToModify = $("#"+blockToModifyName);
@@ -131,11 +124,8 @@ function blocksmaster(){
 			
 			// Cuento hermanos para setear el numero.
 		 	rowCounter =  blockToModify.find(" .innerrow").length;
-		 	innerBlocksCounter =  blockToModify.find(" .internblock").length;
-		 	internCounter = innerBlocksCounter + 1;
-		 	console.log("- Hay: " +rowCounter+ "bloques");
-		 	console.log("- Hay: " +innerBlocksCounter+ "bloques internos");
-		 	console.log("- El proximo sera a partir de: " +internCounter+ "bloques internos");
+		 	console.log("- Hay: " +rowCounter);
+
 			// Leo atributo divisiones (data-divs) del elemento clikeado, y ejecuto logica en base a las mismas.
 			// Para cada opcion sumo al contador a fin de que cada bloque tenga un id distinto y la referencia a su padre.
 			switch (divitions)
@@ -146,7 +136,7 @@ function blocksmaster(){
 			    	blockToModify.append('<div id="'+blockToModifyName+'-row-'+rowCounter+'" class="innerrow"><span data-delete-row="'+blockToModifyName+'-row-'+rowCounter+'" class="deletethisrow">X</span></div>');
 			    	var thisRow = $("#"+blockToModifyName+" #"+blockToModifyName+"-row-"+rowCounter);
 	
-			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock single" type="single"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></di></div>');
+			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock single"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></di></div>');
 			    	
 			    	internCounter++;
 			    	
@@ -158,9 +148,9 @@ function blocksmaster(){
 			    	blockToModify.append('<div id="'+blockToModifyName+'-row-'+rowCounter+'" class="innerrow"><span data-delete-row="'+blockToModifyName+'-row-'+rowCounter+'" class="deletethisrow">X</span></div>');
 			    	var thisRow = $("#"+blockToModifyName+" #"+blockToModifyName+"-row-"+rowCounter);
 
-			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half" type="half"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
+			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
-			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half" type="half"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
+			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock half"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
 
 			    	
@@ -171,13 +161,13 @@ function blocksmaster(){
 			    	// Grilla dividida en 3
 			    	console.log("- 3 div");
 			    	blockToModify.append('<div id="'+blockToModifyName+'-row-'+rowCounter+'" class="innerrow"><span data-delete-row="'+blockToModifyName+'-row-'+rowCounter+'" class="deletethisrow">X</span></div>');
-			    	var thisRow = $("#"+blockToModifyName+"-row-"+rowCounter);
+			    	var thisRow = $("#"+blockToModifyName+" #"+blockToModifyName+"-row-"+rowCounter);
 
-			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3" type="third"> <div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></di></div>');
+			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"> <div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></di></div>');
 			    	internCounter++;
-			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3" type="third"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
+			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
-			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3" type="third"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
+			    	thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-3"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 			    	internCounter++;
 			    	
 			    	break;
@@ -188,13 +178,13 @@ function blocksmaster(){
 				    blockToModify.append('<div id="'+blockToModifyName+'-row-'+rowCounter+'" class="innerrow"><span data-delete-row="'+blockToModifyName+'-row-'+rowCounter+'" class="deletethisrow">X</span></div>');
 			    	var thisRow = $("#"+blockToModifyName+" #"+blockToModifyName+"-row-"+rowCounter);
 
-				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4" type="fourth"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
+				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
-				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4" type="fourth"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
+				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
-				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4" type="fourth"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
+				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
-				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4" type="fourth"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
+				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
 				    
 				    break;
@@ -205,9 +195,9 @@ function blocksmaster(){
 				    blockToModify.append('<div id="'+blockToModifyName+'-row-'+rowCounter+'" class="innerrow"><span data-delete-row="'+blockToModifyName+'-row-'+rowCounter+'" class="deletethisrow">X</span></div>');
 			    	var thisRow = $("#"+blockToModifyName+" #"+blockToModifyName+"-row-"+rowCounter);
 
-				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-4" type="2-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
+				    thisRow.append('<div id="intern-block-'+internCounter+'" class="internblock div-4"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
-				    thisRow.append('<div data-from-block="'+blockToModifyName+'" id="intern-block-'+internCounter+'" class="internblock div-65" type="6-5"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
+				    thisRow.append('<div id="intern-block-'+internCounter+'" class="internblock div-65"><div class="append-buttons-container"> <span  data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" class="addbutton add-text" data-toggle="modal" data-target="#new-block-text">+ text </span>   <span data-from-block="'+blockToModifyName+'" data-from-inter-block="intern-block-'+internCounter+'" data-toggle="modal" data-target="#new-block-img" class="addbutton add-image"> + img </span></div><div class="content"></div></div>');
 				    internCounter++;
 				    
 				    break;
@@ -236,7 +226,7 @@ function eventsMaster()
 	var numberInner = "";
 	var textCounter = 0;
 	var imageCounter = 0;
-	var textContainer = $("#new-block-text-content");
+	//var textContainer = tinymce.get('new-block-text-content').getContent();
 	var imageForAppendContainer = $("#selected-image-container");
 	var inputAlt = $(".selected-image-alt");
 	var inputTitle = $(".selected-image-title");
@@ -275,7 +265,7 @@ function eventsMaster()
 		console.log("Click append text");
 
 		// Levanto el texto que escribio el usuario.
-		var textForAppend = textContainer.val();
+		var textForAppend = tinymce.get('new-block-text-content').getContent();
 
 		// Construyo el query del contenedor al cual le quiero appender al contenido, en base al llenado de variables globales.
 		var fatherBlock = $("#"+forBlock);
@@ -323,18 +313,13 @@ function eventsMaster()
 	function listenToEvents()
 	{
 		// Hacer draggeable los contenedores
-		$(".block ").sortable(
+		/*$(".content").sortable(
 		{
-      		connectWith: ".block"
-   		 });
-
-
-		$(".internblock .content").sortable(
-		{
-      		connectWith: ".internblock .content"
+      		connectWith: ".content"
    		 });
 		console.log("- Drag and drop implemented");
-
+	*/
+		
 		// borrado de input texto
 		var deleteTextButton = $(".delete-text-input");
 		deleteTextButton.off();
@@ -365,9 +350,11 @@ function eventsMaster()
 			
 			// Reemplazo en el modal por el contenido a editar.
 			var editContainer = ("#edit-block-text-content");
-			var editTextContainer = $("#edit-block-text .fr-element");
-			console.log(editTextContainer.html());
-			editTextContainer.html(elementToEdit.html());
+			var editTextContent = elementToEdit.html();
+			tinymce.get('edit-block-text-content').setContent(editTextContent)
+			console.log(editTextContent);
+			
+
 			
 			console.log("- Edited " + elementToEditName);
 
@@ -377,7 +364,7 @@ function eventsMaster()
 			confirmButton.click(function()
 			{
 				console.log("- Confirm edition");
-				edition = $("#edit-block-text-content").val();
+				edition = tinymce.get('edit-block-text-content').getContent();
 				elementToEdit.html(edition);
 				console.log("- Edited");
 

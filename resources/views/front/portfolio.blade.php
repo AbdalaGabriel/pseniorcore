@@ -42,7 +42,7 @@
 							
 								@foreach ($categories as $category)	
 									
-										<a class="#catOnPost" href="/{!!$portfolio->urlfriendly!!}/cat/{!!$category->urlfriendly!!}">{!!$category->title!!}</a>
+										<a class="#catOnPost" href="/{!!$page->urlfriendly!!}/cat/{!!$category->urlfriendly!!}">{!!$category->title!!}</a>
 									
 
 								@endforeach

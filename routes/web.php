@@ -191,7 +191,7 @@ Route::resource('/admin/paginas', 'PageController');
 		Route::resource('/admin/categorias', 'CategoryController');
 
 		// Imagen de portada.
-		Route::post('admin/blog/uploadimage', 'BlogController@uploadimage');
+		Route::post('admin/blog/uploadimage/{id?}', 'BlogController@uploadimage');
 
 		// VERSIÓN EN INGLÉS
 		Route::get('admin/blog/en/{id?}/edit', 'BlogController@englishedit' );
@@ -207,7 +207,7 @@ Route::resource('/admin/paginas', 'PageController');
 		Route::resource('/admin/tutoriales-y-recursos-tags', 'TutsAndResourcesTagsController');
 
 		// Imagen de portada.
-		Route::post('admin/tutoriales-y-recursos/uploadimage', 'TutsAndResourcesController@uploadimage');
+		Route::post('admin/tutoriales-y-recursos/uploadimage/{id?}', 'TutsAndResourcesController@uploadimage');
 
 		// VERSIÓN EN INGLÉS
 		Route::get('admin/tutoriales-y-recursos/en/{id?}/edit', 'TutsAndResourcesController@englishedit' );
@@ -222,7 +222,7 @@ Route::resource('/admin/paginas', 'PageController');
 		// Categorías del proyecto
 		Route::resource('/admin/categorias-portfolio', 'ProjectCategoryController');
 		// Imagen de portada del proyecto
-		Route::post('admin/project/uploadimage', 'ProjectController@uploadimage');
+		Route::post('admin/project/uploadimage/{id?}', 'ProjectController@uploadimage');
 		// Imágenes del proyecto.
 		//Route::resource('/admin/project/uploadimages', 'ProjectImageController');
 		Route::post('/admin/project/uploadimages', 'ProjectImageController@uploadimages');

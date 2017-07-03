@@ -1,48 +1,104 @@
 @extends('admin.index')
 
 @section('pageTitle', 'Administrar proyectos')
-@section('title', 'Editando Proyecto en Inglés')
-
+@section('title', 'Editando Proyecto')
+@section('popups')
+	@include('admin.Blocks.text-block')
+	@include('admin.Blocks.edit-text-block')
+	@include('admin.Blocks.image-block')
+	@include('admin.Blocks.link-block')
+@endsection
 
 @section('main')
 
 
-<div class=".col-md-4 center adminBlock">
+<div class=".col-md-4 center adminBlock edition">
 
 
 	{!!  link_to_action('ProjectController@index', '< Atras', $title = null, $parameters = [], $attributes = []); !!}
 
-	{!! Form::open(['url' => '/admin/portfolio/en/'.$project->id.'/update/', 'method'=>'PUT']) !!}
+	<!-- Inicio Formulario  -->
+	{!! Form::open(['url' => '/admin/portfolio/'.$finalObj->id, 'method'=>'PUT']) !!}
 
-	{!!Form::label('title', 'Titulo en inglés', ['class' => 'form-control']);!!}
-	{!!Form::text('en_title', $project->en_title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
+	<div class="col-md-8">
 
-	{!!Form::label('urlf', 'URL Friendly', ['class' => 'form-control']);!!}
-	<p>Se generará automaticamente a partir de su titulo, si desea modificar su url amigable para este proyecto, puede editarla a continuación,</p>
+		<!-- TITULO  -->
+		{!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
+		{!!Form::text('title', $finalObj->en_title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
 
-	{!!Form::text('en_urlf', null, ['id'=>'new-post-urlf', 'class'=>'form-control','placeholder'=>'URL amigable','data-version' => 'en']) !!}
+		<!-- Descripcion  -->
+		{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
+		{!!Form::textarea('content', $finalObj->en_description, ['id'=>'new-post-content', 'class'=>'form-control tiny','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
+		
+		<h3>Bloques: </h3>
+	
+		<div id="blocks-container">
+			<?php echo $finalObj->htmleditdata; ?>
+		</div>
+		<span  id="add-block">Agregar bloque</span>
+	</div>
+	<div class="col-md-4">
 
-	{!!Form::label('contenidoingles', 'Contenido para la versión en inglés', ['class' => 'form-control']);!!}
-	{!!Form::textarea('en_description', $project->en_description, ['id'=>'new-post-content', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
+		<!-- Generador de URLFriendly  -->
+		<div class="urlFContainer">
+			{!!Form::label('urlf', 'URL Friendly', ['class' => 'form-control']);!!}
+			{!!Form::text('urlf', $finalObj->en_urlfriendly, ['id'=>'new-post-urlf', 'class'=>'form-control','placeholder'=>'URL amigable', 'data-version' => 'es']) !!}
+		</div>
+		
+		<!-- Foto de portada  -->
+		<div class="form-group top-0">
 
-	{!!Form::label('en_metadescr', 'Descripciòn de su proyecto para búesquedas', ['class' => 'form-control']);!!}
+			<label>Cambiar foto de portada</label>
 
-	{!!Form::textarea('en_meta_description', null, ['id'=>'new-meta-content', 'class'=>'form-control','placeholder'=>'Ej: Trabajo de diseño de identidad corporativa realizado para la marca LOREMIPSUM']) !!}
+			<div class="cover-edit-image">
+				<img src="/uploads/projects/{!!$finalObj->cover_image!!}" alt="" >
+			</div>
+
+			<div class="dropzone coverImage" id="myDropZone-edit" data-token="{{ csrf_token() }}"></div>
+		</div>
+
+		<!-- Categorias  -->
+		<div class="categories-container">
+			@foreach ($finalObj->categoryData as $category)		    
+				@if($category['belongstoproject']==true)
+
+					<label class="input-label"><input checked data-postid="{{$category['catid']}}" class="categoryCheckbox"  type="checkbox" name="ch[]" value="{{$category['catid']}}">{{$category['en_title']}}</label>
+
+				@elseif($category['belongstoproject']==false)
+
+					<label class="input-label"><input data-postid="{{$category['catid']}}" class="categoryCheckbox"  type="checkbox" name="ch[]" value="{{$category['catid']}}">{{$category['en_title']}}</label>
+
+				@endif
+			@endforeach
+		</div>
+
+		<!-- Metadescription  -->
+		{!!Form::label('metadescr', 'Descripciòn de su posteo para búesquedas', ['class' => 'form-control']);!!}
+		{!!Form::textarea('metadescription', $finalObj->en_meta_description, ['id'=>'new-meta-content', 'class'=>'form-control','placeholder'=>'Ej: Trabajo de diseño de identidad corporativa realizado para la marca LOREMIPSUM' ]) !!}
+		<input type="hidden" class="item-id" value="{{$finalObj->id}}">
+		<input type="hidden" name="_categorydata" value="" id="categorydata">
+		<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
+		<input type="hidden" name="language" value="en" id="actualLanguage">
+
+		{!! Form::submit('Update project', ['class'=>'btn btn-primary btn-round', 'id' => 'sendForm']); !!}
+		{!! Form::close() !!}
+
+	</div>	
 
 
-
-	<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
-
-	{!! Form::submit('Update project', ['class'=>'btn btn-primary btn-round']); !!}
-	{!! Form::close() !!}
 
 </div>
+
+</div>
+
 @section('aditional-scripts')
 {!!Html::script('js/baseurl.js')!!}
-{!! Html::script('js/projects/formController.js') !!}
+{!! Html::script('js/blog/create.js') !!}
+{!! Html::script('dropzone/dist/dropzone.js') !!}
+{!! Html::script('js/projects/dz-control.js') !!}
+{!!Html::script('js/projects/blocks.js')!!}
+{!! Html::script('js/projects/formController-edit.js') !!}
 @endsection
-
-
 
 @endsection
 

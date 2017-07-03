@@ -22,10 +22,6 @@ $( document ).ready(function()
 function initEdition()
 {
 	console.log("- Function init");
-	$('#new-block-text-content').froalaEditor();
-	$('#edit-block-text-content').froalaEditor();
-	//$('.froala').froalaEditor();
-	
 
 
 	checkIfExistContent();
@@ -230,7 +226,7 @@ function eventsMaster()
 	var numberInner = "";
 	var textCounter = 0;
 	var imageCounter = 0;
-	var textContainer = $("#new-block-text-content");
+	//var textContainer = tinymce.get('new-block-text-content').getContent();
 	var imageForAppendContainer = $("#selected-image-container");
 	var inputAlt = $(".selected-image-alt");
 	var inputTitle = $(".selected-image-title");
@@ -269,7 +265,7 @@ function eventsMaster()
 		console.log("Click append text");
 
 		// Levanto el texto que escribio el usuario.
-		var textForAppend = textContainer.val();
+		var textForAppend = tinymce.get('new-block-text-content').getContent();
 
 		// Construyo el query del contenedor al cual le quiero appender al contenido, en base al llenado de variables globales.
 		var fatherBlock = $("#"+forBlock);
@@ -354,9 +350,11 @@ function eventsMaster()
 			
 			// Reemplazo en el modal por el contenido a editar.
 			var editContainer = ("#edit-block-text-content");
-			var editTextContainer = $("#edit-block-text .fr-element");
-			console.log(editTextContainer.html());
-			editTextContainer.html(elementToEdit.html());
+			var editTextContent = elementToEdit.html();
+			tinymce.get('edit-block-text-content').setContent(editTextContent)
+			console.log(editTextContent);
+			
+
 			
 			console.log("- Edited " + elementToEditName);
 
@@ -366,7 +364,7 @@ function eventsMaster()
 			confirmButton.click(function()
 			{
 				console.log("- Confirm edition");
-				edition = $("#edit-block-text-content").val();
+				edition = tinymce.get('edit-block-text-content').getContent();
 				elementToEdit.html(edition);
 				console.log("- Edited");
 

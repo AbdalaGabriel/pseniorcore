@@ -97,7 +97,7 @@
 				<div class="section-container">
 				@foreach ($posts as $post)		    
 				<article class="postItem col-md-6">
-					<a href="en/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">
+					<a href="/en/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">
 						<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
 						<h2 class="post-title">{!!$post->en_title!!}</h2>
 					</a>
@@ -118,7 +118,7 @@
 						<p>{{ str_limit($post->en_extract , 230) }}...</p>
 					</div>
 					<div class="button-container-blog">
-						<a href="/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">Leer noticia</a>
+						<a href="/en/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">Leer noticia</a>
 					</div>	
 				</article>
 

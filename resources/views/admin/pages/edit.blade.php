@@ -3,10 +3,10 @@
 @section('title', 'Editanto página '.$page->title.' de su sitio web')
 
 @section('popups')
-	@include('admin.pages.Blocks.text-block')
-	@include('admin.pages.Blocks.edit-text-block')
-	@include('admin.pages.Blocks.image-block')
-	@include('admin.pages.Blocks.link-block')
+	@include('admin.Blocks.text-block')
+	@include('admin.Blocks.edit-text-block')
+	@include('admin.Blocks.image-block')
+	@include('admin.Blocks.link-block')
 @endsection
 
 @section('main')

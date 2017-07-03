@@ -27,7 +27,7 @@ function init()
 
 		var token = $("#token").val();
 		var title = $("#new-post-title").val();
-		var description = $("#new-post-content").val();
+		var description = tinymce.get('new-post-content').getContent();
 		var meta_description = $("#new-meta-content").val();
 		var coverImage = fileSelected;
 		var routeNew = baseurl+'admin/blog';

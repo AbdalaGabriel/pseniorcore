@@ -3,10 +3,10 @@
 @section('pageTitle', 'Administrar proyectos')
 @section('title', 'Editando Proyecto')
 @section('popups')
-	@include('admin.pages.Blocks.text-block')
-	@include('admin.pages.Blocks.edit-text-block')
-	@include('admin.pages.Blocks.image-block')
-	@include('admin.pages.Blocks.link-block')
+	@include('admin.Blocks.text-block')
+	@include('admin.Blocks.edit-text-block')
+	@include('admin.Blocks.image-block')
+	@include('admin.Blocks.link-block')
 @endsection
 
 @section('main')
@@ -24,7 +24,7 @@
 
 		<!-- TITULO  -->
 		{!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
-		{!!Form::text('title', $finalObj->title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
+		{!!Form::text('title', $finalObj->en_title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
 
 		<!-- Descripcion  -->
 		{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
@@ -78,6 +78,7 @@
 		<input type="hidden" class="item-id" value="{{$finalObj->id}}">
 		<input type="hidden" name="_categorydata" value="" id="categorydata">
 		<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
+		<input type="hidden" name="language" value="es" id="actualLanguage">
 
 		{!! Form::submit('Update project', ['class'=>'btn btn-primary btn-round', 'id' => 'sendForm']); !!}
 		{!! Form::close() !!}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\Config;
 use File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
@@ -62,7 +63,76 @@ class BlogController extends Controller
     public function englishedit($id, Request $request)
     {
         $post = Post::find($id);
-        return view('admin.blog.en.edit', ['post'=>$post]);
+        $categories = $post->categories;
+        $finalObj = $post;
+
+        // IDs CATEGORIAS DE ESTE POST
+        // Accedo a los ids de las categorias que tiene este posteo y me los guardo en un array.
+        //Los tengo por separado para compararlos contra los ids de las demas categorias, y construir los checks.
+
+        $thisPostCategoriesIds = array();
+        $index = 0;
+
+        foreach ($categories as $category) {
+
+            $thisPostCategoriesIds[$index]["id"]=$category->id;
+            $thisPostCategoriesIds[$index]["title"]=$category->en_title;
+             $index++;
+        }
+
+
+        //IDS GENERALES DE TODAS LAS CATEGORRIAS
+
+        $allcategories = Category::all();
+        $allCategoriesIds = array();
+        $arrayLengthAllCats = count($allcategories);
+
+        for ($i=0; $i < $arrayLengthAllCats ; $i++) 
+        {
+            $allCategoriesIds[$i]["id"]=$allcategories[$i]["id"];
+            $allCategoriesIds[$i]["en_title"]=$allcategories[$i]["en_title"];
+        }
+
+        //var_dump($allCategoriesIds);
+        //COMPARACION ENTRE IDS DE ARRAYS, detecto cuales de los ids de la cat generales corresponden a las del post, si es asi creo un nuevo objeto que indique que de todas las categorias el post tiene esa.
+
+        $finalObjectCategoriesThisPost = array();
+        $index = 0;
+        $arrayLength = count($allCategoriesIds);
+
+        for ($i=0; $i < $arrayLength ; $i++) { 
+           
+            $thisIdCat = $allCategoriesIds[$i]['id'];
+            $search = array_search($thisIdCat, array_column($thisPostCategoriesIds, 'id'));
+            
+            //comparo
+            if ($search !== false) // Usar distinto estrictamente, sino toma el 0 como false.
+            {
+                $finalObjectCategoriesThisPost[$i]['catid']=$thisIdCat;
+                $finalObjectCategoriesThisPost[$i]['belongstopost']=true;
+                $finalObjectCategoriesThisPost[$i]['en_title']=$allCategoriesIds[$i]["en_title"];
+            }
+            else
+            {
+                $finalObjectCategoriesThisPost[$i]['catid']=$thisIdCat;
+                $finalObjectCategoriesThisPost[$i]['belongstopost']=false;
+                $finalObjectCategoriesThisPost[$i]['en_title']=$allCategoriesIds[$i]["en_title"];
+            }
+            
+        }
+
+        // Contruyo mi objeto final que tiene los datos del post, y todas las categorias, mas a las que éste pertenece
+        $finalObj['categoryData'] = $finalObjectCategoriesThisPost;
+        
+       // var_dump($finalObj);
+        if ($request->ajax()) 
+        {
+            return response()->json($finalObj);
+        }
+        else
+        {
+            return view('admin.blog.en.edit', ['finalObj'=>$finalObj]);
+        };
     }
 
     public function englishupdate(Request $request, $id)
@@ -79,14 +149,18 @@ class BlogController extends Controller
     public function englishversion($id, $title)
     {
         $post = Post::find($id);
-
+        $pagesBlock = Config::where('reference', "footer_pagesblock_en")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_en")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_en")->first();
+        $shareBlock = Config::where('reference', "footer_followme_en")->first();
         $realtitle = $post->en_urlfriendly;
 
     // Efectuo redireción en caso que el usuario me escriba otro titulo, debido a que solo toma el ID para la busqueda
         if($title == $realtitle)
         {
-            return view("front.en.post", ['post'=>$post]);
+            return view("front.en.post", ['post'=>$post, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
         }
+        
         else
         {
             return Redirect::to('/');
@@ -99,11 +173,17 @@ class BlogController extends Controller
     {
         $post = Post::find($id);
         $realtitle = $post->urlfriendly;
+          // Footer dinamico
+        $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_es")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_es")->first();
+        $shareBlock = Config::where('reference', "footer_followme_es")->first();
+
 
             // Efectuo redireción en caso que el usuario me escriba otro titulo, debido a que solo toma el ID para la busqueda
         if($title == $realtitle)
         {
-            return view("front.post", ['post'=>$post]);
+            return view("front.post", ['post'=>$post, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
         }
         else
         {
@@ -122,6 +202,8 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         // Recibo la informacion que me llega
+       
+
         $title = $request['title'];
         $content = $request['description'];
         $CategoriesIds = $request['categories'];
@@ -144,7 +226,7 @@ class BlogController extends Controller
             'urlfriendly' => $urlfriendly,
             'extract' => $extract,
             'meta_description' => $metadescription,
-            ]);
+        ]);
 
         // Busco su id mediante una querie que me traiga el ultimo posteo en base a su nombre.
 
@@ -158,7 +240,7 @@ class BlogController extends Controller
 
     
     // GUARDADO DE IMAGEN DE PORTADA
-    public function uploadimage(Request $request)
+    public function uploadimage(Request $request, $id)
     {
        // Obtngo datos via request.
        $image = $request->file('file');
@@ -167,10 +249,19 @@ class BlogController extends Controller
        $path = '\uploads\posts';
        $imageName=$image->getClientOriginalName() ;
 
-       // Selecciono ultimo proyecto agregado a la base de datos, mediante una query
-       $ultimoPost = DB::table('posts')->select('id')->latest()->first();
-       $idUltimoPost = $ultimoPost->id;
-       $post = Post::find($idUltimoPost);
+       
+       
+       if(isset($id) && !empty($id) ){
+        $post = Post::find($id);
+       }else
+       {
+        // Selecciono ultimo proyecto agregado a la base de datos, mediante una query
+           $ultimoPost = DB::table('posts')->select('id')->latest()->first();
+           $idUltimoPost = $ultimoPost->id;
+             $post = Post::find($idUltimoPost);
+       }
+       
+
 
        //Accedo al campo cover_image, del objeto Project, traido mediante su id y le pongo el de la imagen subida.
        $post->cover_image = $imageName;
@@ -178,7 +269,7 @@ class BlogController extends Controller
 
        //Muevo el arvhio al directorio publico para imagenes del proyecto.
        $image->move($path, $imageName);
-       return("Se creo la imagen de portada y se almaceno");
+       return("Se creo la imagen de portada y se almaceno ".$id);
    }
 
 
@@ -297,6 +388,7 @@ class BlogController extends Controller
     {
         if ($request->ajax())
         {
+            $language = $request['language'];
             $post = Post::find($id);
             $editionMethod = $request['editionMethod'];
 
@@ -304,13 +396,26 @@ class BlogController extends Controller
             // Edicion completa - pagina editar post
             if($editionMethod == "full")
             {
-                $post->title = $request['title'];
-                $post->content = $request['description'] ;
-                $post->urlfriendly = $request['urlf'];
-                $post->meta_description = $request['metadescription'] ;
-                $CategoriesIds = $request['categories'];
-                $post->extract = $request['extract'];
+                if($language == "en")
+                {
+                    $post->en_title = $request['title'];
+                    $post->en_content = $request['description'] ;
+                    $post->en_urlfriendly = $request['urlf'];
+                    $post->en_meta_description = $request['metadescription'] ;
+                    $post->en_extract = $request['extract'];
 
+                }else
+                {
+                    $post->title = $request['title'];
+                    $post->content = $request['description'] ;
+                    $post->urlfriendly = $request['urlf'];
+                    $post->meta_description = $request['metadescription'] ;
+                    $post->extract = $request['extract'];
+
+                }
+
+                $CategoriesIds = $request['categories'];
+                
                 $post->categories()->sync($CategoriesIds);
 
             }
@@ -340,7 +445,8 @@ class BlogController extends Controller
             $post->save();
 
             return response()->json([
-                "mensaje" =>'Proyecto editado satisfactoriamente'
+                "mensaje" =>'Proyecto editado satisfactoriamente',
+                "id"=> $id,
             ]);
         }
         else

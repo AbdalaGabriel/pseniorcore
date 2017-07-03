@@ -73,6 +73,7 @@
 
 		<input type="hidden" class="item-id" value="{{$finalObj->id}}">
 		<input type="hidden" name="_categorydata" value="" id="categorydata">
+		<input type="hidden" name="language" value="es" id="actualLanguage">
 		<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 
 		{!! Form::submit('Update post', ['class'=>'btn btn-primary btn-round', 'id' => 'sendForm']); !!}

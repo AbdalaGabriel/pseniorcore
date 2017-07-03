@@ -1744,6 +1744,7 @@ footer ul li {
     margin: 0 .6em 0 0;
     border-radius: 2em;
     height: initial;
+    display: inline;
 }
 
 .cat{

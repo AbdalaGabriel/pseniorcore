@@ -222,9 +222,10 @@ function sendAllInformation(html, jsonObj)
 			categories[i] = $(this).val();
 	});
 
+	var language = $("#actualLanguage").val();
 	var token = $("#token").val();
 	var title = $("#new-post-title").val();
-	var description = $("#new-post-content").val();
+	var description = tinymce.get('new-post-content').getContent();
 	var meta_description = $("#new-meta-content").val();
 	var coverImage = fileSelected;
 	var itemId = $(".item-id").val();
@@ -236,6 +237,7 @@ function sendAllInformation(html, jsonObj)
 		
 	// Sending test
 	console.log(title);
+	console.log(language);
 	console.log(token);
 	console.log(description);
 	console.log(categories);
@@ -260,6 +262,7 @@ function sendAllInformation(html, jsonObj)
 				description: description,
 				categories:categories ,
 				urlf: urlfContent,
+				language: language,
 				metadescription: meta_description,
 				editionMethod: 'full',
 				htmlForEdition: htmlForEdition,
