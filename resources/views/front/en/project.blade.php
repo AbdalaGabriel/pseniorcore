@@ -26,16 +26,93 @@
 
 	
 
-	<section class="g-section">
+	<section class="g-section portfolio-body-section">
 		
 		<p>{!!$project->en_description!!}</p>
+
+<?php
+$jsonBlocks = json_decode($project->en_jsoneditdata, True); // true devuelve todos los objetos internos como array
+
+$BlockNumbers = count($jsonBlocks);
+
+for ($i=0; $i < $BlockNumbers ; $i++) { 
+?>
+
+	<?php
+		$rowsnumber = count($jsonBlocks[$i]["rows"]); 
+		for ($j=0; $j < $rowsnumber; $j++) 
+		{ 
+		?>
+			<div class="row-container">
+			<?php
+				
+				$innerBlocksNumber = $jsonBlocks[$i]["rows"][$j]["innerblocks"]["length"];
+				// le resto dos porque el objeto json le appendea dos propiedades mas como hermanos de los bloques internos
+				
+				for ($k=0; $k < $innerBlocksNumber; $k++)
+				{ 
+					?>
+					<div class="innerBlock r-{!!$innerBlocksNumber!!}">
+					<?php
+					$innerElements = $jsonBlocks[$i]["rows"][$j]["innerblocks"][$k]["innerblockselements"];
+
+					if($innerElements == 0){
+
+					}
+					else
+					{
+
+						$innerBlocksElementsNumber = count($jsonBlocks[$i]["rows"][$j]["innerblocks"][$k]["innerblockselements"]);
+						
+						for ($l=0; $l < $innerBlocksElementsNumber; $l++) 
+						{ 
+							# code...
+							$innerHtml = $jsonBlocks[$i]["rows"][$j]["innerblocks"][$k]["innerblockselements"][$l]["html"];
+
+							$innerhtmlLink = $jsonBlocks[$i]["rows"][$j]["innerblocks"][$k]["innerblockselements"][$l]["link"];
+
+
+							if($innerhtmlLink == 'n')
+							{
+								echo $innerHtml;
+							}else
+							{
+								$finalHtml = '<a href="#" class="linksforBlock" data-idurlreplace="'.$innerhtmlLink.'">';
+								$finalHtml =  $finalHtml.$innerHtml;
+								$finalHtml = $finalHtml.'</a>';
+
+								echo $finalHtml;
+							}							
+
+						};
+
+					}
+					?>
+						
+					</div>
+					<?php
+
+
+				};
+
+
+				//var_dump($jsonBlocks[$i]["rows"][$j]["innerblocks"]);innerblockselements
+			?>
+			
+			</div>
+
+			<?php
+		}
+		}
+	?>
+
 
 	</section>
 
 
 	<!-- SHARE EN REDES SOCIALES -->
 
-		<section class="g-section">
+		<section class="g-section portfolio-body-section">
 
 			<div id="fb-root"></div>
 			<script>(function(d, s, id) {

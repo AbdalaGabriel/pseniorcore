@@ -25,7 +25,7 @@
 	  @endsection
 	@endif
 
-	<section class="g-section">
+	<section class="g-section portfolio-body-section">
 		
 		<p>{!!$project->description!!}</p>
 
@@ -110,7 +110,7 @@ for ($i=0; $i < $BlockNumbers ; $i++) {
 
 	<!-- SHARE EN REDES SOCIALES -->
 
-		<section class="g-section">
+		<section class="g-section portfolio-body-section">
 
 			<div id="fb-root"></div>
 			<script>(function(d, s, id) {

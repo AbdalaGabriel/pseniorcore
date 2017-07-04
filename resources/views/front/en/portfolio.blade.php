@@ -17,7 +17,7 @@
 	@endif
 
 
-<section class="g-section portfolio-body-section">
+<section class="g-section ">
 
 	@foreach ($projects as $project)		    
 	<article class="postItem portfolioItem col-md-6">
