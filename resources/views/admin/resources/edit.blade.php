@@ -7,6 +7,7 @@
 @section('main')
 
 
+
 <div class=".col-md-4 center adminBlock edition">
 
 
@@ -20,14 +21,13 @@
 		{!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
 		{!!Form::text('title', $finalObj->title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
 
-		{!!Form::label('embed', 'Link a Recurso / video de youtube', ['class' => 'form-control ']);!!}
-		    {!!Form::text('title', $finalObj->resource, ['id'=>'new-resource', 'class'=>'form-control new-embed','placeholder'=>'Ingrese su link o embebido de youtube']) !!}
-
-
+		<!-- EXTRACTO	-->
+		{!!Form::label('extract', 'Extracto', ['class' => 'form-control']);!!}
+		{!!Form::textarea('extract', $finalObj->extract, ['id'=>'new-post-extract', 'class'=>'form-control','placeholder'=>'Ingrese su extracto para vista rápida en el front']) !!}
 		
 		<!-- Descripcion  -->
 		{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
-		{!!Form::textarea('content', $finalObj->content, ['id'=>'new-post-content tiny', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
+		{!!Form::textarea('content', $finalObj->content, ['id'=>'new-post-content', 'class'=>'form-control tiny','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
 
 	</div>	
 	
@@ -74,6 +74,7 @@
 
 		<input type="hidden" class="item-id" value="{{$finalObj->id}}">
 		<input type="hidden" name="_categorydata" value="" id="categorydata">
+		<input type="hidden" name="language" value="es" id="actualLanguage">
 		<input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 
 		{!! Form::submit('Update post', ['class'=>'btn btn-primary btn-round', 'id' => 'sendForm']); !!}
@@ -81,7 +82,6 @@
 		{!! Form::close() !!}
 	</div>
 </div>
-
 
 <tbody id="datos"></tbody>
 

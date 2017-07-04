@@ -22,12 +22,13 @@
 			
 			{!!Form::label('title', 'Titulo', ['class' => 'form-control ']);!!}
 		    {!!Form::text('title', null, ['id'=>'new-post-title', 'class'=>'form-control new-title','placeholder'=>'Ingrese su nuevo titulo']) !!}
-
-		    {!!Form::label('embed', 'Link a Recurso / video de youtube', ['class' => 'form-control ']);!!}
-		    {!!Form::text('title', null, ['id'=>'new-resource', 'class'=>'form-control new-embed','placeholder'=>'Ingrese su link o embebido de youtube']) !!}
+		<!-- EXTRACTO	-->
+		{!!Form::label('extract', 'Extracto', ['class' => 'form-control']);!!}
+		{!!Form::textarea('extract', '', ['id'=>'new-post-extract', 'class'=>'form-control','placeholder'=>'Ingrese su extracto para vista rápida en el front']) !!}
+		    
 			
 			{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
-		    {!!Form::textarea('content', null, ['id'=>'new-post-content  tiny', 'class'=>'form-control','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
+		    {!!Form::textarea('content', null, ['id'=>'new-post-content', 'class'=>'form-control tiny','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
 
 		    <input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 

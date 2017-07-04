@@ -146,7 +146,7 @@
 				@endforeach
 				
 				</div>
-				<a href="" class="action-button">
+				<a href="/blog" class="action-button">
 					Ir al blog
 				</a>
 			</section>

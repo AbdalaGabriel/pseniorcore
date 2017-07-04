@@ -33,7 +33,7 @@ function init()
 		var coverImage = fileSelected;
 		var routeNew = baseurl+'admin/tutoriales-y-recursos';
 		var urlfContent = $("#new-post-urlf").val();
-		var resource = $("#new-resource").val();
+		var extract = $("#new-post-extract").val();
 
 		
 		// Sending test
@@ -45,7 +45,7 @@ function init()
 		console.log(coverImage);
 		console.log(meta_description);
 		console.log(urlfContent);
-		console.log(resource);
+		console.log(extract);
 		//
 
 		console.log("- Se subio la foto de portada a destino temporal");
@@ -63,7 +63,7 @@ function init()
 				categories:categories ,
 				urlf: urlfContent,
 				metadescription: meta_description,
-				resource: resource
+				extract: extract
 			},
 
 			success: function(projectId){

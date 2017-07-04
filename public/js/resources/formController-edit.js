@@ -30,7 +30,7 @@ function init()
 		var meta_description = $("#new-meta-content").val();
 		var coverImage = fileSelected;
 		var itemId = $(".item-id").val();
-		var resource = $("#new-resource").val();
+		var extract = $("#new-post-extract").val();
 		var routeEdit = baseurl+'admin/tutoriales-y-recursos/'+itemId;
 		var urlfContent = $("#new-post-urlf").val();
 		
@@ -60,7 +60,7 @@ function init()
 				categories:categories ,
 				urlf: urlfContent,
 				metadescription: meta_description,
-				resource: resource,
+				extract: extract,
 				editionMethod: 'full',
 			},
 
