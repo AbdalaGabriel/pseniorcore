@@ -916,7 +916,11 @@ body {
     padding: 0 0 .5em;
     width: 20em;
 }
+.portfolio-body-section{
+ text-align: center;
+}
 
+}
 .data-slide-container{
     position: absolute;
     left: calc((100% - 1140px)/2);
