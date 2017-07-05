@@ -63,7 +63,7 @@ $BlockNumbers = count($jsonBlocks);
 					
 
 					$type = $jsonBlocks[$i]["rows"][$j]["innerblocks"][$k]["type"];
-					var_dump($type);
+					
 					?>
 					
 
