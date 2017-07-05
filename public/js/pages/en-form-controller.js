@@ -111,6 +111,7 @@ function collectBlocksInformation()
 					var thisInnerBlock =  $(this);
 					var j = Jindex;
 					var thisInnerBlockID = thisInnerBlock.attr("id");
+					var typeInnerBlock = thisInnerBlock.attr("data-type");
 
 
 					// cuarto bucle for levanto informacion de elementos del innerblock y la guardo en un nuevo objeto.
@@ -154,6 +155,7 @@ function collectBlocksInformation()
 						{ 
 							id: thisInnerBlockID,
 							innerblockselements: innerBlocksElements,
+							type: typeInnerBlock,
 						};
 
 						innerBlocksElements = new Object();
@@ -165,6 +167,7 @@ function collectBlocksInformation()
 						{ 
 							id: thisInnerBlockID,
 							innerblockselements: 0,
+							type: typeInnerBlock,
 						};
 					}
 

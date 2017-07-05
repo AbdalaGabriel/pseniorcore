@@ -22,6 +22,8 @@
 			
 			{!!Form::label('title', 'Titulo', ['class' => 'form-control ']);!!}
 		    {!!Form::text('title', null, ['id'=>'new-post-title', 'class'=>'form-control new-title','placeholder'=>'Ingrese su nuevo titulo']) !!}
+
+		    
 			
 			{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
 		    {!!Form::textarea('content', null, ['id'=>'new-post-content', 'class'=>'form-control tiny','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}

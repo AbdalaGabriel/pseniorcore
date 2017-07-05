@@ -10,7 +10,6 @@ function init()
 {
 	console.log("- Function init");
 	var submit = $("#sendForm");
-	$('.froala').froalaEditor();
 	detectEvents();
 	submitControl();
 	checkconfigs();
@@ -148,7 +147,7 @@ function collectBlocksInformation()
 					var thisInnerBlock =  $(this);
 					var j = Jindex;
 					var thisInnerBlockID = thisInnerBlock.attr("id");
-					var typeInnerBlock = thisInnerBlock.attr("type");
+					var typeInnerBlock = thisInnerBlock.attr("data-type");
 
 
 					// cuarto bucle for levanto informacion de elementos del innerblock y la guardo en un nuevo objeto.
@@ -204,6 +203,7 @@ function collectBlocksInformation()
 						{ 
 							id: thisInnerBlockID,
 							innerblockselements: 0,
+							type: typeInnerBlock,
 						};
 					}
 
