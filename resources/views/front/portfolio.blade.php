@@ -27,10 +27,10 @@
 	@endif
 
 
-<section class="g-section ">
+<section class="g-section portfolio-page-container ">
 	
 	@foreach ($projects as $project)		    
-	<article class="postItem portfolioItem col-md-6">
+	<article class="postItem portfolioItem col-md-4">
 		<a  href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">
 			<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}"" alt="">
 			<h2 class="post-title">{!!$project->title!!}</h2>

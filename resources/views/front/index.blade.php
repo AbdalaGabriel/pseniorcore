@@ -116,10 +116,12 @@
 				<div class="section-container">
 				@foreach ($posts as $post)		    
 				<article class="blogItem col-md-6">
+
 					<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">
 						<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
 						
 					</a>
+					<span class="item-date">{!!$post->created_at->format('d/m/Y')!!}</span>
 					<h2 class="post-title">{!!$post->title!!}</h2>
 					<?php 
 						$postcategories = $post->categories ;

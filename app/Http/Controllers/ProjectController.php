@@ -84,10 +84,17 @@ public function englishversion($id, $title)
 
     $realtitle = $project->en_urlfriendly;
 
+     // Footer dinamico
+         $pagesBlock = Config::where('reference', "footer_pagesblock_en")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_en")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_en")->first();
+        $shareBlock = Config::where('reference', "footer_followme_en")->first();
+
+
 // Efectuo redireción en caso que el usuario me escriba otro titulo, debido a que solo toma el ID para la busqueda
-    if($title == $realtitle)
+    if($urflf == $realtitle)
     {
-        return view("front.en.project", ['project'=>$project]);
+        return view("front.project", ['project'=>$project, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);
     }
     else
     {

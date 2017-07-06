@@ -189,19 +189,23 @@ class FrontController extends Controller
                 switch($pageReference)
                 {
                    case 'portfolio';
-                        $projects = Project::with('projectsCategories')->get();
-                        return view('front.en.portfolio', ['projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);     
+                       $projects = Project::with('projectsCategories')->get();
+                        $portfolio = Page::where('reference', 'portfolio')->first();
+                        $categories = ProjectCategory::all();
+                        return view('front.en.portfolio', ['projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories, 'portfolio'=>$portfolio ]);        
                    break;
-
                    case 'news'; 
-                        $posts = Post::with('categories')->get();
-                        return view('front.en.blog', ['posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);   
+                   $posts = Post::with('categories')->get();
+                        $blog = Page::where('reference', 'news')->first();
+                        $categories = Category::all();
+                        return view('front.en.blog', ['posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories, 'blog'=>$blog ]);    
                        
                    break;
 
                    case 'tuts'; 
                         $tuts = TutsAndResource::all();
-                        return view('front.en.tuts', ['tuts'=>$tuts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]);   
+                        $categories = TutsAndResourcesTag::all();
+                        return view('front.en.tuts', ['tuts'=>$tuts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories ]);      
                        
                    break;
                    case 'contact'; 

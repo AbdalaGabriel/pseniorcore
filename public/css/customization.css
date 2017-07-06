@@ -32,6 +32,16 @@
     z-index: 10;
 }
 
+.item-date{
+  
+    font-size: .7em;
+    margin: -2em 1em 2em;
+    display: block;
+    color: white;
+    z-index: 3;
+    position: inherit;
+}
+
 
 .logged-user{
     width: 4.3em;
@@ -705,6 +715,7 @@ body {
     bottom: 1em;
     font-weight: 500;
     text-align: left;
+        min-height: 5em;
     left: 2em;
     font-size: 16px;
     margin-bottom: 0 !important;
@@ -718,6 +729,12 @@ body {
     position: relative;
     left: -30%;
     z-index: 0;
+}
+
+.blog-container{
+  
+    background: white;
+    padding: 2em 0;
 }
 
 .action-button{
@@ -1297,6 +1314,7 @@ margin-bottom: 2em;
 .extract-container p{
       line-height: 1.5em;
     font-size: .9em;
+        min-height: 8em;
 }
 
 .g-section #mc_embed_signup .mc-field-group input {
@@ -1307,6 +1325,10 @@ margin-bottom: 2em;
 
 .contact .section-container h2{
     text-align: center;
+}
+
+.portfolio-page-container .portfolioItem {
+    height: 13em;
 }
 
 footer {
@@ -1747,12 +1769,14 @@ footer ul li {
 
 .cat a{
     font-size: 14px;
-    background: white;
+    background: #635a88;
     padding: .5em .7em;
     margin: 0 .6em 0 0;
+    color: white;
     border-radius: 2em;
     height: initial;
     display: inline;
+play: inline;
 }
 
 .cat{

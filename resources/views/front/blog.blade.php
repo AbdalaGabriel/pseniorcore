@@ -19,6 +19,9 @@
 
 @section('main')
 
+<div class="blog-container">
+	
+
 @if($page->en_urlfriendly != "")
 	@section('language') 
 	  Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/en/{!!$page->en_urlfriendly!!}">EN</a></div>
@@ -29,26 +32,36 @@
 	
 
 	@foreach ($posts as $post)		    
-		<article class="postItem col-md-4">
-			<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">
-				<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
-				<span class="grid-date-container">{!!$post->created_at->format('Y-m-d')!!}</span>
-				<h2 class="post-title">{!!$post->title!!}</h2>
-			</a>
-			<?php 
+				<article class="blogItem col-md-4">
+
+					<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">
+						<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
+						
+					</a>
+					<span class="item-date">{!!$post->created_at->format('d/m/Y')!!}</span>
+					<h2 class="post-title">{!!$post->title!!}</h2>
+					<?php 
 						$postcategories = $post->categories ;
 				    ?>
 					<div class="cat">
 							
 								@foreach ($postcategories as $category)	
 									
-										<a class="#catOnPost" href="/{!!$page->urlfriendly!!}/cat/{!!$category->urlfriendly!!}">{!!$category->title!!}</a>
+										<a class="#catOnPost" href="/{!!$blog->urlfriendly!!}/cat/{!!$category->urlfriendly!!}">{!!$category->title!!}</a>
 									
 
 								@endforeach
 							</div>
-		</article>
+						
+					<div class="extract-container">
+						<p>{{ str_limit($post->extract , 230) }}...</p>
+					</div>
+					<div class="button-container-blog">
+						<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">Leer noticia</a>
+					</div>	
+				</article>
+				
 
-	@endforeach
-
+				@endforeach
+</div>
 @endsection
