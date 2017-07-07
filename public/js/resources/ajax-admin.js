@@ -25,7 +25,7 @@ function carga()
 		console.log(res);
 		$(res).each(function(key, value)
 		{
-			tablaDatos.append('<tr><td><img width:"30" height="30" src="/uploads/resources/'+value.cover_image+'"></td><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-post" data-id="'+value.id+'">Quick Edit</a></td> <td>'+value.urlfriendly+'</br> En: '+value.en_urlfriendly+'</td><td class="post-categories" data-id="'+value.id+'">-</td><td><a href="http://localhost:8000/admin/tutoriales-y-recursos/en/'+value.id+'/edit" data-id="'+value.id+'">Versión en inglés</a></td><td><td><a href="http://localhost:8000/admin/tutoriales-y-recursos/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-post" data-id="'+value.id+'">Eliminar</button></td></tr>');
+			tablaDatos.append('<tr><td><img width:"30" height="30" src="/uploads/resources/'+value.cover_image+'"></td><td>'+value.title+'<br/><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-post" data-id="'+value.id+'">Quick Edit</a></td> <td>'+value.urlfriendly+'</br> En: '+value.en_urlfriendly+'</td><td class="post-categories" data-id="'+value.id+'">-</td><td><a href="/admin/tutoriales-y-recursos/en/'+value.id+'/edit" data-id="'+value.id+'">Versión en inglés</a></td><td><td><a href="/admin/tutoriales-y-recursos/'+value.id+'/edit" data-id="'+value.id+'">Editar</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-post" data-id="'+value.id+'">Eliminar</button></td></tr>');
 			celdaCategorias = $(".post-categories[data-id='"+value.id+"']");
 
 			var categories = value.categories;
