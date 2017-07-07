@@ -25,7 +25,7 @@ class Admin
     {
         if (Auth::check())
         {
-           if($this->auth->user()->id == 5)
+           if($this->auth->user()->id == 5 || $this->auth->user()->id == 7  )
            {
              // significa que continua con la peticion hhttp original, es decir sigue curso.
              return $next($request);

@@ -16,8 +16,9 @@
 
 	<div class=".col-md-4 center adminBlock">
 		
-		<h1>Bievenido, {{ Auth::user()->name }}</h1>
+		<h1 class="welcomeusers">Bienvenido, <span class="user-logged-admin">{{ Auth::user()->name }}</span></h1>
 		
+		<h5 class="welcome-message-admin">Administre su web, suba y edite contenido y realice configuraciones, mediante las opciones del menú lateral </h3>
 	</div>
 
 
@@ -27,7 +28,6 @@
 
 	@section('aditional-scripts')
 	{!!Html::script('js/baseurl.js')!!}
-	{!! Html::script('js/users/ajax-admin.js') !!}
 	@endsection
 
 @endsection

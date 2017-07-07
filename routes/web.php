@@ -146,7 +146,7 @@ Route::resource('/admin/users', 'UserController');
 	Route::group(['middleware' => 'admin'], function() {
 
 	// ADMIN 
-	Route::get('/admin', 'FrontController@admin');
+	Route::get('/g/admin', 'FrontController@admin');
 
 	// Generador de Cadenas
 	Route::get('/admin/geturl', 'UrlEncoder@encode');

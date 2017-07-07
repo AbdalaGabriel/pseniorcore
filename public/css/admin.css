@@ -15,6 +15,16 @@
     cursor: pointer;
 }
 
+.admin .dropdown-menu{
+    right: 0;
+    left: inherit;
+    top: 2em;
+}
+
+.admin .dropdown-menu li a{
+    color: black;
+}
+
 .admin-logged-bar{
 	color: white;
     right: 0;
@@ -51,4 +61,16 @@ background: #fbfbfb;
     font-weight: 400;
     color: #565667;
     font-style: oblique;
+}
+
+.welcomeusers{
+        font-size: 2em;
+    text-align: center;
+}
+
+.user-logged-admin{
+    color: #b02752;
+}
+.welcome-message-admin{
+    text-align: center;
 }
