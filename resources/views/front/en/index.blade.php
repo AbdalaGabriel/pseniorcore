@@ -65,16 +65,16 @@
 		<div class="main ">
 			
 			<!--PORTFOLIO -->
-			<section class="g-section">
+			<section class="g-section portfolio">
 				<div class="section-container">
-					<h2>Works</h2>
+					<h2>{!!$portfolioBlock->value!!}</h2>
 					@foreach ($projects as $project)		    
 						<article class="postItem col-md-6">
 							<a href="/en/project/{!!$project->id!!}/{!!$project->en_urlfriendly!!}">
 								<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}"" alt="">
 								<h2 class="post-title">{!!$project->en_title!!}</h2>
 							</a>
-						</article>
+						
 						<?php 
 							$categories = $project->projectsCategories ;
 							?>
@@ -87,13 +87,14 @@
 
 								@endforeach
 							</div>
+							</article>
 					@endforeach
 				</div>
 			</section>
 
 			<!--BLOG -->
 			<section class="g-section">
-				<h2>Lattest news</h2>
+				<h2>{!!$blogBlock->value!!}</h2>
 				<div class="section-container">
 				@foreach ($posts as $post)		    
 				<article class="postItem col-md-6">

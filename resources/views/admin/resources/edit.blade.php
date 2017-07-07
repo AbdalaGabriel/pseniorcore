@@ -11,9 +11,9 @@
 <div class=".col-md-4 center adminBlock edition">
 
 
-	{!!  link_to_action('BlogController@index', '< Atras', $title = null, $parameters = [], $attributes = []); !!}
+	{!!  link_to_action('TutsAndResourcesController@index', '< Atras', $title = null, $parameters = [], $attributes = []); !!}
 
-	{!! Form::open(['url' => '/admin/blog/'.$finalObj->id, 'method'=>'PUT']) !!}
+	{!! Form::open(['url' => '/admin/tutoriales-y-recursos/'.$finalObj->id, 'method'=>'PUT']) !!}
 	
 	<div class="col-md-8">
 		

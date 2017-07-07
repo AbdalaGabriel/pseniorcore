@@ -7,7 +7,7 @@
 .adminTitle {
     background: #fdfdfd;
     color: #2b2b3c;
-    padding: .8em 2em;
+    padding: .35em 2em;
     margin: 0;
     font-weight: 500;
     text-align: left;
@@ -127,12 +127,13 @@
 }
 .adminButton{
     position: absolute;
-    top: .8em;
+    top: .3em;
     right: 2em;
     background: #b02752;
-    padding: 1em 2em;
+    padding: .7em 2em;
     color: white !important;
-    border-radius: 2em;
+    border-radius: .3em;
+    
 }
 
 .baseUrl{
@@ -1145,11 +1146,12 @@ overflow: hidden;
 
  .admin .sidebar .logo{
     position: relative;
-    padding: 15px 15px;
+    padding: 21px 15px;
     z-index: 4;
     letter-spacing: 2px;
     background: #b02752;
     font-weight: 100;
+
 }
 
 

@@ -63,7 +63,76 @@ class TutsAndResourcesController extends Controller
     public function englishedit($id, Request $request)
     {
         $resource = TutsAndResource::find($id);
-        return view('admin.resources.en.edit', ['post'=>$resource]);
+        $categories = $resource->categories;
+        $finalObj = $resource;
+
+        // IDs CATEGORIAS DE ESTE POST
+        // Accedo a los ids de las categorias que tiene este posteo y me los guardo en un array.
+        //Los tengo por separado para compararlos contra los ids de las demas categorias, y construir los checks.
+
+        $thisResourceCategoriesIds = array();
+        $index = 0;
+
+        foreach ($categories as $category) {
+
+            $thisResourceCategoriesIds[$index]["id"]=$category->id;
+            $thisResourceCategoriesIds[$index]["en_title"]=$category->title;
+             $index++;
+        }
+
+
+        //IDS GENERALES DE TODAS LAS CATEGORRIAS
+
+        $allcategories = TutsAndResourcesTag::all();
+        $allCategoriesIds = array();
+        $arrayLengthAllCats = count($allcategories);
+
+        for ($i=0; $i < $arrayLengthAllCats ; $i++) 
+        {
+            $allCategoriesIds[$i]["id"]=$allcategories[$i]["id"];
+            $allCategoriesIds[$i]["en_title"]=$allcategories[$i]["en_title"];
+        }
+
+        //var_dump($allCategoriesIds);
+        //COMPARACION ENTRE IDS DE ARRAYS, detecto cuales de los ids de la cat generales corresponden a las del post, si es asi creo un nuevo objeto que indique que de todas las categorias el post tiene esa.
+
+        $finalObjectCategoriesThisResource = array();
+        $index = 0;
+        $arrayLength = count($allCategoriesIds);
+
+        for ($i=0; $i < $arrayLength ; $i++) { 
+           
+            $thisIdCat = $allCategoriesIds[$i]['id'];
+            $search = array_search($thisIdCat, array_column($thisResourceCategoriesIds, 'id'));
+            
+            //comparo
+            if ($search !== false) // Usar distinto estrictamente, sino toma el 0 como false.
+            {
+                $finalObjectCategoriesThisResource[$i]['catid']=$thisIdCat;
+                $finalObjectCategoriesThisResource[$i]['belongstopost']=true;
+                $finalObjectCategoriesThisResource[$i]['en_title']=$allCategoriesIds[$i]["en_title"];
+            }
+            else
+            {
+                $finalObjectCategoriesThisResource[$i]['catid']=$thisIdCat;
+                $finalObjectCategoriesThisResource[$i]['belongstopost']=false;
+                $finalObjectCategoriesThisResource[$i]['en_title']=$allCategoriesIds[$i]["en_title"];
+            }
+            
+        }
+
+        // Contruyo mi objeto final que tiene los datos del post, y todas las categorias, mas a las que éste pertenece
+        $finalObj['categoryData'] = $finalObjectCategoriesThisResource;
+        
+       // var_dump($finalObj);
+        if ($request->ajax()) 
+        {
+            return response()->json($finalObj);
+        }
+        else
+        {
+            return view('admin.resources.en.edit', ['finalObj'=>$finalObj]);
+        };
     }
 
     public function englishupdate(Request $request, $id)
@@ -308,6 +377,7 @@ class TutsAndResourcesController extends Controller
         };
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -319,22 +389,35 @@ class TutsAndResourcesController extends Controller
     {
         if ($request->ajax())
         {
-            $resource = TutsAndResource::find($id);
+            $language = $request['language'];
+            $post = TutsAndResource::find($id);
             $editionMethod = $request['editionMethod'];
 
             // Pregunto si el metodo de edicion es quick edit o full
             // Edicion completa - pagina editar post
             if($editionMethod == "full")
             {
-                $resource->title = $request['title'];
-                $resource->content = $request['description'] ;
-                $resource->urlfriendly = $request['urlf'];
-                $resource->meta_description = $request['metadescription'] ;
-                $resource->extract = $request['extract'];
+                if($language == "en")
+                {
+                    $post->en_title = $request['title'];
+                    $post->en_content = $request['description'] ;
+                    $post->en_urlfriendly = $request['urlf'];
+                    $post->en_meta_description = $request['metadescription'] ;
+                    $post->en_extract = $request['extract'];
+
+                }else
+                {
+                    $post->title = $request['title'];
+                    $post->content = $request['description'] ;
+                    $post->urlfriendly = $request['urlf'];
+                    $post->meta_description = $request['metadescription'] ;
+                    $post->extract = $request['extract'];
+
+                }
+
                 $CategoriesIds = $request['categories'];
-
-
-                $resource->categories()->sync($CategoriesIds);
+                
+                $post->categories()->sync($CategoriesIds);
 
             }
            
@@ -343,7 +426,7 @@ class TutsAndResourcesController extends Controller
            
             {
                 $CategoriesIds =  $request['categoyData'];
-                $resource->title = $request['title'];
+                $post->title = $request['title'];
                 $arrayLength = count($CategoriesIds);
                 $allCategoriesIds = array();
 
@@ -356,36 +439,38 @@ class TutsAndResourcesController extends Controller
                     }
                 }
 
-                $resource->categories()->sync($allCategoriesIds);
+                $post->categories()->sync($allCategoriesIds);
            
             }
         
-            $resource->save();
+            $post->save();
 
             return response()->json([
-                "mensaje" =>'Proyecto editado satisfactoriamente'
+                "mensaje" =>'Proyecto editado satisfactoriamente',
+                "id"=> $id,
             ]);
         }
         else
         {
-            $resource = TutsAndResource::find($id);
-            $resource->title = $request['title'];
-            $resource->urlfriendly = $request['urlf'] ;
+            $post = TutsAndResource::find($id);
+            $post->title = $request['title'];
+            $post->urlfriendly = $request['urlf'] ;
+            $post->extract = $request['extract'];
             $CategoriesIds = Input::get('ch');
             $arrayLength = count($CategoriesIds);
             $allCategoriesIds = array();
 
             if($CategoriesIds != null)
             {
-                $resource->categories()->sync($CategoriesIds);
+                $post->categories()->sync($CategoriesIds);
             }else
             {
-                $resource->categories()->detach();
+                $post->categories()->detach();
             }
             
-            $resource->save();
+            $post->save();
 
-            return Redirect::to('/admin/blog');
+            return Redirect::to('/admin/resources');
         }
     }
 

@@ -33,7 +33,7 @@
 
 
 
-   <h2>Your media</h2>
+   <h2>Multimedia</h2>
 	<div id="mediaGrid"></div>
 
 	</div>

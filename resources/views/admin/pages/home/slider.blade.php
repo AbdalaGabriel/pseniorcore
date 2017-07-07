@@ -14,9 +14,9 @@
 		<h3>Slider</h3>
 		<div id="sliderContainer">
 		</div>
-		<a href="#" class="addSlide" data-toggle="modal" data-target="#newslidemodal" >+ Agregar slide</a>	
+		<a href="#" class="addSlide btn btn-primary btn-round" data-toggle="modal" data-target="#newslidemodal" >+ Agregar slide</a>	
 
-		<a href="#"  data-token="{{ csrf_token() }}" class="saveOrder">Guardar nuevo orden</a>	
+		<a href="#"  data-token="{{ csrf_token() }}" class="saveOrder btn btn-primary btn-round">Guardar nuevo orden</a>	
 	</div>
 
 	@section('aditional-scripts')

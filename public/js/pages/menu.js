@@ -33,17 +33,20 @@ function callmenu()
 			console.log(data);
 			$(data).each(function(key, value)
 			{
-				menucontainer.append('<tr data-task-order="'+value.order_in_menu+'" data-menuoption-status="'+value.visible_in_menu+'"  data-menuoption-id="'+value.id+'" class="row-menu"><td>'+value.title+'<div data-id-father="'+value.id+'" class="childspace"></div></td></tr>');
-
-				if(value.subpages != "n")
+				if(value.visible_in_menu == 1)
 				{
-					console.log(value.id + "-tiene hijos");
-					let children = value.subpages;
-					$(children).each(function(key, child)
+					menucontainer.append('<tr data-task-order="'+value.order_in_menu+'" data-menuoption-status="'+value.visible_in_menu+'"  data-menuoption-id="'+value.id+'" class="row-menu"><td>'+value.title+'<div data-id-father="'+value.id+'" class="childspace"></div></td></tr>');
+
+					if(value.subpages != "n")
 					{
-						$(".childspace[data-id-father='"+value.id+"']").append('<tr data-task-order="'+child.order_in_menu+'" data-menuoption-status="'+child.visible_in_menu+'"  data-menuoption-id="'+child.id+'" class="row-menu"><td>'+child.title+'<div data-id-father="'+child.id+'" class="childspace"></div></td></tr>');
-					});
-					
+						console.log(value.id + "-tiene hijos");
+						let children = value.subpages;
+						$(children).each(function(key, child)
+						{
+							$(".childspace[data-id-father='"+value.id+"']").append('<tr data-task-order="'+child.order_in_menu+'" data-menuoption-status="'+child.visible_in_menu+'"  data-menuoption-id="'+child.id+'" class="row-menu"><td>'+child.title+'<div data-id-father="'+child.id+'" class="childspace"></div></td></tr>');
+						});
+						
+					}
 				}
 			});
 

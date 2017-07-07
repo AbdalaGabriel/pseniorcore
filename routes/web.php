@@ -143,30 +143,21 @@ Route::resource('/admin/users', 'UserController');
 // ADMIN USUARIO
 // --------------------------------------------------------------------------------------- //
 
-// ADMIN 
-Route::get('/admin', 'FrontController@admin')->middleware('admin');
+	Route::group(['middleware' => 'admin'], function() {
+
+	// ADMIN 
+	Route::get('/admin', 'FrontController@admin');
 
 	// Generador de Cadenas
 	Route::get('/admin/geturl', 'UrlEncoder@encode');
+		
 
-	
+	Route::resource('/admin/paginas', 'PageController');
 
-Route::resource('/admin/paginas', 'PageController');
-	
-	Route::group(['middleware' => 'admin'], function() {
+	// PAGINAS
 
-
-
-
-
-
-
-
-
-	 // PAGINAS
-
-	  Route::get('/admin/menu', 'PageController@menu');
-	  Route::get('/admin/footer', 'PageController@footer');
+	Route::get('/admin/menu', 'PageController@menu');
+	Route::get('/admin/footer', 'PageController@footer');
 		
 		Route::resource('/admin/paginas/home/slider', 'SliderController');
 		// Home Slider

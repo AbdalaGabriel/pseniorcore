@@ -87,7 +87,7 @@
 		    -->
 			<div id="particles-js"></div>
 			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text">
+				<a href="/admin" class="simple-text">
 					Administrar sitio
 				</a>
 			</div>
@@ -148,7 +148,7 @@
 					
 						<ul>
 							<li>
-								    {!! link_to_action('TutsAndResourcesTagsController@index','Tags') !!}
+								    {!! link_to_action('TutsAndResourcesTagsController@index','Categorías') !!}
 								</a>
 							</li>
 						</ul>

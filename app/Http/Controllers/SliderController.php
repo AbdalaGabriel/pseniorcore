@@ -17,7 +17,9 @@ class SliderController extends Controller
     {
         if ($request->ajax()) 
         {
-            $slides = Slide::all();
+            $slides = DB::table('slides')
+                ->orderBy('order_slide', 'asc')
+                ->get();
             
             return response()->json($slides);
 

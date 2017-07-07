@@ -7,7 +7,9 @@
 
 @section('main')
 
-
+	<div class="hint">
+			<p>Utilice drag & drop para cambiar el orden y crear jerarquías.</p>
+		</div>
 	<div class=".col-md-4 center adminBlock">
 
 		

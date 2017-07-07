@@ -79,7 +79,7 @@
 			<!--PORTFOLIO -->
 			<section class="g-section portfolio">
 				<div class="section-container">
-					<h2>Trabajos</h2>
+					<h2>{!!$portfolioBlock->value!!}</h2>
 
 					@foreach ($projects as $project)		    
 						<article class="postItem col-md-6">
@@ -112,7 +112,7 @@
 
 			<!--BLOG -->
 			<section class="g-section">
-				<h2>Noticias y novedades</h2>
+				<h2>{!!$blogBlock->value!!}</h2>
 				<div class="section-container">
 				@foreach ($posts as $post)		    
 				<article class="blogItem col-md-6">

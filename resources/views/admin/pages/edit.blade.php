@@ -35,25 +35,30 @@
 	<h3>Configuraciones de página {!! $page->title !!}</h3>
 		
 	@foreach($configs as $config)
+
+
 				
-			{!!Form::label($config->reference,  $config->configname, ['class' => 'form-control']);!!}
+		
 
 			@if( $config->type == "t")
-				<div data-config-id="<?php echo $config->id ?>" data-type="t" class="configContainer">	
+				<div data-config-id="{!!$config->id!!}}" data-type="t" class="configContainer">	
+				{!!Form::label($config->reference,  $config->configname, ['class' => 'form-control']);!!}
 				{!!Form::text($config->reference, $config->value, ['class'=>'form-control textinput','placeholder'=>'Ingrese el valor solicitado']) !!}
 			
 			@elseif($config->type == "tf")
-				<div data-config-id="<?php echo $config->id ?>"  data-type="tf"  class="configContainer full">	
+				<div data-config-id="{!! $config->id !!}"  data-type="tf"  class="configContainer full">	
+				{!!Form::label($config->reference,  $config->configname, ['class' => 'form-control']);!!}
 				{!!Form::textarea($config->reference, $config->value, ['class'=>'form-control froala','placeholder'=>'Ingrese el valor solicitado']) !!}
 			
 			@elseif($config->type == "s")
-				<div data-config-id="<?php echo $config->id ?>"  data-type="s" class="configContainer">	
+				<div data-config-id="{!! $config->id !!}"  data-type="s" class="configContainer">
+				{!!Form::label($config->reference,  $config->configname, ['class' => 'form-control']);!!}	
 				<?php $options = explode(",", $config->options);?>
 				<div class="configOptionsContainer">
 			
 				@foreach($options as $option)
 			
-					<div data-config-id="<?php echo $config->id ?>"  data-type="s" class="configOptions">
+					<div data-config-id="{!! $config->id !!}"  data-type="s" class="configOptions">
 						{!!Form::label($config->configname, $option, ['class' => 'form-control']);!!}
 						@if($config->value == $option)
 							{!!Form::radio($config->reference, $option, true)!!}
