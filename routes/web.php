@@ -135,6 +135,7 @@ Route::resource('/admin/users', 'UserController');
 
     // BLOG
 	Route::get('/app/blog', 'BlogController@givemeposts');
+	Route::get('/app/resources', 'TutsAndResourcesController@givemeposts');
 	
 
 
