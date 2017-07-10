@@ -1,16 +1,5 @@
 @extends('front.bases.homebase')
 
-	<!-- Titulo de la pestaña -->
-	@section('mainTitle'){!!$page->title!!}@endsection
-
-	<!-- Metadescription-->
-	@section('metadescription'){!!$page->meta_description!!}@endsection
-	
-
-
-<body class="main">
-
-<!-- MENU -->	
 
 
 @section('language') 
@@ -191,4 +180,3 @@
 
 
 
-</html>
