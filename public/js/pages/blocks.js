@@ -313,12 +313,12 @@ function eventsMaster()
 	function listenToEvents()
 	{
 		// Hacer draggeable los contenedores
-		/*$(".content").sortable(
+		$(".internblock .content").sortable(
 		{
       		connectWith: ".content"
    		 });
 		console.log("- Drag and drop implemented");
-	*/
+
 		
 		// borrado de input texto
 		var deleteTextButton = $(".delete-text-input");

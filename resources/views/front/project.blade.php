@@ -27,8 +27,7 @@
 
 	<section class="g-section portfolio-body-section">
 		
-		<p>{!!$project->description!!}</p>
-
+		<div class="post-body long-text-container">
 
 <?php
 $jsonBlocks = json_decode($project->jsoneditdata, True); // true devuelve todos los objetos internos como array
@@ -105,7 +104,7 @@ for ($i=0; $i < $BlockNumbers ; $i++) {
 		}
 		}
 	?>
-
+	</div>	
 	</section>
 
 	<!-- SHARE EN REDES SOCIALES -->
