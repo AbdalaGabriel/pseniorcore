@@ -1,18 +1,6 @@
 @extends('front.en.bases.homebase')
 
-	<!-- Titulo de la pestaña -->
-	@section('mainTitle'){!!$page->title!!}@endsection
-
-	<!-- Metadescription-->
-	@section('metadescription'){!!$page->meta_description!!}@endsection
 	
-
-
-<body class="main">
-
-<!-- MENU -->	
-
-
 @section('language') 
 	Language: <a href="/">ES</a> - <a href="/en">EN</a></div>
 @endsection
@@ -166,4 +154,3 @@
 
 
 
-</html>
