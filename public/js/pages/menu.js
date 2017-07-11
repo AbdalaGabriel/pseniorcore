@@ -94,7 +94,7 @@ function detectEvents()
 				// Ejecuto Ajax enviando orden de poner null has_children en la bd
 				$.ajax(
 				{
-					url: baseurl+"paginas/changeorder/",
+					url: baseurl+"paginas/changeorder",
 					headers: {'X-CSRF-TOKEN': token},
 					type: 'POST',
 					dataType: 'json',
@@ -155,7 +155,7 @@ function detectEvents()
 			// Ejecuto Ajax enviando nuevo orden a la bd
 			$.ajax(
 			{
-				url: baseurl+"paginas/changeorder/",
+				url: baseurl+"paginas/changeorder",
 				headers: {'X-CSRF-TOKEN': token},
 				type: 'POST',
 				dataType: 'json',
@@ -173,7 +173,7 @@ function detectEvents()
 			let pageId = draggedObject.attr("data-menuoption-id");
 			$.ajax(
 				{
-					url: baseurl+"paginas/changeorder/",
+					url: baseurl+"paginas/changeorder",
 					headers: {'X-CSRF-TOKEN': token},
 					type: 'POST',
 					dataType: 'json',
@@ -191,7 +191,7 @@ function detectEvents()
 		// Ejecuto Ajax enviando nuevo orden a la bd
 		$.ajax(
 		{
-			url: baseurl+"paginas/changeorder/",
+			url: baseurl+"paginas/changeorder",
 			headers: {'X-CSRF-TOKEN': token},
 			type: 'POST',
 			dataType: 'json',
