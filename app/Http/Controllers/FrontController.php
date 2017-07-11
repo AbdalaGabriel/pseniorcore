@@ -39,8 +39,8 @@ class FrontController extends Controller
         $page = Page::where('urlfriendly', '/')->first();
         $portfolio = Page::where('reference', 'portfolio')->first();
         $blog = Page::where('reference', 'news')->first();
-        $projects = Project::with('projectsCategories')->take($portfolioQty)->get();
-        $posts = Post::with('categories')->take($blogQty)->get();
+        $projects = Project::with('projectsCategories')->take($portfolioQty)->orderBy('created_at', 'desc')->get();
+        $posts = Post::with('categories')->take($blogQty)->orderBy('created_at', 'desc')->get();
         $slides = DB::table('slides')
                 ->orderBy('order_slide', 'asc')
                 ->get();
@@ -155,14 +155,14 @@ class FrontController extends Controller
                     switch($pageReference)
                     {
                        case 'portfolio';
-                            $projects = Project::with('projectsCategories')->get();
+                            $projects = Project::with('projectsCategories')->orderBy('created_at', 'desc')->get();
                             $portfolio = Page::where('reference', 'portfolio')->first();
                             $categories = ProjectCategory::all();
                             return view('front.portfolio', ['projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories, 'portfolio'=>$portfolio ]);     
                        break;
 
                        case 'news'; 
-                            $posts = Post::with('categories')->get();
+                            $posts = Post::with('categories')->orderBy('created_at', 'desc')->get();
                             $blog = Page::where('reference', 'news')->first();
                             $categories = Category::all();
                             return view('front.blog', ['posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories, 'blog'=>$blog ]);   
@@ -215,13 +215,13 @@ class FrontController extends Controller
                 switch($pageReference)
                 {
                    case 'portfolio';
-                       $projects = Project::with('projectsCategories')->get();
+                       $projects = Project::with('projectsCategories')->orderBy('created_at', 'desc')->get();
                         $portfolio = Page::where('reference', 'portfolio')->first();
                         $categories = ProjectCategory::all();
                         return view('front.en.portfolio', ['projects'=>$projects, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories, 'portfolio'=>$portfolio ]);        
                    break;
                    case 'news'; 
-                   $posts = Post::with('categories')->get();
+                   $posts = Post::with('categories')->orderBy('created_at', 'desc')->get();
                         $blog = Page::where('reference', 'news')->first();
                         $categories = Category::all();
                         return view('front.en.blog', ['posts'=>$posts, 'page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock, 'categories'=>$categories, 'blog'=>$blog ]);    
