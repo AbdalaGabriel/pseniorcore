@@ -78,10 +78,12 @@
     color: black !important;
 }
 
-.g-recaptcha{
-    width: 392px;
+.g-recaptcha {
+    width: 300px;
     height: 78px;
     margin: 0 auto;
+    /* display: inline; */
+    text-align: center;
 }
 
 .register-section{
@@ -256,16 +258,17 @@ nav li{
 }
 
 
-.intern  label{
-
+.intern label {
     text-transform: uppercase !important;
-    color: #b5a3a3 !important;
+    color: #080808 !important;
+    font-weight: bold;
     background-image: none !important;
+    margin: 0;
 }
 
 .intern .form-group {
     padding-bottom: 7px;
-    margin: 0;
+    margin: 0 0 1em 0;
     font-weight: 500;
 }
 
@@ -1156,9 +1159,16 @@ overflow: hidden;
 
 
 textarea.form-control {
-    height: auto;
-    padding: 1em;
+        height: auto;
+    padding: 1em 0;
     background: white;
+    font-style: italic;
+}
+
+#sendForm{
+    display: block;
+    width: 13em;
+    margin: 6em auto 0;
 }
 
 .urlFContainer{
