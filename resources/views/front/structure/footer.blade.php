@@ -45,7 +45,7 @@
 
 		<div class="footer-box contact-me">
 			<h3 class="footer-title">Data fiscal</h3>
-			
+			<p class="pfooter">En tramite</p>
 		
 
 		</div>

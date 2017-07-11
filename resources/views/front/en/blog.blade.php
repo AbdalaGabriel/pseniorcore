@@ -10,7 +10,7 @@
 {!!$page->en_title!!}
 <div class="categories-container">	
 		@foreach ($categories as $category)		    
-		<a href="/{!!$page->en_urlfriendly!!}/cat/{!!$category->en_itle!!}" class="categorytag">
+		<a href="/{!!$page->en_urlfriendly!!}/cat/{!!$category->en_urlfriendly!!}" class="categorytag">
 			{!!$category->en_title!!}
 		</a>
 		@endforeach

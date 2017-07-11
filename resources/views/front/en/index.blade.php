@@ -118,22 +118,22 @@
 			</section>
 			<section class="g-section register-section">
 				<div class="section-container">
-					<h2>Free Register as user</h2>
+					<h2>Free user registration</h2>
 					
 					<div class="organizer-description-wp col-md-6">
-						<h4>Accedé gratuitamente a un sencillo organizador de tareas, para trabajar juntos o simplemente ordenar sus quehaceres cotidianos</h3>
+						<h4>Free access to a simple task organizer, to work together or simply organize your daily tasks</h3>
 						<div class="register-buttons-container">	
-								<a href="/register" class="action-button register-me">Registrarme como usuario</a>
-								<a class="action-button login-button " href="/login">Iniciar sesión</a>
+								<a href="/register" class="action-button register-me">Register</a>
+								<a class="action-button login-button " href="/login">Login</a>
 						</div>
 							<div class="benefits">	
 						<ul>	
-								<li>- Acceso gratuito al organizador</li>
-								<li>- Posibilidad de administrar mas de un proyecto al mismo tiempo</li>
-								<li>- Cree diferentes fases o grupos de tareas por proyectos</li>
-								<li>- Acceso a la app, siga de cerca sus to-do´s y noticas desde su smartphone</li>
-								<li>- Se notificado de nuevas interacciones</li>
-								<li>- Comentarios por cada tarjeta de tarea</li>
+								<li>Free access to organizer</li>
+								<li>Multiproject management</li>
+								<li>Create different phases or groups of tasks by projects</li>
+								<li>Handling comments for each task card</li>
+								<li>Access to the app, monitor your to-do's, news and resources and tutorials from your smartphone</li>
+								<li>Be notified of new interactions in your assignments and new uploaded materials</li>
 						</ul>
 					</div>
 					</div>

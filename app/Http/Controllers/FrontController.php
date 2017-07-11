@@ -74,10 +74,10 @@ class FrontController extends Controller
         $slides = DB::table('slides')
                 ->orderBy('order_slide', 'asc')
                 ->get();
-        $pagesBlock = Config::where('reference', "footer_pagesblock_es")->first();
-        $contactBlock = Config::where('reference', "footer_contactme_es")->first();
-        $postsBlock = Config::where('reference', "footer_readmore_es")->first();
-        $shareBlock = Config::where('reference', "footer_followme_es")->first();
+        $pagesBlock = Config::where('reference', "footer_pagesblock_en")->first();
+        $contactBlock = Config::where('reference', "footer_contactme_en")->first();
+        $postsBlock = Config::where('reference', "footer_readmore_en")->first();
+        $shareBlock = Config::where('reference', "footer_followme_en")->first();
 
         $portfolioBlock = Config::where('reference', "en_portfoliotitle")->first();
         $blogBlock = Config::where('reference', "en_blogtitle")->first();

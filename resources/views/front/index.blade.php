@@ -147,19 +147,20 @@
 					<h2>Registrate como usuario</h2>
 					
 					<div class="organizer-description-wp col-md-6">
-						<h4>Accedé gratuitamente a un sencillo organizador de tareas, para trabajar juntos o simplemente ordenar sus quehaceres cotidianos</h3>
+						<h4>Accedé gratuitamente a un sencillo organizador de tareas, para trabajar juntos o simplemente ordenar tus tareas cotidianas</h3>
 						<div class="register-buttons-container">	
 								<a href="/register" class="action-button register-me">Registrarme como usuario</a>
 								<a class="action-button login-button " href="/login">Iniciar sesión</a>
 						</div>
 							<div class="benefits">	
 						<ul>	
-								<li>- Acceso gratuito al organizador</li>
-								<li>- Posibilidad de administrar mas de un proyecto al mismo tiempo</li>
-								<li>- Cree diferentes fases o grupos de tareas por proyectos</li>
-								<li>- Acceso a la app, siga de cerca sus to-do´s y noticas desde su smartphone</li>
-								<li>- Se notificado de nuevas interacciones</li>
-								<li>- Comentarios por cada tarjeta de tarea</li>
+								<li>Acceso <span class="featured-front">gratuito</span> al organizador</li>
+								<li>Administración multi-proyecto</li>
+								<li>Cree diferentes fases o grupos de tareas por proyectos</li>
+								<li>Manejo de comentarios por cada tarjeta de tarea</li>
+								<li>Acceso a la app, siga de cerca sus to-do´s, noticas y recursos y tutoriales desde su smartphone</li>
+								<li>Sea notificado de nuevas interacciones en sus tareas y nuevos materiales subidos</li>
+								
 						</ul>
 					</div>
 					</div>

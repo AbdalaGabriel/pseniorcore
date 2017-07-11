@@ -102,6 +102,7 @@ $('a[href*="#"]')
 		//console.log("init function fillmenu");
 		var token = $("#token").val();
 		var menucontainer = $("#main-menu");
+		var footerpages = $(".footer-pages");
 
 		// Llenado de tabla en base a paginas en la base de datos.
 		$.ajax(
@@ -122,12 +123,13 @@ $('a[href*="#"]')
 					{
 						if(value.en_urlfriendly != "/")
 						{
-							menucontainer.append('<li><a id="option-'+value.id+'" href="/en/'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
-
+							menucontainer.append('<li><a id="option-'+value.id+'" href="/'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
+							footerpages.append('<li><a class="footer-a-li-page" id="foption-'+value.id+'" href="/'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
 						}
 						else
 						{
-							menucontainer.append('<li><a id="option-'+value.id+'" href="/en/'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
+							menucontainer.append('<li><a id="option-'+value.id+'" href="'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
+							footerpages.append('<li><a class="footer-a-li-page" id="foption-'+value.id+'" href="'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
 						}
 						if(value.subpages != "n")
 						{
@@ -136,9 +138,16 @@ $('a[href*="#"]')
 							let children = value.subpages;
 							$("#option-"+value.id).parent("li").append('<span data-show="submenu-'+value.id+'" class="sub-lgt">('+subLength+')<span class="arrowsee">></span><span>');
 							$("#option-"+value.id).append('<ul id="submenu-'+value.id+'" class="suboptionscontainer"></ul>');
+
+							
+							$("#foption-"+value.id).append('<ul id="submenu-'+value.id+'" class="fsuboptionscontainer"></ul>');
+
+
 							$(children).each(function(key, child)
 							{
-								$("#option-"+value.id+" .suboptionscontainer").append('<li><a id="option-'+child.id+'" href="/'+child.en_urlfriendly+'">'+child.en_title+'</a></li>');
+								$("#option-"+value.id+" .suboptionscontainer").append('<li><a id="option-'+child.id+'" href="/'+child.urlfriendly+'">'+child.title+'</a></li>');
+								$("#foption-"+value.id+" .fsuboptionscontainer").append('<li><a class="footer-a-page" id="foption-'+child.id+'" href="/'+child.urlfriendly+'">'+child.title+'</a></li>');
+
 							});
 							
 						}
