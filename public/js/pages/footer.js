@@ -48,8 +48,9 @@ function initfooter()
 	{
 		console.log("-click");
 		console.log("- Envio final de información");
-	
-		var routeEdit = baseurl+'admin/editconfs/';
+	//Se debe quitar la barra de la ultima palabra de la url, porque en alfunos servers se rompe
+	//mas info: https://blog.elporfirio.com/solucion-error-405-method-not-allowed-laravel-5-en-peticion-ajax/
+		var routeEdit = baseurl+'admin/editconfs';
 		var configsst = JSON.stringify(configsObject)
 		var token = $("#token").val();
 

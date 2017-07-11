@@ -28,7 +28,7 @@
 	  @endsection
 	@endif
 
-<section class="section-container">
+<section class="section-container ">
 	
 
 	@foreach ($posts as $post)		    

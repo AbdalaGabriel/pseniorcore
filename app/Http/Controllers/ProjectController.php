@@ -78,7 +78,7 @@ public function front($id,  $urflf)
 
 }
 
-public function englishversion($id, $title)
+public function englishversion($id, $urflf)
 {
     $project = Project::find($id);
 
