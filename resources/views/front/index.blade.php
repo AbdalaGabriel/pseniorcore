@@ -1,6 +1,6 @@
 @extends('front.bases.homebase')
 
-
+@section('mainTitle') Gabriel Abdala - Diseñador Multimedial @endsection
 
 @section('language') 
 	Idioma: <a href="/"">ES</a> - <a href="/en">EN</a></div>

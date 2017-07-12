@@ -139,6 +139,7 @@ Route::resource('/admin/users', 'UserController');
 
 
 
+Route::resource('/admin/paginas', 'PageController');
 
 // ADMIN USUARIO
 // --------------------------------------------------------------------------------------- //
@@ -152,8 +153,7 @@ Route::resource('/admin/users', 'UserController');
 	Route::get('/admin/geturl', 'UrlEncoder@encode');
 		
 
-	Route::resource('/admin/paginas', 'PageController');
-
+	
 	// PAGINAS
 
 	Route::get('/admin/menu', 'PageController@menu');
