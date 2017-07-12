@@ -65,7 +65,7 @@
 				
 				{!!Form::label('consulta', 'Message', ['class' => 'form-control'])!!}
 			
-			{!!Form::textarea('consulta', null, ['id'=>'new-meta-content', 'class'=>'form-control','placeholder'=>'Que desea consultarme ']) !!}
+			{!!Form::textarea('consulta', null, ['id'=>'new-meta-content', 'class'=>'form-control','placeholder'=>'At your service, ']) !!}
 
 
 			@else

@@ -42,7 +42,22 @@
 						</li>
 						@foreach ($slides as $slide)	
 						<li style="background-image:url(/uploads/sliderhome/{!!$slide->path!!})">
-							<h1 class="slide-title">{!!$slide->en_title!!}</h1><h2  class="slide-subtitle">{!!$slide->en_subtitle!!}</h2></li>
+							<div class="data-slide-container">
+								<h1 class="slide-title">{!!$slide->en_title!!}</h1>
+								<h2  class="slide-subtitle">{!!$slide->en_subtitle!!}</h2>
+							
+								@if ($slide->has_link == 1)
+								<a href="/{!!$slide->buttonLink!!}" class="slideButton">
+									Take me there!
+								</a>
+								@endif
+								
+							</div>
+							
+							
+							</li>
+						
+
 							@endforeach
 						</ul>
 					</div>
@@ -78,6 +93,9 @@
 							</article>
 					@endforeach
 				</div>
+				<a href="en/portfolio" class="action-button">
+					Show me all!
+				</a>
 			</section>
 
 			<!--BLOG -->
@@ -85,16 +103,17 @@
 				<h2>{!!$blogBlock->value!!}</h2>
 				<div class="section-container">
 				@foreach ($posts as $post)		    
-				<article class="postItem col-md-6">
+				<article class="blogItem col-md-6">
 
 					<a href="/en/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">
 						<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
-						<h2 class="post-title">{!!$post->en_title!!}</h2>
+						
 					</a>
+					<span class="item-date">{!!$post->created_at->format('d/m/Y')!!}</span>
+					<h2 class="post-title">{!!$post->en_title!!}</h2>
 					<?php 
 						$postcategories = $post->categories ;
 				    ?>
-				    <span class="item-date">{!!$post->created_at->format('d/m/Y')!!}</span>
 					<div class="cat">
 							
 								@foreach ($postcategories as $category)	
@@ -109,12 +128,17 @@
 						<p>{{ str_limit($post->en_extract , 230) }}...</p>
 					</div>
 					<div class="button-container-blog">
-						<a href="/en/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">Leer noticia</a>
+						<a href="/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">Read more</a>
 					</div>	
 				</article>
+				
 
 				@endforeach
+				
 				</div>
+				<a href="/blog" class="action-button">
+					Go to Blog
+				</a>
 			</section>
 			<section class="g-section register-section">
 				<div class="section-container">

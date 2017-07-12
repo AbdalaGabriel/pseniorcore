@@ -1810,7 +1810,9 @@ play: inline;
     color: gray;
 }
 
-
+.footer-links{
+      display: block;
+}
 
 
 

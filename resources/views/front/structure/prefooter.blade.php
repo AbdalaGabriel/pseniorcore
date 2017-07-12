@@ -19,7 +19,7 @@
 				</a>
 			</div>
 
-				<div   class="section-container  col-md-4 news">
+				<div id="newsletterWp"   class="section-container  col-md-4 news">
 					<!-- Begin MailChimp Signup Form -->
 					<h2>Suscribete al newsletter!</h2>
 					<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">

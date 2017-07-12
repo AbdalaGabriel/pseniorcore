@@ -2,7 +2,7 @@
 
 	<div class="engagement-container">	
 		<h2>¿Listo para que iniciemos un proyecto juntos?</h2>
-		<a href="/contactame" class="contact">Pogámonos en contacto</a>
+		<a href="/contacto" class="contact">Pongámonos en contacto</a>
 	</div>
 
 
@@ -27,18 +27,24 @@
 
 		<div class="footer-box contact-me">
 			<h3 class="footer-title">{!!$postsBlock->value!!}</h3>
-			
-			<a href="#">Registrarme en el newsletter</a>
-			<a href="#">Registrarme como usuario</a>
-			<a href="#">Login</a>
-
+			@if (Auth::guest())
+				<a class="footer-links" href="#newsletterWp">Registrarme en el newsletter</a>
+				<a class="footer-links" href="/register">Registrarme como usuario</a>
+				<a class="footer-links" href="/login">Login</a>
+			@else
+				
+				<a class="footer-links" target="_blank" href="/organizer/{!!Auth::user()->id!!}">Mi organizador</a>
+				<a target="_blank" class="footer-links" href="http://twitter.us14.list-manage.com/unsubscribe?u=21939b15fd9aeae487bd56ef1&id=a5ecdc5c4a">Desuscribirme del newsletter</a>
+				<!--<a class="footer-links" href="/register">Panel de usuario</a>-->
+				<a class="footer-links" href="/logout">Logout</a>
+			@endif
 		</div>
 
 		<div class="footer-box social-icons-container">
 			<h3 class="footer-title">{!!$shareBlock->value!!}</h3>
-			<i class="fa fa-instagram" aria-hidden="true"></i>
-			<i class="fa fa-behance" aria-hidden="true"></i>
-			<i class="fa fa-linkedin" aria-hidden="true"></i>
+			<a class="footer-social-links" target="_blank" href="https://www.instagram.com/gaabiabdala_3d/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+			<a class="footer-social-links" target="_blank" href="https://www.behance.net/gabdala"><i class="fa fa-behance" aria-hidden="true"></i></a>
+			<a class="footer-social-links" target="_blank" href="https://www.linkedin.com/in/gabrielabdala/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 
 		</div>
 
