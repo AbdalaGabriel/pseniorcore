@@ -2,6 +2,7 @@
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link rel="alternate" hreflang="es" href="http://gabrielabdala.com" />
 	
 	<!--  Metadescription -->
 	<meta name="description" content="@yield('metadescription')"/>
