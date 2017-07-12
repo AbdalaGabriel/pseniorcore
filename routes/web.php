@@ -30,7 +30,6 @@ Route::get('/mail', function () {
     return view('front.contactme');
 });
 
-	Route::group(['middleware' => 'stagin'], function() {
 
 
 	// HOME
@@ -112,7 +111,7 @@ Route::get('/mail', function () {
 		Route::post('/mis-proyectos/restorecards', 'CardProjectController@restore');
 
 
-});
+
 
 /* --------------------------------------------------------------------------------------- */
 /////////////////////////////////////////////////////////////////////////////////////////////
