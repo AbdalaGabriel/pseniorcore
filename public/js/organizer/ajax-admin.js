@@ -104,7 +104,7 @@ function defineListerner()
 	{
 		console.log( "- Inicio click listener: DELETE" );
 		idDeleteButton = $(this).attr("data-id");
-		deleteroute = baseurl+"mis-proyectos/delete/";
+		deleteroute = baseurl+"mis-proyectos/delete";
 		token = $("#token").val();
 		
 		$("#confirmate-delete").click(function()
@@ -131,7 +131,7 @@ function defineListerner()
 	$(".create-new").click(function()
 	{
 		console.log( "- Inicio click listener: CREATE" );
-		route = baseurl+"mis-proyectos/";
+		route = baseurl+"mis-proyectos";
 		token = $("#token").val();
 
 		$("#confirm-create-clientproject").click(function()
