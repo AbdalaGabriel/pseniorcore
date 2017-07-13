@@ -246,7 +246,7 @@ class BlogController extends Controller
        $image = $request->file('file');
        
        //Seteo variables de path y nombre.(ruta actualizada para produccion.sale dos directorios)
-       $path = '\uploads\posts';
+       $path = public_path().'\uploads\posts';
        $imageName=$image->getClientOriginalName() ;
 
        

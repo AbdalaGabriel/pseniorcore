@@ -116,7 +116,7 @@ public function uploadimage(Request $request)
 // Obtngo datos via request.
     $image = $request->file('file');
 //Seteo variables de path y nombre.
-    $path = '\uploads\projects';
+    $path = public_path().'\uploads\projects';
     $imageName=$image->getClientOriginalName() ;
 
 
