@@ -74,3 +74,28 @@ background: #fbfbfb;
 .welcome-message-admin{
     text-align: center;
 }
+
+.slideImage{
+    float: left;
+    position: relative;
+    cursor: pointer;
+}
+
+.slideEidt{
+    position: absolute;
+    top: 1em;
+    right: 4em;
+    color: white !important;
+    font-weight: 100;
+}
+
+.slideDelete{
+    position: absolute;
+    top: .8em;
+    right: 1.1em;
+    font-weight: 700;
+    border: 1px solid;
+    padding: .1em 0.5em;
+    border-radius: 10em;
+    line-height: 20px;
+}

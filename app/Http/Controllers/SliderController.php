@@ -98,7 +98,7 @@ class SliderController extends Controller
         $image = $request->file('file');
 
         //Seteo variables de path y nombre.
-        $path = public_path().'\uploads\sliderhome';
+        $path = public_path().'/uploads/sliderhome';
         $imageName=$image->getClientOriginalName() ;
         $finalImageName =  time().$imageName;
 

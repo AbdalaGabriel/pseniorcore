@@ -243,7 +243,7 @@ class TutsAndResourcesController extends Controller
        $image = $request->file('file');
        
        //Seteo variables de path y nombre.
-       $path = public_path().'\uploads\resources';
+       $path = public_path().'/uploads/resources';
        $imageName=$image->getClientOriginalName() ;
 
        
