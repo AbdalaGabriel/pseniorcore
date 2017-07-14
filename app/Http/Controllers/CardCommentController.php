@@ -46,10 +46,8 @@ class CardCommentController extends Controller
            'user_name' => $user->name,
 
            ]);
-
-        return response()->json([
-            "mensaje"=>"creado"
-            ]);
+        $ultimoComment = DB::table('card_comments')->latest()->first();
+        return response()->json($ultimoComment);
 
     }
 

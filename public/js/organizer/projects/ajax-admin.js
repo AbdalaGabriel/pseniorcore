@@ -589,6 +589,19 @@ function eventsForCards(){
 						success: function(data){
 							console.log("sucess");
 
+							let thisComment = data;
+							let comment = thisComment.comment;
+							let userComment = thisComment.user_name;
+						 	let userCommentId = thisComment.user_id;
+						 	let commentId = thisComment.id;
+
+						 	let htmlForAppend = '<div data-comment-id="'+commentId+'" class="commentContainer">';
+						 	htmlForAppend += '<p class="comment">'+comment+'</p>';
+						 	htmlForAppend += '<span class="author-comment">'+userComment+'</span>';
+						 	htmlForAppend += '</div>';
+
+						 	commentsContainer.append(htmlForAppend);
+
 						}
 
 					});
