@@ -8,7 +8,7 @@
 
       </div>
       <div class="modal-body">
-        
+        <h4>Descripción de la tarea: </h4>
         <h6 id="card-description"></h6>
         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
         <input type="hidden" id="idCard">
@@ -19,15 +19,15 @@
 
         </div>
 
-        <div id="addComentToCard">
-          <input type="text" id="newComment" placeholder="Ingrese su comentario">
-          <button id="sendComment">Enviar</button>
-        </div>
+       
 
         
       </div>
       <div class="modal-footer">
-        {!!link_to('#', $title='Confirmar', $attributes = ['id'=>'confirmate-delete-phase', 'class'=>'btn btn-primary', 'data-dismiss'=>'modal'], $secure = null)!!}
+        <div id="addComentToCard">
+          <input type="text" id="newComment" placeholder="Ingrese su comentario">
+          <button id="sendComment">Enviar</button>
+        </div>
       </div>
     </div>
   </div>
