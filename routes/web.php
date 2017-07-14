@@ -110,6 +110,8 @@ Route::get('/mail', function () {
 
 		Route::post('/mis-proyectos/restorecards', 'CardProjectController@restore');
 
+		 Route::post('web/{userid?}/task/{taskid?}/{comment?}', 'CardCommentController@webMakeComment');
+
 
 
 

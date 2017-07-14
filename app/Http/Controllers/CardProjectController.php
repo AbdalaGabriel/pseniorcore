@@ -109,7 +109,9 @@ class CardProjectController extends Controller
 }
 
 public function givemetask(Request $request){
-    $task = CardProject::find($request["id"]);
+    //$task = CardProject::find($request["id"]);
+
+    $task = CardProject::with('comments')->where('id', $request["id"])->get();
     return response()->json($task);
 }
 

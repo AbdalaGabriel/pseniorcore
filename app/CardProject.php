@@ -17,4 +17,8 @@ class CardProject extends Model
     public function phases(){
     	return $this->belongsTo('App\Phase');
     }
+
+    public function comments(){
+    	return $this->hasMany('App\CardComment');
+    }
 }

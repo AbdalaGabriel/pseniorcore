@@ -21,10 +21,29 @@ class CardCommentController extends Controller
 
     public function appMakeComment(Request $request, $userid, $taskid, $comment)
     {
+        $user = User::find($userid);
         $comment = CardComment::create([
            'comment' => $comment,
            'user_id' => $userid,
            'card_project_id' => $taskid,
+           'user_name' => $user->name,
+
+           ]);
+
+        return response()->json([
+            "mensaje"=>"creado"
+            ]);
+
+    }
+
+     public function webMakeComment(Request $request, $userid, $taskid, $comment)
+    {
+        $user = User::find($userid);
+        $comment = CardComment::create([
+           'comment' => $comment,
+           'user_id' => $userid,
+           'card_project_id' => $taskid,
+           'user_name' => $user->name,
 
            ]);
 

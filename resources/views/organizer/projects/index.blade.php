@@ -54,7 +54,7 @@
 
 <input id="projectId" type="hidden" name="" value="{!! $project->id !!}">
 
-
+<input id="userID" type="hidden" value="{!! $project->user_id !!}" name="">
 
 <input id="phaseId" type="hidden" value="{!! $actualphase->id !!}" name="">
 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">

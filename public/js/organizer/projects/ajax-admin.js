@@ -6,8 +6,10 @@ $( document ).ready(function()
 	todos = $("#todo-column");
 	inprogress = $("#inprogress-column");
 	done = $("#done-column");
+	token = $("#token").val();
 	interaction();
 	otherfunctions();
+
 
 });
 
@@ -36,7 +38,7 @@ function interaction()
 			var elementId = element.attr("data-id");
 			var elementType = element.attr("data-type");
 			var elementDOMType = element.attr("data-element-type");
-			token = $("#token").val();
+			
 			$.ajax(
 			{
 				url: baseurl+urltomodify,
@@ -513,10 +515,20 @@ function eventsForCards(){
 
 
 	$(".task-container").click(function(){
-		//console.log("Click en tarjeta");
+		console.log("Click en tarjeta");
 		var estaTarjeta = $(this);
 		var idTarjeta = estaTarjeta.attr("data-task-id");
-		//console.log(idTarjeta);
+
+		let cardTitle = $("#card-title");
+		let cardDescription = $("#card-description");
+		let commentsContainer = $("#cardComments");
+
+		cardTitle.empty();
+		cardDescription.empty();
+		commentsContainer.empty();
+
+		console.log(idTarjeta);
+		
 		$.ajax(
 		{
 			url: baseurl+"task/givemeinfo",
@@ -526,13 +538,66 @@ function eventsForCards(){
 			data: {id: idTarjeta},
 
 			success: function(data){
-				//console.log("Mostrando info de tarjeta");
-				//console.log(data);
-				$("#card-title").val(data.title);
-				$("#card-title").attr("data-id", data.id);
-				$("#card-description").text(data.description);
+				
+				console.log("Mostrando info de tarjeta");
+				console.log(data[0]);
+				let thisObjectCard = data[0];
+				cardTitle.val(thisObjectCard.title);
+				cardTitle.attr("data-id", thisObjectCard.id);
+				cardDescription.text(thisObjectCard.description);
+
+				let dataLength = thisObjectCard.comments.length;
+
+				for (i = 0; i < dataLength; i++)
+				{
+					let thisComment = thisObjectCard.comments[i];
+					let comment = thisComment.comment;
+					let userComment = thisComment.user_name;
+				 	let userCommentId = thisComment.user_id;
+				 	let commentId = thisComment.id;
+
+				 	let htmlForAppend = '<div data-comment-id="'+commentId+'" class="commentContainer">';
+				 	htmlForAppend += '<p class="comment">'+comment+'</p>';
+				 	htmlForAppend += '<span class="author-comment">'+userComment+'</span>';
+				 	htmlForAppend += '</div>';
+
+				 	commentsContainer.append(htmlForAppend);
+				}
 
 			}
 		});
+
+		 $("#sendComment").off();
+    
+		$("#sendComment").click(function()
+		    {
+		        console.log("Click en enviar comentario");
+		        newComment = $("#newComment").val();
+		        if(newComment != ""){
+		            console.log("- Enviar comentario");
+		            userID = $("#userID").val();
+		            comentRoute = baseurl+"web/"+userID+"/task/"+idTarjeta+"/"+newComment;
+		            console.log(comentRoute);
+		            $.ajax(
+					{
+						url: comentRoute,
+						headers: {'X-CSRF-TOKEN': token},
+						type: 'POST',
+						dataType: 'json',
+
+
+						success: function(data){
+							console.log("sucess");
+
+						}
+
+					});
+		        }
+		        else
+		        {
+		            //console.log("- Comentario vacio, no se envia nada");
+		        }
+		    });
+
 	}); 
 }

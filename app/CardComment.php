@@ -8,7 +8,7 @@ class CardComment extends Model
 {
    	
    	protected $fillable = [
-        'comment', 'card_project_id', 'status', 'user_id'
+        'comment', 'card_project_id', 'status', 'user_id', 'user_name'
     ];
 
     public function projects(){
