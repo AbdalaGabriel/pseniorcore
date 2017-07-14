@@ -328,7 +328,7 @@ function updatecards()
 					//console.log(columnForAppend);
 					for(i=0;i<largoTarjetas;i++)
 					{
-						columnForAppend.append('<div  data-toggle="modal" data-target="#card-detail" class="task-container" data-task-order="'+data[i].task_order+'" data-task-status="'+data[i].status+'" data-task-id="'+data[i].id+'"><span data-status="4" data-id="'+data[i].id+'" class="hidecard">O</span><a href="#">'+data[i].title+'</a>'+data[i].description+'<p></p></div>');		
+						columnForAppend.append('<div  data-toggle="modal" data-target="#card-detail" class="task-container" data-task-order="'+data[i].task_order+'" data-task-status="'+data[i].status+'" data-task-id="'+data[i].id+'"><span data-status="4" data-id="'+data[i].id+'" class="hidecard">O</span><span  data-id="'+data[i].id+'" class="deleteCard">x</span><a href="#">'+data[i].title+'</a>'+data[i].description+'<p></p></div>');		
 					}
 
 

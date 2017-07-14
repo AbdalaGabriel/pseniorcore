@@ -295,6 +295,23 @@ table tbody td{
     margin: .5em 0;
 }
 
+.deleteCard  {  top: 2em;
+    position: absolute;
+    right: 0;
+    background: #c10e4c;
+    padding: .2em .6em;
+    display: block;
+    cursor: pointer;
+    border-radius: 1em;
+    z-index: 100;
+    /* display: none; */
+    color: white;
+}
+
+.action-buttons-organizer{
+    overflow: hidden;
+}
+
 #createPhase{
     z-index: 3000;
 }
@@ -304,6 +321,12 @@ table tbody td{
     font-weight: bold;
 }
 
+.papelera-area{
+    float: right;
+    width: 5em;
+    height: 5em;
+    background: #e0dbdb;
+}
 
 #card-description{
     font-size: 1.2em;
