@@ -64,12 +64,12 @@
 
 <a id="new-task" data-toggle="modal" data-target="#create-task" href="#" class="addcard todo">+</a>
 
-<div class="action-buttons-organizer">
+<!--<div class="action-buttons-organizer">
 	<div class="papelera-area">
 		p
 	</div>
 </div>
-
+-->
 <div class="columns-container">
 
 	<div class="task-title">TODO</div>

@@ -31,6 +31,12 @@
 	@section('aditional-scripts')
 	{!!Html::script('js/baseurl.js')!!}
 	{!! Html::script('js/organizer/ajax-admin.js') !!}
+
+	<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
 	@endsection
 
 @endsection

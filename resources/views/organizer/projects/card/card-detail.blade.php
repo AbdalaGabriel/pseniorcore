@@ -7,6 +7,32 @@
         <input id="card-title" data-type="title" data-url="task/quickmodify" data-id="" title="Editar titulo de la tarea" class="inputOff" type="text" id="projectName" value="-" data-element-type="card">
 
       </div>
+      <div class="action-card-buttons-container">
+        <div class="hideThisCardContainer">
+             <span  data-toggle="tooltip" title="Ocultar esta tarjeta"  data-id="" class="hidecard">Ocultar</span>
+             <div  class="conf-hide confirmate-action ">
+            <span class="titleConfir">
+              ¿Confirmar accion?
+            </span>
+            <span class="button-confirmate confirmate">Si</span>
+            <span class="button-confirmate no-confirmate">No</span>
+          </div>
+        </div>
+        
+
+        <div class="deleteThisCardContainer">
+        <span   data-toggle="tooltip" title="Eliminar permanentemente" data-id="" class="deleteCard">Eliminar </span>
+          <div  class="conf-delete confirmate-action ">
+            <span class="titleConfir">
+              ¿Confirmar accion?
+            </span>
+            <span class="button-confirmate confirmate">Si</span>
+            <span class="button-confirmate no-confirmate">No</span>
+          </div>
+        </div>
+      </div>
+      
+
       <div class="modal-body">
         <h4>Descripción de la tarea: </h4>
         <h6 id="card-description"></h6>

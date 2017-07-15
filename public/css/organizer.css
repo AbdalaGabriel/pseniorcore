@@ -296,8 +296,9 @@ table tbody td{
 }
 
 .deleteCard  {  top: 2em;
+       top: 2.5em;
     position: absolute;
-    right: 0;
+    right: -3em;
     background: #c10e4c;
     padding: .2em .6em;
     display: block;
@@ -337,3 +338,53 @@ table tbody td{
     margin: 0;
 }
 .commentsTitle{    margin: 2em 0 .5em 0;}
+
+
+.button-confirmate{
+    display: inline-block;
+    
+    padding: .3em .5em;
+    border-radius: 1em;
+    margin: .4em;
+    cursor: pointer;
+}
+
+.titleConfir{
+    display: block;
+}
+.confirmate-action{
+    position: absolute;
+    background: #312b2b;
+    height: 5em;
+    border-radius: .3em;
+    right: 0em;
+    color: white;
+    text-align: center;
+    padding: .5em 1em;
+     display: none; 
+    z-index: 100;
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+
+.confirmate{
+    background: green;
+}
+.no-confirmate{
+    background: red;
+}
+
+.hideThisCardContainer .hidecard{
+    display: block;
+    top: 0;
+    right: -3em;
+    background: #607bff;
+}
+
+.conf-hide{
+    top: -1em;
+}
+
+.conf-delete{
+    top: 1em;
+}

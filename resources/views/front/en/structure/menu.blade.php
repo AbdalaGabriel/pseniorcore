@@ -53,15 +53,18 @@
 				</a>
 				<ul class="dropdown-menu" role="menu">
 					<li>
+						
+						<a class="og-option" href="/organizer/{{ Auth::user()->id }}">
+						Organizer
+						</a>
+
 						<a href="{{ url('/logout') }}"
 						onclick="event.preventDefault();
 						document.getElementById('logout-form').submit();">
 						Logout
 						</a>
 
-						<a class="og-option" href="/organizer/{{ Auth::user()->id }}">
-						Organizer
-						</a>
+						
 
 						<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
 							{{ csrf_field() }}
