@@ -14,3 +14,4 @@
 {!!Html::script('js/particles/particle.js')!!}
 {!!Html::script('js/functions.js')!!}
 {!!Html::script('js/baseurl.js')!!}
+{!!Html::script('js/validations.js')!!}

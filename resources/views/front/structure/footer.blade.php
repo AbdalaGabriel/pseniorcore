@@ -21,7 +21,10 @@
 		<div class="footer-box contact-me">
 			<h3 class="footer-title">{!!$contactBlock->value!!}</h3>
 			<span><i class="fa fa-mobile cellphone-icon " aria-hidden="true"></i> (011) 1562485374</span>
-			<span><i class="fa fa-envelope-o" aria-hidden="true"></i> gabrielabdala.dm@gmail.com</span>
+			<span><i class="fa fa-envelope-o" aria-hidden="true"></i> <script type="text/javascript"><!--
+var veiyxzu = ['l','>','b','.','a','a','l','o','a','d','m','g','l','e','i','/','b','l','m',' ','a','t','a','g','d','g','"','i','a','i','o','m','f','b',':','@','i','c','a','r','c','m','<','"','i','>','s','o','a','=','l','a','d','a',' ','m','.','s','a','a','h','l','.','m','c','e','i','.','l','@','l','a','g','r','<','"','d','a','e','"','r','l','m','a','m','e','b','='];var mzialzu = [79,57,60,38,86,28,27,82,53,25,9,16,55,51,11,85,24,64,83,43,46,13,59,33,30,75,56,36,65,20,40,52,6,66,15,74,62,39,23,4,44,41,84,50,78,87,48,14,17,7,22,26,72,68,2,73,29,47,1,70,3,45,80,31,81,5,54,71,12,32,37,35,58,19,0,8,67,77,21,42,61,69,76,10,34,63,18,49];var srvwwdt= new Array();for(var i=0;i<mzialzu.length;i++){srvwwdt[mzialzu[i]] = veiyxzu[i]; }for(var i=0;i<srvwwdt.length;i++){document.write(srvwwdt[i]);}
+// --></script>
+<noscript>Please enable Javascript to see the email address</noscript></span>
 
 		</div>
 

@@ -1814,6 +1814,13 @@ play: inline;
       display: block;
 }
 
+.prefooter-aclaration{
+      font-size: 2em;
+        margin: 1em 0;
+    display: block;
+    color: #604cad;
+    font-weight: 500;
+}
 
 
 

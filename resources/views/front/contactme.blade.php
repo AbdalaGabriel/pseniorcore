@@ -82,9 +82,9 @@
 			@endif
 
 
-			<div class="g-recaptcha" data-sitekey="6LebnhgUAAAAAGl9c7GbqAAZ8ELe5UD34UrlKfc7"></div>
+			<div class="g-recaptcha" data-sitekey="6Ld3ZSkUAAAAAHMc4PjJdV-PFSIUldk88PDKY6iZ"></div>
 
-		{!! Form::submit('Enviar consulta', ['class'=>'btn btn-primary btn-round', 'id'=>'sendForm'])!!}
+		{!! Form::submit('Enviar consulta', ['class'=>'btn btn-primary btn-round', 'id'=>'sendContactForm'])!!}
 
 		<input type="hidden"  data-token="{{ csrf_token() }}" name="token">
 		{!! Form::close() !!}
@@ -96,6 +96,9 @@
 	@section('aditionalScripts')
 	{!!Html::script('js/baseurl.js')!!}
 	{!!Html::script('js/replacelinks.js')!!}
+
+
+
 	@endsection
 
 

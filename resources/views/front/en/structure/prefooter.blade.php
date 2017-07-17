@@ -11,12 +11,16 @@
 				
 				<div class="section-container  col-md-4 org app-dw">
 				<h2>Download the app!</h2>
+
 				<a target="_blank" class="qr-link" href="https://build.phonegap.com/apps/2457718/share">
 				<img src="/img/front/iphone.svg" alt="">
 				<div class="qr-container">
 					<img class="qr" src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://build.phonegap.com/apps/2457718/install/4MQRvpxbrnURxcKVLtxU&chld=L|1&choe=UTF-8" alt="">
 				</div>
 				</a>
+				<span class="prefooter-aclaration">
+					Only 4 Android, IOs cooming soon ;)
+				</span>
 			</div>
 
 				<div id="newsletterWp"    class="section-container  col-md-4 news">
@@ -78,6 +82,9 @@
 									<div class="response" id="mce-success-response" style="display:none"></div>
 								</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 								<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_21939b15fd9aeae487bd56ef1_a5ecdc5c4a" tabindex="-1" value=""></div>
+	
+							<div class="g-recaptcha" data-sitekey="6Ld3ZSkUAAAAAHMc4PjJdV-PFSIUldk88PDKY6iZ"></div>
+
 								<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
 							</div>
 						</form>
