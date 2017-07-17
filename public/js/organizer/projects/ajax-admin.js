@@ -506,10 +506,14 @@ function eventsForCards(){
 		var newStatus = $(this).attr("data-status");
 		var cardTaskID = $(this).attr("data-id");
 		var changeStatusRoute = baseurl+"tasks/"+cardTaskID+"/changestatus/"+newStatus;
-		
+		let cardParent = $(this).parent();
+			cardParent.css("display","none");
+		console.log(cardParent);
 		var changeStatus =  $.get(changeStatusRoute, function(res)
 		{
-			//console.log("cambiado a Oculto");
+			console.log("cambiado a Oculto");
+			let cardParent = $(this).parent(".task-container");
+			cardParent.remove();
 		});
 	});
 
@@ -523,14 +527,33 @@ function eventsForCards(){
 		let cardDescription = $("#card-description");
 		let commentsContainer = $("#cardComments");
 
-
-		let hideButtonOnCard = $(".hideThisCardContainer .hidecard");
+		let hideButtonOnCard = $(".hideThisCardContainer .hidesimplecard");
 		let deleteButtonOnCard = $(".deleteCard");
 
 		hideButtonOnCard.click(function(){
 			$(".conf-delete").css("display","none");
 			let confirmationContainer = $(".conf-hide");
 			confirmationContainer.css("display", "block");
+
+			// Confirmar ocultamiento de tarjeta
+			confirmateHideButton = $(".hideThisCardContainer .confirmate-hidden");
+			confirmateHideButton.off();
+			confirmateHideButton.click(function()
+			{
+				console.log("Hide click");
+				var newStatus = $(this).attr("data-status");
+				var changeStatusRoute = baseurl+"tasks/"+idTarjeta+"/changestatus/"+newStatus;
+				var changeStatus =  $.get(changeStatusRoute, function(res)
+				{
+					console.log("cambiado a Oculto");
+					$("#hiddenCards").css
+					estaTarjeta.remove();
+
+					$("#hiddenCards").text("Ver tareas ocultas");
+					$("#hiddenCards").attr("href", baseurl+"/mis-proyectos/"+projectId+"/phase/"+phaseId+"/tareas-ocultas");
+				});
+
+			});
 		});
 
 		deleteButtonOnCard.click(function(){

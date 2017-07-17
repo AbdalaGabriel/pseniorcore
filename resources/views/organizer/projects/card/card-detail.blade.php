@@ -9,12 +9,12 @@
       </div>
       <div class="action-card-buttons-container">
         <div class="hideThisCardContainer">
-             <span  data-toggle="tooltip" title="Ocultar esta tarjeta"  data-id="" class="hidecard">Ocultar</span>
+             <span  data-toggle="tooltip" title="Ocultar esta tarjeta"  data-id="" class="hidesimplecard">Ocultar</span>
              <div  class="conf-hide confirmate-action ">
             <span class="titleConfir">
               ¿Confirmar accion?
             </span>
-            <span data-dismiss="modal"  class="button-confirmate confirmate confirmate-hidden">Si</span>
+            <span data-status="4" data-dismiss="modal"  class="button-confirmate confirmate confirmate-hidden">Si</span>
             <span class="button-confirmate no-confirmate">No</span>
           </div>
         </div>

@@ -374,11 +374,17 @@ table tbody td{
     background: red;
 }
 
-.hideThisCardContainer .hidecard{
+.hideThisCardContainer .hidesimplecard{
+        background: #607bff;
+    top: .5em;
+    position: absolute;
+    right: -2.5em;
+    padding: .2em .6em;
     display: block;
-    top: 0;
-    right: -3em;
-    background: #607bff;
+    cursor: pointer;
+    border-radius: 1em;
+    z-index: 100;
+    color: white;
 }
 
 .conf-hide{
