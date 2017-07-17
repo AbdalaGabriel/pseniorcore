@@ -46,7 +46,7 @@
 		    </div>
 		@endif
 
-		{!! Form::open(['url' => 'http://localhost:8000/form/validate', 'class'=>'contact-form', 'method'=>'POST']) !!}
+		{!! Form::open(['url' => '/form/validate', 'class'=>'contact-form', 'method'=>'POST']) !!}
 
 			<!-- Si est alogueado que autcomplete nombre y mail con datos de usuarios logueado, sino que me pida numero tambien-->
 		

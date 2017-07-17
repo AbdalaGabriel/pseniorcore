@@ -79,6 +79,10 @@
 									<div class="response" id="mce-success-response" style="display:none"></div>
 								</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 								<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_21939b15fd9aeae487bd56ef1_a5ecdc5c4a" tabindex="-1" value=""></div>
+
+								<div class="g-recaptcha" data-sitekey="6LebnhgUAAAAAGl9c7GbqAAZ8ELe5UD34UrlKfc7"></div>
+
+
 								<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
 							</div>
 						</form>
