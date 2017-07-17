@@ -206,6 +206,12 @@ public function  appchangeorder (Request $request, $id, $neworder){
         }
     }
 
+    public function deletesimpletasks(Request $request, $id){
+        $project = CardProject::destroy($id);
+        return response()->json([
+        "mensaje"=>"destroyed"
+        ]);
+    }
 
     public function destroy(Request $request)
     {

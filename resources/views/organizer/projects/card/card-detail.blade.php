@@ -14,7 +14,7 @@
             <span class="titleConfir">
               ¿Confirmar accion?
             </span>
-            <span class="button-confirmate confirmate">Si</span>
+            <span data-dismiss="modal"  class="button-confirmate confirmate confirmate-hidden">Si</span>
             <span class="button-confirmate no-confirmate">No</span>
           </div>
         </div>
@@ -26,7 +26,7 @@
             <span class="titleConfir">
               ¿Confirmar accion?
             </span>
-            <span class="button-confirmate confirmate">Si</span>
+            <span data-dismiss="modal" class="button-confirmate confirmate confirmate-delete">Si</span>
             <span class="button-confirmate no-confirmate">No</span>
           </div>
         </div>

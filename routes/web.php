@@ -113,6 +113,9 @@ Route::get('/mail', function () {
 		 Route::post('web/{userid?}/task/{taskid?}/{comment?}', 'CardCommentController@webMakeComment');
 
 
+		 Route::get('/tasksmanager/deletesimpletask/{id?}', 'CardProjectController@deletesimpletasks');
+
+
 
 
 /* --------------------------------------------------------------------------------------- */

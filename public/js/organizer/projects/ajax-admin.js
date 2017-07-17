@@ -537,6 +537,29 @@ function eventsForCards(){
 			$(".conf-hide").css("display","none");
 			let confirmationContainer = $(".conf-delete");
 			confirmationContainer.css("display", "block");
+
+			//Confirmar borrado de tarjeta
+			confirmateDeleteButton = $(".deleteThisCardContainer .confirmate-delete");
+			confirmateDeleteButton.off();
+			confirmateDeleteButton.click(function()
+			{
+				console.log("- Confirmate delete");
+				$.ajax(
+				{
+					url: baseurl+"tasksmanager/deletesimpletask/"+idTarjeta,
+					headers: {'X-CSRF-TOKEN': token},
+					type: 'GET',
+					dataType: 'json',
+					
+
+					success: function(data)
+					{
+						console.log("destroyed");
+						estaTarjeta.remove();
+					}
+				});
+			});
+
 		});
 
 
