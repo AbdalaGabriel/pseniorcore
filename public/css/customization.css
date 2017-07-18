@@ -1822,7 +1822,9 @@ play: inline;
     font-weight: 500;
 }
 
-
+.phpdebugbar{
+  display: none !important;
+}
 
 @media screen and (max-width: 990px) and (min-width: 820px) {
     .footer-box {
