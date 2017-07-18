@@ -1,6 +1,7 @@
+var configsObject = new Object();
 $( document ).ready(function() 
 {
-	console.log( "- Document ready: english version" );
+	console.log( "- Document ready" );
 	init();
 });
 
@@ -9,9 +10,44 @@ function init()
 {
 	console.log("- Function init");
 	var submit = $("#sendForm");
-	$('.froala').froalaEditor();
 	detectEvents();
 	submitControl();
+	checkconfigs();
+
+}
+
+
+function checkconfigs()
+{
+	console.log("-check configs");
+	let textconfig = $(".textinput").focusout(function()
+	{
+		console.log("focus out");
+		let value = $(this).val();
+		let type = $(this).parent(".configContainer").attr("data-type");
+		let id = $(this).parent(".configContainer").attr("data-config-id");
+		configsObject[id] = { 	value: value,
+								type: type,
+								id: id,
+						
+							};
+		console.log(configsObject);
+	});	
+
+	let radioInputs = $("input[type='radio']");
+	radioInputs.change(function()
+	{
+		console.log("- change");
+		let value = $(this).val();
+		let type = $(this).parent(".configOptions").attr("data-type");
+		let id = $(this).parent(".configOptions").attr("data-config-id");
+		configsObject[id] = { 	value: value,
+								type: type,
+								id: id,
+						
+							};
+		console.log(configsObject);
+	});
 }
 
 function detectEvents(){
@@ -223,16 +259,24 @@ function sendAllInformation(html, jsonObj)
 	var blocksForFrontend =JSON.stringify(jsonObj);
 	var htmlForEdition =  html;
 	var idPage = $("#idPage").val();
-	var routeEdit = baseurl+'admin/paginas/en/'+idPage+"/update";
+	var routeEdit = baseurl+'admin/paginas/en/'+idPage+'/update/';
+	var configsst = JSON.stringify(configsObject)
+
 
 
 	console.log("- Sending info for update:");
 
-	console.log(title);
-	//console.log(blocksForFrontend);
+	console.log(htmlForEdition);
+	console.log("-------------------------");
+    console.log(blocksForFrontend);
+    console.log("-------------------------");
 	console.log(routeEdit);
+	console.log("-------------------------");
 	console.log(urlfriendly);
+	console.log("-------------------------");
 	console.log(meta_description);
+	console.log("-------------------------");
+	console.log(configsst);
 	
 	console.log("-------------------------");
 
@@ -249,6 +293,7 @@ function sendAllInformation(html, jsonObj)
 				urlfriendly: urlfriendly,
 				meta_description: meta_description,
 				blocks: blocksForFrontend,
+				configs: configsst,
 			},
 
 			success: function(data){

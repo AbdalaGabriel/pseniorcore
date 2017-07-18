@@ -3,7 +3,12 @@
 @section('pageTitle', 'Administrar paginas')
 @section('title', 'Editando Pagina en Inglés')
 
-
+@section('popups')
+	@include('admin.Blocks.text-block')
+	@include('admin.Blocks.edit-text-block')
+	@include('admin.Blocks.image-block')
+	@include('admin.Blocks.link-block')
+@endsection
 @section('main')
 
 
@@ -32,25 +37,30 @@
 	<h3>Configuraciones de página {!! $page->title !!}</h3>
 		
 	@foreach($configs as $config)
+
+
 				
-			{!!Form::label($config->reference,  $config->configname, ['class' => 'form-control']);!!}
+		
 
 			@if( $config->type == "t")
-				<div class="configContainer">	
-				{!!Form::text($config->reference, $config->value, ['class'=>'form-control','placeholder'=>'Ingrese el valor solicitado']) !!}
+				<div data-config-id="{!!$config->id!!}}" data-type="t" class="configContainer">	
+				{!!Form::label($config->reference,  $config->configname, ['class' => 'form-control']);!!}
+				{!!Form::text($config->reference, $config->value, ['class'=>'form-control textinput','placeholder'=>'Ingrese el valor solicitado']) !!}
 			
 			@elseif($config->type == "tf")
-				<div class="configContainer full">	
+				<div data-config-id="{!! $config->id !!}"  data-type="tf"  class="configContainer full">	
+				{!!Form::label($config->reference,  $config->configname, ['class' => 'form-control']);!!}
 				{!!Form::textarea($config->reference, $config->value, ['class'=>'form-control froala','placeholder'=>'Ingrese el valor solicitado']) !!}
 			
 			@elseif($config->type == "s")
-				<div class="configContainer">	
+				<div data-config-id="{!! $config->id !!}"  data-type="s" class="configContainer">
+				{!!Form::label($config->reference,  $config->configname, ['class' => 'form-control']);!!}	
 				<?php $options = explode(",", $config->options);?>
 				<div class="configOptionsContainer">
 			
 				@foreach($options as $option)
 			
-					<div class="configOptions">
+					<div data-config-id="{!! $config->id !!}"  data-type="s" class="configOptions">
 						{!!Form::label($config->configname, $option, ['class' => 'form-control']);!!}
 						@if($config->value == $option)
 							{!!Form::radio($config->reference, $option, true)!!}
@@ -73,7 +83,7 @@
 		<h3>Bloques: </h3>
 	
 		<div id="blocks-container">
-			<?php echo $page->htmleditdata; ?>
+			<?php echo $page->en_htmleditdata; ?>
 		</div>
 
 		<span  id="add-block">Agregar bloque</span>
@@ -93,8 +103,12 @@
 </div>
 @section('aditional-scripts')
 {!!Html::script('js/baseurl.js')!!}
+{!! Html::script('dropzone/dist/dropzone.js') !!}
 	{!!Html::script('js/replacelinks.js')!!}
 {!! Html::script('js/pages/en-form-controller.js') !!}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{!!Html::script('js/pages/blocks.js')!!}
+
 @endsection
 
 

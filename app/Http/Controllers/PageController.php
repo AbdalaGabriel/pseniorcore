@@ -103,36 +103,19 @@ public function englishupdate(Request $request, $id)
     $page->en_meta_description = $request['meta_description'];
     $page->save();
     
-   /* $configuraciones = DB::table('configs')->where('page_id', $id)->get();
-    $configLegth = count($configuraciones);
-
-
-    for ($i=0; $i < $configLegth ; $i++) { 
-
-        $thisRef = $configuraciones[$i]->reference;
-        $thisId =   $configuraciones[$i]->id;
-
-        $config = Config::find($thisId);
-        //Referencia de esta configuración
-        $thisReference = $config->reference;
-        //referencia que venia en el request, en base al mismo nombre de la configuracion
-        $valueReferenceGet = $request[$thisReference];
-        //que el valor de esta configuracion sea igual al que trae el request.
-        $config->value =  $valueReferenceGet;
-
-        $config->save();
-    }*/
-
-    $configs = $request['configs'];
+     $configs =json_decode( $request['configs'], true);
     foreach ($configs as $config)
     {
-      $dbConfig = Config::find($config->id);  
+      $dbConfig = Config::find($config["id"]);  
+      $dbConfig->value = $config["value"];
+      $dbConfig->save();
     }
 
 
     return response()->json([
-     "mensaje" =>"Pagina editada correctamente: english version"
+     "mensaje" =>"Pagina editada correctamente y configs guardadas"
      ]);
+    //return Redirect::to('/admin/paginas/'.$id.'/edit');
 }
 
 public function englishversion($urflf)

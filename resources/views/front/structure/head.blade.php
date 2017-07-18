@@ -2,7 +2,7 @@
 
 	<link rel="alternate" hreflang="en" href="http://gabrielabdala.com/en" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	
+	<meta name="google" content="nositelinkssearchbox" />
 	<!--  Metadescription -->
 	<meta name="description" content="@yield('metadescription')"/>
 
