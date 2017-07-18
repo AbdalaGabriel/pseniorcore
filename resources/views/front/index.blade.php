@@ -5,7 +5,7 @@
 @section('metadescription'){!!$page->meta_description!!}@endsection
 
 @section('language') 
-	Idioma: <a href="/"">ES</a> - <a href="/en">EN</a></div>
+	Idioma: <a href="/">ES</a> - <a href="/en">EN</a></div>
 @endsection
 
 @section('main') 
