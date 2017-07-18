@@ -2,11 +2,11 @@
 var statuswords = 1;
 
 $( document ).ready(function() {
-	initpage();
+	initvalidations();
 });
 
 
-function initpage(){
+function initvalidations(){
 	// funcion cambio de palabras home.
 	console.log("- init validations ready");
 	$("#sendContactForm").off();

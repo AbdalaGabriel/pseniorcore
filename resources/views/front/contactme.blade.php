@@ -95,7 +95,6 @@
 
 	@section('aditionalScripts')
 	{!!Html::script('js/baseurl.js')!!}
-	{!!Html::script('js/replacelinks.js')!!}
 
 
 

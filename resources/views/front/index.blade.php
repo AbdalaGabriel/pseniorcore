@@ -1,6 +1,8 @@
 @extends('front.bases.homebase')
 
 @section('mainTitle') Gabriel Abdala - Diseñador Multimedial @endsection
+	<!-- Metadescription-->
+@section('metadescription'){!!$page->meta_description!!}@endsection
 
 @section('language') 
 	Idioma: <a href="/"">ES</a> - <a href="/en">EN</a></div>

@@ -37,18 +37,18 @@ function init(){
 
 	function replace()
 	{
-
-	$(".linksforBlock").each(function()
-	{
 		console.log("-init replace links function");
-		var idforreplace = $(this).attr("data-idurlreplace");
-		var finalurl = "/"+  pagesArray["id"+idforreplace];
-		console.log(finalurl);
-		
-		$(this).attr("href",finalurl);
+		$(".linksforBlock").each(function()
+		{
+			console.log("-init replace links function");
+			var idforreplace = $(this).attr("data-idurlreplace");
+			var finalurl = "/"+  pagesArray["id"+idforreplace];
+			console.log(finalurl);
+			
+			$(this).attr("href",finalurl);
 
-		
-	});
+			
+		});
 	}
 }
 

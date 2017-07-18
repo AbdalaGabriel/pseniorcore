@@ -98,7 +98,7 @@
 	@section('aditional-scripts')
 		{!!Html::script('js/baseurl.js')!!}
 		{!! Html::script('dropzone/dist/dropzone.js') !!}
-		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/js/froala_editor.min.js'></script>
+
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		{!! Html::script('js/pages/form-controller.js') !!}
 		{!! Html::script('js/pages/dz-control.js') !!}

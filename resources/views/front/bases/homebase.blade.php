@@ -26,7 +26,6 @@
 
 
 {!!Html::script('js/jquery.fadeImg.js')!!}
-{!!Html::script('js/form-controller.js')!!}
 
 <script>
 	$(document).ready(function($) {

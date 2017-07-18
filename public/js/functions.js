@@ -27,6 +27,7 @@ function initpage(){
 	var hiddenMenu = $(".hidden-menu");
 	var particulas = $("#particles-js-2");
 	var shareButton = $(".share-cont-button");
+	
 	menuButton.click(function(ev)
 	{
 		// Evitar propagacion para que los elementos del interior no disparen el evento mas de una vez
@@ -60,46 +61,48 @@ function initpage(){
 		particulas.css("display", "none");
 	});
 
-		// Select all links with hashes
-$('a[href*="#"]')
-  .not('[href="#"]')
-  .not('[href="#0"]')
-  .click(function(event) {
-    // On-page links
-    if (
-      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-      && 
-      location.hostname == this.hostname
-    ) {
-      // Figure out element to scroll to
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-      // Does a scroll target exist?
-      if (target.length) {
-        // Only prevent default if animation is actually gonna happen
-        event.preventDefault();
-        $('html, body').animate({
-          scrollTop: target.offset().top
-        }, 1000, function() {
-          // Callback after animation
-          // Must change focus!
-          var $target = $(target);
-          $target.focus();
-          if ($target.is(":focus")) { // Checking if the target was focused
-            return false;
-          } else {
-            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-            $target.focus(); // Set focus again
-          };
-        });
-      }
-    }
-  })
-
 	fillmenu()
+
+		// Select all links with hashes
+		$('a[href*="#"]')
+		  .not('[href="#"]')
+		  .not('[href="#0"]')
+		  .click(function(event) {
+		    // On-page links
+		    if (
+		      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+		      && 
+		      location.hostname == this.hostname
+		    ) {
+		      // Figure out element to scroll to
+		      var target = $(this.hash);
+		      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+		      // Does a scroll target exist?
+		      if (target.length) {
+		        // Only prevent default if animation is actually gonna happen
+		        event.preventDefault();
+		        $('html, body').animate({
+		          scrollTop: target.offset().top
+		        }, 1000, function() {
+		          // Callback after animation
+		          // Must change focus!
+		          var $target = $(target);
+		          $target.focus();
+		          if ($target.is(":focus")) { // Checking if the target was focused
+		            return false;
+		          } else {
+		            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+		            $target.focus(); // Set focus again
+		          };
+		        });
+		      }
+		    }
+		  });
+
+	debugger;
 	function fillmenu()
 	{
-		//console.log("init function fillmenu");
+		console.log("init function fillmenu");
 		var token = $("#token").val();
 		var menucontainer = $("#main-menu");
 		var footerpages = $(".footer-pages");
@@ -114,8 +117,8 @@ $('a[href*="#"]')
 
 			success: function(data)
 			{
-				//console.log("- se obtuvieron datos de urls");
-				//console.log(data);
+				console.log("- se obtuvieron datos de urls");
+				console.log(data);
 				$(data).each(function(key, value)
 				{
 					if(value.visible_in_menu == 1)
@@ -133,7 +136,7 @@ $('a[href*="#"]')
 						if(value.subpages != "n")
 						{
 							subLength = value.subpages.length;
-							//console.log(value.id + "-tiene hijos");
+							console.log(value.id + "-tiene hijos");
 							let children = value.subpages;
 							$("#option-"+value.id).parent("li").append('<span data-show="submenu-'+value.id+'" class="sub-lgt">('+subLength+')<span class="arrowsee">></span><span>');
 							$("#option-"+value.id).append('<ul id="submenu-'+value.id+'" class="suboptionscontainer"></ul>');
@@ -184,12 +187,6 @@ $('a[href*="#"]')
 }
 
 
-fillfooter();
-
-function fillfooter()
-{
-	console.log("-fill footer");
-};
 
 function changingStatus()
 {  

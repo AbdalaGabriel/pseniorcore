@@ -1,4 +1,6 @@
 @extends('front.en.bases.homebase')
+<!-- Metadescription-->
+@section('metadescription'){!!$page->en_meta_description!!}@endsection
 
 	
 @section('language') 
