@@ -237,7 +237,7 @@ class TutsAndResourcesController extends Controller
 
     
     // GUARDADO DE IMAGEN DE PORTADA
-    public function uploadimage(Request $request)
+    public function uploadimage(Request $request, $id)
     {
        // Obtngo datos via request.
        $image = $request->file('file');

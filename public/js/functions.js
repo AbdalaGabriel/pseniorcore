@@ -99,7 +99,6 @@ function initpage(){
 		    }
 		  });
 
-	debugger;
 	function fillmenu()
 	{
 		console.log("init function fillmenu");

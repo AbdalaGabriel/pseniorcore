@@ -111,7 +111,7 @@ public function create()
 }
 
 
-public function uploadimage(Request $request)
+public function uploadimage(Request $request, $id)
 {
 // Obtngo datos via request.
     $image = $request->file('file');
