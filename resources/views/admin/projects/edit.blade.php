@@ -24,7 +24,7 @@
 
 		<!-- TITULO  -->
 		{!!Form::label('title', 'Titulo', ['class' => 'form-control']);!!}
-		{!!Form::text('title', $finalObj->en_title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
+		{!!Form::text('title', $finalObj->title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
 
 		<!-- Descripcion  -->
 		{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}

@@ -1202,7 +1202,7 @@ margin-bottom: 2em;
     height: 150px;
     border: 1px dashed rgba(0, 0, 0, 0.3);
     background: white;
-     z-index: -1;
+     z-index: 0;
     opacity: 1;
     overflow: hidden;
 }
@@ -1216,16 +1216,17 @@ margin-bottom: 2em;
     color: gray !important;
 }
 
-.edition .coverImage{
-  min-height: 150px;
+.edition .coverImage {
+    min-height: 150px;
     border: 1px dashed rgba(0, 0, 0, 0.6);
-    background: rgba(0, 0, 0, 0.41);
+    background: rgba(0, 0, 0, 0.65);
     /* padding: 20px 20px; */
     margin: 2em 0;
     text-align: center;
     color: white;
     padding: 0;
-   cursor: pointer;
+    cursor: pointer;
+    position: relative;
 }
 .twit-container {
     background: #00ceff;
