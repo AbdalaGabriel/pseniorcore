@@ -104,7 +104,6 @@
 @section('aditional-scripts')
 {!!Html::script('js/baseurl.js')!!}
 {!! Html::script('dropzone/dist/dropzone.js') !!}
-	{!!Html::script('js/replacelinks.js')!!}
 {!! Html::script('js/pages/en-form-controller.js') !!}
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 {!!Html::script('js/pages/blocks.js')!!}

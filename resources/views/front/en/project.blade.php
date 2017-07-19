@@ -135,3 +135,7 @@ for ($i=0; $i < $BlockNumbers ; $i++) {
 	    <!-- //////////////////////// -->
 
 	@endsection
+
+	@section('aditionalScripts')
+	{!!Html::script('js/replacelinks-en.js')!!}
+	@endsection

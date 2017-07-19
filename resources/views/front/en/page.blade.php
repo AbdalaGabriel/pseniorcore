@@ -126,5 +126,5 @@ $BlockNumbers = count($jsonBlocks);
 
 	@section('aditionalScripts')
 	{!!Html::script('js/baseurl.js')!!}
-	{!!Html::script('js/replacelinks.js')!!}
+	{!!Html::script('js/replacelinks-en.js')!!}
 	@endsection
