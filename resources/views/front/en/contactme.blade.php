@@ -82,7 +82,7 @@
 			@endif
 
 
-			<div class="g-recaptcha" data-sitekey="6LebnhgUAAAAAGl9c7GbqAAZ8ELe5UD34UrlKfc7"></div>
+			<div class="g-recaptcha" data-sitekey="6LfFmSkUAAAAAA0jzRN80uzXYUCx2X-PV7tZl2l2"></div>
 
 		{!! Form::submit('Enviar consulta', ['class'=>'btn btn-primary btn-round', 'id'=>'sendContactForm'])!!}
 
