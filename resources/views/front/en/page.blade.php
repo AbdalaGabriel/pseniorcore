@@ -36,7 +36,7 @@
 	
 		
 	<?php
-$jsonBlocks = json_decode($page->jsoneditdata, True); // true devuelve todos los objetos internos como array
+$jsonBlocks = json_decode($page->en_jsoneditdata, True); // true devuelve todos los objetos internos como array
 $BlockNumbers = count($jsonBlocks);
 
  for ($i=0; $i < $BlockNumbers ; $i++) { 
