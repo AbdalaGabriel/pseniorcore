@@ -35,13 +35,11 @@
 
 	
 		
-		<?php
-$jsonBlocks = json_decode($page->en_jsoneditdata, True); // true devuelve todos los objetos internos como array
+	<?php
+$jsonBlocks = json_decode($page->jsoneditdata, True); // true devuelve todos los objetos internos como array
 $BlockNumbers = count($jsonBlocks);
 
-
-echo $BlockNumbers;
-for ($i=0; $i < $BlockNumbers ; $i++) { 
+ for ($i=0; $i < $BlockNumbers ; $i++) { 
 ?>
 	<section>
 	<?php
@@ -52,13 +50,22 @@ for ($i=0; $i < $BlockNumbers ; $i++) {
 			<div class="row-container">
 			<?php
 				
-				$innerBlocksNumber = count($jsonBlocks[$i]["rows"][$j]["innerblocks"])-2;
+				$innerBlocksNumber = $jsonBlocks[$i]["rows"][$j]["innerblocks"]["length"];
+
 				// le resto dos porque el objeto json le appendea dos propiedades mas como hermanos de los bloques internos
+
+				//ACTUALIZADO, si bien le appendea cosas, el numero es invariable puede appendear tanto 2 como 4 cosas, pero dentro de esas cosas que le appendea, existe la propiedad length que ya te dice cuantos innerblocks hay, con lo cual leo esa propiedad.
 				
 				for ($k=0; $k < $innerBlocksNumber; $k++)
 				{ 
+					
+
+					$type = $jsonBlocks[$i]["rows"][$j]["innerblocks"][$k]["type"];
+					
 					?>
-					<div class="innerBlock r-{!!$innerBlocksNumber!!}">
+					
+
+					<div class="innerBlock r-{!!$type!!}">
 					<?php
 					$innerElements = $jsonBlocks[$i]["rows"][$j]["innerblocks"][$k]["innerblockselements"];
 
@@ -113,7 +120,6 @@ for ($i=0; $i < $BlockNumbers ; $i++) {
 	?>
 
 	</section>
-
 	
 
 	@endsection
