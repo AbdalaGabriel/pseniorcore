@@ -44,7 +44,7 @@ class MediaController extends Controller
 
 
     $image = $request->file('file');
-    $path = '/uploads/media/';
+    $path = public_path().'/uploads/media/';
 
     foreach ($image as $im)
      {
