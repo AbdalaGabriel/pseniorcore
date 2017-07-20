@@ -4,7 +4,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-        <input id="card-title" data-type="title" data-url="task/quickmodify" data-id="" title="Editar titulo de la tarea" class="inputOff" type="text" id="projectName" value="-" data-element-type="card">
+        <input id="card-title" data-type="title" data-url="task/quickmodify" data-id="" title="Editar titulo de la tarea" class="inputOff" type="text" value="-" data-element-type="card">
 
       </div>
       <div class="action-card-buttons-container">
@@ -35,7 +35,8 @@
 
       <div class="modal-body">
         <h4>Descripción de la tarea: </h4>
-        <h6 id="card-description"></h6>
+        
+        <input id="card-description" data-type="description" data-url="task/quickmodify" data-id="" title="Editar titulo de la tarea" class="inputOff" type="text" value="-" data-element-type="card">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
         <input type="hidden" id="idCard">
         

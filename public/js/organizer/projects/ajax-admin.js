@@ -48,14 +48,25 @@ function interaction()
 				data: {data: newValue, id:elementId, type: elementType},
 
 				success: function(){
-					//console.log("Se grabó el nuevo valor");
+					console.log("Se grabó el nuevo valor");
 					if(elementDOMType == "card"){
 						//console.log("se salio de editar una tarjeta");
 						// Revisar para que busque a la columna q pertenece y no por todos lso tod{s}
 						cardToUpdate = $('.task-container[data-task-id="'+elementId+'"]')
-						//console.log(elementId);
+						console.log(elementId);
 						//console.log(newValue);
-						cardToUpdate.find("a").text(newValue);
+						
+						
+						if(elementType == "description")
+						{
+							cardToUpdate.find(".bodycard").text(newValue);
+						}
+						else
+						{
+							cardToUpdate.find("a").text(newValue);
+						}
+						
+
 					}	
 				}
 			});
@@ -328,7 +339,7 @@ function updatecards()
 					//console.log(columnForAppend);
 					for(i=0;i<largoTarjetas;i++)
 					{
-						columnForAppend.append('<div  data-toggle="modal" data-target="#card-detail" class="task-container" data-task-order="'+data[i].task_order+'" data-task-status="'+data[i].status+'" data-task-id="'+data[i].id+'"><span data-status="4" data-id="'+data[i].id+'" class="hidecard">O</span><a href="#">'+data[i].title+'</a>'+data[i].description+'<p></p></div>');		
+						columnForAppend.append('<div  data-toggle="modal" data-target="#card-detail" class="task-container" data-task-order="'+data[i].task_order+'" data-task-status="'+data[i].status+'" data-task-id="'+data[i].id+'"><span data-status="4" data-id="'+data[i].id+'" class="hidecard">O</span><a href="#">'+data[i].title+'</a><p class="bodycard">'+data[i].description+'</p></div>');		
 					}
 
 
@@ -524,6 +535,7 @@ function eventsForCards(){
 		var idTarjeta = estaTarjeta.attr("data-task-id");
 
 		let cardTitle = $("#card-title");
+
 		let cardDescription = $("#card-description");
 		let commentsContainer = $("#cardComments");
 
@@ -607,7 +619,8 @@ function eventsForCards(){
 				let thisObjectCard = data[0];
 				cardTitle.val(thisObjectCard.title);
 				cardTitle.attr("data-id", thisObjectCard.id);
-				cardDescription.text(thisObjectCard.description);
+				cardDescription.val(thisObjectCard.description);
+				cardDescription.attr("data-id", thisObjectCard.id);
 
 				let dataLength = thisObjectCard.comments.length;
 
