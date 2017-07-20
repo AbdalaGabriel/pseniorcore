@@ -123,13 +123,13 @@ $('a[href*="#"]')
 					{
 						if(value.en_urlfriendly != "/")
 						{
-							menucontainer.append('<li><a id="option-'+value.id+'" href="/'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
-							footerpages.append('<li><a class="footer-a-li-page" id="foption-'+value.id+'" href="/'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
+							menucontainer.append('<li><a id="option-'+value.id+'" href="/en/'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
+							footerpages.append('<li><a class="footer-a-li-page" id="foption-'+value.id+'" href="/en/'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
 						}
 						else
 						{
-							menucontainer.append('<li><a id="option-'+value.id+'" href="'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
-							footerpages.append('<li><a class="footer-a-li-page" id="foption-'+value.id+'" href="'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
+							menucontainer.append('<li><a id="option-'+value.id+'" href="/en/'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
+							footerpages.append('<li><a class="footer-a-li-page" id="foption-'+value.id+'" href="/en/'+value.en_urlfriendly+'">'+value.en_title+'</a></li>');
 						}
 						if(value.subpages != "n")
 						{
@@ -145,8 +145,8 @@ $('a[href*="#"]')
 
 							$(children).each(function(key, child)
 							{
-								$("#option-"+value.id+" .suboptionscontainer").append('<li><a id="option-'+child.id+'" href="/'+child.urlfriendly+'">'+child.title+'</a></li>');
-								$("#foption-"+value.id+" .fsuboptionscontainer").append('<li><a class="footer-a-page" id="foption-'+child.id+'" href="/'+child.urlfriendly+'">'+child.title+'</a></li>');
+								$("#option-"+value.id+" .suboptionscontainer").append('<li><a id="option-'+child.id+'" href="/en'+child.en_urlfriendly+'">'+child.title+'</a></li>');
+								$("#foption-"+value.id+" .fsuboptionscontainer").append('<li><a class="footer-a-page" id="foption-'+child.id+'" href="/en'+child.en_urlfriendly+'">'+child.title+'</a></li>');
 
 							});
 							
