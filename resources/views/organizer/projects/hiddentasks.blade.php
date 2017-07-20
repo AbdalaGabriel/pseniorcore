@@ -2,9 +2,31 @@
 @extends('organizer.base')
 
 @section('pageTitle', 'Organizador de proyectos - Gabriel  ')
+
 @section('title')
 <input data-type="title" data-url="clientproject/quickmodify" data-id="{!!$project->id!!}" title="Editar titulo del proyecto" class="inputOff" type="text" id="projectName" data-element-type="project" value="{!!$project->title!!}">
 @endsection
+
+@section('descr-project')
+<input data-type="description" data-url="clientproject/quickmodify" data-id="{!!$project->id!!}" title="Editar descripción del proyecto" class="inputOff" type="text" id="projectName" data-element-type="project" value="{!!$project->description!!}">
+@endsection
+
+
+@section('project-tasks')
+
+<div class="task-bar">
+	<h2>
+		<input data-type="title" data-url="clientproject/grouptask/quickmodify" data-id="{!!$actualphase->id!!}" title="Editar titulo del proyecto" class="inputOff" type="text" id="phaseName" data-element-type="phase" value="{!!$actualphase->title!!}">
+	</h2>
+
+	<input data-type="description" data-url="clientproject/grouptask/quickmodify" data-id="{!!$actualphase->id!!}" title="Editar descripción del proyecto" class="inputOff" type="text" id="projectName" data-element-type="phase" value="{!!$actualphase->description!!}">
+
+
+
+</div>	
+@endsection
+
+
 
 
 
@@ -16,29 +38,27 @@
 @include('organizer.projects.messages.deletephase')
 @include('organizer.projects.card.card-detail')
 
-<input data-type="description" data-url="clientproject/quickmodify" data-id="{!!$project->id!!}" title="Editar descripción del proyecto" class="inputOff" type="text" id="projectName" data-element-type="project" value="{!!$project->description!!}">
 
-	<input id="projectId" type="hidden" name="" value="{!! $project->id !!}">
+<input id="projectId" type="hidden" name="" value="{!! $project->id !!}">
 
-	
-	<h6>Vista de tareas ocultas para</h6>
+<input id="userID" type="hidden" value="{!! $project->user_id !!}" name="">
 
-	<h2>Fase: 
-	<input data-type="title" data-url="clientproject/grouptask/quickmodify" data-id="{!!$actualphase->id!!}" title="Editar titulo del proyecto" class="inputOff" type="text" id="phaseName" data-element-type="phase" value="{!!$actualphase->title!!}">
-	</h2>
-
-	<input data-type="description" data-url="clientproject/grouptask/quickmodify" data-id="{!!$actualphase->id!!}" title="Editar descripción del proyecto" class="inputOff" type="text" id="projectName" data-element-type="phase" value="{!!$actualphase->description!!}">
-
-	<input id="phaseId" type="hidden" value="{!! $actualphase->id !!}" name="">
-	<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-	
+<input id="phaseId" type="hidden" value="{!! $actualphase->id !!}" name="">
+<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 
 
-	<div class="hidden-tasks-container">
-		
+
+
+
+<div class="hidden-tasks-container">
+			
+			<h2 class="hiddentasks-title">Tareas ocultas de esta fase</h2>
 		
 			<div class="select-actions-container">
-				<button class="select-all">Seleccionar todas</button>
+
+				<label><input type="checkbox" id="cbox1" class="select-all" value="first_checkbox"> Seleccionar todos</label>
+		
+				
 				<span>Acción</span>
 				<select class="actions">
 				  <option value="sele" selected>Seleccionar accion</option>	
@@ -61,7 +81,7 @@
 				<tbody>
 
 					@foreach ($hiddentasks as $hiddentask)	
-					<tr>
+					<tr id="{!!$hiddentask->id!!}-tr">
 						<td><input class="checktask" type="checkbox" name="hiddentasks[]" value="{!!$hiddentask->id!!}"></td>
 						<td>{!!$hiddentask->title!!}</td>
 						<td>{!!$hiddentask->description!!}</td>
@@ -79,7 +99,7 @@
 
 
 	</div>
-	
+
 
 
 @section('aditional-scripts')
@@ -88,6 +108,5 @@
 @endsection
 
 @endsection
-
 
 

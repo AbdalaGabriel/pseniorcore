@@ -394,3 +394,20 @@ table tbody td{
 .conf-delete{
     top: 1em;
 }
+.hidden-tasks-container{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.select-actions-container{
+margin: 2em 0;
+}
+
+.do-action{
+    background: #232635;
+    border: 0;
+    padding: .2em 1em;
+    color: white;
+    border-radius: .2em;
+    margin: 0 0 0 .5em;
+}

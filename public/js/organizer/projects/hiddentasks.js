@@ -13,6 +13,7 @@ function init()
 	let restoreHiddentask = $(".restore-task");
 	let doAction = $(".do-action");
 	let selectAll = $(".select-all");
+	inputs  = $( ".checktask");
 
 	deleteHiddentask.click(function()
 	{
@@ -21,12 +22,21 @@ function init()
 		let HTId = thisDeleteHiddenTask.attr("data-id");
 	});
 
-	selectAll.click(function()
-	{
-		console.log("- select all");
-		let inputs  = $( ".checktask");
-		inputs.attr("checked",true);
+
+	selectAll.change(function() {
+	    if(this.checked) {
+			inputs.prop("checked",true);
+			console.log("chech");
+	    }
+	    else
+	    {
+
+			inputs.prop("checked",false);
+			console.log("no chech");
+	    }
 	});
+
+
 
 	doAction.click(function()
 	{
@@ -54,6 +64,7 @@ function init()
 
 				success: function(){
 					console.log("borrado");
+					deleteFromList(ids);
 				}
 			});
 
@@ -71,6 +82,7 @@ function init()
 
 				success: function(){
 					console.log("restaurado");
+					deleteFromList(ids);
 				}
 			});
         }
@@ -78,6 +90,21 @@ function init()
         	console.log("debe seleccionar algo");
         }
         ;
+
+
+        function deleteFromList(ids)
+        {
+        	console.log("-Delete drom list");
+        	for ( var $g = 0; $g < ids.length;  $g++)
+        	{
+        		var thisId = ids[$g];
+        		thisIdParent = $("#"+thisId+"-tr");
+        		thisIdParent.remove();
+        		
+        	};
+			console.log("removed");
+
+        }
 
 	});
 }

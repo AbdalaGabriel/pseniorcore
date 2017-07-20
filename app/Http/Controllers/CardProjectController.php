@@ -204,6 +204,9 @@ public function  appchangeorder (Request $request, $id, $neworder){
             $thisSlide->save();
 
         }
+         return response()->json([
+        "mensaje"=>"restored"
+        ]);
     }
 
     public function deletesimpletasks(Request $request, $id){
@@ -226,5 +229,9 @@ public function  appchangeorder (Request $request, $id, $neworder){
             $thisSlide = CardProject::destroy($thisId);
 
         }
+
+         return response()->json([
+        "mensaje"=>"destroyed"
+        ]);
     }
 }
