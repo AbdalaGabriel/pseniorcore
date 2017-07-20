@@ -145,8 +145,8 @@ $('a[href*="#"]')
 
 							$(children).each(function(key, child)
 							{
-								$("#option-"+value.id+" .suboptionscontainer").append('<li><a id="option-'+child.id+'" href="/en'+child.en_urlfriendly+'">'+child.title+'</a></li>');
-								$("#foption-"+value.id+" .fsuboptionscontainer").append('<li><a class="footer-a-page" id="foption-'+child.id+'" href="/en'+child.en_urlfriendly+'">'+child.title+'</a></li>');
+								$("#option-"+value.id+" .suboptionscontainer").append('<li><a id="option-'+child.id+'" href="/en/'+child.en_urlfriendly+'">'+child.title+'</a></li>');
+								$("#foption-"+value.id+" .fsuboptionscontainer").append('<li><a class="footer-a-page" id="foption-'+child.id+'" href="/en/'+child.en_urlfriendly+'">'+child.title+'</a></li>');
 
 							});
 							
