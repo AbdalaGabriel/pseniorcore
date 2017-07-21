@@ -34,7 +34,7 @@
 	@foreach ($posts as $post)		    
 				<article class="blogItem col-md-4">
 
-					<a href="/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">
+					<a href="/en/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">
 						<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
 						
 					</a>

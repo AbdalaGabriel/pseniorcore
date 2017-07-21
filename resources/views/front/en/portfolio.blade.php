@@ -31,7 +31,7 @@
 	
 	@foreach ($projects as $project)		    
 	<article class="postItem portfolioItem col-md-4">
-		<a  href="en/project/{!!$project->id!!}/{!!$project->en_urlfriendly!!}">
+		<a  href="/en/project/{!!$project->id!!}/{!!$project->en_urlfriendly!!}">
 			<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}"" alt="">
 			<h2 class="post-title">{!!$project->en_title!!}</h2>
 		</a>
