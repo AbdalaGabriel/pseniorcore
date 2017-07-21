@@ -23,7 +23,6 @@
 		@section('language') 
 	  Idioma: <a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">ES</a> - <a href="/en/project/{!!$project->id!!}/{!!$project->en_urlfriendly!!}">EN</a></div>
 	  @endsection
-	@endif
 
 	
 
