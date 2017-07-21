@@ -21,8 +21,9 @@
 	@section('main')
 	
 	@section('language') 
-	  <div class="language-container">Language: <a href="/proyecto/{!!$post->id!!}/{!!$post->urlfriendly!!}">ES</a> - <a href="/proyecto/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">EN</a></div>
+	  Idioma: <a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">ES</a> - <a href="/en/blog/{!!$post->id!!}/{!!$post->en_urlfriendly!!}">EN</a></div>
 	  @endsection
+	@endif
 
 	
 
