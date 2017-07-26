@@ -331,7 +331,7 @@
 	</select>
 </div>
 
-<div class="g-recaptcha" data-sitekey="6LePeyoUAAAAAF3bIRWNSgFb4ExUK4xm-un7Lso-"></div>
+<div class="g-recaptcha" data-sitekey="6LfFmSkUAAAAAA0jzRN80uzXYUCx2X-PV7tZl2l2"></div>
 
 	<div id="mce-responses" class="clear">
 		<div class="response" id="mce-error-response" style="display:none"></div>
