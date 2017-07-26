@@ -306,7 +306,7 @@ class FrontController extends Controller
         //Email para el diseñador, avisando de la consulta del usuario.
         $data=['inquirie'=>$request['consulta'],'name'=>$request['name'] ];
 
-        Mail::send(['text'=>'mail.new-form-send'], $data, function($message){
+        Mail::send('mail.new-form-send', $data, function($message){
             $message->to('g.abdala.04@gmail.com','Gabriel')->subject('Tienes una nueva consulta -');
             $message->from('designer@gabrielabdala.com','Sitio web');
         });
