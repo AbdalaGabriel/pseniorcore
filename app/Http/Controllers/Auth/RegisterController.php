@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use Mail;
+
 class RegisterController extends Controller
 {
     /*
@@ -52,6 +54,9 @@ class RegisterController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
+
+
+
     }
 
     /**
@@ -62,6 +67,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+       
+       //sen mail to new user
+
+         // Email para el usuario
+
+        $usermail = $data['email']
+        $datamail=['name'=>$data['name'], 'mail'=>$data['email'] ];
+
+        Mail::send('mail.new-client-registration', $datamail, function($message)use($usermail){
+            $message->to($usermail,'Gabriel')->subject('He recibido tu consulta, a la brevedad te responderé =)');
+            $message->from('designer@gabrielabdala.com','Gabriel');
+        });
+       
+        //Email para el diseñador, avisando  que se registro nuevo usuario.
+         $datamail=['name'=>$data['name'], 'mail'=>$data['email'] ];
+
+
+        Mail::send('mail.new-client-to-designer', $datamail, function($message){
+            $message->to('g.abdala.04@gmail.com','Gabriel')->subject('Nuevo usuario registrado en el sitio');
+            $message->from('designer@gabrielabdala.com','Sitio web');
+        });
+
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
