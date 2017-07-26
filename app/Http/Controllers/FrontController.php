@@ -296,11 +296,13 @@ class FrontController extends Controller
 
     public function sendmail($request){
 
+        $usermail = $request['email'];
+
         // Email para el usuario
          $data=['inquirie'=>$request['consulta'],'name'=>$request['name'], 'mail'=>$request['email'] ];
 
         Mail::send('mail.client-answer', $data, function($message){
-            $message->to($request['email'],'Gabriel')->subject('He recibido tu consulta, a la brevedad te responderé =)');
+            $message->to($usermail,'Gabriel')->subject('He recibido tu consulta, a la brevedad te responderé =)');
             $message->from('designer@gabrielabdala.com','Gabriel');
         });
        
