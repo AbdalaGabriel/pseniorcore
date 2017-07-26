@@ -65,12 +65,7 @@
 									<label for="mce-FNAME">Name</label>
 									<input type="text" value="{{ Auth::user()->name }} " name="FNAME" class="" id="mce-FNAME">
 								</div>
-
-								<div class="mc-field-group">
-									<label for="mce-compania">Company</label>
-									<input type="text" value="" name="COMPANY" class="" id="mce-compania">
-								</div>
-								
+							
 
 							
 								@endif
