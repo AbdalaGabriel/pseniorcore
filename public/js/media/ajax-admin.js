@@ -25,7 +25,7 @@ function carga()
 		$(res).each(function(key, value)
 		{
 			// TODO: actualizar rutas en produccion, no puede quedar como file
-			grillaImagenes.append('<div class="col-md-3"><a href="#" data-toggle="modal" data-target="#delete-this-image"  data-img-id="'+value.id+'" class="deleteImage">X</><img style="max-width: 100%;" src="/uploads/media/'+value.path+'"/></div>');
+			grillaImagenes.append('<div class="col-md-3"><a href="#" data-toggle="modal" data-target="#delete-this-image"  data-img-id="'+value.id+'" class="deleteImage">X</a><a href="#" class="editImage" data-toggle="modal" data-target="#edit-this-image" data-img-title="'+value.title+'" data-img-alt="'+value.description+'"  data-img-id="'+value.id+'"><img style="max-width: 100%;" src="/uploads/media/'+value.path+'"/></a></div>');
 
 		});
 	})
@@ -85,4 +85,51 @@ function defineListerner()
 			});
 		});
 	});
+
+	$(".editImage").on("click", function()
+	{
+		console.log( "- Inicio click listener: EDIT" );
+		idDeleteButton = $(this).attr("data-img-id");
+		titleImageForAppend = $(this).attr("data-img-title");
+		altImageForAppend = $(this).attr("data-img-alt");
+
+		titleInput = $("#edittitle");
+		altInput = $("#altdescr");
+
+		titleInput.val(titleImageForAppend);
+		altInput.val(altImageForAppend);
+
+		routeEditImage = baseurl+"admin/media/"+idDeleteButton;
+		token = $("#token").val();
+
+		$("#confirmation-edit").click(function()
+		{
+			console.log( "- Inicio confirmation listener" );
+			console.log(idDeleteButton);
+			finaltitle = titleInput.val();
+			finalAlt = altInput.val();
+
+			$.ajax(
+			{
+				url: routeEditImage,
+				headers: {'X-CSRF-TOKEN': token},
+				type: 'PUT',
+				dataType: 'json',
+				data: 
+				{
+					title: finaltitle, 
+					description: finalAlt,
+				},
+
+				success: function(data){
+					console.log(data);
+					carga();
+
+				}
+			});
+		});
+	});
+
+
+	
 }

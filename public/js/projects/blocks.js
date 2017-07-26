@@ -702,7 +702,7 @@ function mediaMaster(){
 			$(data).each(function(key, value)
 			{
 				// TODO: actualizar rutas en produccion, no puede quedar como file
-				gridContainer.append('<div class="col-md-3"><img data-title="'+value.title+'"  data-alt="'+value.alt+'" class="image-for-append" src="/uploads/media/'+value.path+'"/></div>');
+				gridContainer.append('<div class="col-md-3"><img data-title="'+value.title+'"  data-alt="'+value.description+'" class="image-for-append" src="/uploads/media/'+value.path+'"/></div>');
 
 			});
 

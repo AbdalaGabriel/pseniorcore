@@ -137,7 +137,7 @@ function initpage(){
 							subLength = value.subpages.length;
 							console.log(value.id + "-tiene hijos");
 							let children = value.subpages;
-							$("#option-"+value.id).parent("li").append('<span data-show="submenu-'+value.id+'" class="sub-lgt">('+subLength+')<span class="arrowsee">></span><span>');
+							$("#option-"+value.id).parent("li").append('<span data-show="submenu-'+value.id+'" class="sub-lgt"> ('+subLength+')<span class="arrowsee">  ></span><span>');
 							$("#option-"+value.id).append('<ul id="submenu-'+value.id+'" class="suboptionscontainer"></ul>');
 
 							

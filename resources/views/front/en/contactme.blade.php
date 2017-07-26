@@ -84,6 +84,8 @@
 
 			<div class="g-recaptcha" data-sitekey="6LfFmSkUAAAAAA0jzRN80uzXYUCx2X-PV7tZl2l2"></div>
 
+			<span class="recap-message">Please check recaptcha</span>
+
 		{!! Form::submit('Enviar consulta', ['class'=>'btn btn-primary btn-round', 'id'=>'sendContactForm'])!!}
 
 		<input type="hidden"  data-token="{{ csrf_token() }}" name="token">

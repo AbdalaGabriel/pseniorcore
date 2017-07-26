@@ -94,7 +94,16 @@ class MediaController extends Controller
 
     public function update(Request $request, $id)
     {
-            //
+        $media = Media::find($id);
+
+        // actualiza nombre con lo que le llega via AJAX.
+        $media->title = $request['title'];
+        $media->description = $request['description'];
+        $media->save();
+
+        return response()->json([
+            "mensaje" =>"listo"
+        ]);
     }
 
 

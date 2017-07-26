@@ -17,6 +17,8 @@ function initvalidations(){
     	console.log("- CLick submite");
     	if (grecaptcha.getResponse() == ""){
 		    console.log("You can't proceed!");
+		     $(".g-recaptcha").addClass("marked");
+		     $(".recap-message").addClass("showcaptcha");
 		} else {
 		    console.log("Thank you");
 		    $(".contact-form").submit();
@@ -31,6 +33,8 @@ function initvalidations(){
     	console.log("- CLick submite");
     	if (grecaptcha.getResponse() == ""){
 		    console.log("You can't proceed!");
+		    $(".g-recaptcha").addClass("marked");
+		    $(".recap-message").addClass("showcaptcha");
 		} else {
 		    console.log("Thank you");
 		    $("#mc-embedded-subscribe-form").submit();

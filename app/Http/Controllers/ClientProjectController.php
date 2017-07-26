@@ -214,6 +214,8 @@ class ClientProjectController extends Controller
                     return (array) $item;
                 })
                 ->all();
+
+              
                 $projects[$i]["phases"] = $phases;
 
                 // Segundo ciclo for, obtengo tareas o tarjetas por cada fase del proyecto.

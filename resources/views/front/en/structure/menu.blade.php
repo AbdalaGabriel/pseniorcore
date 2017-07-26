@@ -15,7 +15,7 @@
 	<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
 	<div class="container header-container">
 
-		<div class="navbar-header">
+		<div class="logo-bar navbar-header">
 			<a href="/">
 				<div class="logo-container">
 					<div class="brand">
@@ -25,7 +25,7 @@
 			</a>
 		</div>
 
-		<div class="collapse navbar-collapse" id="navigation-index">
+		<div class=" navbar-collapse" id="navigation-index">
 			<div class="main-menu-button">	
 				
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-index">
@@ -53,7 +53,9 @@
 				</a>
 				<ul class="dropdown-menu" role="menu">
 					<li>
-						
+							@if (Auth::user()->id == 5)
+						<a href="/admin">Admin</a>
+						@endif
 						<a class="og-option" href="/organizer/{{ Auth::user()->id }}">
 						Organizer
 						</a>

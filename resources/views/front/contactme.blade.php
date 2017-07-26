@@ -83,6 +83,7 @@
 
 
 			<div class="g-recaptcha" data-sitekey="6LfFmSkUAAAAAA0jzRN80uzXYUCx2X-PV7tZl2l2"></div>
+			<span class="recap-message">Por favor valide el recaptcha</span>
 
 		{!! Form::submit('Enviar consulta', ['class'=>'btn btn-primary btn-round', 'id'=>'sendContactForm'])!!}
 
