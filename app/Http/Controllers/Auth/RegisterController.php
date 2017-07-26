@@ -72,7 +72,7 @@ class RegisterController extends Controller
 
          // Email para el usuario
 
-        $usermail = $data['email']
+        $usermail = $data['email'];
         $datamail=['name'=>$data['name'], 'mail'=>$data['email'] ];
 
         Mail::send('mail.new-client-registration', $datamail, function($message)use($usermail){
