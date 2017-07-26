@@ -1,5 +1,6 @@
-<h1>Nueva consulta!</h1>
+<h2>Consulta:</h3>
 
-<p>{{$inquirie}}</p>
+<p><strong>Usuario:</strong> {{ $name}}</p>
+<p><strong>Consulta:</strong> {{$inquirie}}</p>
 
-<p>De: {{ $name}}</p>
+<p><strong>Mail de contacto:</strong> {{$mail}}</p>
