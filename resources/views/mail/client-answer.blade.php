@@ -1,4 +1,4 @@
-<h2>Hola {{ $name}} !</h3>
+<h2>Hola {{ $name}} !</h2>
 
 <p>He recibido tu consulta, a la brevedad te brindaré una respuesta</p>
 

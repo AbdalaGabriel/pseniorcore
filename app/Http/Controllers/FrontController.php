@@ -300,7 +300,7 @@ class FrontController extends Controller
          $data=['inquirie'=>$request['consulta'],'name'=>$request['name'], 'mail'=>$request['email'] ];
 
         Mail::send('mail.client-answer', $data, function($message){
-            $message->to('g.abdala.04@gmail.com','Gabriel')->subject('He recibido tu consulta, a la brevedad te responderé =)');
+            $message->to($request['email'],'Gabriel')->subject('He recibido tu consulta, a la brevedad te responderé =)');
             $message->from('designer@gabrielabdala.com','Gabriel');
         });
        

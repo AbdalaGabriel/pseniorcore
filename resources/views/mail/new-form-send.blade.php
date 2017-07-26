@@ -1,4 +1,4 @@
-<h2>Consulta:</h3>
+<h2>Consulta:</h2>
 
 <p><strong>Usuario:</strong> {{ $name}}</p>
 <p><strong>Consulta:</strong> {{$inquirie}}</p>
