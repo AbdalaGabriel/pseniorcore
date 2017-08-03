@@ -33,6 +33,8 @@ function init()
 		var coverImage = fileSelected;
 		var routeNew = baseurl+'admin/portfolio';
 		var urlfContent = $("#new-post-urlf").val();
+		var imagedescription = $("#imagedescription").val();
+		var imagetitle = $("#imagetitle").val();
 
 		
 		// Sending test
@@ -60,6 +62,8 @@ function init()
 				categories:categories ,
 				urlf: urlfContent,
 				metadescription: meta_description,
+				imagedescription: imagedescription,
+				imagetitle: imagetitle,
 			},
 
 			success: function(projectId){

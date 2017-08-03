@@ -158,6 +158,8 @@ public function store(Request $request)
     $metadescription = $request['metadescription'];
 //$categoriesIds = Input::get('ch');
     $categoriesIds = $request['categories'];
+    $imagetitle = $request['imagetitle'];
+    $imagedescription = $request['imagedescription'];
     $categoriesNames = array();
 
 //Guardo con los ids de categorias que estan en el checkbox, los nombres de las mismas ne un array.
@@ -174,6 +176,9 @@ public function store(Request $request)
         'description' => $description,
         'urlfriendly' => $urlfriendly,
         'meta_description' => $metadescription,
+        'imagetitle' => $imagetitle,
+        'imagedescription' => $imagedescription,
+
         ]);
 
 // Busco su id mediante una querie que me traiga el ultimo projecteo en base a su nombre.
@@ -388,6 +393,8 @@ public function update(Request $request, $id)
                 $project->jsoneditdata = $request['blocks'];
                 $project->htmleditdata = $request['htmlForEdition'];
                 $project->urlfriendly = $request['urlf'];
+                $project->imagedescription = $request['imagedescription'] ;
+                $project->imagetitle = $request['imagetitle'];
             }
 
             

@@ -34,6 +34,8 @@ function init()
 		var itemId = $(".item-id").val();
 		var routeEdit = baseurl+'admin/blog/'+itemId;
 		var urlfContent = $("#new-post-urlf").val();
+		var imagedescription = $("#imagedescription").val();
+		var imagetitle = $("#imagetitle").val();
 		
 		
 		// Sending test
@@ -66,6 +68,8 @@ function init()
 				urlf: urlfContent,
 				language: language,
 				metadescription: meta_description,
+				imagetitle: imagetitle,
+				imagedescription: imagedescription,
 				editionMethod: 'full',
 			},
 

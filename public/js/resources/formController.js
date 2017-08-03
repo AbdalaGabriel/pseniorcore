@@ -34,6 +34,9 @@ function init()
 		var routeNew = baseurl+'admin/tutoriales-y-recursos';
 		var urlfContent = $("#new-post-urlf").val();
 		var extract = $("#new-post-extract").val();
+		var imagedescription = $("#imagedescription").val();
+		var imagetitle = $("#imagetitle").val();
+
 
 		
 		// Sending test
@@ -63,7 +66,10 @@ function init()
 				categories:categories ,
 				urlf: urlfContent,
 				metadescription: meta_description,
-				extract: extract
+				extract: extract,
+				imagedescription: imagedescription,
+				imagetitle: imagetitle,
+
 			},
 
 			success: function(projectId){

@@ -24,9 +24,14 @@
 		    {!!Form::text('title', null, ['id'=>'new-post-title', 'class'=>'form-control new-title','placeholder'=>'Ingrese su nuevo titulo']) !!}
 
 		    
-			
-			{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
-		    {!!Form::textarea('content', null, ['id'=>'new-post-content', 'class'=>'form-control tiny','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
+			<!-- EXTRACTO	-->
+		{!!Form::label('extract', 'Extracto', ['class' => 'form-control']);!!}
+		{!!Form::textarea('extract', null,  ['id'=>'new-post-extract', 'class'=>'form-control','placeholder'=>'Ingrese su extracto para vista rápida en el front']) !!}
+		
+		<!-- Descripcion  -->
+		{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
+		{!!Form::textarea('content', null, ['id'=>'new-post-content', 'class'=>'form-control tiny','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
+
 
 		    <input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 
@@ -43,6 +48,17 @@
 	    	<div class="form-group top-0">
 				<label>Seleccione o suba una foto de portada</label>
 				<div class="dropzone coverImage" id="myDropZone" data-token="{{ csrf_token() }}"></div>
+			</div>
+
+			<div class="coverimagedata">
+				{!!Form::label('imagetitle', 'Title de la imagen', ['class' => 'form-control ']);!!}
+		    	
+		    	{!!Form::text('imagetitle', null, ['id'=>'imagetitle', 'class'=>'form-control new-title','placeholder'=>'Title de la imagen']) !!}
+
+		    	{!!Form::label('imagedescription', 'Alt de la imagen', ['class' => 'form-control ']);!!}
+		    	
+		    	{!!Form::text('imagedescription', null, ['id'=>'imagedescription', 'class'=>'form-control new-title','placeholder'=>'Alt de la imagen']) !!}
+
 			</div>
 			
 			<div class="categories-container">

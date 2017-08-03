@@ -210,6 +210,8 @@ class BlogController extends Controller
         $urlfriendly = $request['urlf'];
         $extract = $request['extract'];
         $metadescription = $request['metadescription'];
+        $imagetitle = $request['imagetitle'];
+        $imagedescription = $request['imagedescription'];
         $categoriesNames = array();
 
         //Guardo con los ids de categorias que estan en el checkbox, los nombres de las mismas ne un array.
@@ -226,6 +228,8 @@ class BlogController extends Controller
             'urlfriendly' => $urlfriendly,
             'extract' => $extract,
             'meta_description' => $metadescription,
+            'imagetitle' => $imagetitle,
+            'imagedescription' => $imagedescription,
         ]);
 
         // Busco su id mediante una querie que me traiga el ultimo posteo en base a su nombre.
@@ -251,7 +255,7 @@ class BlogController extends Controller
 
        
        
-       if(isset($id) && !empty($id) ){
+       if(isset($id) && !empty($id) && $id != -1 ){
         $post = Post::find($id);
        }else
        {
@@ -411,6 +415,8 @@ class BlogController extends Controller
                     $post->urlfriendly = $request['urlf'];
                     $post->meta_description = $request['metadescription'] ;
                     $post->extract = $request['extract'];
+                    $post->imagedescription = $request['imagedescription'] ;
+                    $post->imagetitle = $request['imagetitle'];
 
                 }
 

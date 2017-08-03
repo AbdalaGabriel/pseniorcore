@@ -235,6 +235,8 @@ function sendAllInformation(html, jsonObj)
 	var urlfContent = $("#new-post-urlf").val();
 	var blocksForFrontend =JSON.stringify(jsonObj);
 	var htmlForEdition =  html;
+	var imagedescription = $("#imagedescription").val();
+	var imagetitle = $("#imagetitle").val();
 		
 		
 	// Sending test
@@ -269,6 +271,8 @@ function sendAllInformation(html, jsonObj)
 				editionMethod: 'full',
 				htmlForEdition: htmlForEdition,
 				blocks: blocksForFrontend,
+				imagedescription: imagedescription,
+				imagetitle: imagetitle,
 			},
 
 			success: function(data){

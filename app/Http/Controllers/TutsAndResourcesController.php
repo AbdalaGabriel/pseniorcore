@@ -207,6 +207,8 @@ class TutsAndResourcesController extends Controller
         $urlfriendly = $request['urlf'];
         $metadescription = $request['metadescription'];
         $extract = $request['extract'];
+        $imagetitle = $request['imagetitle'];
+        $imagedescription = $request['imagedescription'];
         $categoriesNames = array();
 
         //Guardo con los ids de categorias que estan en el checkbox, los nombres de las mismas ne un array.
@@ -223,6 +225,8 @@ class TutsAndResourcesController extends Controller
             'urlfriendly' => $urlfriendly,
             'meta_description' => $metadescription,
             'extract' => $extract,
+            'imagetitle' => $imagetitle,
+            'imagedescription' => $imagedescription,
             ]);
 
         // Busco su id mediante una querie que me traiga el ultimo posteo en base a su nombre.
@@ -412,6 +416,8 @@ class TutsAndResourcesController extends Controller
                     $post->urlfriendly = $request['urlf'];
                     $post->meta_description = $request['metadescription'] ;
                     $post->extract = $request['extract'];
+                    $post->imagedescription = $request['imagedescription'] ;
+                    $post->imagetitle = $request['imagetitle'];
 
                 }
 

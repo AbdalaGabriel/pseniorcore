@@ -32,6 +32,9 @@ function init()
 		var coverImage = fileSelected;
 		var routeNew = baseurl+'admin/blog';
 		var urlfContent = $("#new-post-urlf").val();
+		var imagedescription = $("#imagedescription").val();
+		var imagetitle = $("#imagetitle").val();
+		var extract =  $('#new-post-extract').val();
 
 		
 		// Sending test
@@ -60,6 +63,9 @@ function init()
 				categories:categories ,
 				urlf: urlfContent,
 				metadescription: meta_description,
+				imagedescription: imagedescription,
+				imagetitle: imagetitle,
+				extract: extract,
 			},
 
 			success: function(projectId){

@@ -36,6 +36,17 @@
 		<div class="dropzone coverImage" id="myDropZone" data-token="{{ csrf_token() }}"></div>
 	</div>
 
+	<div class="coverimagedata">
+				{!!Form::label('imagetitle', 'Title de la imagen', ['class' => 'form-control ']);!!}
+		    	
+		    	{!!Form::text('imagetitle', null, ['id'=>'imagetitle', 'class'=>'form-control new-title','placeholder'=>'Title de la imagen']) !!}
+
+		    	{!!Form::label('imagedescription', 'Alt de la imagen', ['class' => 'form-control ']);!!}
+		    	
+		    	{!!Form::text('imagedescription', null, ['id'=>'imagedescription', 'class'=>'form-control new-title','placeholder'=>'Alt de la imagen']) !!}
+
+	</div>
+
 
 	{!!Form::label('content', 'Descripciòn de su proyecto', ['class' => 'form-control']);!!}
 

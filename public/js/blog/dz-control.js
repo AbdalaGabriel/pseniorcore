@@ -6,11 +6,11 @@ tokenEdit = $("div#myDropZone-edit").attr("data-token");
 var fileSelected;
 idforEditedPost = $(".item-id").val();
 console.log(token);
-
+var idforNewdPost = -1;
 
 //Control de imagenes para crear nuevo posteo
 $("div#myDropZone").dropzone({
-   url : baseurl+"admin/blog/uploadimage",
+   url : baseurl+"admin/blog/uploadimage/"+idforNewdPost,
    method: "POST",
    autoProcessQueue: false,
    uploadMultiple: false,
