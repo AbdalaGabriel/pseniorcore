@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Slide extends Model
 {
-      protected $fillable = [ 'title', 'subtitle', 'path', 'has_link', 'buttonText', 'buttonLink'];
+      protected $fillable = [ 'title', 'subtitle', 'path', 'has_link', 'buttonText', 'buttonLink', 'order_slide', 'imagetitle', 'imagedescription'];
 }

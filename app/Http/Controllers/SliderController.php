@@ -72,10 +72,25 @@ class SliderController extends Controller
 
             $title = $request['nameslide'];
             $subtitle = $request['subtitleslide'];
+            $hasLink = $request['hasLink'];
+            $buttonText = $request['buttonText'];
+            $buttonLink = $request['buttonLink'];
+            $imageTitle = $request['imageTitle'];
+            $imageDescription = $request['imageDescription'];
+
+            $orderslide = DB::table('slides')->orderBy('order_slide', 'desc')->first();
+            $lastOrderSlide = $orderslide->order_slide;
+            $newOrderSlide = $lastOrderSlide  + 1;
 
             $slide = Slide::create([
              'title' => $title,
              'subtitle' => $subtitle,
+             'has_link' => $hasLink,
+             'buttonText' => $buttonText,
+             'buttonLink' => $buttonLink,
+             'imagetitle' => $imageTitle,
+             'imagedescription' => $imageDescription,
+             'order_slide' => $newOrderSlide,
              ]);
             
             $newSlide = DB::table('slides')->where('title', $title)->latest()->first();
@@ -161,6 +176,8 @@ class SliderController extends Controller
         $slide->has_link = $request['hasLink'];
         $slide->buttonText = $request['buttonText'];
         $slide->buttonLink = $request['buttonLink'];
+        $slide->imagetitle = $request['imageTitle'];
+        $slide->imagedescription = $request['imageDescription'];
 
         $slide->save();
 

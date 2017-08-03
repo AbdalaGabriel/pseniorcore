@@ -9,6 +9,13 @@
           <label for="coverImage">Imagen slide</label>
          <div class="dropzone coverImage" id="myDropZoneEdit" data-token="{{ csrf_token() }}"></div>
 
+          <label for="imagetitle">Title de la imagen</label>
+         <input type="text" class="form-control" name="imagetitle"  id="imagetitleEdit" placeholder="Nombre descriptivo de la imagen">
+
+
+         <label for="imagedescription">Alt de la imagen</label>
+         <input type="text" class="form-control" name="imagedescriptionEdit"  id="imagedescriptionEdit" placeholder="Texto alternativo de la imagen">
+
          <label for="nameslideEdit">Titulo del slide</label>
          <input type="text" class="form-control" name="nameslideEdit"  id="nameslideEdit" placeholder="Ej: Nuevo proyecto Web">
 
@@ -25,11 +32,11 @@
          <div class="links">
             
             <p><span class="baseUrl">mi url/</span>
-            <input type="text" class="form-control" name="buttonLink"  id="buttonLink" placeholder="">
+            <input type="text" class="form-control" name="buttonLinkEdit"  id="buttonLink" placeholder="">
 
             </p>
 
-            <input type="text" class="form-control" name="subtitleslideEdit"  id="buttonText" placeholder="Ver proyecto!">
+            <input type="text" class="form-control" name="subtitleslideEdit"  id="buttonTextEdit" placeholder="Ver proyecto!">
 
         </div>
 

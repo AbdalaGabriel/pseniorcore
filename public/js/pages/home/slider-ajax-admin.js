@@ -91,8 +91,26 @@ function defineListerner()
 		$("#confirm-create").click(function()
 		{
 			nameslide = $("#nameslide").val();
-			subtitleslide = $("#namepage").val();
+			subtitleslide = $("#subtitleslide").val();
 			route = baseurl+"admin/paginas/home/slider";
+			var buttonLink = $("#buttonLink").val();
+			var buttonText = $("#buttonText").val();
+			var imageTitle = $("#imagetitle").val();
+			var imageDescription = $("#imagedescription").val();
+			var hasLinkCheckbox = $("#haslink");
+			var hasLink = 1;
+
+			if(hasLinkCheckbox.is(":checked"))
+			{
+				console.log("- has link");
+				hasLink = 1;
+			}
+			else
+			{
+				console.log("- hasn`t link");
+				hasLink = 0;
+			}
+
 			console.log( "- Inicio confirmation listener: CREATE" );
 
 			$.ajax(
@@ -101,7 +119,7 @@ function defineListerner()
 				headers: {'X-CSRF-TOKEN': token},
 				type: 'POST',
 				dataType: 'json',
-				data: {nameslide: nameslide, subtitleslide: subtitleslide},
+				data: {nameslide: nameslide, subtitleslide: subtitleslide, hasLink: hasLink, buttonText: buttonText, buttonLink: buttonLink, imageTitle: imageTitle, imageDescription: imageDescription},
 
 				success: function(data){
 					console.log("- Creación mediante AJAX satisfactoria")
@@ -126,9 +144,14 @@ function defineListerner()
 
 			$.get(routeEdit, function(res)
 			{
-				console.log("trajo"+res.title);
+				console.log(res);
 				$("#nameslideEdit").val(res.title);
 				$("#subtitleslideEdit").val(res.subtitle);
+				$("#buttonLinkEdit").val(res.buttonLink);
+				$("#buttonTextEdit").val(res.buttonText);
+				$("#imagetitleEdit").val(res.imagetitle);
+				$("#imagedescriptionEdit").val(res.imagedescription);
+
 			});	
 
 
@@ -138,8 +161,10 @@ function defineListerner()
 				routeUpdate =  baseurl+"admin/paginas/home/slider/"+idQuickEditButton;
 				var newTitle = $("#nameslideEdit").val();
 				var newSubtitle = $("#subtitleslideEdit").val();
-				var buttonLink = $("#buttonLink").val();
-				var buttonText = $("#buttonText").val();
+				var buttonLink = $("#buttonLinkEdit").val();
+				var buttonText = $("#buttonTextEdit").val();
+				var imageTitle = $("#imagetitleEdit").val();
+				var imageDescription = $("#imagedescriptionEdit").val();
 				var hasLinkCheckbox = $("#haslink");
 				var hasLink = 1;
 
@@ -160,7 +185,7 @@ function defineListerner()
 					headers: {'X-CSRF-TOKEN': token},
 					type: 'PUT',
 					dataType: 'json',
-					data: {title: newTitle, subtitle: newSubtitle, hasLink: hasLink, buttonText: buttonText, buttonLink: buttonLink},
+					data: {title: newTitle, subtitle: newSubtitle, hasLink: hasLink, buttonText: buttonText, buttonLink: buttonLink, imageTitle: imageTitle, imageDescription: imageDescription},
 
 					success: function(){
 						
