@@ -27,9 +27,6 @@
 		{!!Form::text('title', $finalObj->title, ['id'=>'new-post-title', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
 
 		<!-- Descripcion  -->
-		{!!Form::label('content', 'Cuerpo de texto', ['class' => 'form-control ']);!!}
-		{!!Form::textarea('content', $finalObj->description, ['id'=>'new-post-content', 'class'=>'form-control tiny','placeholder'=>'Ingrese el contenido de nuevo posteo']) !!}
-		
 		<h3>Bloques: </h3>
 	
 		<div id="blocks-container">
@@ -104,7 +101,6 @@
 
 @section('aditional-scripts')
 {!!Html::script('js/baseurl.js')!!}
-{!! Html::script('js/blog/create.js') !!}
 {!! Html::script('dropzone/dist/dropzone.js') !!}
 {!! Html::script('js/projects/dz-control.js') !!}
 {!!Html::script('js/projects/blocks.js')!!}

@@ -152,7 +152,6 @@ public function store(Request $request)
 {
 // Recibo la informacion que me llega
     $title = $request['title'];
-    $description = $request['description'];
     $coverImage = $request['path'];
     $urlfriendly = $request['urlf'];
     $metadescription = $request['metadescription'];
@@ -161,6 +160,8 @@ public function store(Request $request)
     $imagetitle = $request['imagetitle'];
     $imagedescription = $request['imagedescription'];
     $categoriesNames = array();
+    $jsoneditdata = $request['blocks'];
+    $htmleditdata = $request['htmlForEdition'];
 
 //Guardo con los ids de categorias que estan en el checkbox, los nombres de las mismas ne un array.
 
@@ -173,11 +174,12 @@ public function store(Request $request)
 // Creo el projecteo con la info que me llego.
     Project::create([
         'title' => $title,
-        'description' => $description,
         'urlfriendly' => $urlfriendly,
         'meta_description' => $metadescription,
         'imagetitle' => $imagetitle,
         'imagedescription' => $imagedescription,
+        'jsoneditdata' => $jsoneditdata,
+        'htmleditdata' => $htmleditdata,
 
         ]);
 
@@ -354,7 +356,6 @@ public function englishupdate(Request $request, $id)
 {
     $project = Project::find($id);
     $project->en_title = $request['en_title'];
-    $project->en_description = $request['en_description'];
     $project->en_meta_description = $request['en_meta_description'];
     $project->en_urlfriendly = $request['en_urlf'];
     $project->save();
@@ -377,7 +378,6 @@ public function update(Request $request, $id)
             if($language == "en")
             {
                 $project->en_title = $request['title'];
-                $project->en_description = $request['description'] ;
                 $project->en_urlfriendly = $request['urlf'];
                 $project->en_meta_description = $request['metadescription'] ;
                 $project->en_jsoneditdata = $request['blocks'];
@@ -387,7 +387,6 @@ public function update(Request $request, $id)
             else
             {
                 $project->title = $request['title'];
-                $project->description = $request['description'] ;
                 $project->urlfriendly = $request['urlf'];
                 $project->meta_description = $request['metadescription'] ;
                 $project->jsoneditdata = $request['blocks'];
