@@ -106,14 +106,23 @@ class UserController extends Controller
         //
     }
 
+    public function testcors(Request $request){
+     
+
+                $user = "ola soy una normal";
+
+                return response()->json($user);
+        
+    }
+
     public function loginApp($mail)
     {
-     
-            $user = DB::table('users')->where([
-            ['email', '=', $mail],
-            ])->get();
+           $user = DB::table('users')->where([
+                ['email', '=', $mail],
+                ])->get();
 
-            return response()->json($user);
+                return response()->json($user);
+            
 
         
     }
