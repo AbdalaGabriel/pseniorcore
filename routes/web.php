@@ -129,7 +129,7 @@ Route::resource('/admin/users', 'UserController');
 
 // User login
 
-    Route::get('app/userlogin/{mail?}', 'UserController@loginApp');
+    Route::get('app/userlogin/{mail?}', 'UserController@loginApp')->middleware('corsg');
     Route::get('app/projects/{userid?}', 'ClientProjectController@projectsforapp');
     Route::get('app/{userid?}/task/{taskid?}/{comment?}', 'CardCommentController@appMakeComment');
     Route::get('app/task/{taskid?}/comments', 'CardCommentController@appReturnCommentsForTask');
@@ -141,6 +141,7 @@ Route::resource('/admin/users', 'UserController');
 	Route::get('/app/blog', 'BlogController@givemeposts');
 	Route::get('/app/resources', 'TutsAndResourcesController@givemeposts');
 	
+	 Route::get('app/phases/delete/{phaseid?}', 'PhaseController@destroyFromApp')
 
 
 

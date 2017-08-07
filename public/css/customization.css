@@ -641,7 +641,7 @@ font-size: 1.6em;
 }
 
 .errorPage{
-    background: rebeccapurple;
+    background: #000;
     text-align: center;
     color: white;
 }
@@ -1241,30 +1241,7 @@ margin-bottom: 2em;
     cursor: pointer;
     position: relative;
 }
-.twit-container {
-    background: #00ceff;
-    padding: 1em;
-    float: left;
-    width: 23%;
-    max-height: 285px;
-    font-size: 1em;
-    margin: 1%;
-    overflow: hidden;
-    height: 285px;
-}
-.twit-container p {
-        margin: 0 0 10px;
-    font-size: 1.2vw;
-    color: rebeccapurple;
-    line-height: 1.6em;
-    font-weight: 500;
-}
 
-.twit-container h3, .h3 {
-    font-size: 1.6vw;
-    line-height: 1.4em;
-    margin: 20px 0 10px;
-}
 
 .engagement-container{
     color: white;
@@ -1805,7 +1782,7 @@ footer ul li {
     border-radius: 2em;
     height: initial;
     display: inline;
-play: inline;
+
 }
 
 .cat{
@@ -1979,3 +1956,6 @@ width: 100%;
 }
 
 }
+
+
+#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }

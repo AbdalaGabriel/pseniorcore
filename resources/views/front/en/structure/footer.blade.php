@@ -70,7 +70,7 @@ var veiyxzu = ['l','>','b','.','a','a','l','o','a','d','m','g','l','e','i','/','
 				<div class="signature">
 					
 					<div class="g-container-footer">
-						<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						<svg version="1.1" id="Capa_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						width="175px" height="161px" viewBox="-306.86 142.445 175 161" enable-background="new -306.86 142.445 175 161"
 						xml:space="preserve">
 						<g>

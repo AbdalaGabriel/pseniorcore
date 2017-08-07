@@ -76,7 +76,7 @@
 					@foreach ($projects as $project)		    
 						<article class="postItem col-md-6">
 							<a href="/en/project/{!!$project->id!!}/{!!$project->en_urlfriendly!!}">
-								<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}"" alt="">
+								<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}" alt="">
 								<h2 class="post-title">{!!$project->en_title!!}</h2>
 							</a>
 						
@@ -147,7 +147,7 @@
 					<h2>Free user registration</h2>
 					
 					<div class="organizer-description-wp col-md-6">
-						<h4>Free access to a simple task organizer, to work together or simply organize your daily tasks</h3>
+						<h4>Free access to a simple task organizer, to work together or simply organize your daily tasks</h4>
 						<div class="register-buttons-container">	
 								<a href="/register" class="action-button register-me">Register</a>
 								<a class="action-button login-button " href="/login">Login</a>

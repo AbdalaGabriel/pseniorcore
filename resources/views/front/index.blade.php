@@ -75,7 +75,7 @@
 					@foreach ($projects as $project)		    
 						<article class="postItem col-md-6">
 							<a href="/proyecto/{!!$project->id!!}/{!!$project->urlfriendly!!}">
-								<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}"" alt="">
+								<img title="{!!$project->imagetitle!!}" class="image-container" src="/uploads/projects/{!!$project->cover_image!!}" alt="{!!$project->imagedescription!!}">
 								<h2 class="post-title">{!!$project->title!!}</h2>
 							</a>
 							<?php 
@@ -109,7 +109,7 @@
 				<article class="blogItem col-md-6">
 
 					<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">
-						<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
+						<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}" title="{!!$post->imagetitle!!}" alt="{!!$post->imagedescription!!}">
 						
 					</a>
 					<span class="item-date">{!!$post->created_at->format('d/m/Y')!!}</span>
@@ -149,7 +149,7 @@
 					<h2>Registrate como usuario</h2>
 					
 					<div class="organizer-description-wp col-md-6">
-						<h4>Accedé gratuitamente a un sencillo organizador de tareas, para trabajar juntos o simplemente ordenar tus tareas cotidianas</h3>
+						<h4>Accedé gratuitamente a un sencillo organizador de tareas, para trabajar juntos o simplemente ordenar tus tareas cotidianas</h4>
 						<div class="register-buttons-container">	
 								<a href="/register" class="action-button register-me">Registrarme como usuario</a>
 								<a class="action-button login-button " href="/login">Iniciar sesión</a>

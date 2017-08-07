@@ -19,7 +19,7 @@
 			<a href="/">
 				<div class="logo-container">
 					<div class="brand">
-						<img src="/img/front/g.svg">
+						<img src="/img/front/g.svg" title="Gabriel Abdala - Diseñador Multimedial" alt="Gabriel Abdala - Diseñador Multimedial">
 					</div>
 				</div>
 			</a>
@@ -80,10 +80,5 @@
 
 		</div>
 
-
-
-
-
-
-</div>
+	</div>
 </nav>

@@ -146,4 +146,15 @@ class PhaseController extends Controller
         "mensaje" =>"borrado"
         ]);
     }
+
+     public function destroyFromApp(Request $request, $phaseid)
+    {
+       $phase = Phase::find($phaseid);
+            
+        // Eliminar proyecto.
+        $phase->delete();
+         return response()->json([
+        "mensaje" =>"borrado"
+        ]);
+    }
 }

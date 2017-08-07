@@ -1,7 +1,7 @@
 <meta charset="utf-8" />
 
 	<link rel="alternate" hreflang="en" href="http://gabrielabdala.com/en" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="google" content="nositelinkssearchbox" />
 	<!--  Metadescription -->
 	<meta name="description" content="@yield('metadescription')"/>
@@ -20,8 +20,6 @@
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 	<script src="https://apis.google.com/js/platform.js" async defer>
-
-		{lang: 'es-419'}
 	</script>
 	<!--     Fonts and icons     -->
 	<script src="https://use.fontawesome.com/062fcbdd8d.js"></script>

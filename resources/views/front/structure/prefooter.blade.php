@@ -5,7 +5,7 @@
 				<div class="section-container  col-md-4 org">
 					<h2>Dibujos y social life</h2>
 					
-					<!-- LightWidget WIDGET --><script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/70b5d6e8489f5de29666ab10673490fd.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+					<!-- LightWidget WIDGET --><script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/70b5d6e8489f5de29666ab10673490fd.html" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
 
 				</div>
 				
@@ -27,11 +27,7 @@
 					<!-- Begin MailChimp Signup Form -->
 					<h2>Suscribete al newsletter!</h2>
 					<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-					<style type="text/css">
-						#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
-						/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-						We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-					</style>
+					
 					<div id="mc_embed_signup">
 						<form action="//twitter.us14.list-manage.com/subscribe/post?u=21939b15fd9aeae487bd56ef1&amp;id=a5ecdc5c4a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 							<div id="mc_embed_signup_scroll">
@@ -75,7 +71,7 @@
 <div class="mc-field-group">
 	<label for="mce-MMERGE3">País </label>
 	<select name="MMERGE3" class="" id="mce-MMERGE3">
-	<option value=""></option>
+	<option value="Selecccionar país">Selecccionar país</option>
 	<option value="Argentina">Argentina</option>
 <option value="Aaland Islands">Aaland Islands</option>
 <option value="Afghanistan">Afghanistan</option>
