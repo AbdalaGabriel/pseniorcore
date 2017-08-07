@@ -149,12 +149,11 @@ class PhaseController extends Controller
 
      public function destroyFromApp(Request $request, $phaseid)
     {
-       $phase = Phase::find($phaseid);
+       $phase = Phase::find($id);
             
         // Eliminar proyecto.
         $phase->delete();
-         return response()->json([
-        "mensaje" =>"borrado"
-        ]);
+
+         return response("so");
     }
 }
