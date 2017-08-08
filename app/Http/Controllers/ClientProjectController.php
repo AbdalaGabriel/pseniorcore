@@ -171,6 +171,16 @@ class ClientProjectController extends Controller
             ]);
     }
 
+     public function destroyFromApp(Request $request, $projectid)
+            {
+               $project = ClientProject::find($projectid);
+                    
+                // Eliminar proyecto.
+                $project->delete();
+
+                 return response("so");
+            }
+
     public function projectsforapp($userid)
     {
 
@@ -299,4 +309,5 @@ class ClientProjectController extends Controller
 
 
         }
+
     }

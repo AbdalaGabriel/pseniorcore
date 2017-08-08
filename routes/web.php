@@ -145,7 +145,7 @@ Route::resource('/admin/users', 'UserController');
 	
 Route::get('app/delete/phase/{phaseid?}','PhaseController@destroyFromApp')->middleware('corsg');
 
-
+Route::get('app/delete/clientproject/{projectid?}','ClientProjectController@destroyFromApp')->middleware('corsg');
 
 Route::resource('/admin/paginas', 'PageController');
 
