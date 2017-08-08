@@ -315,7 +315,7 @@ class FrontController extends Controller
             $message->from('designer@gabrielabdala.com','Sitio web');
         });
 
-        $page = Page::where('en_urlfriendly', 'contacto')->first();
+        $page = Page::where('urlfriendly', 'contacto')->first();
          $pagesBlock = Config::where('reference', "footer_pagesblock_en")->first();
            $contactBlock = Config::where('reference', "footer_contactme_en")->first();
             $postsBlock = Config::where('reference', "footer_readmore_en")->first();
