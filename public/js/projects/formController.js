@@ -231,7 +231,6 @@ function sendAllInformation(html, jsonObj)
 				console.log("- Iniciamos Carga de imagen en proyecto");
 				dropzone.processQueue();
 				console.log(projectId);
-				$.redirect(baseurl+'admin/portfolio');
 				check();
 			}
 		});
