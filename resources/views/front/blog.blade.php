@@ -8,6 +8,9 @@
 <!-- Titulo de pagina -->
 @section('page-title')
 {!!$page->title!!}
+@endsection
+
+@section('categoriescontainer')
 <div class="categories-container">	
 		@foreach ($categories as $category)		    
 		<a href="/{!!$page->urlfriendly!!}/cat/{!!$category->urlfriendly!!}" class="categorytag">
@@ -30,12 +33,12 @@
 
 <section class="section-container">
 	
-
+	<h2 class="dinonne">Blog de noticias y novedades</h2>
 	@foreach ($posts as $post)		    
 				<article class="blogItem col-md-4">
 
 					<a href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}">
-						<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}"" alt="">
+						<img class="image-container" src="/uploads/posts/{!!$post->cover_image!!}" alt="">
 						
 					</a>
 					<span class="item-date">{!!$post->created_at->format('d/m/Y')!!}</span>
@@ -63,5 +66,6 @@
 				
 
 				@endforeach
+</section>
 </div>
 @endsection

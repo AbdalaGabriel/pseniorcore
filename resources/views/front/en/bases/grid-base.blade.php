@@ -15,6 +15,7 @@
 			<div id="particles-js"></div>
 			<div class="page-title">
 				<h1>@yield('page-title')</h1>
+				@yield('categoriescontainer')
 			</div>
 		</div>
 	</div>
@@ -32,8 +33,8 @@
 @include('front.en.structure.footer')
 
 
-</body>
+
 @include('front.en.structure.scripts')
 @yield('aditionalScripts')
-
+</body>
 </html>

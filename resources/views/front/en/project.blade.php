@@ -27,7 +27,7 @@
 	
 
 	<section class="g-section portfolio-body-section">
-		
+		<h2 class="dinonne">{!!$project->en_title!!}</h2>
 		<div class="post-body long-text-container">
 
 <?php
@@ -112,7 +112,7 @@ for ($i=0; $i < $BlockNumbers ; $i++) {
 
 	<!-- SHARE EN REDES SOCIALES -->
 
-		<section class="g-section portfolio-body-section">
+		<div class="g-section portfolio-body-section">
 
 			<div id="fb-root"></div>
 			<script>(function(d, s, id) {
@@ -130,7 +130,7 @@ for ($i=0; $i < $BlockNumbers ; $i++) {
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 				<p>{!!$project->content!!}</p>
 
-		</section>
+		</div>
 
 	    <!-- //////////////////////// -->
 

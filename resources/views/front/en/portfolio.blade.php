@@ -8,6 +8,9 @@
 	<!-- Titulo de pagina -->
 	@section('page-title')
 	{!!$page->en_title!!}
+	@endsection
+
+	@section('categoriescontainer')
 	<div class="categories-container">	
 		@foreach ($categories as $category)		    
 		<a href="/{!!$page->en_urlfriendly!!}/cat/{!!$category->en_urlfriendly!!}" class="categorytag">
@@ -28,11 +31,11 @@
 
 
 <section class="g-section portfolio-page-container ">
-	
+	<h2 class="dinonne">Proffessional portfolio</h2>
 	@foreach ($projects as $project)		    
 	<article class="postItem portfolioItem col-md-4">
 		<a  href="/en/project/{!!$project->id!!}/{!!$project->en_urlfriendly!!}">
-			<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}"" alt="">
+			<img class="image-container" src="/uploads/projects/{!!$project->cover_image!!}" alt="">
 			<h2 class="post-title">{!!$project->en_title!!}</h2>
 		</a>
 		<?php 

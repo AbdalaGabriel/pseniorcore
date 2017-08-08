@@ -1,39 +1,39 @@
-@extends('front.bases.post-base')
-	
+
+@extends('front.en.bases.base')
+
 	<!-- Titulo de la pestaña -->
-	@section('mainTitle'){!!$resource->title!!}@endsection
+	@section('mainTitle'){!!$resource->en_title!!}@endsection
 
 	<!-- Metadescription-->
-	@section('metadescription'){!!$resource->meta_description!!}@endsection
+	@section('metadescription'){!!$resource->en_meta_description!!}@endsection
 
 	<!-- Imagen de cover -->
 	@section('cover-image')
-		<img class="cover-image" src="/uploads/resources/{!!$resource->cover_image!!}" alt="">
+		<img class="cover-image" src="/uploads/projects/{!!$resource->cover_image!!}" alt="">
 	@endsection
 
 	<!-- Titulo de pagina -->
 	@section('page-title')
-		{!!$resource->title!!}
+		{!!$resource->en_title!!}
 	@endsection
 
 	<!-- Contenido principal -->
 	@section('main')
-	@if($resource->en_urlfriendly != "")
-		@section('language') 
-		  Idioma: <a href="/{!!$resource->urlfriendly!!}">ES</a> - <a href="/{!!$resource->en_urlfriendly!!}">EN</a></div>
-		  @endsection
-		@endif
-
-		<div class="resource-container">
-			{!!$resource->resource!!}
-		</div>
+	
+	@section('language') 
+	  Idioma: <a href="/blog/{!!$resource->id!!}/{!!$resource->urlfriendly!!}">ES</a> - <a href="/en/blog/{!!$resource->id!!}/{!!$resource->en_urlfriendly!!}">EN</a></div>
+	  @endsection
 
 
+	
 
-		<!-- SHARE EN REDES SOCIALES -->
+	<section class="g-section">
+		<h2 class="dinonne">{!!$resource->en_title!!}</h2>
+		<div class="post-body long-text-container">{!!$resource->en_content!!}</div>
 
-		<section class="g-section">
 
+
+	<div id="share-content-container">
 			<div id="fb-root"></div>
 			<script>(function(d, s, id) {
 			  var js, fjs = d.getElementsByTagName(s)[0];
@@ -48,11 +48,9 @@
 
 			<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="your_hash_tag" data-via="your_screen_name" data-count="vertical">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-				<p>{!!$resource->content!!}</p>
-
+			
+		</div>
 		</section>
-
 	    <!-- //////////////////////// -->
-
 
 	@endsection

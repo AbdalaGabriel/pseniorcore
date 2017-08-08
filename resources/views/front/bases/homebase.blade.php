@@ -18,7 +18,7 @@
 	<!-- FOOTER -->
 	@include('front.structure.footer')
 
-</body>
+
 
 
 @include('front.structure.scripts')
@@ -39,3 +39,4 @@
 
 	});
 </script>
+</body>

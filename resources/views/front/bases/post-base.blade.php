@@ -164,7 +164,6 @@
 </footer>
 
 
-</body>
 
 <!--   Core JS Files   -->
 {!!Html::script('bootstrap-template-assets/materialKit/assets/js/jquery.min.js')!!}
@@ -183,4 +182,5 @@
 {!!Html::script('js/functions.js')!!}
 {!!Html::script('js/baseurl.js')!!}
 
+</body>
 </html>

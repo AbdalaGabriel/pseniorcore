@@ -17,7 +17,7 @@
 	@section('page-title')
 		{!!$page->en_title!!}
 	@endsection
-
+ 
 		<!-- External css -->
 	@section('styles')
 		{!!Html::style('css/pages.css')!!}
@@ -36,6 +36,7 @@
 
 
 	<section class="g-section">
+		<h2 class="dinonne">{!!$page->en_title!!}</h2>
 		@if (count($errors) > 0)
 		    <div class="alert alert-danger">
 		        <ul>
@@ -51,19 +52,19 @@
 			<!-- Si est alogueado que autcomplete nombre y mail con datos de usuarios logueado, sino que me pida numero tambien-->
 		
 			@if (Auth::guest())
-				{!!Form::label('name', 'Name', ['class' => 'form-control'])!!}
+				{!!Form::label('consulta-name', 'Name', ['class' => 'form-control'])!!}
 				{!!Form::text('name', null, ['id'=>'consulta-name', 'class'=>'form-control','placeholder'=>'Ex: Juan García', 'data-version' => 'es']) !!}
 
-				{!!Form::label('email', 'Email:', ['class' => 'form-control'])!!}
+				{!!Form::label('consulta-mail', 'Email:', ['class' => 'form-control'])!!}
 
 				{!!Form::text('email', null, ['id'=>'consulta-mail', 'class'=>'form-control','placeholder'=>'Ej: sunombre@sucorreo.com', 'data-version' => 'es']) !!}
 
-				{!!Form::label('number', 'Phone number', ['class' => 'form-control'])!!}
+				{!!Form::label('consulta-number', 'Phone number', ['class' => 'form-control'])!!}
 				{!!Form::text('number', null, ['id'=>'consulta-number', 'class'=>'form-control','placeholder'=>'Ej: 15-0000-000', 'data-version' => 'es']) !!}
 
 
 				
-				{!!Form::label('consulta', 'Message', ['class' => 'form-control'])!!}
+				{!!Form::label('new-meta-content', 'Message', ['class' => 'form-control'])!!}
 			
 			{!!Form::textarea('consulta', null, ['id'=>'new-meta-content', 'class'=>'form-control','placeholder'=>'At your service, ']) !!}
 
@@ -91,6 +92,7 @@
 		<input type="hidden"  data-token="{{ csrf_token() }}" name="token">
 		{!! Form::close() !!}
 	
+	</section>
 
 	@endsection
 

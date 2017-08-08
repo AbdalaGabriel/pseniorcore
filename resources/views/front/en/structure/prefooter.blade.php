@@ -15,7 +15,7 @@
 				<a target="_blank" class="qr-link" href="https://build.phonegap.com/apps/2726611/share">
 				<img src="/img/front/iphone.svg" alt="">
 				<div class="qr-container">
-					<img class="qr" src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://build.phonegap.com/apps/2457718/install/4MQRvpxbrnURxcKVLtxU&chld=L|1&choe=UTF-8" alt="">
+					<img class="qr" src="/img/front/qr.jpg" alt="QR Code">
 				</div>
 				</a>
 				<span class="prefooter-aclaration">

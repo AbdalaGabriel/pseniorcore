@@ -8,6 +8,16 @@
 	<!-- Titulo de pagina -->
 	@section('page-title'){!!$page->en_title!!}@endsection
 
+	@section('categoriescontainer')
+<div class="categories-container">	
+		@foreach ($categories as $category)		    
+		<a href="/{!!$page->en_urlfriendly!!}/cat/{!!$category->en_urlfriendly!!}" class="categorytag">
+			{!!$category->title!!}
+		</a>
+		@endforeach
+	</div>
+	@endsection
+
 @section('main')
 
 	@if($page->en_urlfriendly != "")
@@ -16,11 +26,11 @@
 		  @endsection
 		@endif
 <section class="g-section">
-
+	<h2 class="dinonne">{!!$page->en_title!!}</h2>
 	@foreach ($tuts as $tut)		    
 	<article class="postItem col-md-6">
 		<a href="/recursos-y-tutoriales/{!!$tut->id!!}/{!!$tut->en_urlfriendly!!}">
-			<img class="image-container" src="/uploads/resources/{!!$tut->cover_image!!}"" alt="">
+			<img class="image-container" src="/uploads/resources/{!!$tut->cover_image!!}" alt="">
 			<h2 class="post-title">{!!$tut->en_title!!}</h2>
 		</a>
 	</article>

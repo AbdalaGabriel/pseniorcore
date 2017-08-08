@@ -36,9 +36,9 @@
 <!-- FOOTER -->
 @include('front.structure.footer')
 
-</body>
 
 
 @include('front.structure.scripts')
 @yield('aditionalScripts')
 
+</body>

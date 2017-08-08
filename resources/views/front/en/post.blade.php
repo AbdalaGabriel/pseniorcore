@@ -28,7 +28,7 @@
 	
 
 	<section class="g-section">
-		
+		<h2 class="dinonne">{!!$post->en_title!!}</h2>
 		<div class="post-body long-text-container">{!!$post->en_content!!}</div>
 
 

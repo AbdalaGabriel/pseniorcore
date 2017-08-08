@@ -30,13 +30,13 @@
 
 
 
-
+ 
 
 
 		<!-- SHARE EN REDES SOCIALES -->
 
 		<section class="g-section">
-
+		<h2 class="dinonne">{!!$post->title!!}</h2>
 		<div class="post-body long-text-container">{!!$post->content!!}</div>
 	
 		<div id="share-content-container">
@@ -50,7 +50,7 @@
 			}(document, 'script', 'facebook-jssdk'));</script>
 
 			<div class="fb-like"  data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-			<div class="g-plus" data-action="share" data-href="/proyecto/{!!$post->id!!}/{!!$post->urlfriendly!!}"></div>
+			<div class="g-plus" data-action="share" data-href="/blog/{!!$post->id!!}/{!!$post->urlfriendly!!}"></div>
 
 			<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="your_hash_tag" data-via="your_screen_name" data-count="vertical">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

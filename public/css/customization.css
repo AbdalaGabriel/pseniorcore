@@ -21,6 +21,10 @@
 
 }
 
+.dinonne{
+  display: none !important;
+}
+
 .form-reg .header{
     height: 30vh !important;
     overflow: hidden !important;

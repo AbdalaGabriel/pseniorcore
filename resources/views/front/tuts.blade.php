@@ -8,9 +8,12 @@
 	<!-- Titulo de pagina -->
 	@section('page-title')
 	{!!$page->title!!}
+	@endsection
+
+	@section('categoriescontainer')
 <div class="categories-container">	
 		@foreach ($categories as $category)		    
-		<a href="/{!!$page->urlfriendly!!}/cat/{!!$category->title!!}" class="categorytag">
+		<a href="/{!!$page->urlfriendly!!}/cat/{!!$category->urlfriendly!!}" class="categorytag">
 			{!!$category->title!!}
 		</a>
 		@endforeach
@@ -26,11 +29,11 @@
 		@endif
 <section class="g-section">
 	
-
+	<h2 class="dinonne">{!!$page->title!!}</h2>
 	@foreach ($tuts as $tut)		    
 	<article class="postItem col-md-6">
 		<a href="/recursos-y-tutoriales/{!!$tut->id!!}/{!!$tut->urlfriendly!!}">
-			<img class="image-container" src="/uploads/resources/{!!$tut->cover_image!!}"" alt="">
+			<img class="image-container" src="/uploads/resources/{!!$tut->cover_image!!}" alt="">
 			<h2 class="post-title">{!!$tut->title!!}</h2>
 		</a>
 	</article>

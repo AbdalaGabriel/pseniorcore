@@ -33,6 +33,7 @@
 	  Idioma: <a href="/{!!$page->urlfriendly!!}">ES</a> - <a href="/en/{!!$page->en_urlfriendly!!}">EN</a></div>
 	  @endsection
 	@endif
+	
 
 
 
@@ -44,6 +45,7 @@ $BlockNumbers = count($jsonBlocks);
  for ($i=0; $i < $BlockNumbers ; $i++) { 
 ?>
 	<section>
+	<h2 class="dinonne">{!!$page->title!!}</h2>
 	<?php
 		$rowsnumber = count($jsonBlocks[$i]["rows"]); 
 		for ($j=0; $j < $rowsnumber; $j++) 

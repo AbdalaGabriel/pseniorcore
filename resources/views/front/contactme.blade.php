@@ -36,6 +36,7 @@
 
 
 	<section class="g-section">
+		<h2 class="dinonne">{!!$page->title!!}</h2>
 		@if (count($errors) > 0)
 		    <div class="alert alert-danger">
 		        <ul>
@@ -51,19 +52,19 @@
 			<!-- Si est alogueado que autcomplete nombre y mail con datos de usuarios logueado, sino que me pida numero tambien-->
 		
 			@if (Auth::guest())
-				{!!Form::label('name', 'Nombre', ['class' => 'form-control'])!!}
+				{!!Form::label('consulta-name', 'Nombre', ['class' => 'form-control'])!!}
 				{!!Form::text('name', null, ['id'=>'consulta-name', 'class'=>'form-control','placeholder'=>'Ej: Juan García', 'data-version' => 'es']) !!}
 
-				{!!Form::label('email', 'Email:', ['class' => 'form-control'])!!}
+				{!!Form::label('consulta-mail', 'Email:', ['class' => 'form-control'])!!}
 
 				{!!Form::text('email', null, ['id'=>'consulta-mail', 'class'=>'form-control','placeholder'=>'Ej: sunombre@sucorreo.com', 'data-version' => 'es']) !!}
 
-				{!!Form::label('number', 'Teléfono de contacto', ['class' => 'form-control'])!!}
+				{!!Form::label('consulta-number', 'Teléfono de contacto', ['class' => 'form-control'])!!}
 				{!!Form::text('number', null, ['id'=>'consulta-number', 'class'=>'form-control','placeholder'=>'Ej: 15-0000-000', 'data-version' => 'es']) !!}
 
 
 				
-				{!!Form::label('consulta', 'Consulta', ['class' => 'form-control'])!!}
+				{!!Form::label('new-meta-content', 'Consulta', ['class' => 'form-control'])!!}
 			
 			{!!Form::textarea('consulta', null, ['id'=>'new-meta-content', 'class'=>'form-control','placeholder'=>'Que desea consultarme ']) !!}
 
@@ -90,7 +91,7 @@
 		<input type="hidden"  data-token="{{ csrf_token() }}" name="token">
 		{!! Form::close() !!}
 	
-
+	</section>
 	@endsection
 
 

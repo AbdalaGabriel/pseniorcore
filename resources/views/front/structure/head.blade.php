@@ -18,7 +18,7 @@
 	<meta name="theme-color" content="#000000">
 
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<meta content='width=device-width, initial-scale=1.0'  name='viewport' />
 	<script src="https://apis.google.com/js/platform.js" async defer>
 	</script>
 	<!--     Fonts and icons     -->
