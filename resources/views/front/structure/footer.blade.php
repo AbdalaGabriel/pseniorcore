@@ -15,7 +15,7 @@
 			<div class="footer-pages">
 				
 			</div>
-
+ 
 		</div>
 
 		<div class="footer-box contact-me">
@@ -31,9 +31,10 @@ var veiyxzu = ['l','>','b','.','a','a','l','o','a','d','m','g','l','e','i','/','
 		<div class="footer-box contact-me">
 			<h3 class="footer-title">{!!$postsBlock->value!!}</h3>
 			@if (Auth::guest())
+				<a class="footer-links" href="/login">Login</a>
 				<a class="footer-links" href="#newsletterWp">Registrarme en el newsletter</a>
 				<a class="footer-links" href="/register">Registrarme como usuario</a>
-				<a class="footer-links" href="/login">Login</a>
+				
 			@else
 				
 				<a class="footer-links" target="_blank" href="/organizer/{!!Auth::user()->id!!}">Mi organizador</a>
@@ -41,6 +42,8 @@ var veiyxzu = ['l','>','b','.','a','a','l','o','a','d','m','g','l','e','i','/','
 				<!--<a class="footer-links" href="/register">Panel de usuario</a>-->
 				<a class="footer-links" href="/logout">Logout</a>
 			@endif
+
+			<a target="_blank" href="http://www.defensaconsumidor.gba.gov.ar/" class="footer-links">Defensa al consumidor</a>
 		</div>
 
 		<div class="footer-box social-icons-container">

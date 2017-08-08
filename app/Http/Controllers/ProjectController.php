@@ -383,6 +383,8 @@ public function update(Request $request, $id)
                 $project->en_jsoneditdata = $request['blocks'];
                 $project->en_htmleditdata = $request['htmlForEdition'];
                 $project->en_urlfriendly = $request['urlf'];
+                $project->en_imagedescription = $request['imagedescription'] ;
+                $project->en_imagetitle = $request['imagetitle'];
             }
             else
             {

@@ -81,7 +81,7 @@ function init()
 				console.log(idforEditedPost);
 				$(".wellmessage").remove();
 				$("body").append('<p class="wellmessage">'+data.mensaje+'</p>');
-
+				check();
 				//$.redirect(baseurl+'admin/blog/');
 			}
 		});

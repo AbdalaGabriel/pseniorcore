@@ -56,6 +56,16 @@
 
 			<div class="dropzone coverImage" id="myDropZone-edit" data-token="{{ csrf_token() }}"></div>
 		</div>
+			<div class="coverimagedata">
+				{!!Form::label('imagetitle', 'Title de la imagen', ['class' => 'form-control ']);!!}
+		    	
+		    	{!!Form::text('imagetitle', $finalObj->en_imagetitle, ['id'=>'imagetitle', 'class'=>'form-control new-title','placeholder'=>'Title de la imagen']) !!}
+
+		    	{!!Form::label('imagedescription', 'Alt de la imagen', ['class' => 'form-control ']);!!}
+		    	
+		    	{!!Form::text('imagedescription', $finalObj->en_imagedescription, ['id'=>'imagedescription', 'class'=>'form-control new-title','placeholder'=>'Alt de la imagen']) !!}
+
+			</div>
 
 		<!-- Categorias  -->
 		<div class="categories-container">

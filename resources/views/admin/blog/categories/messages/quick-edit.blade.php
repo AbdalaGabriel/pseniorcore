@@ -7,13 +7,16 @@
       </div>
       <div class="modal-body">
          <h5>Modificar título de esta categoría</h5>
-         
+         {!!Form::label('titleQuickEdit', 'Titulo', ['class' => 'form-control']);!!}
          {!!Form::text('title', null, ['id'=>'titleQuickEdit', 'class'=>'form-control','placeholder'=>'Ingrese su nuevo titulo']) !!}
           <div class="checkboxes">
             
           </div>
          <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-         
+           <div class="urlFContainer">
+          {!!Form::label('urlf', 'URL Friendly', ['class' => 'form-control']);!!}
+          {!!Form::text('urlf','', ['id'=>'new-post-urlf', 'class'=>'form-control','placeholder'=>'URL amigable', 'data-version' => 'es']) !!}
+        </div>
         
       </div>
       <div class="modal-footer">

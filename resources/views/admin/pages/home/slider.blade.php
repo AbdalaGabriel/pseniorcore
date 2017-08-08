@@ -7,7 +7,9 @@
 
 @section('main')
 	@include('admin.pages.home.messages.newslider')
+
 	@include('admin.pages.home.messages.edit')
+
 	@include('admin.pages.home.messages.delete')
 	
 	<div class=".col-md-4 center adminBlock">
@@ -18,6 +20,7 @@
 
 		<a href="#"  data-token="{{ csrf_token() }}" class="saveOrder btn btn-primary btn-round">Guardar nuevo orden</a>	
 	</div>
+		@include('admin.pages.home.messages.edit-en')
 
 	@section('aditional-scripts')
 	{!!Html::script('js/baseurl.js')!!}

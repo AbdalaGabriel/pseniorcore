@@ -70,6 +70,7 @@ function initfooter()
 
 				success: function(data){
 					console.log("- Proyecto editado exitosamente");
+					check();
 
 			}
 		});

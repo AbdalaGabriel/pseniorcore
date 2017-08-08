@@ -72,6 +72,7 @@ function detectEvents(){
 				console.log("- Se generó la url para le proyecto");
 				console.log(data);
 				urlf.val(data);
+				check();
 			}
 		});
 	})
@@ -299,7 +300,8 @@ function sendAllInformation(html, jsonObj)
 			success: function(data){
 				console.log("- Proyecto editado exitosamente");
 				
-				$("body").append('<p class="wellmessage">'+data+'</p>');
+				check();
+				
 				//$.redirect(baseurl+'admin/blog/');
 			}
 		});

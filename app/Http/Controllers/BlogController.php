@@ -407,6 +407,8 @@ class BlogController extends Controller
                     $post->en_urlfriendly = $request['urlf'];
                     $post->en_meta_description = $request['metadescription'] ;
                     $post->en_extract = $request['extract'];
+                    $post->en_imagedescription = $request['imagedescription'] ;
+                    $post->en_imagetitle = $request['imagetitle'];
 
                 }else
                 {

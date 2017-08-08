@@ -168,16 +168,32 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $slide = Slide::find($id);
-
+        $lang = $request['lang'];
+        if($lang  == "es")
+        {
+      
         // actualiza nombre con lo que le llega via AJAX.
 
-        $slide->title = $request['title'];
-        $slide->subtitle = $request['subtitle'];
-        $slide->has_link = $request['hasLink'];
-        $slide->buttonText = $request['buttonText'];
-        $slide->buttonLink = $request['buttonLink'];
-        $slide->imagetitle = $request['imageTitle'];
-        $slide->imagedescription = $request['imageDescription'];
+            $slide->title = $request['title'];
+            $slide->subtitle = $request['subtitle'];
+            $slide->has_link = $request['hasLink'];
+            $slide->buttonText = $request['buttonText'];
+            $slide->buttonLink = $request['buttonLink'];
+            $slide->imagetitle = $request['imageTitle'];
+            $slide->imagedescription = $request['imageDescription'];
+
+        }
+        else
+        {
+            $slide->en_title = $request['title'];
+            $slide->en_subtitle = $request['subtitle'];
+            $slide->has_link = $request['hasLink'];
+            $slide->en_buttonText = $request['buttonText'];
+            $slide->buttonLink = $request['buttonLink'];
+            $slide->en_imagetitle = $request['imageTitle'];
+            $slide->en_imagedescription = $request['imageDescription'];
+
+        }
 
         $slide->save();
 

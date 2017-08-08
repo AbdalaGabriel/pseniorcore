@@ -101,6 +101,7 @@ function defineListerner()
 
 					success: function(){
 						carga();
+						check();
 					}
 				});
 			});
@@ -131,6 +132,7 @@ function defineListerner()
 
 					success: function(){
 						carga();
+						check();
 					}
 				});
 			});

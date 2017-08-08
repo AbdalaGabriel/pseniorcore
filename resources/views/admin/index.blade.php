@@ -47,8 +47,12 @@
 </head>
 
 <body class="admin">
-
+	
 	@yield('popups')
+
+	<div class="check-container">
+		<img src="/img/front/check.svg" alt="check">
+	</div>
  
 	<div class="wrapper">
 				
@@ -240,7 +244,7 @@
 	<!-- <script src="../resources/assets/bootstrap-template-assets/js/material-dashboard.js"></script>-->
 
 	{!!Html::script('js/particles/particle.js')!!}
-	
+	{!!Html::script('js/check.js')!!}
 	@yield('aditional-scripts')
 
 	<script>

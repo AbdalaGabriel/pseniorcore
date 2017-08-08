@@ -91,9 +91,21 @@ class TutsAndResourcesTagsController extends Controller
     {
         $category = TutsAndResourcesTag::find($id);
 
+       $lang = $request['lang'];
+
+        if($lang =="es")
+        {
+            $category->title = $request['title'];
+            $category->urlfriendly = $request['urlf'];
+
+        }else{
+
+            $category->en_title = $request['title'];
+            $category->en_urlfriendly = $request['urlf'];
+        }
+
         // actualiza nombre con lo que le llega via AJAX.
-        $category->title = $request['title'];
-        $category->urlfriendly = $request['urlfriendly'];
+        
         $category->save();
 
         return response()->json([

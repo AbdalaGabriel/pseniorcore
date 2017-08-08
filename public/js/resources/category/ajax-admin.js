@@ -6,7 +6,7 @@ $( document ).ready(function()
     console.log("- Base url: " + baseurl);
 	carga();
 });
-
+ 
 // Funcion principal: llenado dinamico de elementos html.
 function carga()
 {
@@ -24,7 +24,7 @@ function carga()
 		console.log(res);
 		$(res).each(function(key, value)
 		{
-			tablaDatos.append('<tr><td>'+value.title+'<br/></td><td><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-category" data-id="'+value.id+'">Editar categoría</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-category" data-id="'+value.id+'">Eliminar</button></td></tr>');
+            tablaDatos.append('<tr><td>'+value.title+'<br/></td><td>'+value.urlfriendly+'<br/></td><td><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-category" data-id="'+value.id+'">Editar categoría</a></td><td><a href="#" class="quickEdit-en" data-toggle="modal" data-target="#quickedit-category-en" data-id="'+value.id+'">Versión en inglés</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-category" data-id="'+value.id+'">Eliminar</button></td></tr>');
 
 		});
 	})
@@ -87,6 +87,7 @@ function defineListerner()
 
               success: function(){
                  carga();
+                 check();
              }
          });
        });
@@ -96,40 +97,87 @@ function defineListerner()
     //////////////////////////////////////////////////////////////////////////////////////
     // Edición rápida
 
+    // Edición rápida
+     $(".quickEdit").off();
     $(".quickEdit").click(function()
     {
-    	console.log( "- Inicio click listener: QUICK EDIT" );
-    	idQuickEditButton = $(this).attr("data-id");
-    	routeEdit = baseurl+"admin/tutoriales-y-recursos-tags/"+idQuickEditButton+"/edit";;
-    	token = $("#token").val();
+        console.log( "- Inicio click listener: QUICK EDIT" );
+        idQuickEditButton = $(this).attr("data-id");
+        routeEdit = baseurl+"admin/tutoriales-y-recursos-tags/"+idQuickEditButton+"/edit";;
+        token = $("#token").val();
 
-    	$.get(routeEdit, function(res)
-    	{
-    		$("#titleQuickEdit").val(res.title);
-    	});	
+        $.get(routeEdit, function(res)
+        {
+            $("#titleQuickEdit").val(res.title);
+            $("#new-post-urlf").val(res.urlfriendly);
+        }); 
 
 
-    	$("#confirmation-quickEdit").click(function()
-    	{
-    		console.log( "- Inicio confirmation listener" );
-    		routeUpdate =  baseurl+"admin/tutoriales-y-recursos-tags/"+idQuickEditButton;
-    		var newTitle = $("#titleQuickEdit").val();
+        $("#confirmation-quickEdit").click(function()
+        {
+            console.log( "- Inicio confirmation listener" );
+            routeUpdate =  baseurl+"admin/tutoriales-y-recursos-tags/"+idQuickEditButton;
+            var newTitle = $("#titleQuickEdit").val();
+            var newreurlf = $("#new-post-urlf").val();
 
-    		$.ajax(
-    		{
-    			url: routeUpdate,
-    			headers: {'X-CSRF-TOKEN': token},
-    			type: 'PUT',
-    			dataType: 'json',
-    			data: {title: newTitle},
+            $.ajax(
+            {
+                url: routeUpdate,
+                headers: {'X-CSRF-TOKEN': token},
+                type: 'PUT',
+                dataType: 'json',
+                data: {title: newTitle, urlf: newreurlf, lang: "es"},
 
-    			success: function()
+                success: function()
                 {
-    				carga();
-    			}
-    		});
-    	});
+                    carga();
+                    check();
+                }
+            });
+        });
     });
+
+    $(".quickEdit-en").off();
+    $(".quickEdit-en").click(function()
+    {
+        console.log( "- Inicio click listener: QUICK EDIT" );
+        idQuickEditButton = $(this).attr("data-id");
+        routeEdit = baseurl+"admin/tutoriales-y-recursos-tags/"+idQuickEditButton+"/edit";;
+        token = $("#token").val();
+
+        $.get(routeEdit, function(res)
+        {
+            $("#titleQuickEdit-en").val(res.en_title);
+            $("#new-post-urlf-en").val(res.en_urlfriendly);
+        }); 
+
+
+        $("#confirmation-quickEdit-en").click(function()
+        {
+            console.log( "- Inicio confirmation listener" );
+            routeUpdate =  baseurl+"admin/tutoriales-y-recursos-tags/"+idQuickEditButton;
+            var newTitle = $("#titleQuickEdit-en").val();
+            var newreurlf = $("#new-post-urlf-en").val();
+
+            $.ajax(
+            {
+                url: routeUpdate,
+                headers: {'X-CSRF-TOKEN': token},
+                type: 'PUT',
+                dataType: 'json',
+                data: {title: newTitle, urlf: newreurlf, lang:"en"},
+
+                success: function()
+                {
+                    carga();
+                    check();
+                }
+            });
+        });
+    });
+
+
+  
 
 
     //////////////////////////////////////////////////////////////////////////////////////

@@ -110,6 +110,7 @@ function detectEvents(){
 				console.log("- Se generó la url para le proyecto");
 				console.log(data);
 				urlf.val(data);
+				check();
 			}
 		});
 	})

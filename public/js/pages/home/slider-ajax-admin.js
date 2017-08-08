@@ -30,7 +30,7 @@ function carga()
 			console.log("Hay respuesta de la API");
 			$(res).each(function(key, value)
 			{		
-				sliderContainer.append('<div data-id="'+value.id+'" data-position="'+value.order_slide+'" class="slideImage" ><img style="max-width: 300px" src="/uploads/sliderhome/'+value.path+'" /><a href="#" class="slideEidt" data-toggle="modal" data-target="#edit-slide" data-slide-id="'+value.id+'">Edit</a><a href="#" class="slideDelete" data-toggle="modal" data-target="#delete-this-slide" data-slide-id="'+value.id+'">X</a></div>');
+				sliderContainer.append('<div data-id="'+value.id+'" data-position="'+value.order_slide+'" class="slideImage" ><a href="#" class="slideEidt-en" data-toggle="modal" data-target="#edit-slide-english" data-slide-id="'+value.id+'">EN</a><img style="max-width: 300px" src="/uploads/sliderhome/'+value.path+'" /><a href="#" class="slideEidt" data-toggle="modal" data-target="#edit-slide" data-slide-id="'+value.id+'">Edit</a><a href="#" class="slideDelete" data-toggle="modal" data-target="#delete-this-slide" data-slide-id="'+value.id+'">X</a></div>');
 				
 			});
 
@@ -127,6 +127,7 @@ function defineListerner()
 					newProjectId = data.id;
 						// Subimos imagen luego de crear el proyecto
 						dropzone.processQueue();
+						check();
 						
 					}
 				});
@@ -185,7 +186,77 @@ function defineListerner()
 					headers: {'X-CSRF-TOKEN': token},
 					type: 'PUT',
 					dataType: 'json',
-					data: {title: newTitle, subtitle: newSubtitle, hasLink: hasLink, buttonText: buttonText, buttonLink: buttonLink, imageTitle: imageTitle, imageDescription: imageDescription},
+					data: {lang: "es", title: newTitle, subtitle: newSubtitle, hasLink: hasLink, buttonText: buttonText, buttonLink: buttonLink, imageTitle: imageTitle, imageDescription: imageDescription},
+
+					success: function(){
+						
+						if(added){
+							console.log("hay iamgen para actualizar");
+							dropzone1.processQueue();
+						}
+						else{
+							carga();
+						}
+
+						check();
+
+						
+					}
+				});
+			});
+		});
+
+		$(".slideEidt-en").click(function()
+		{
+			console.log( "- Inicio click listener: QUICK EDIT ENglish" );
+			idQuickEditButton = $(this).attr("data-slide-id");
+			routeEdit = baseurl+"admin/paginas/home/slider/"+idQuickEditButton+"/edit";;
+			token = $("#token").val();
+
+			$.get(routeEdit, function(res)
+			{
+				console.log(res);
+				$("#nameslideEdit-en").val(res.en_title);
+				$("#subtitleslideEdit-en").val(res.en_subtitle);
+				$("#buttonLinkEdit-en").val(res.en_buttonLink);
+				$("#buttonTextEdit-en").val(res.en_buttonText);
+				$("#imagetitleEdit-en").val(res.en_imagetitle);
+				$("#imagedescriptionEdit-en").val(res.en_imagedescription);
+
+			});	
+
+
+			$("#confirmation-edit-en").click(function()
+			{
+				console.log( "- Inicio confirmation listener" );
+				routeUpdate =  baseurl+"admin/paginas/home/slider/"+idQuickEditButton;
+				var newTitle = $("#nameslideEdit-en").val();
+				var newSubtitle = $("#subtitleslideEdit-en").val();
+				var buttonLink = $("#buttonLinkEdit-en").val();
+				var buttonText = $("#buttonTextEdit-en").val();
+				var imageTitle = $("#imagetitleEdit-en").val();
+				var imageDescription = $("#imagedescriptionEdit-en").val();
+				var hasLinkCheckbox = $("#haslink-en");
+				var hasLink = 1;
+
+				if(hasLinkCheckbox.is(":checked")){
+					console.log("- has link");
+					hasLink = 1;
+				}
+				else
+				{
+					console.log("- hasn`t link");
+					hasLink = 0;
+				}
+
+
+				$.ajax(
+				{
+					url: routeUpdate,
+					headers: {'X-CSRF-TOKEN': token},
+					type: 'PUT',
+					dataType: 'json',
+					data: {lang: "en", title: newTitle, subtitle: newSubtitle, hasLink: hasLink, buttonText: buttonText, buttonLink: buttonLink, imageTitle: imageTitle, imageDescription: imageDescription},
 
 					success: function(){
 						

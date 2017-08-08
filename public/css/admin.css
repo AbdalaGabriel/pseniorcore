@@ -21,6 +21,24 @@
     top: 2em;
 }
 
+.slideEidt-en{
+    position: absolute;
+    top: 1em;
+    right: 7em;
+    color: white !important;
+    font-weight: 100;
+}
+
+.check-container{
+    position: absolute;
+    height: 30vh;
+    top: 35vh;
+    z-index: 100;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
 .admin .dropdown-menu li a{
     color: black;
 }

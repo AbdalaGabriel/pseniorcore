@@ -77,6 +77,7 @@ function init()
 				console.log("- Iniciamos Carga de imagen en proyecto");
 				dropzone.processQueue();
 				console.log(projectId);
+				check();
 				//$.redirect(baseurl+'admin/blog/');
 			}
 		});
@@ -104,6 +105,7 @@ function detectEvents(){
 				console.log("- Se generó la url para le proyecto");
 				console.log(data);
 				urlf.val(data);
+				check();
 			}
 		});
 	})

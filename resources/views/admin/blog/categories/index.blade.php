@@ -8,6 +8,7 @@
 @section('main')
 
 	@include('admin.blog.categories.messages.create')
+	@include('admin.blog.categories.messages.quick-edit-en')
 	@include('admin.blog.categories.messages.quick-edit')
 	@include('admin.blog.categories.messages.delete')
 
@@ -17,7 +18,8 @@
 			<thead>
 				<th>Titulo</th>
 				<th>URL Friendly</th>
-				<th>Ediciòn</th>
+				<th>Edición</th>
+				<th>Versión en inglés</th>
 				<th>Borrado</th>
 			</thead>
 			<tbody id="datos">

@@ -24,7 +24,7 @@ function carga()
 		console.log(res);
 		$(res).each(function(key, value)
 		{
-			tablaDatos.append('<tr><td>'+value.title+'<br/></td><td>'+value.urlfriendly+'<br/></td><td><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-category" data-id="'+value.id+'">Editar categoría</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-category" data-id="'+value.id+'">Eliminar</button></td></tr>');
+			tablaDatos.append('<tr><td>'+value.title+'<br/></td><td>'+value.urlfriendly+'<br/></td><td><a href="#" class="quickEdit" data-toggle="modal" data-target="#quickedit-category" data-id="'+value.id+'">Editar categoría</a></td><td><a href="#" class="quickEdit-en" data-toggle="modal" data-target="#quickedit-category-en" data-id="'+value.id+'">Versión en inglés</a></td><td><a href="#" class="delete" data-toggle="modal" data-target="#delete-this-category" data-id="'+value.id+'">Eliminar</button></td></tr>');
 
 		});
 	})
@@ -87,6 +87,7 @@ function defineListerner()
 
               success: function(){
                  carga();
+                 check();
              }
          });
        });
@@ -95,7 +96,7 @@ function defineListerner()
 
     //////////////////////////////////////////////////////////////////////////////////////
     // Edición rápida
-
+     $(".quickEdit").off();
     $(".quickEdit").click(function()
     {
     	console.log( "- Inicio click listener: QUICK EDIT" );
@@ -106,6 +107,7 @@ function defineListerner()
     	$.get(routeEdit, function(res)
     	{
     		$("#titleQuickEdit").val(res.title);
+            $("#new-post-urlf").val(res.urlfriendly);
     	});	
 
 
@@ -114,6 +116,7 @@ function defineListerner()
     		console.log( "- Inicio confirmation listener" );
     		routeUpdate =  baseurl+"admin/categorias/"+idQuickEditButton;
     		var newTitle = $("#titleQuickEdit").val();
+            var newreurlf = $("#new-post-urlf").val();
 
     		$.ajax(
     		{
@@ -121,14 +124,54 @@ function defineListerner()
     			headers: {'X-CSRF-TOKEN': token},
     			type: 'PUT',
     			dataType: 'json',
-    			data: {title: newTitle},
+    			data: {title: newTitle, urlf: newreurlf, lang: "es"},
 
     			success: function()
                 {
     				carga();
+                    check();
     			}
     		});
     	});
+    });
+
+    $(".quickEdit-en").off();
+    $(".quickEdit-en").click(function()
+    {
+        console.log( "- Inicio click listener: QUICK EDIT" );
+        idQuickEditButton = $(this).attr("data-id");
+        routeEdit = baseurl+"admin/categorias/"+idQuickEditButton+"/edit";;
+        token = $("#token").val();
+
+        $.get(routeEdit, function(res)
+        {
+            $("#titleQuickEdit-en").val(res.en_title);
+            $("#new-post-urlf-en").val(res.en_urlfriendly);
+        }); 
+
+
+        $("#confirmation-quickEdit-en").click(function()
+        {
+            console.log( "- Inicio confirmation listener" );
+            routeUpdate =  baseurl+"admin/categorias/"+idQuickEditButton;
+            var newTitle = $("#titleQuickEdit-en").val();
+            var newreurlf = $("#new-post-urlf-en").val();
+
+            $.ajax(
+            {
+                url: routeUpdate,
+                headers: {'X-CSRF-TOKEN': token},
+                type: 'PUT',
+                dataType: 'json',
+                data: {title: newTitle, urlf: newreurlf, lang:"en"},
+
+                success: function()
+                {
+                    carga();
+                    check();
+                }
+            });
+        });
     });
 
 
@@ -156,6 +199,8 @@ function defineListerner()
                     
                 success: function(){
                     carga();
+                    check();
+                    
                 }
             });
         });

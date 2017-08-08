@@ -36,6 +36,7 @@ function detectEvents(){
 				console.log("- Se generó la url para le proyecto");
 				console.log(data);
 				urlf.val(data);
+				check();
 			}
 		});
 	})
@@ -277,7 +278,7 @@ function sendAllInformation(html, jsonObj)
 				console.log("- Iniciamos Carga de imagen en proyecto");
 				dropzone.processQueue();
 				console.log(itemId);
-				$("body").append('<p class="wellmessage">'+data+'</p>');
+				check();
 				//$.redirect(baseurl+'admin/blog/');
 			}
 	});

@@ -9,7 +9,7 @@ use Carbon\Carbon;
 class Project extends Model
 {
     protected $fillable = [
-        'title','description', 'cover_image ',  'imagetitle', 'imagedescription', 'en_description', 'en_meta_description', 'meta_description', 'urlfriendly', 'jsoneditdata', 'htmleditdata',  'en_jsoneditdata', 'en_htmleditdata'
+        'title','description', 'cover_image ',  'imagetitle', 'imagedescription', 'en_description', 'en_meta_description', 'meta_description', 'urlfriendly', 'jsoneditdata', 'htmleditdata',  'en_jsoneditdata', 'en_htmleditdata',  'en_imagetitle', 'en_imagedescription'
     ];
 
     public function images(){

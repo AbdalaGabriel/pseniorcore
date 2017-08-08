@@ -9,6 +9,7 @@
 
 	@include('admin.resources.categories.messages.create')
 	@include('admin.resources.categories.messages.quick-edit')
+	@include('admin.resources.categories.messages.quick-edit-en')
 	@include('admin.resources.categories.messages.delete')
 
 	<div class=".col-md-4 center adminBlock">
@@ -16,7 +17,9 @@
 		<table class="table">
 			<thead>
 				<th>Titulo</th>
-				<th>Ediciòn</th>
+				<th>URL Friendly</th>
+				<th>Edición</th>
+				<th>Versión en inglés</th>
 				<th>Borrado</th>
 			</thead>
 			<tbody id="datos">

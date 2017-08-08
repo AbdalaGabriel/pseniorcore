@@ -232,6 +232,7 @@ function sendAllInformation(html, jsonObj)
 				dropzone.processQueue();
 				console.log(projectId);
 				$.redirect(baseurl+'admin/portfolio');
+				check();
 			}
 		});
 }
@@ -258,6 +259,7 @@ function detectEvents(){
 				console.log("- Se generó la url para le proyecto");
 				console.log(data);
 				urlf.val(data);
+				check();
 			}
 		});
 	})
