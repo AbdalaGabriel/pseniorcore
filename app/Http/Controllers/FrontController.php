@@ -315,7 +315,7 @@ class FrontController extends Controller
             $message->from('designer@gabrielabdala.com','Sitio web');
         });
 
-        return view('front.contactme');
+        
     }
 
 
