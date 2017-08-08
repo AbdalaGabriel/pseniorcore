@@ -39,12 +39,12 @@
 								<div class="mc-field-group">
 									<label for="mce-EMAIL">E-mail <span class="asterisk">*</span>
 									</label>
-									<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+									<input required type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
 								</div>
 
 								<div class="mc-field-group">
 									<label for="mce-FNAME">Name </label>
-									<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+									<input required type="text" value="" name="FNAME" class="" id="mce-FNAME">
 								</div>
 
 								
@@ -54,12 +54,12 @@
 								<div class="mc-field-group">
 									<label for="mce-EMAIL">E-mail<span class="asterisk">*</span>
 									</label>
-									<input type="email" value="{{ Auth::user()->email }}" name="EMAIL" class="required email" id="mce-EMAIL">
+									<input required type="email" value="{{ Auth::user()->email }}" name="EMAIL" class="required email" id="mce-EMAIL">
 								</div>
 
 								<div class="mc-field-group">
 									<label for="mce-FNAME">Name</label>
-									<input type="text" value="{{ Auth::user()->name }} " name="FNAME" class="" id="mce-FNAME">
+									<input required type="text" value="{{ Auth::user()->name }} " name="FNAME" class="" id="mce-FNAME">
 								</div>
 							
 

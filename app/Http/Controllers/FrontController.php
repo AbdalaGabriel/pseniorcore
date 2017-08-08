@@ -16,6 +16,7 @@ use App\Slide;
 use App\Category;
 use App\TutsAndResource;
 use Mail;
+use Redirect;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 

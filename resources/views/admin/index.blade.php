@@ -43,7 +43,8 @@
 
 <!-- Tiny mce -->
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-  	<script>tinymce.init({ selector:'textarea.tiny' });</script>
+  	<script>tinymce.init({ selector:'textarea.tiny',  plugins: "advcode",
+  toolbar: "code" });</script>
 </head>
 
 <body class="admin">

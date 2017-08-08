@@ -52,12 +52,15 @@ var veiyxzu = ['l','>','b','.','a','a','l','o','a','d','m','g','l','e','i','/','
 			<a class="footer-social-links" target="_blank" href="https://www.behance.net/gabdala"><i class="fa fa-behance" aria-hidden="true"></i></a>
 			<a class="footer-social-links" target="_blank" href="https://www.linkedin.com/in/gabrielabdala/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 
+
+			<a class="footer-social-links" target="_blank" href="https://www.youtube.com/channel/UCm5cqStKfZDd09VRnQ27mrg"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+
 		</div>
 
 
 		<div class="footer-box contact-me">
 			<h3 class="footer-title">Data fiscal</h3>
-			<p class="pfooter">En tramite</p>
+			<p class="pfooter"><img class="fiscal-data" src="/img/front/data-fiscal.jpg" title="data fiscal" alt="data fiscal"></p>
 		
 
 		</div>
