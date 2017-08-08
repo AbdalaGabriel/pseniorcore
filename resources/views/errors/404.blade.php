@@ -25,7 +25,7 @@
 
   <h1 class="errorPage-title">404</h1>
 
-  <h2>¡Lo siento! No he podido encontrar la página solicitada, pero te comparto algunos de mis proyectos :)</h2>
+  <h2>¡Lo siento! No he podido encontrar la página solicitada</h2>
 
 
 
