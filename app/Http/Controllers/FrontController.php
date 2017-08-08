@@ -315,7 +315,13 @@ class FrontController extends Controller
             $message->from('designer@gabrielabdala.com','Sitio web');
         });
 
-        return view('front.index');
+        $page = Page::where('en_urlfriendly', 'contacto')->first();
+         $pagesBlock = Config::where('reference', "footer_pagesblock_en")->first();
+           $contactBlock = Config::where('reference', "footer_contactme_en")->first();
+            $postsBlock = Config::where('reference', "footer_readmore_en")->first();
+            $shareBlock = Config::where('reference', "footer_followme_en")->first();
+
+        return view('front.contactme', ['page'=>$page, 'pagesBlock'=>$pagesBlock, 'contactBlock'=>$contactBlock,'postsBlock'=>$postsBlock, 'shareBlock'=>$shareBlock ]); 
     }
 
 
