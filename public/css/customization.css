@@ -98,6 +98,7 @@
     background: #261e46;
     color: white;
     position: relative;
+    display: none;
 
 }
 .wrapper-forms{
@@ -1390,7 +1391,8 @@ footer {
     font-size: 8px;
     /* border-top: 1px solid #d4d4d4; */
     padding: 20px 0 !important;
-    background: #f7f7f7;
+    background: #322761;
+    color: white !important;
 }
 
 
@@ -1664,6 +1666,26 @@ box-shadow: 0px 10px 43px -17px rgba(0,0,0,0.75);
     width: 100%;
 }
 
+.social-prefooter-links{
+  display: block;
+  margin: 0 0 1.5em 0;
+}
+
+.social-prefooter-links.be{
+    margin-top: 5.6em;
+    display: block;
+}
+
+
+#newsletterWp h2{
+  color: white !important;
+}
+
+.social-prefooter-links:hover img{ 
+-webkit-box-shadow: 0px 10px 53px -12px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 10px 53px -12px rgba(0,0,0,0.75);
+box-shadow: 0px 10px 53px -12px rgba(0,0,0,0.75);
+}
 .social-icons-container{
 text-align: left;
     font-size: 1.5em;

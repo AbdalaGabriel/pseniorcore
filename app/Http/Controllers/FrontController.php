@@ -37,7 +37,7 @@ class FrontController extends Controller
         $portfolioQty = $portfolioQtyConfig->value;
         $blogQty = $blogQtyConfig->value;
 
-        $page = Page::where('urlfriendly', '/')->first();
+        $page = Page::where('reference', 'home')->first();
         $portfolio = Page::where('reference', 'portfolio')->first();
         $blog = Page::where('reference', 'news')->first();
         $projects = Project::with('projectsCategories')->take($portfolioQty)->orderBy('created_at', 'desc')->get();
@@ -67,7 +67,7 @@ class FrontController extends Controller
         $portfolioQty = $portfolioQtyConfig->value;
         $blogQty = $blogQtyConfig->value;
 
-        $page = Page::where('urlfriendly', '/')->first();
+        $page = Page::where('reference', 'home')->first();
         $portfolio = Page::where('reference', 'portfolio')->first();
         $blog = Page::where('reference', 'news')->first();
         $projects = Project::with('projectsCategories')->take($portfolioQty)->get();
