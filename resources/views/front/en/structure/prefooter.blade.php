@@ -3,24 +3,22 @@
 				<div class="section-container">
 					
 				<div class="section-container  col-md-4 org">
-					<h2>Draws & social life</h2>
+					<h2>Follow me on Instagram!</h2>
 					
 					<!-- LightWidget WIDGET --><script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/70b5d6e8489f5de29666ab10673490fd.html"  class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
 
 				</div>
 				
 				<div class="section-container  col-md-4 org app-dw">
-				<h2>Download the app!</h2>
+				<h2>Portfolio & Curriculum</h2>
 
-				<a target="_blank" class="qr-link" href="https://build.phonegap.com/apps/2726611/share">
-				<img src="/img/front/iphone.svg" alt="">
-				<div class="qr-container">
-					<img class="qr" src="/img/front/qr.jpg" alt="QR Code">
-				</div>
+				<a target="_blank" class="social-prefooter-links be" href="https://www.behance.net/gabriel-abdala">
+				<img src="/img/front/behance.jpg" alt="">
 				</a>
-				<span class="prefooter-aclaration">
-					Only 4 Android, IOs cooming soon ;)
-				</span>
+
+				<a target="_blank" class="social-prefooter-links li" href="https://www.linkedin.com/in/gabrielabdala/">
+				<img src="/img/front/linkedin.jpg" alt="">
+				</a>
 			</div>
 
 				<div id="newsletterWp"    class="section-container  col-md-4 news">

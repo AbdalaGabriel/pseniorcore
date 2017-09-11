@@ -201,11 +201,11 @@ function changingStatus()
 		break
 
 		case 3:
-			element.text("amo el diseño 3D");
+			element.text("mi pasión es el diseño 3D");
 		break
 
 		case 4:
-			element.text("me gusta crear escenarios");
+			element.text("amo los videojuegos");
 			statuswords = 0;
 		break
 	}

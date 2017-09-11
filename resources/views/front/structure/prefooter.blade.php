@@ -13,11 +13,11 @@
 				<h2>Portfolio y Curriculum</h2>
 				
 				<a target="_blank" class="social-prefooter-links be" href="https://www.behance.net/gabriel-abdala">
-				<img src="img/front/behance.jpg" alt="">
+				<img src="/img/front/behance.jpg" alt="">
 				</a>
 
 				<a target="_blank" class="social-prefooter-links li" href="https://www.linkedin.com/in/gabrielabdala/">
-				<img src="img/front/linkedin.jpg" alt="">
+				<img src="/img/front/linkedin.jpg" alt="">
 				</a>
 			
 			</div>
